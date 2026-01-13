@@ -132,12 +132,12 @@ Results_pred_symlg
 
 
 
-
+scripts/verify_rename.py
 material/
 example/
 lightning_logs/
 docs/
-test/
+tests/
 test_temp/
 result.zip
 
