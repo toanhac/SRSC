@@ -1,0 +1,296 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\usefonttheme{structurebold}
+\usefonttheme[onlymath]{serif}
+
+\definecolor{BKTemplate}{rgb}{0.11765, 0.30588, 0.47451}
+\usecolortheme[named=BKTemplate]{structure}
+\setbeamercolor{title}{fg=BKTemplate,bg=} 
+\setbeamertemplate{caption}[numbered]
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{comment}
+\usepackage{forest}
+\usepackage[linesnumbered, ruled]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{graphicx}
+\usepackage{diagbox}
+\usepackage{tikz}
+\usepackage{subcaption}
+% \captionsetup[subfigure]{labelsep=space}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{stmaryrd}
+\usepackage[style=authortitle,backend=bibtex]{biblatex}
+\addbibresource{thesiscite.bib}
+
+\renewcommand{\footnotesize}{\tiny}
+\newcommand{\mathbi}[1]{\boldsymbol{#1}}
+\newtheorem{proposition}{Proposition}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[Specialized Project - HK251] %optional
+{\vspace*{1cm}\\\textbf{FINAL REPORT}\\\textbf{Specialized Project - HK251}}
+
+\subtitle{123}
+
+\author[Bao Luu Le Gia, Hac Hoa Toan] % (optional)
+{Supervisor: Duc Dung Nguyen, Ph.D\\
+Student: Bao Luu Le Gia - 2210220 \\
+Student: Hac Hoa Toan - 2210917}
+
+
+%\institute[HCMUT] % (optional)
+%{
+%  Faculty of ...\\
+%  Ho Chi Minh City University of Technology\\
+%  Vietnam National University Ho Chi Minh City
+%}
+
+%\date[January 2024] % (optional)
+%{January $01^{st}$ 2024}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+%------------------------------------------------------------
+
+
+\begin{document}
+
+% The next statement creates the title page.
+\setbeamertemplate{background canvas}{
+	\includegraphics[width=\paperwidth,height=\paperheight]{images/FrontBackground.pdf}
+}
+\begin{frame}[plain]
+\titlepage
+\end{frame}
+
+
+% Set background for all pages
+\setbeamertemplate{background canvas}{
+	\includegraphics[width=\paperwidth,height=\paperheight]{images/Background.pdf}
+}
+
+%\begin{frame}
+%\vspace{1cm}
+%To anyone you love...\\
+%\begin{flushright}
+%    Your Name
+%\end{flushright}
+%\end{frame}
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+
+%---------------------------------------------------------
+\section{Introduction}
+%---------------------------------------------------------
+
+\begin{frame}
+\frametitle{Motivation}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Goal \& Scope}
+\textbf{Goal:} Overall Goal
+\begin{enumerate}
+    \item Goal 1
+    \item Goal 2
+    \item Goal 3
+\end{enumerate}
+\vspace{0.5cm}
+\pause
+\textbf{Scope:}
+\begin{itemize}
+    \item Scope A
+    \item Scope B
+    \item Scope C
+\end{itemize}
+\end{frame}
+
+% %---------------------------------------------------------
+\section{Related Works}
+% %---------------------------------------------------------
+\begin{frame}
+\frametitle{Preliminaries}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem Statement}
+
+\end{frame}
+
+%---------------------------------------------------------
+\section{Background}
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Work 1}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Work 2}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Work 3}
+
+\end{frame}
+
+
+
+%---------------------------------------------------------
+\section{Initialize Experiment}
+%---------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Overview}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Component 1}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Component 2}
+	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Component 3}
+	
+\end{frame}
+
+
+%---------------------------------------------------------
+\section{Proposed Method}
+%---------------------------------------------------------
+
+\begin{frame}
+\frametitle{Overview}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Component 1}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Component 2}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Component 3}
+
+\end{frame}
+
+%---------------------------------------------------------
+\section{Experiments and Results}
+%---------------------------------------------------------
+\begin{frame}
+\frametitle{Datasets}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Baselines}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Metrics}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{First Result}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Second Result}
+
+\end{frame}
+
+%---------------------------------------------------------
+\section{Conclusion}
+%---------------------------------------------------------
+% Take away
+% Contact
+% Thank
+\begin{frame}{Summary}
+
+\end{frame}
+
+
+%---------------------------------------------------------
+\section{Future Plan}
+%---------------------------------------------------------
+\begin{frame}{Future Developments}
+
+\end{frame}
+
+
+\setbeamertemplate{footline}{}
+\begin{frame}
+    \centering
+    \vspace{1cm}
+    \textbf{\Huge{- THE END - }}\\
+    \vspace{0.2cm}
+    \textit{\Large{Thank you for your attention}}\\
+    \vspace{15pt}
+%    Acknowledgements:\\
+%    I want to...\\
+    \vspace{20pt}
+    Contact:\\
+    bao.luu22022004@hcmut.edu.vn
+\end{frame}
+
+% \begin{frame}[allowframebreaks]
+%         \frametitle{References}
+%%         \bibliographystyle{ieeetr}
+%         \bibliography{reference}
+% \end{frame}
+
+\end{document}
