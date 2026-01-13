@@ -1,0 +1,37 @@
+# IUD, 2011_KAIST_Data2_26_sub_17
+# Objects(17):
+O, x_2, x, 1.0, ORR
+O, 1_1, 1, 1.0, OSub
+O, x_1, x, 1.0, O
+O, z_1, z, 1.0, ORRRRRRRR
+O, 2_3, 2, 1.0, ORRRRRRRRRRSub
+O, y_2, y, 1.0, ORRRRRR
+O, -_1, -, 1.0, OR
+O, +_2, +, 1.0, ORRRRRRR
+O, 2_1, 2, 1.0, ORRSub
+O, 1_3, 1, 1.0, ORRRRRRRRSub
+O, z_2, z, 1.0, ORRRRRRRRRR
+O, y_1, y, 1.0, ORRRR
+O, -_3, -, 1.0, ORRRRRRRRR
+O, 1_2, 1, 1.0, ORRRRSub
+O, +_1, +, 1.0, ORRR
+O, -_2, -, 1.0, ORRRRR
+O, 2_2, 2, 1.0, ORRRRRRSub
+
+# Relations from SRT:
+EO, +_1, y_1, Right, 1.0
+EO, +_2, z_1, Right, 1.0
+EO, -_1, x_2, Right, 1.0
+EO, -_2, y_2, Right, 1.0
+EO, -_3, z_2, Right, 1.0
+EO, x_1, -_1, Right, 1.0
+EO, x_1, 1_1, Sub, 1.0
+EO, x_2, +_1, Right, 1.0
+EO, x_2, 2_1, Sub, 1.0
+EO, y_1, -_2, Right, 1.0
+EO, y_1, 1_2, Sub, 1.0
+EO, y_2, +_2, Right, 1.0
+EO, y_2, 2_2, Sub, 1.0
+EO, z_1, -_3, Right, 1.0
+EO, z_1, 1_3, Sub, 1.0
+EO, z_2, 2_3, Sub, 1.0

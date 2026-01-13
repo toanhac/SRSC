@@ -1,0 +1,31 @@
+# IUD, 2011_KAIST_Data2_12_sub_13
+# Objects(14):
+O, z_1, z, 1.0, OBelowRRRR
+O, \theta_2, \theta, 1.0, OAboveRRRR
+O, +_1, +, 1.0, OAboveRR
+O, -_1, -, 1.0, O
+O, \tan_1, \tan, 1.0, OAboveRRRRRR
+O, \sin_1, \sin, 1.0, OAbove
+O, x_1, x, 1.0, OBelow
+O, +_4, +, 1.0, OBelowRRR
+O, y_1, y, 1.0, OBelowRR
+O, \theta_3, \theta, 1.0, OAboveRRRRRRR
+O, \cos_1, \cos, 1.0, OAboveRRR
+O, \theta_1, \theta, 1.0, OAboveR
+O, +_3, +, 1.0, OBelowR
+O, +_2, +, 1.0, OAboveRRRRR
+
+# Relations from SRT:
+EO, +_1, \cos_1, Right, 1.0
+EO, +_2, \tan_1, Right, 1.0
+EO, +_3, y_1, Right, 1.0
+EO, +_4, z_1, Right, 1.0
+EO, -_1, \sin_1, Above, 1.0
+EO, -_1, x_1, Below, 1.0
+EO, \cos_1, \theta_2, Right, 1.0
+EO, \sin_1, \theta_1, Right, 1.0
+EO, \tan_1, \theta_3, Right, 1.0
+EO, \theta_1, +_1, Right, 1.0
+EO, \theta_2, +_2, Right, 1.0
+EO, x_1, +_3, Right, 1.0
+EO, y_1, +_4, Right, 1.0

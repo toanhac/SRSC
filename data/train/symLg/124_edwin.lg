@@ -1,0 +1,43 @@
+# IUD, 124_edwin
+# Objects(20):
+O, sum_1, \sum, 1.0, O
+O, k_1, k, 1.0, OSup
+O, 1_2, 1, 1.0, ORBelow
+O, _1, -, 1.0, OR
+O, x_2, x, 1.0, ORBelowRR
+O, -_1, -, 1.0, ORBelowR
+O, =_2, =, 1.0, ORR
+O, i_1, i, 1.0, OSub
+O, =_1, =, 1.0, OSubR
+O, 1_4, 1, 1.0, ORRRBelow
+O, 1_3, 1, 1.0, ORRRAbove
+O, -_2, -, 1.0, ORRRBelowR
+O, i_3, i, 1.0, ORBelowRRSupSub
+O, x_1, x, 1.0, ORAbove
+O, a_1, a, 1.0, ORAboveSup
+O, _2, -, 1.0, ORRR
+O, x_3, x, 1.0, ORRRBelowRR
+O, b_1, b, 1.0, ORBelowRRSup
+O, i_2, i, 1.0, ORAboveSupSub
+O, 1_1, 1, 1.0, OSubRR
+
+# Relations from SRT:
+EO, -_1, x_2, Right, 1.0
+EO, -_2, x_3, Right, 1.0
+EO, 1_2, -_1, Right, 1.0
+EO, 1_4, -_2, Right, 1.0
+EO, =_1, 1_1, Right, 1.0
+EO, =_2, _2, Right, 1.0
+EO, _1, 1_2, Below, 1.0
+EO, _1, =_2, Right, 1.0
+EO, _1, x_1, Above, 1.0
+EO, _2, 1_3, Above, 1.0
+EO, _2, 1_4, Below, 1.0
+EO, a_1, i_2, Sub, 1.0
+EO, b_1, i_3, Sub, 1.0
+EO, i_1, =_1, Right, 1.0
+EO, sum_1, _1, Right, 1.0
+EO, sum_1, i_1, Sub, 1.0
+EO, sum_1, k_1, Sup, 1.0
+EO, x_1, a_1, Sup, 1.0
+EO, x_2, b_1, Sup, 1.0

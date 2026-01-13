@@ -1,0 +1,40 @@
+# IUD, CROHME19_594
+# Objects(18):
+O, p_1, p, 1.0, ORRInsideRRRRRRRSup
+O, 1_1, 1, 1.0, ORRInsideRSup
+O, r_1, r, 1.0, O
+O, +_3, +, 1.0, ORRInsideRRRRRRRSupR
+O, _1, \sqrt, 1.0, ORR
+O, (_1, (, 1.0, ORRInside
+O, X_2, X, 1.0, ORRInsideRRRRRRR
+O, =_1, =, 1.0, OR
+O, \ldots_1, \ldots, 1.0, ORRInsideRRRR
+O, )_1, ), 1.0, ORRInsideRR
+O, 2_2, 2, 1.0, ORRInsideRRRRRRRRSup
+O, X_1, X, 1.0, ORRInsideR
+O, )_2, ), 1.0, ORRInsideRRRRRRRR
+O, (_2, (, 1.0, ORRInsideRRRRRR
+O, +_2, +, 1.0, ORRInsideRRRRR
+O, +_1, +, 1.0, ORRInsideRRR
+O, 2_1, 2, 1.0, ORRInsideRRSup
+O, 1_2, 1, 1.0, ORRInsideRRRRRRRSupRR
+
+# Relations from SRT:
+R, (_1, X_1, Right, 1.0
+R, (_2, X_2, Right, 1.0
+R, )_1, +_1, Right, 1.0
+R, )_1, 2_1, Sup, 1.0
+R, )_2, 2_2, Sup, 1.0
+R, +_1, \ldots_1, Right, 1.0
+R, +_2, (_2, Right, 1.0
+R, +_3, 1_2, Right, 1.0
+R, =_1, _1, Right, 1.0
+R, X_1, )_1, Right, 1.0
+R, X_1, 1_1, Sup, 1.0
+R, X_2, )_2, Right, 1.0
+R, X_2, p_1, Sup, 1.0
+R, \ldots_1, +_2, Right, 1.0
+R, _1, (_1, Inside, 1.0
+R, _1, X_1, Inside, 1.0
+R, p_1, +_3, Right, 1.0
+R, r_1, =_1, Right, 1.0

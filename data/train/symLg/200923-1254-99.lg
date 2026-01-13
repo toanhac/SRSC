@@ -1,0 +1,17 @@
+# IUD, "200923-1254-99.ink"
+# Objects(7):
+O, 3:4:, \theta, 1.0, ORR
+O, 0:, o, 1.0, O
+O, 5:6:, \leq, 1.0, ORRR
+O, 7:, o, 1.0, ORRRRR
+O, 9:, ), 1.0, ORRRRRR
+O, 1:2:, +, 1.0, OR
+O, 8:, (, 1.0, ORRRR
+
+# Relations from SRT:
+EO, 0:, 1:2:, Right, 1.0
+EO, 1:2:, 3:4:, Right, 1.0
+EO, 3:4:, 5:6:, Right, 1.0
+EO, 5:6:, 8:, Right, 1.0
+EO, 7:, 9:, Right, 1.0
+EO, 8:, 7:, Right, 1.0

@@ -1,0 +1,49 @@
+# IUD, CROHME19_710
+# Objects(23):
+O, g_3, g, 1.0, ORRRRRRRRBelow
+O, g_2, g, 1.0, ORRRRBelowR
+O, -_1, -, 1.0, ORRR
+O, 2_5, 2, 1.0, ORRRRRR
+O, 2_3, 2, 1.0, ORRRRBelow
+O, 3_1, 3, 1.0, ORRAbove
+O, _3, -, 1.0, ORRRRRRRR
+O, 2_1, 2, 1.0, ORRBelow
+O, =_1, =, 1.0, OR
+O, +_1, +, 1.0, ORRRRRRR
+O, 2_6, 2, 1.0, ORRRRRRRRBelowSup
+O, log_1, \log, 1.0, ORRRRR
+O, _2, -, 1.0, ORRRR
+O, 2_2, 2, 1.0, ORRBelowRSup
+O, 2_4, 2, 1.0, ORRRRBelowRSup
+O, g_1, g, 1.0, ORRBelowR
+O, 5_1, 5, 1.0, ORRRRAbove
+O, log_2, \log, 1.0, ORRRRRRRRR
+O, 3_2, 3, 1.0, ORRRRRRRRAbove
+O, C_1, C, 1.0, O
+O, g_4, g, 1.0, ORRRRRRRRRR
+O, 0_1, 0, 1.0, OSub
+O, _1, -, 1.0, ORR
+
+# Relations from SRT:
+R, +_1, _3, Right, 1.0
+R, -_1, _2, Right, 1.0
+R, 2_1, g_1, Right, 1.0
+R, 2_3, g_2, Right, 1.0
+R, 2_5, +_1, Right, 1.0
+R, =_1, _1, Right, 1.0
+R, C_1, 0_1, Sub, 1.0
+R, C_1, =_1, Right, 1.0
+R, _1, -_1, Right, 1.0
+R, _1, 2_1, Below, 1.0
+R, _1, 3_1, Above, 1.0
+R, _2, 2_3, Below, 1.0
+R, _2, 5_1, Above, 1.0
+R, _2, log_1, Right, 1.0
+R, _3, 3_2, Above, 1.0
+R, _3, g_3, Below, 1.0
+R, _3, log_2, Right, 1.0
+R, g_1, 2_2, Sup, 1.0
+R, g_2, 2_4, Sup, 1.0
+R, g_3, 2_6, Sup, 1.0
+R, log_1, 2_5, Right, 1.0
+R, log_2, g_4, Right, 1.0

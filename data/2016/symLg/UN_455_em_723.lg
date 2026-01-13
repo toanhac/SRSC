@@ -1,0 +1,7 @@
+# IUD, CROHME_2016_em_723
+# Objects(2):
+O, pi_1, \pi, 1.0, O
+O, pi_2, \pi, 1.0, OR
+
+# Relations from SRT:
+EO, pi_1, pi_2, Right, 1.0

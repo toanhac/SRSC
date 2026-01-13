@@ -1,0 +1,9 @@
+# IUD, CROHME19_1084
+# Objects(3):
+O, 5_1, 5, 1.0, ORR
+O, a_1, a, 1.0, O
+O, \neq_1, \neq, 1.0, OR
+
+# Relations from SRT:
+R, \neq_1, 5_1, Right, 1.0
+R, a_1, \neq_1, Right, 1.0

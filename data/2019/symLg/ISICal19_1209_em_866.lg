@@ -1,0 +1,27 @@
+# IUD, CROHME19_866
+# Objects(12):
+O, theta_4, \theta, 1.0, ORRRRRRR
+O, theta_3, \theta, 1.0, ORRRRR
+O, sin_2, \sin, 1.0, ORR
+O, 4_1, 4, 1.0, ORRRRRRRSub
+O, sin_4, \sin, 1.0, ORRRRRR
+O, 1_1, 1, 1.0, ORSub
+O, 3_1, 3, 1.0, ORRRRRSub
+O, sin_1, \sin, 1.0, O
+O, 2_1, 2, 1.0, ORRRSub
+O, theta_2, \theta, 1.0, ORRR
+O, sin_3, \sin, 1.0, ORRRR
+O, theta_1, \theta, 1.0, OR
+
+# Relations from SRT:
+R, sin_1, theta_1, Right, 1.0
+R, sin_2, theta_2, Right, 1.0
+R, sin_3, theta_3, Right, 1.0
+R, sin_4, theta_4, Right, 1.0
+R, theta_1, 1_1, Sub, 1.0
+R, theta_1, sin_2, Right, 1.0
+R, theta_2, 2_1, Sub, 1.0
+R, theta_2, sin_3, Right, 1.0
+R, theta_3, 3_1, Sub, 1.0
+R, theta_3, sin_4, Right, 1.0
+R, theta_4, 4_1, Sub, 1.0

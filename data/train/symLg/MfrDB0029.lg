@@ -1,0 +1,13 @@
+# IUD, MfrDB0029
+# Objects(5):
+O, r_1, r, 1.0, ORRRR
+O, =_1, =, 1.0, OR
+O, 2_1, 2, 1.0, ORR
+O, o_1, o, 1.0, O
+O, \pi_1, \pi, 1.0, ORRR
+
+# Relations from SRT:
+EO, 2_1, \pi_1, Right, 1.0
+EO, =_1, 2_1, Right, 1.0
+EO, \pi_1, r_1, Right, 1.0
+EO, o_1, =_1, Right, 1.0

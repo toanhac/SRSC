@@ -1,0 +1,9 @@
+# IUD, CROHME19_1081
+# Objects(3):
+O, 2_1, 2, 1.0, OSup
+O, sin_1, \sin, 1.0, O
+O, y_1, y, 1.0, OR
+
+# Relations from SRT:
+R, sin_1, 2_1, Sup, 1.0
+R, sin_1, y_1, Right, 1.0

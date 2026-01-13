@@ -1,0 +1,41 @@
+# IUD, MfrDB2094
+# Objects(19):
+O, y_4, y, 1.0, ORRRRRRRRRRRRR
+O, (_1, (, 1.0, O
+O, =_1, =, 1.0, ORRRRRRRRRRRRRRRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRRRR
+O, y_2, y, 1.0, ORRRRRR
+O, 0_1, 0, 1.0, ORRRRRRRRRRRRRRRRRR
+O, +_3, +, 1.0, ORRRRRRRRRRRRRR
+O, y_3, y, 1.0, ORRRRRRRRRRR
+O, 3_3, 3, 1.0, ORRRRRRRRRRRRRRR
+O, +_2, +, 1.0, ORRRRRRRRRR
+O, (_2, (, 1.0, ORRRRR
+O, (_3, (, 1.0, ORRRRRRRRRRRR
+O, y_1, y, 1.0, OR
+O, -_1, -, 1.0, ORR
+O, )_2, ), 1.0, ORRRRRRRRR
+O, 3_1, 3, 1.0, ORRR
+O, +_1, +, 1.0, ORRRRRRR
+O, )_1, ), 1.0, ORRRR
+O, 3_2, 3, 1.0, ORRRRRRRR
+
+# Relations from SRT:
+EO, (_1, y_1, Right, 1.0
+EO, (_2, y_2, Right, 1.0
+EO, (_3, y_4, Right, 1.0
+EO, )_1, (_2, Right, 1.0
+EO, )_2, +_2, Right, 1.0
+EO, )_3, =_1, Right, 1.0
+EO, +_1, 3_2, Right, 1.0
+EO, +_2, y_3, Right, 1.0
+EO, +_3, 3_3, Right, 1.0
+EO, -_1, 3_1, Right, 1.0
+EO, 3_1, )_1, Right, 1.0
+EO, 3_2, )_2, Right, 1.0
+EO, 3_3, )_3, Right, 1.0
+EO, =_1, 0_1, Right, 1.0
+EO, y_1, -_1, Right, 1.0
+EO, y_2, +_1, Right, 1.0
+EO, y_3, (_3, Right, 1.0
+EO, y_4, +_3, Right, 1.0

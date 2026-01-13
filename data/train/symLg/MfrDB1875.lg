@@ -1,0 +1,27 @@
+# IUD, MfrDB1875
+# Objects(12):
+O, k_1, k, 1.0, ORR
+O, g_1, g, 1.0, OSub
+O, =_1, =, 1.0, OR
+O, \cdot_1, ., 1.0, ORRR
+O, r_1, r, 1.0, ORRRRBelow
+O, z_1, z, 1.0, ORRRRAboveRRSub
+O, 2_1, 2, 1.0, ORRRRBelowSup
+O, M_1, M, 1.0, ORRRRAboveRR
+O, m_1, m, 1.0, ORRRRAbove
+O, F_1, F, 1.0, O
+O, \cdot_2, ., 1.0, ORRRRAboveR
+O, \frac_1, -, 1.0, ORRRR
+
+# Relations from SRT:
+EO, =_1, k_1, Right, 1.0
+EO, F_1, =_1, Right, 1.0
+EO, F_1, g_1, Sub, 1.0
+EO, M_1, z_1, Sub, 1.0
+EO, \cdot_1, \frac_1, Right, 1.0
+EO, \cdot_2, M_1, Right, 1.0
+EO, \frac_1, m_1, Above, 1.0
+EO, \frac_1, r_1, Below, 1.0
+EO, k_1, \cdot_1, Right, 1.0
+EO, m_1, \cdot_2, Right, 1.0
+EO, r_1, 2_1, Sup, 1.0

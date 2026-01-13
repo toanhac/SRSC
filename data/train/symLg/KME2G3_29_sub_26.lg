@@ -1,0 +1,29 @@
+# IUD, 2011_KME2_w29_e26
+# Objects(13):
+O, =_1, =, 1.0, ORRRRRRR
+O, \times_2, \times, 1.0, ORRR
+O, 4_1, 4, 1.0, ORRRRRRSub
+O, x_3, x, 1.0, ORRRR
+O, x_4, x, 1.0, ORRRRRR
+O, X_1, X, 1.0, ORRRRRRRR
+O, 3_1, 3, 1.0, ORRRRSub
+O, x_2, x, 1.0, ORR
+O, x_1, x, 1.0, O
+O, 1_1, 1, 1.0, OSub
+O, 2_1, 2, 1.0, ORRSub
+O, \times_3, \times, 1.0, ORRRRR
+O, \times_1, \times, 1.0, OR
+
+# Relations from SRT:
+EO, =_1, X_1, Right, 1.0
+EO, \times_1, x_2, Right, 1.0
+EO, \times_2, x_3, Right, 1.0
+EO, \times_3, x_4, Right, 1.0
+EO, x_1, 1_1, Sub, 1.0
+EO, x_1, \times_1, Right, 1.0
+EO, x_2, 2_1, Sub, 1.0
+EO, x_2, \times_2, Right, 1.0
+EO, x_3, 3_1, Sub, 1.0
+EO, x_3, \times_3, Right, 1.0
+EO, x_4, 4_1, Sub, 1.0
+EO, x_4, =_1, Right, 1.0

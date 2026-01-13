@@ -1,0 +1,17 @@
+# IUD, 2011_IVC_depart_F033_E014
+# Objects(7):
+O, )_1, ), 1.0, ORRR
+O, (_1, (, 1.0, OR
+O, p_1, p, 1.0, ORR
+O, \theta_1, \theta, 1.0, O
+O, =_1, =, 1.0, ORRRR
+O, c_1, c, 1.0, ORRSub
+O, 0_1, 0, 1.0, ORRRRR
+
+# Relations from SRT:
+EO, (_1, p_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, =_1, 0_1, Right, 1.0
+EO, \theta_1, (_1, Right, 1.0
+EO, p_1, )_1, Right, 1.0
+EO, p_1, c_1, Sub, 1.0

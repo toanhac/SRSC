@@ -1,0 +1,15 @@
+# IUD, CROHME19_718
+# Objects(6):
+O, m_1, m, 1.0, OR
+O, n_1, n, 1.0, ORRR
+O, 1_1, 1, 1.0, ORRRRR
+O, COMMA_1, COMMA, 1.0, ORR
+O, forall_1, \forall, 1.0, O
+O, ge_1, \geq, 1.0, ORRRR
+
+# Relations from SRT:
+R, COMMA_1, n_1, Right, 1.0
+R, forall_1, m_1, Right, 1.0
+R, ge_1, 1_1, Right, 1.0
+R, m_1, COMMA_1, Right, 1.0
+R, n_1, ge_1, Right, 1.0

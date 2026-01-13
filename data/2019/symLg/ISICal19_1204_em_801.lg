@@ -1,0 +1,44 @@
+# IUD, CROHME19_801
+# Objects(20):
+O, _2, -, 1.0, ORRR
+O, 0_1, 0, 1.0, OBelow
+O, _1, -, 1.0, OR
+O, +_1, +, 1.0, ORBelowR
+O, int_1, \int, 1.0, O
+O, =_1, =, 1.0, ORR
+O, 2_1, 2, 1.0, ORRRBelowInsideSup
+O, a_2, a, 1.0, ORRRBelowInside
+O, theta_2, \theta, 1.0, ORBelowRRRR
+O, pi_2, \pi, 1.0, ORRRAbove
+O, _3, \sqrt, 1.0, ORRRBelow
+O, pi_1, \pi, 1.0, OAbove
+O, 2_2, 2, 1.0, ORRRBelowInsideRRSup
+O, b_1, b, 1.0, ORBelowRR
+O, -_1, -, 1.0, ORRRBelowInsideR
+O, a_1, a, 1.0, ORBelow
+O, cos_1, \cos, 1.0, ORBelowRRR
+O, b_2, b, 1.0, ORRRBelowInsideRR
+O, d_1, d, 1.0, ORAbove
+O, theta_1, \theta, 1.0, ORAboveR
+
+# Relations from SRT:
+R, +_1, b_1, Right, 1.0
+R, -_1, b_2, Right, 1.0
+R, =_1, _2, Right, 1.0
+R, _1, =_1, Right, 1.0
+R, _1, a_1, Below, 1.0
+R, _1, d_1, Above, 1.0
+R, _2, _3, Below, 1.0
+R, _2, pi_2, Above, 1.0
+R, _3, -_1, Inside, 1.0
+R, _3, a_2, Inside, 1.0
+R, a_1, +_1, Right, 1.0
+R, a_2, -_1, Right, 1.0
+R, a_2, 2_1, Sup, 1.0
+R, b_1, cos_1, Right, 1.0
+R, b_2, 2_2, Sup, 1.0
+R, cos_1, theta_2, Right, 1.0
+R, d_1, theta_1, Right, 1.0
+R, int_1, 0_1, Below, 1.0
+R, int_1, _1, Right, 1.0
+R, int_1, pi_1, Above, 1.0

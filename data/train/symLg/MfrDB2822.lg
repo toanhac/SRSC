@@ -1,0 +1,54 @@
+# IUD, MfrDB2822
+# Objects(25):
+O, (_1, (, 1.0, OInsideRR
+O, k_3, k, 1.0, ORRRBelow
+O, 2_1, 2, 1.0, OInsideRRRRSup
+O, =_2, =, 1.0, ORRRBelowR
+O, 1_4, 1, 1.0, ORRRBelowRR
+O, n_1, n, 1.0, OInsideBelow
+O, 1_1, 1, 1.0, OInsideAbove
+O, )_1, ), 1.0, OInsideRRRR
+O, 1_2, 1, 1.0, OInsideRBelowRR
+O, k_1, k, 1.0, OInsideRBelow
+O, \frac_1, -, 1.0, OInside
+O, n_3, n, 1.0, ORRBelow
+O, =_1, =, 1.0, OInsideRBelowR
+O, n_2, n, 1.0, OInsideRAbove
+O, \sum_2, \sum, 1.0, ORRR
+O, 1_3, 1, 1.0, ORRAbove
+O, k_4, k, 1.0, ORRRRSub
+O, \sqrt_1, \sqrt, 1.0, O
+O, a_2, a, 1.0, ORRRR
+O, \geq_1, \geq, 1.0, OR
+O, \sum_1, \sum, 1.0, OInsideR
+O, k_2, k, 1.0, OInsideRRRSub
+O, \frac_2, -, 1.0, ORR
+O, a_1, a, 1.0, OInsideRRR
+O, n_4, n, 1.0, ORRRAbove
+
+# Relations from SRT:
+EO, (_1, a_1, Right, 1.0
+EO, )_1, 2_1, Sup, 1.0
+EO, =_1, 1_2, Right, 1.0
+EO, =_2, 1_4, Right, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, \sum_1, Right, 1.0
+EO, \frac_1, n_1, Below, 1.0
+EO, \frac_2, 1_3, Above, 1.0
+EO, \frac_2, \sum_2, Right, 1.0
+EO, \frac_2, n_3, Below, 1.0
+EO, \geq_1, \frac_2, Right, 1.0
+EO, \sqrt_1, \frac_1, Inside, 1.0
+EO, \sqrt_1, \geq_1, Right, 1.0
+EO, \sqrt_1, \sum_1, Inside, 1.0
+EO, \sum_1, (_1, Right, 1.0
+EO, \sum_1, k_1, Below, 1.0
+EO, \sum_1, n_2, Above, 1.0
+EO, \sum_2, a_2, Right, 1.0
+EO, \sum_2, k_3, Below, 1.0
+EO, \sum_2, n_4, Above, 1.0
+EO, a_1, )_1, Right, 1.0
+EO, a_1, k_2, Sub, 1.0
+EO, a_2, k_4, Sub, 1.0
+EO, k_1, =_1, Right, 1.0
+EO, k_3, =_2, Right, 1.0

@@ -1,0 +1,15 @@
+# IUD, CROHME19_1074
+# Objects(6):
+O, (_1, (, 1.0, ORR
+O, t_1, t, 1.0, ORRR
+O, )_1, ), 1.0, ORRRR
+O, _1, \sqrt, 1.0, O
+O, T_1, T, 1.0, OInside
+O, y_1, y, 1.0, OR
+
+# Relations from SRT:
+R, (_1, t_1, Right, 1.0
+R, _1, T_1, Inside, 1.0
+R, _1, y_1, Right, 1.0
+R, t_1, )_1, Right, 1.0
+R, y_1, (_1, Right, 1.0

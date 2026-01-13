@@ -1,0 +1,21 @@
+# IUD, CROHME19_672
+# Objects(9):
+O, d_1, d, 1.0, O
+O, l_1, l, 1.0, ORRRR
+O, +_1, +, 1.0, ORR
+O, 2_1, 2, 1.0, ORRR
+O, d_2, d, 1.0, ORRRRRRR
+O, x_1, x, 1.0, OR
+O, cos_1, \cos, 1.0, ORRRRR
+O, y_1, y, 1.0, ORRRRRR
+O, z_1, z, 1.0, ORRRRRRRR
+
+# Relations from SRT:
+R, +_1, 2_1, Right, 1.0
+R, 2_1, l_1, Right, 1.0
+R, cos_1, y_1, Right, 1.0
+R, d_1, x_1, Right, 1.0
+R, d_2, z_1, Right, 1.0
+R, l_1, cos_1, Right, 1.0
+R, x_1, +_1, Right, 1.0
+R, y_1, d_2, Right, 1.0

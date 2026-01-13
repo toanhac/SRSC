@@ -1,0 +1,23 @@
+# IUD, 89_hirata
+# Objects(10):
+O, x_1, x, 1.0, O
+O, x_2, x, 1.0, ORR
+O, prime_1, \prime, 1.0, OSup
+O, +_1, +, 1.0, ORRRRR
+O, y_1, y, 1.0, ORRRRRR
+O, theta_1, \theta, 1.0, ORRRR
+O, theta_2, \theta, 1.0, ORRRRRRRR
+O, =_1, =, 1.0, OR
+O, sin_1, \sin, 1.0, ORRRRRRR
+O, cos_1, \cos, 1.0, ORRR
+
+# Relations from SRT:
+EO, +_1, y_1, Right, 1.0
+EO, =_1, x_2, Right, 1.0
+EO, cos_1, theta_1, Right, 1.0
+EO, sin_1, theta_2, Right, 1.0
+EO, theta_1, +_1, Right, 1.0
+EO, x_1, =_1, Right, 1.0
+EO, x_1, prime_1, Sup, 1.0
+EO, x_2, cos_1, Right, 1.0
+EO, y_1, sin_1, Right, 1.0

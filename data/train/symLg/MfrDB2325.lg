@@ -1,0 +1,35 @@
+# IUD, MfrDB2325
+# Objects(16):
+O, \int_1, \int, 1.0, O
+O, \frac_1, -, 1.0, ORRRRR
+O, x_2, x, 1.0, ORRR
+O, +_2, +, 1.0, ORRRRRBelowR
+O, x_3, x, 1.0, ORRRRRAbove
+O, x_1, x, 1.0, OR
+O, n_1, n, 1.0, ORSup
+O, C_1, C, 1.0, ORRRRRRR
+O, d_1, d, 1.0, ORR
+O, n_2, n, 1.0, ORRRRRAboveSup
+O, +_1, +, 1.0, ORRRRRAboveSupR
+O, 1_1, 1, 1.0, ORRRRRAboveSupRR
+O, =_1, =, 1.0, ORRRR
+O, 1_2, 1, 1.0, ORRRRRBelowRR
+O, n_3, n, 1.0, ORRRRRBelow
+O, +_3, +, 1.0, ORRRRRR
+
+# Relations from SRT:
+EO, +_1, 1_1, Right, 1.0
+EO, +_2, 1_2, Right, 1.0
+EO, +_3, C_1, Right, 1.0
+EO, =_1, \frac_1, Right, 1.0
+EO, \frac_1, +_3, Right, 1.0
+EO, \frac_1, n_3, Below, 1.0
+EO, \frac_1, x_3, Above, 1.0
+EO, \int_1, x_1, Right, 1.0
+EO, d_1, x_2, Right, 1.0
+EO, n_2, +_1, Right, 1.0
+EO, n_3, +_2, Right, 1.0
+EO, x_1, d_1, Right, 1.0
+EO, x_1, n_1, Sup, 1.0
+EO, x_2, =_1, Right, 1.0
+EO, x_3, n_2, Sup, 1.0

@@ -1,0 +1,41 @@
+# IUD, 2011_IVC_depart_F010_E069
+# Objects(19):
+O, p_5, p, 1.0, ORRRRRRRR
+O, t_1, t, 1.0, ORRSub
+O, +_1, +, 1.0, ORRR
+O, =_1, =, 1.0, OR
+O, r_1, r, 1.0, ORRRRRRRRRRSub
+O, +_2, +, 1.0, ORRRRR
+O, p_6, p, 1.0, ORRRRRRRRRR
+O, e_1, e, 1.0, ORRRRRRRRSub
+O, +_3, +, 1.0, ORRRRRRR
+O, p_7, p, 1.0, ORRRRRRRRRRRR
+O, +_4, +, 1.0, ORRRRRRRRR
+O, p_2, p, 1.0, ORR
+O, v_1, v, 1.0, ORRRRRRRRRRRRSub
+O, p_3, p, 1.0, ORRRR
+O, c_1, c, 1.0, ORRRRSub
+O, p_4, p, 1.0, ORRRRRR
+O, +_5, +, 1.0, ORRRRRRRRRRR
+O, n_1, n, 1.0, ORRRRRRSub
+O, p_1, p, 1.0, O
+
+# Relations from SRT:
+EO, +_1, p_3, Right, 1.0
+EO, +_2, p_4, Right, 1.0
+EO, +_3, p_5, Right, 1.0
+EO, +_4, p_6, Right, 1.0
+EO, +_5, p_7, Right, 1.0
+EO, =_1, p_2, Right, 1.0
+EO, p_1, =_1, Right, 1.0
+EO, p_2, +_1, Right, 1.0
+EO, p_2, t_1, Sub, 1.0
+EO, p_3, +_2, Right, 1.0
+EO, p_3, c_1, Sub, 1.0
+EO, p_4, +_3, Right, 1.0
+EO, p_4, n_1, Sub, 1.0
+EO, p_5, +_4, Right, 1.0
+EO, p_5, e_1, Sub, 1.0
+EO, p_6, +_5, Right, 1.0
+EO, p_6, r_1, Sub, 1.0
+EO, p_7, v_1, Sub, 1.0

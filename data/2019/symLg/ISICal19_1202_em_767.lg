@@ -1,0 +1,41 @@
+# IUD, CROHME19_767
+# Objects(19):
+O, infin_1, \infty, 1.0, OBelowRR
+O, d_1, d, 1.0, ORR
+O, k_1, k, 1.0, ORBelow
+O, 1_1, 1, 1.0, ORBelowSub
+O, x_2, x, 1.0, ORRRRRR
+O, f_1, f, 1.0, ORRRR
+O, rarr_1, \rightarrow, 1.0, OBelowR
+O, x_3, x, 1.0, ORRRRRRRRR
+O, x_1, x, 1.0, ORRR
+O, r_2, r, 1.0, ORBelowR
+O, lim_1, \lim, 1.0, O
+O, r_1, r, 1.0, OBelow
+O, =_1, =, 1.0, ORRRRRRRRRR
+O, 0_1, 0, 1.0, ORRRRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRR
+O, /_1, /, 1.0, ORRRRRRRR
+O, (_1, (, 1.0, ORRRRR
+O, int_1, \int, 1.0, OR
+O, infin_2, \infty, 1.0, ORAbove
+
+# Relations from SRT:
+R, (_1, x_2, Right, 1.0
+R, )_1, /_1, Right, 1.0
+R, /_1, x_3, Right, 1.0
+R, =_1, 0_1, Right, 1.0
+R, d_1, x_1, Right, 1.0
+R, f_1, (_1, Right, 1.0
+R, int_1, d_1, Right, 1.0
+R, int_1, infin_2, Above, 1.0
+R, int_1, k_1, Below, 1.0
+R, k_1, 1_1, Sub, 1.0
+R, k_1, r_2, Right, 1.0
+R, lim_1, int_1, Right, 1.0
+R, lim_1, r_1, Below, 1.0
+R, r_1, rarr_1, Right, 1.0
+R, rarr_1, infin_1, Right, 1.0
+R, x_1, f_1, Right, 1.0
+R, x_2, )_1, Right, 1.0
+R, x_3, =_1, Right, 1.0

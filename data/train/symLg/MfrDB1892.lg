@@ -1,0 +1,25 @@
+# IUD, MfrDB1892
+# Objects(11):
+O, \sin_1, \sin, 1.0, O
+O, )_1, ), 1.0, ORRRRRRRRRR
+O, \sin_2, \sin, 1.0, ORRR
+O, \pi_1, \pi, 1.0, ORRRRRRRR
+O, x_1, x, 1.0, OR
+O, (_1, (, 1.0, ORRRR
+O, +_1, +, 1.0, ORRRRRR
+O, =_1, =, 1.0, ORR
+O, x_2, x, 1.0, ORRRRR
+O, 2_1, 2, 1.0, ORRRRRRR
+O, k_1, k, 1.0, ORRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, x_2, Right, 1.0
+EO, +_1, 2_1, Right, 1.0
+EO, 2_1, \pi_1, Right, 1.0
+EO, =_1, \sin_2, Right, 1.0
+EO, \pi_1, k_1, Right, 1.0
+EO, \sin_1, x_1, Right, 1.0
+EO, \sin_2, (_1, Right, 1.0
+EO, k_1, )_1, Right, 1.0
+EO, x_1, =_1, Right, 1.0
+EO, x_2, +_1, Right, 1.0

@@ -1,0 +1,21 @@
+# IUD, CROHME_2016_em_444
+# Objects(9):
+O, 4_1, 4, 1.0, OSup
+O, theta_1, \theta, 1.0, ORRRRR
+O, cos_1, \cos, 1.0, ORRRRRR
+O, sin_1, \sin, 1.0, ORRRR
+O, b_1, b, 1.0, ORR
+O, =_1, =, 1.0, OR
+O, phi_1, \phi, 1.0, ORRRRRRR
+O, r_1, r, 1.0, ORRR
+O, x_1, x, 1.0, O
+
+# Relations from SRT:
+EO, =_1, b_1, Right, 1.0
+EO, b_1, r_1, Right, 1.0
+EO, cos_1, phi_1, Right, 1.0
+EO, r_1, sin_1, Right, 1.0
+EO, sin_1, theta_1, Right, 1.0
+EO, theta_1, cos_1, Right, 1.0
+EO, x_1, 4_1, Sup, 1.0
+EO, x_1, =_1, Right, 1.0

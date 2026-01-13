@@ -1,0 +1,49 @@
+# IUD, 2011_IVC_depart_F004_E057
+# Objects(23):
+O, )_1, ), 1.0, ORRRR
+O, -_4, -, 1.0, ORRRRRRRRRRRRRR
+O, 1_1, 1, 1.0, OR
+O, -_3, -, 1.0, ORRRRRRRRRRRR
+O, n_1, n, 1.0, ORRRRRRRR
+O, j_1, j, 1.0, ORRR
+O, j_2, j, 1.0, ORRRRRRRRRRRRRRR
+O, =_1, =, 1.0, ORRRRRRRRRR
+O, a_1, a, 1.0, ORRRRRRRRRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRR
+O, b_1, b, 1.0, ORRRRRRRRRRRRRRRRRRRR
+O, j_3, j, 1.0, ORRRRRRRRRRRRRRRRRRR
+O, +_1, +, 1.0, ORRRRRRRRRRRRRRRRRR
+O, (_1, (, 1.0, O
+O, +_2, +, 1.0, ORRRRRRRRRRRRRRRRRRRRR
+O, (_3, (, 1.0, ORRRRRRRRRRR
+O, m_1, m, 1.0, ORRRRRR
+O, 1_2, 1, 1.0, ORRRRRRRRRRRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRRRR
+O, -_2, -, 1.0, ORRRRRRR
+O, (_2, (, 1.0, ORRRRR
+O, -_1, -, 1.0, ORR
+O, c_1, c, 1.0, ORRRRRRRRRRRRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, 1_1, Right, 1.0
+EO, (_2, m_1, Right, 1.0
+EO, (_3, -_3, Right, 1.0
+EO, )_1, (_2, Right, 1.0
+EO, )_2, =_1, Right, 1.0
+EO, )_3, a_1, Right, 1.0
+EO, +_1, j_3, Right, 1.0
+EO, +_2, c_1, Right, 1.0
+EO, -_1, j_1, Right, 1.0
+EO, -_2, n_1, Right, 1.0
+EO, -_3, 1_2, Right, 1.0
+EO, -_4, j_2, Right, 1.0
+EO, 1_1, -_1, Right, 1.0
+EO, 1_2, -_4, Right, 1.0
+EO, =_1, (_3, Right, 1.0
+EO, a_1, +_1, Right, 1.0
+EO, b_1, +_2, Right, 1.0
+EO, j_1, )_1, Right, 1.0
+EO, j_2, )_3, Right, 1.0
+EO, j_3, b_1, Right, 1.0
+EO, m_1, -_2, Right, 1.0
+EO, n_1, )_2, Right, 1.0

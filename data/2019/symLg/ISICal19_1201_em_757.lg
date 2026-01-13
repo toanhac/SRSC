@@ -1,0 +1,15 @@
+# IUD, CROHME19_757
+# Objects(6):
+O, 4_1, 4, 1.0, ORAboveR
+O, 9_1, 9, 1.0, ORBelow
+O, 6_2, 6, 1.0, ORAboveRR
+O, 6_1, 6, 1.0, ORAbove
+O, -_1, -, 1.0, O
+O, _1, -, 1.0, OR
+
+# Relations from SRT:
+R, -_1, _1, Right, 1.0
+R, 4_1, 6_2, Right, 1.0
+R, 6_1, 4_1, Right, 1.0
+R, _1, 6_1, Above, 1.0
+R, _1, 9_1, Below, 1.0

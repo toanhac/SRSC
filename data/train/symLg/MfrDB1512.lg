@@ -1,0 +1,37 @@
+# IUD, MfrDB1512
+# Objects(17):
+O, g_3, g, 1.0, ORRRRRBelowRRR
+O, 2_2, 2, 1.0, ORRRRRAbove
+O, g_2, g, 1.0, ORRRRRAboveRRR
+O, x_2, x, 1.0, ORRRRRAboveRRRR
+O, t_1, t, 1.0, O
+O, ._1, ., 1.0, ORRRRRAboveR
+O, _1, -, 1.0, ORRRRR
+O, 2_3, 2, 1.0, ORRRRRBelowRRRSup
+O, 1_1, 1, 1.0, ORRRRRBelow
+O, t_2, t, 1.0, ORRRRRAboveRR
+O, =_1, =, 1.0, ORRRR
+O, 2_1, 2, 1.0, ORR
+O, g_1, g, 1.0, OR
+O, x_1, x, 1.0, ORRR
+O, t_3, t, 1.0, ORRRRRBelowRR
+O, -_1, -, 1.0, ORRRRRBelowR
+O, x_3, x, 1.0, ORRRRRBelowRRRR
+
+# Relations from SRT:
+EO, -_1, t_3, Right, 1.0
+EO, ._1, t_2, Right, 1.0
+EO, 1_1, -_1, Right, 1.0
+EO, 2_1, x_1, Right, 1.0
+EO, 2_2, ._1, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, _1, 1_1, Below, 1.0
+EO, _1, 2_2, Above, 1.0
+EO, g_1, 2_1, Right, 1.0
+EO, g_2, x_2, Right, 1.0
+EO, g_3, 2_3, Sup, 1.0
+EO, g_3, x_3, Right, 1.0
+EO, t_1, g_1, Right, 1.0
+EO, t_2, g_2, Right, 1.0
+EO, t_3, g_3, Right, 1.0
+EO, x_1, =_1, Right, 1.0

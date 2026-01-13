@@ -1,0 +1,57 @@
+# IUD, 2011_IVC_depart_F014_E024
+# Objects(27):
+O, \pi_2, \pi, 1.0, ORRRRRRRRAbove
+O, _2, \sqrt, 1.0, ORRBelow
+O, \sin_1, \sin, 1.0, ORRRRRRRRRRRR
+O, _5, -, 1.0, ORRRRRRRRRRRRR
+O, (_1, (, 1.0, ORRR
+O, w_1, w, 1.0, O
+O, \pi_3, \pi, 1.0, ORRRRRRRRRRRRRAboveR
+O, +_2, +, 1.0, ORRRRRRRRRR
+O, =_1, =, 1.0, OR
+O, _3, -, 1.0, ORRRRRR
+O, 3_3, 3, 1.0, ORRRRRRRRRRRRRBelow
+O, 3_1, 3, 1.0, ORRBelowInside
+O, \alpha_2, \alpha, 1.0, ORRRRRRAbove
+O, w_2, w, 1.0, ORRRRRRRRRRR
+O, 6_1, 6, 1.0, ORRRRRRRRBelow
+O, _1, -, 1.0, ORR
+O, 2_1, 2, 1.0, ORRAbove
+O, \alpha_1, \alpha, 1.0, OSup
+O, )_1, ), 1.0, ORRRRRRRRR
+O, _4, -, 1.0, ORRRRRRRR
+O, \cos_1, \cos, 1.0, ORRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRRRR
+O, \pi_1, \pi, 1.0, ORRRRRRAboveR
+O, +_1, +, 1.0, ORRRRRRR
+O, (_2, (, 1.0, ORRRRR
+O, \alpha_3, \alpha, 1.0, ORRRRRRRRRRRRRAbove
+O, 3_2, 3, 1.0, ORRRRRRBelow
+
+# Relations from SRT:
+EO, (_1, \cos_1, Right, 1.0
+EO, (_2, _3, Right, 1.0
+EO, )_1, +_2, Right, 1.0
+EO, +_1, _4, Right, 1.0
+EO, +_2, w_2, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, \alpha_2, \pi_1, Right, 1.0
+EO, \alpha_3, \pi_3, Right, 1.0
+EO, \cos_1, (_2, Right, 1.0
+EO, \sin_1, _5, Right, 1.0
+EO, _1, (_1, Right, 1.0
+EO, _1, 2_1, Above, 1.0
+EO, _1, _2, Below, 1.0
+EO, _2, 3_1, Inside, 1.0
+EO, _3, +_1, Right, 1.0
+EO, _3, 3_2, Below, 1.0
+EO, _3, \alpha_2, Above, 1.0
+EO, _4, )_1, Right, 1.0
+EO, _4, 6_1, Below, 1.0
+EO, _4, \pi_2, Above, 1.0
+EO, _5, )_2, Right, 1.0
+EO, _5, 3_3, Below, 1.0
+EO, _5, \alpha_3, Above, 1.0
+EO, w_1, =_1, Right, 1.0
+EO, w_1, \alpha_1, Sup, 1.0
+EO, w_2, \sin_1, Right, 1.0

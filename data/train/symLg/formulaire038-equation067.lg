@@ -1,0 +1,37 @@
+# IUD, 2011_IVC_depart_F038_E067
+# Objects(17):
+O, COMMA_1, COMMA, 1.0, ORRR
+O, u_2, u, 1.0, ORRRRRRRRRRR
+O, COMMA_3, COMMA, 1.0, ORRRRRRRRRRRR
+O, w_1, w, 1.0, ORRRRRR
+O, v_1, v, 1.0, ORRRR
+O, u_1, u, 1.0, ORR
+O, COMMA_4, COMMA, 1.0, ORRRRRRRRRRRRRR
+O, v_2, v, 1.0, ORRRRRRRRRRRRRRR
+O, COMMA_2, COMMA, 1.0, ORRRRR
+O, (_1, (, 1.0, OR
+O, =_1, =, 1.0, ORRRRRRRR
+O, f_1, f, 1.0, O
+O, (_2, (, 1.0, ORRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRR
+O, f_2, f, 1.0, ORRRRRRRRR
+O, w_2, w, 1.0, ORRRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, u_1, Right, 1.0
+EO, (_2, u_2, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, =_1, f_2, Right, 1.0
+EO, COMMA_1, v_1, Right, 1.0
+EO, COMMA_2, w_1, Right, 1.0
+EO, COMMA_3, w_2, Right, 1.0
+EO, COMMA_4, v_2, Right, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, f_2, (_2, Right, 1.0
+EO, u_1, COMMA_1, Right, 1.0
+EO, u_2, COMMA_3, Right, 1.0
+EO, v_1, COMMA_2, Right, 1.0
+EO, v_2, )_2, Right, 1.0
+EO, w_1, )_1, Right, 1.0
+EO, w_2, COMMA_4, Right, 1.0

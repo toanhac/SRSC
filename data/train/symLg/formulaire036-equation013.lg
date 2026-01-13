@@ -1,0 +1,47 @@
+# IUD, 2011_IVC_depart_F036_E013
+# Objects(22):
+O, x_3, x, 1.0, ORRRRRRR
+O, )_4, ), 1.0, ORRRRRRRRRRRRRRRR
+O, (_2, (, 1.0, ORRRRRSupR
+O, \sin_2, \sin, 1.0, ORRRRRRRRRRRRR
+O, x_5, x, 1.0, ORRRRRRRRRRRRRRR
+O, +_1, +, 1.0, ORRRRRRRR
+O, (_3, (, 1.0, ORRRRRR
+O, (_1, (, 1.0, OR
+O, g_1, g, 1.0, O
+O, =_1, =, 1.0, ORRRR
+O, )_5, ), 1.0, ORRRRRRRRRRRRRRRRR
+O, )_1, ), 1.0, ORRR
+O, e_1, e, 1.0, ORRRRR
+O, (_4, (, 1.0, ORRRRRRRRRR
+O, \cos_1, \cos, 1.0, ORRRRRRRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRR
+O, x_2, x, 1.0, ORRRRRSupRR
+O, (_5, (, 1.0, ORRRRRRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRSupRRR
+O, \sin_1, \sin, 1.0, ORRRRRSup
+O, x_4, x, 1.0, ORRRRRRRRRRR
+O, x_1, x, 1.0, ORR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, (_2, x_2, Right, 1.0
+EO, (_3, x_3, Right, 1.0
+EO, (_4, x_4, Right, 1.0
+EO, (_5, x_5, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_3, \sin_2, Right, 1.0
+EO, )_4, )_5, Right, 1.0
+EO, +_1, \cos_1, Right, 1.0
+EO, =_1, e_1, Right, 1.0
+EO, \cos_1, (_4, Right, 1.0
+EO, \sin_1, (_2, Right, 1.0
+EO, \sin_2, (_5, Right, 1.0
+EO, e_1, (_3, Right, 1.0
+EO, e_1, \sin_1, Sup, 1.0
+EO, g_1, (_1, Right, 1.0
+EO, x_1, )_1, Right, 1.0
+EO, x_2, )_2, Right, 1.0
+EO, x_3, +_1, Right, 1.0
+EO, x_4, )_3, Right, 1.0
+EO, x_5, )_4, Right, 1.0

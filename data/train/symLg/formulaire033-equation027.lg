@@ -1,0 +1,13 @@
+# IUD, 2011_IVC_depart_F033_E027
+# Objects(5):
+O, \leq_1, \leq, 1.0, OR
+O, k_1, k, 1.0, ORRRR
+O, 0_1, 0, 1.0, O
+O, l_1, l, 1.0, ORR
+O, \leq_2, \leq, 1.0, ORRR
+
+# Relations from SRT:
+EO, 0_1, \leq_1, Right, 1.0
+EO, \leq_1, l_1, Right, 1.0
+EO, \leq_2, k_1, Right, 1.0
+EO, l_1, \leq_2, Right, 1.0

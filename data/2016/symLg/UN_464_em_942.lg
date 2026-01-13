@@ -1,0 +1,33 @@
+# IUD, CROHME_2016_em_942
+# Objects(15):
+O, b_1, b, 1.0, ORRRRRRR
+O, =_1, =, 1.0, ORRRRRRRRR
+O, (_2, (, 1.0, ORR
+O, (_1, (, 1.0, OR
+O, )_2, ), 1.0, ORRRRRRRR
+O, n_2, n, 1.0, ORRRRRRRRRRRR
+O, f_2, f, 1.0, ORRRRRRRRRR
+O, 4_1, 4, 1.0, ORRRRR
+O, n_1, n, 1.0, ORRR
+O, b_2, b, 1.0, ORRRRRRRRRRRRR
+O, )_1, ), 1.0, ORRRRRR
+O, (_3, (, 1.0, ORRRRRRRRRRR
+O, +_1, +, 1.0, ORRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRR
+O, f_1, f, 1.0, O
+
+# Relations from SRT:
+EO, (_1, (_2, Right, 1.0
+EO, (_2, n_1, Right, 1.0
+EO, (_3, n_2, Right, 1.0
+EO, )_1, b_1, Right, 1.0
+EO, )_2, =_1, Right, 1.0
+EO, +_1, 4_1, Right, 1.0
+EO, 4_1, )_1, Right, 1.0
+EO, =_1, f_2, Right, 1.0
+EO, b_1, )_2, Right, 1.0
+EO, b_2, )_3, Right, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, f_2, (_3, Right, 1.0
+EO, n_1, +_1, Right, 1.0
+EO, n_2, b_2, Right, 1.0

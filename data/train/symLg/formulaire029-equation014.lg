@@ -1,0 +1,15 @@
+# IUD, 2011_IVC_depart_F029_E014
+# Objects(6):
+O, v_1, v, 1.0, O
+O, =_1, =, 1.0, ORRRR
+O, \infty_1, \infty, 1.0, ORRRRR
+O, )_1, ), 1.0, ORRR
+O, (_1, (, 1.0, OR
+O, x_1, x, 1.0, ORR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, =_1, \infty_1, Right, 1.0
+EO, v_1, (_1, Right, 1.0
+EO, x_1, )_1, Right, 1.0

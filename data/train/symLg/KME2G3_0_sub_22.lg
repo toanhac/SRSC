@@ -1,0 +1,37 @@
+# IUD, 2011_KME2_w0_e22
+# Objects(17):
+O, x_3, x, 1.0, OSub
+O, -_3, -, 1.0, ORRRRRRRRR
+O, y_4, y, 1.0, ORRRRRRRR
+O, y_2, y, 1.0, ORRSup
+O, -_2, -, 1.0, ORRRRRRR
+O, y_3, y, 1.0, ORRSub
+O, z_1, z, 1.0, ORRRR
+O, x_4, x, 1.0, ORRRRRR
+O, x_1, x, 1.0, O
+O, y_1, y, 1.0, ORR
+O, x_2, x, 1.0, OSup
+O, +_2, +, 1.0, ORRR
+O, z_2, z, 1.0, ORRRRSup
+O, z_4, z, 1.0, ORRRRRRRRRR
+O, z_3, z, 1.0, ORRRRSub
+O, -_1, -, 1.0, ORRRRR
+O, +_1, +, 1.0, OR
+
+# Relations from SRT:
+EO, +_1, y_1, Right, 1.0
+EO, +_2, z_1, Right, 1.0
+EO, -_1, x_4, Right, 1.0
+EO, -_2, y_4, Right, 1.0
+EO, -_3, z_4, Right, 1.0
+EO, x_1, +_1, Right, 1.0
+EO, x_1, x_2, Sup, 1.0
+EO, x_1, x_3, Sub, 1.0
+EO, x_4, -_2, Right, 1.0
+EO, y_1, +_2, Right, 1.0
+EO, y_1, y_2, Sup, 1.0
+EO, y_1, y_3, Sub, 1.0
+EO, y_4, -_3, Right, 1.0
+EO, z_1, -_1, Right, 1.0
+EO, z_1, z_2, Sup, 1.0
+EO, z_1, z_3, Sub, 1.0

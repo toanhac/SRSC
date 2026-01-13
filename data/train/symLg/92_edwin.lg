@@ -1,0 +1,41 @@
+# IUD, 92_edwin
+# Objects(19):
+O, sin_3, \sin, 1.0, ORRBelow
+O, w_2, w, 1.0, ORRBelowR
+O, w_1, w, 1.0, ORRAboveRRRRRRRRR
+O, theta_2, \theta, 1.0, ORRAboveRRRRRRRRRRRR
+O, y_2, y, 1.0, ORRAboveRRRRR
+O, (_1, (, 1.0, ORRAboveRRRRRRRR
+O, sin_1, \sin, 1.0, ORRAboveRR
+O, theta_1, \theta, 1.0, ORRAboveRRR
+O, x_1, x, 1.0, ORRAbove
+O, sin_2, \sin, 1.0, ORRAboveRRRRRRR
+O, prime_2, \prime, 1.0, ORRAboveRRRRRR
+O, _1, -, 1.0, ORR
+O, y_1, y, 1.0, O
+O, prime_3, \prime, 1.0, ORRAboveRRRRRRRRRR
+O, +_2, +, 1.0, ORRAboveRRRRRRRRRRR
+O, prime_1, \prime, 1.0, ORRAboveR
+O, =_1, =, 1.0, OR
+O, +_1, +, 1.0, ORRAboveRRRR
+O, )_1, ), 1.0, ORRAboveRRRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, w_1, Right, 1.0
+EO, +_1, y_2, Right, 1.0
+EO, +_2, theta_2, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, _1, sin_3, Below, 1.0
+EO, _1, x_1, Above, 1.0
+EO, prime_1, sin_1, Right, 1.0
+EO, prime_2, sin_2, Right, 1.0
+EO, prime_3, +_2, Right, 1.0
+EO, sin_1, theta_1, Right, 1.0
+EO, sin_2, (_1, Right, 1.0
+EO, sin_3, w_2, Right, 1.0
+EO, theta_1, +_1, Right, 1.0
+EO, theta_2, )_1, Right, 1.0
+EO, w_1, prime_3, Right, 1.0
+EO, x_1, prime_1, Right, 1.0
+EO, y_1, =_1, Right, 1.0
+EO, y_2, prime_2, Right, 1.0

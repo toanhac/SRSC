@@ -1,0 +1,9 @@
+# IUD, CROHME_2016_em_1028
+# Objects(3):
+O, n_1, n, 1.0, OBelow
+O, _1, -, 1.0, O
+O, pi_1, \pi, 1.0, OAbove
+
+# Relations from SRT:
+EO, _1, n_1, Below, 1.0
+EO, _1, pi_1, Above, 1.0

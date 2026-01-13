@@ -1,0 +1,49 @@
+# IUD, 2011_IVC_depart_F023_E020
+# Objects(23):
+O, 1_4, 1, 1.0, ORRRRRRRRRRRRRR
+O, \times_1, \times, 1.0, ORRR
+O, )_1, ), 1.0, ORRRRRRRRRRRR
+O, 3_1, 3, 1.0, ORRRRRRRRRRRRRRRRRRRRR
+O, 1_3, 1, 1.0, ORRRRRRRRR
+O, 4_1, 4, 1.0, ORRRRRR
+O, 2_1, 2, 1.0, ORRRRRRRRRRRRRRR
+O, 8_2, 8, 1.0, ORRRRRRRRRR
+O, \neq_1, \neq, 1.0, ORRRRRRRRRRRRRRRRRR
+O, 4_2, 4, 1.0, ORRRRRRRRRRR
+O, 8_1, 8, 1.0, OR
+O, 1_2, 1, 1.0, ORR
+O, 1_5, 1, 1.0, ORRRRRRRRRRRRRRRRRRR
+O, -_1, -, 1.0, ORRRRRRRRRRRRR
+O, (_1, (, 1.0, ORRRR
+O, 7_1, 7, 1.0, ORRRRRRR
+O, 6_1, 6, 1.0, ORRRRRRRRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRRRRRRR
+O, /_1, /, 1.0, ORRRRRRRR
+O, (_2, (, 1.0, ORRRRR
+O, 9_1, 9, 1.0, ORRRRRRRRRRRRRRRRRRRRRR
+O, 1_1, 1, 1.0, O
+O, 0_1, 0, 1.0, ORRRRRRRRRRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, (_2, Right, 1.0
+EO, (_2, 4_1, Right, 1.0
+EO, )_1, -_1, Right, 1.0
+EO, )_2, \neq_1, Right, 1.0
+EO, -_1, 1_4, Right, 1.0
+EO, /_1, 1_3, Right, 1.0
+EO, 0_1, 3_1, Right, 1.0
+EO, 1_1, 8_1, Right, 1.0
+EO, 1_2, \times_1, Right, 1.0
+EO, 1_3, 8_2, Right, 1.0
+EO, 1_4, 2_1, Right, 1.0
+EO, 1_5, 0_1, Right, 1.0
+EO, 2_1, 6_1, Right, 1.0
+EO, 3_1, 9_1, Right, 1.0
+EO, 4_1, 7_1, Right, 1.0
+EO, 4_2, )_1, Right, 1.0
+EO, 6_1, )_2, Right, 1.0
+EO, 7_1, /_1, Right, 1.0
+EO, 8_1, 1_2, Right, 1.0
+EO, 8_2, 4_2, Right, 1.0
+EO, \neq_1, 1_5, Right, 1.0
+EO, \times_1, (_1, Right, 1.0

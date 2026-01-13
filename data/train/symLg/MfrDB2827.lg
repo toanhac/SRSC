@@ -1,0 +1,45 @@
+# IUD, MfrDB2827
+# Objects(21):
+O, 2_1, 2, 1.0, ORRRRRRRRRRRRRRRR
+O, 3_1, 3, 1.0, ORRRRRRRRRRRRRRRRRRR
+O, \cdot_1, ., 1.0, ORRRR
+O, x_2, x, 1.0, ORRRRRRR
+O, f_1, f, 1.0, O
+O, h_1, h, 1.0, ORRRRR
+O, )_2, ), 1.0, ORRRRRRRR
+O, 1_1, 1, 1.0, ORRRRRRRRRRRRR
+O, )_1, ), 1.0, ORRR
+O, (_3, (, 1.0, ORRRRRRRRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRR
+O, x_4, x, 1.0, ORRRRRRRRRRRRRRRRR
+O, x_3, x, 1.0, ORRRRRRRRRRR
+O, )_4, ), 1.0, ORRRRRRRRRRRRRRRRRRRR
+O, x_1, x, 1.0, ORR
+O, +_1, +, 1.0, ORRRRRRRRRRRR
+O, (_2, (, 1.0, ORRRRRR
+O, (_1, (, 1.0, OR
+O, (_4, (, 1.0, ORRRRRRRRRRRRRRR
+O, -_1, -, 1.0, ORRRRRRRRRRRRRRRRRR
+O, =_1, =, 1.0, ORRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, (_2, x_2, Right, 1.0
+EO, (_3, x_3, Right, 1.0
+EO, (_4, 2_1, Right, 1.0
+EO, )_1, \cdot_1, Right, 1.0
+EO, )_2, =_1, Right, 1.0
+EO, )_3, (_4, Right, 1.0
+EO, +_1, 1_1, Right, 1.0
+EO, -_1, 3_1, Right, 1.0
+EO, 1_1, )_3, Right, 1.0
+EO, 2_1, x_4, Right, 1.0
+EO, 3_1, )_4, Right, 1.0
+EO, =_1, (_3, Right, 1.0
+EO, \cdot_1, h_1, Right, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, h_1, (_2, Right, 1.0
+EO, x_1, )_1, Right, 1.0
+EO, x_2, )_2, Right, 1.0
+EO, x_3, +_1, Right, 1.0
+EO, x_4, -_1, Right, 1.0

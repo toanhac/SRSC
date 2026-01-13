@@ -1,0 +1,44 @@
+# IUD, 81_herbert
+# Objects(20):
+O, 2_1, 2, 1.0, OSub
+O, 2_5, 2, 1.0, ORRBelowRRRInsideRRRSup
+O, k_3, k, 1.0, ORRBelowRRRInsideRRRSub
+O, =_1, =, 1.0, OR
+O, 2_2, 2, 1.0, ORRAbove
+O, R_1, R, 1.0, ORRAboveR
+O, k_2, k, 1.0, ORRAboveRRSub
+O, A_2, A, 1.0, ORRAboveRR
+O, 4_1, 4, 1.0, ORRBelowRRRInside
+O, +_2, +, 1.0, ORRBelowRRRInsideRR
+O, R_3, R, 1.0, ORRBelowRRRInsideR
+O, _1, -, 1.0, ORR
+O, A_3, A, 1.0, ORRBelowRRRInsideRRR
+O, _2, \sqrt, 1.0, ORRBelowRRR
+O, 2_3, 2, 1.0, ORRBelow
+O, +_1, +, 1.0, ORRBelowRR
+O, A_1, A, 1.0, O
+O, 2_4, 2, 1.0, ORRBelowRRRInsideRSup
+O, R_2, R, 1.0, ORRBelowR
+O, k_1, k, 1.0, OSubR
+
+# Relations from SRT:
+EO, +_1, _2, Right, 1.0
+EO, +_2, A_3, Right, 1.0
+EO, 2_1, k_1, Right, 1.0
+EO, 2_2, R_1, Right, 1.0
+EO, 2_3, R_2, Right, 1.0
+EO, 4_1, R_3, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, A_1, 2_1, Sub, 1.0
+EO, A_1, =_1, Right, 1.0
+EO, A_2, k_2, Sub, 1.0
+EO, A_3, 2_5, Sup, 1.0
+EO, A_3, k_3, Sub, 1.0
+EO, R_1, A_2, Right, 1.0
+EO, R_2, +_1, Right, 1.0
+EO, R_3, +_2, Right, 1.0
+EO, R_3, 2_4, Sup, 1.0
+EO, _1, 2_2, Above, 1.0
+EO, _1, 2_3, Below, 1.0
+EO, _2, 4_1, Inside, 1.0
+EO, _2, R_3, Inside, 1.0

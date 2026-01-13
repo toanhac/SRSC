@@ -1,0 +1,17 @@
+# IUD, CROHME19_736
+# Objects(7):
+O, _1, -, 1.0, O
+O, sin_1, \sin, 1.0, OAboveR
+O, Delta_2, \Delta, 1.0, OBelowR
+O, |_1, |, 1.0, OAbove
+O, sin_2, \sin, 1.0, OBelow
+O, Delta_1, \Delta, 1.0, OAboveRR
+O, |_2, |, 1.0, OAboveRRR
+
+# Relations from SRT:
+R, Delta_1, |_2, Right, 1.0
+R, _1, sin_2, Below, 1.0
+R, _1, |_1, Above, 1.0
+R, sin_1, Delta_1, Right, 1.0
+R, sin_2, Delta_2, Right, 1.0
+R, |_1, sin_1, Right, 1.0

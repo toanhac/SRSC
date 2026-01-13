@@ -1,0 +1,25 @@
+# IUD, 2013_IVC_CROHME_F03_E016
+# Objects(11):
+O, E_1, E, 1.0, ORRR
+O, in_2, \in, 1.0, ORRRRRR
+O, y_2, y, 1.0, ORRRRRRRRRR
+O, forall_1, \forall, 1.0, O
+O, y_1, y, 1.0, ORRRRR
+O, R_1, R, 1.0, ORRRRRRRRR
+O, x_2, x, 1.0, ORRRRRRRR
+O, exist_1, \exists, 1.0, ORRRR
+O, in_1, \in, 1.0, ORR
+O, x_1, x, 1.0, OR
+O, E_2, E, 1.0, ORRRRRRR
+
+# Relations from SRT:
+EO, E_1, exist_1, Right, 1.0
+EO, E_2, x_2, Right, 1.0
+EO, R_1, y_2, Right, 1.0
+EO, exist_1, y_1, Right, 1.0
+EO, forall_1, x_1, Right, 1.0
+EO, in_1, E_1, Right, 1.0
+EO, in_2, E_2, Right, 1.0
+EO, x_1, in_1, Right, 1.0
+EO, x_2, R_1, Right, 1.0
+EO, y_1, in_2, Right, 1.0

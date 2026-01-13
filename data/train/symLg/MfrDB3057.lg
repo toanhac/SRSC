@@ -1,0 +1,23 @@
+# IUD, MfrDB3057
+# Objects(10):
+O, =_1, =, 1.0, OBelowR
+O, \sum_1, \sum, 1.0, O
+O, n_2, n, 1.0, OR
+O, n_1, n, 1.0, OAbove
+O, =_2, =, 1.0, ORRR
+O, i_2, i, 1.0, ORR
+O, 2_1, 2, 1.0, ORRRR
+O, 0_1, 0, 1.0, OBelowRR
+O, i_1, i, 1.0, OBelow
+O, n_3, n, 1.0, ORRRRSup
+
+# Relations from SRT:
+EO, 2_1, n_3, Sup, 1.0
+EO, =_1, 0_1, Right, 1.0
+EO, =_2, 2_1, Right, 1.0
+EO, \sum_1, i_1, Below, 1.0
+EO, \sum_1, n_1, Above, 1.0
+EO, \sum_1, n_2, Right, 1.0
+EO, i_1, =_1, Right, 1.0
+EO, i_2, =_2, Right, 1.0
+EO, n_2, i_2, Right, 1.0

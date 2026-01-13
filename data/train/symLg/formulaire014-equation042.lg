@@ -1,0 +1,32 @@
+# IUD, 2011_IVC_depart_F014_E042
+# Objects(14):
+O, n_1, n, 1.0, ORRRInside
+O, m_1, m, 1.0, ORSub
+O, =_1, =, 1.0, ORR
+O, a_1, a, 1.0, ORSubR
+O, 2_2, 2, 1.0, ORRRInsideRRSup
+O, g_1, g, 1.0, ORRRInsideRRSub
+O, \sin_1, \sin, 1.0, O
+O, n_2, n, 1.0, ORRRInsideRR
+O, \theta_1, \theta, 1.0, OR
+O, 2_1, 2, 1.0, ORRRInsideSup
+O, x_1, x, 1.0, ORSubRR
+O, -_1, -, 1.0, ORRRInsideR
+O, _1, \sqrt, 1.0, ORRR
+O, c_1, c, 1.0, ORRRInsideSub
+
+# Relations from SRT:
+EO, -_1, n_2, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, \sin_1, \theta_1, Right, 1.0
+EO, \theta_1, =_1, Right, 1.0
+EO, \theta_1, m_1, Sub, 1.0
+EO, _1, -_1, Inside, 1.0
+EO, _1, n_1, Inside, 1.0
+EO, a_1, x_1, Right, 1.0
+EO, m_1, a_1, Right, 1.0
+EO, n_1, -_1, Right, 1.0
+EO, n_1, 2_1, Sup, 1.0
+EO, n_1, c_1, Sub, 1.0
+EO, n_2, 2_2, Sup, 1.0
+EO, n_2, g_1, Sub, 1.0

@@ -1,0 +1,37 @@
+# IUD, 2011_IVC_depart_F004_E047
+# Objects(17):
+O, =_2, =, 1.0, ORRRRRBelowR
+O, (_1, (, 1.0, OR
+O, a_1, a, 1.0, ORRRRRR
+O, n_3, n, 1.0, ORRRRRRRRSupSub
+O, f_1, f, 1.0, O
+O, \sum_1, \sum, 1.0, ORRRRR
+O, =_3, =, 1.0, ORRRRRRR
+O, n_1, n, 1.0, ORRRRRBelow
+O, x_1, x, 1.0, ORR
+O, -_1, -, 1.0, ORRRRRBelowRR
+O, \alpha_1, \alpha, 1.0, ORRRRRRRRSup
+O, n_2, n, 1.0, ORRRRRRSub
+O, \infty_1, \infty, 1.0, ORRRRRBelowRRR
+O, \infty_2, \infty, 1.0, ORRRRRAbove
+O, x_2, x, 1.0, ORRRRRRRR
+O, =_1, =, 1.0, ORRRR
+O, )_1, ), 1.0, ORRR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, -_1, \infty_1, Right, 1.0
+EO, =_1, \sum_1, Right, 1.0
+EO, =_2, -_1, Right, 1.0
+EO, =_3, x_2, Right, 1.0
+EO, \alpha_1, n_3, Sub, 1.0
+EO, \sum_1, \infty_2, Above, 1.0
+EO, \sum_1, a_1, Right, 1.0
+EO, \sum_1, n_1, Below, 1.0
+EO, a_1, =_3, Right, 1.0
+EO, a_1, n_2, Sub, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, n_1, =_2, Right, 1.0
+EO, x_1, )_1, Right, 1.0
+EO, x_2, \alpha_1, Sup, 1.0

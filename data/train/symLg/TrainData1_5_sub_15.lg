@@ -1,0 +1,27 @@
+# IUD, 2011_KAIST_Data1_5_sub_15
+# Objects(12):
+O, =_1, =, 1.0, OR
+O, F_1, F, 1.0, O
+O, 2_1, 2, 1.0, ORRRRSubRR
+O, +_1, +, 1.0, ORRR
+O, -_2, -, 1.0, ORRRRSubR
+O, F_2, F, 1.0, ORR
+O, n_2, n, 1.0, ORRSub
+O, -_1, -, 1.0, ORRSubR
+O, n_3, n, 1.0, ORRRRSub
+O, F_3, F, 1.0, ORRRR
+O, n_1, n, 1.0, OSub
+O, 1_1, 1, 1.0, ORRSubRR
+
+# Relations from SRT:
+EO, +_1, F_3, Right, 1.0
+EO, -_1, 1_1, Right, 1.0
+EO, -_2, 2_1, Right, 1.0
+EO, =_1, F_2, Right, 1.0
+EO, F_1, =_1, Right, 1.0
+EO, F_1, n_1, Sub, 1.0
+EO, F_2, +_1, Right, 1.0
+EO, F_2, n_2, Sub, 1.0
+EO, F_3, n_3, Sub, 1.0
+EO, n_2, -_1, Right, 1.0
+EO, n_3, -_2, Right, 1.0

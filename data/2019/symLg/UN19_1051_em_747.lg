@@ -1,0 +1,39 @@
+# IUD, CROHME19_747
+# Objects(18):
+O, 1_1, 1, 1.0, ORRRRRRRRRRRRRRRR
+O, times_4, \times, 1.0, ORRRRRRRRRRRRRRR
+O, 3_7, 3, 1.0, ORRRRRRRRRRRR
+O, +_3, +, 1.0, ORRRRRRRRR
+O, 3_1, 3, 1.0, O
+O, +_1, +, 1.0, ORRRRR
+O, =_1, =, 1.0, ORRRRRRRRRRRRR
+O, 3_5, 3, 1.0, ORRRRRRRR
+O, times_2, \times, 1.0, ORRR
+O, times_1, \times, 1.0, OR
+O, 3_6, 3, 1.0, ORRRRRRRRRR
+O, 3_4, 3, 1.0, ORRRRRR
+O, 4_1, 4, 1.0, ORRRRRRRRRRRRRRRRR
+O, 3_8, 3, 1.0, ORRRRRRRRRRRRRR
+O, 3_3, 3, 1.0, ORRRR
+O, +_2, +, 1.0, ORRRRRRR
+O, times_3, \times, 1.0, ORRRRRRRRRRR
+O, 3_2, 3, 1.0, ORR
+
+# Relations from SRT:
+R, +_1, 3_4, Right, 1.0
+R, +_2, 3_5, Right, 1.0
+R, +_3, 3_6, Right, 1.0
+R, 1_1, 4_1, Right, 1.0
+R, 3_1, times_1, Right, 1.0
+R, 3_2, times_2, Right, 1.0
+R, 3_3, +_1, Right, 1.0
+R, 3_4, +_2, Right, 1.0
+R, 3_5, +_3, Right, 1.0
+R, 3_6, times_3, Right, 1.0
+R, 3_7, =_1, Right, 1.0
+R, 3_8, times_4, Right, 1.0
+R, =_1, 3_8, Right, 1.0
+R, times_1, 3_2, Right, 1.0
+R, times_2, 3_3, Right, 1.0
+R, times_3, 3_7, Right, 1.0
+R, times_4, 1_1, Right, 1.0

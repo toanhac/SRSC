@@ -1,0 +1,43 @@
+# IUD, MfrDB1520
+# Objects(20):
+O, 2_1, 2, 1.0, ORRBelowRRRRSup
+O, -_1, -, 1.0, ORRBelowRR
+O, 0_1, 0, 1.0, OBelowRR
+O, \infty_2, \infty, 1.0, ORAbove
+O, a_1, a, 1.0, ORRBelowRRR
+O, 1_1, 1, 1.0, ORRAbove
+O, i_1, i, 1.0, OBelow
+O, (_1, (, 1.0, ORRBelow
+O, i_2, i, 1.0, ORRBelowRRRSub
+O, \sum_2, \sum, 1.0, OR
+O, j_1, j, 1.0, ORBelow
+O, =_1, =, 1.0, OBelowR
+O, \sum_1, \sum, 1.0, O
+O, \frac_1, -, 1.0, ORR
+O, =_2, =, 1.0, ORBelowR
+O, 1_2, 1, 1.0, ORRBelowR
+O, 0_2, 0, 1.0, ORBelowRR
+O, )_1, ), 1.0, ORRBelowRRRR
+O, j_2, j, 1.0, ORRBelowRRRSubR
+O, \infty_1, \infty, 1.0, OAbove
+
+# Relations from SRT:
+EO, (_1, 1_2, Right, 1.0
+EO, )_1, 2_1, Sup, 1.0
+EO, -_1, a_1, Right, 1.0
+EO, 1_2, -_1, Right, 1.0
+EO, =_1, 0_1, Right, 1.0
+EO, =_2, 0_2, Right, 1.0
+EO, \frac_1, (_1, Below, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \sum_1, \infty_1, Above, 1.0
+EO, \sum_1, \sum_2, Right, 1.0
+EO, \sum_1, i_1, Below, 1.0
+EO, \sum_2, \frac_1, Right, 1.0
+EO, \sum_2, \infty_2, Above, 1.0
+EO, \sum_2, j_1, Below, 1.0
+EO, a_1, )_1, Right, 1.0
+EO, a_1, i_2, Sub, 1.0
+EO, i_1, =_1, Right, 1.0
+EO, i_2, j_2, Right, 1.0
+EO, j_1, =_2, Right, 1.0

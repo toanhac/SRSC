@@ -1,0 +1,9 @@
+# IUD, "200922-1017-180.ink"
+# Objects(3):
+O, 3:4:, P, 1.0, ORR
+O, 0:, \beta, 1.0, O
+O, 1:2:, \leq, 1.0, OR
+
+# Relations from SRT:
+EO, 0:, 1:2:, Right, 1.0
+EO, 1:2:, 3:4:, Right, 1.0

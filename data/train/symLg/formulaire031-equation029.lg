@@ -1,0 +1,23 @@
+# IUD, 2011_IVC_depart_F031_E029
+# Objects(10):
+O, x_1, x, 1.0, O
+O, 1_1, 1, 1.0, OSub
+O, \times_1, \times, 1.0, OR
+O, 2_1, 2, 1.0, ORRSub
+O, x_3, x, 1.0, ORRRRRR
+O, \times_2, \times, 1.0, ORRR
+O, n_1, n, 1.0, ORRRRRRSub
+O, \times_3, \times, 1.0, ORRRRR
+O, \ldots_1, \ldots, 1.0, ORRRR
+O, x_2, x, 1.0, ORR
+
+# Relations from SRT:
+EO, \ldots_1, \times_3, Right, 1.0
+EO, \times_1, x_2, Right, 1.0
+EO, \times_2, \ldots_1, Right, 1.0
+EO, \times_3, x_3, Right, 1.0
+EO, x_1, 1_1, Sub, 1.0
+EO, x_1, \times_1, Right, 1.0
+EO, x_2, 2_1, Sub, 1.0
+EO, x_2, \times_2, Right, 1.0
+EO, x_3, n_1, Sub, 1.0

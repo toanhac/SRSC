@@ -1,0 +1,13 @@
+# IUD, CROHME19_128
+# Objects(5):
+O, )_1, ), 1.0, ORRRR
+O, r_1, r, 1.0, ORRR
+O, (_1, (, 1.0, OR
+O, \sin_1, \sin, 1.0, O
+O, k_1, k, 1.0, ORR
+
+# Relations from SRT:
+R, (_1, k_1, Right, 1.0
+R, \sin_1, (_1, Right, 1.0
+R, k_1, r_1, Right, 1.0
+R, r_1, )_1, Right, 1.0

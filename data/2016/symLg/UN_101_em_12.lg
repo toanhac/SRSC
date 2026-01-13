@@ -1,0 +1,10 @@
+# IUD, CROHME_2016_em_12
+# Objects(3):
+O, _1, \sqrt, 1.0, O
+O, 4_1, 4, 1.0, OInside
+O, pi_1, \pi, 1.0, OInsideR
+
+# Relations from SRT:
+EO, 4_1, pi_1, Right, 1.0
+EO, _1, 4_1, Inside, 1.0
+EO, _1, pi_1, Inside, 1.0

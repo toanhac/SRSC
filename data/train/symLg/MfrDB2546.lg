@@ -1,0 +1,29 @@
+# IUD, MfrDB2546
+# Objects(13):
+O, +_1, +, 1.0, ORRRRRRRR
+O, (_1, (, 1.0, OR
+O, =_1, =, 1.0, ORRRRRR
+O, \frac_1, -, 1.0, ORRRRRRR
+O, y_1, y, 1.0, ORRRR
+O, y_3, y, 1.0, ORRRRRRRRRR
+O, )_1, ), 1.0, ORRRRR
+O, y_2, y, 1.0, ORRRRRRRBelow
+O, x_2, x, 1.0, ORRRRRRRAbove
+O, x_1, x, 1.0, ORR
+O, COMMA_1, COMMA, 1.0, ORRR
+O, f_1, f, 1.0, O
+O, x_3, x, 1.0, ORRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, +_1, x_3, Right, 1.0
+EO, =_1, \frac_1, Right, 1.0
+EO, COMMA_1, y_1, Right, 1.0
+EO, \frac_1, +_1, Right, 1.0
+EO, \frac_1, x_2, Above, 1.0
+EO, \frac_1, y_2, Below, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, x_1, COMMA_1, Right, 1.0
+EO, x_3, y_3, Right, 1.0
+EO, y_1, )_1, Right, 1.0

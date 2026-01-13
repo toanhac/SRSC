@@ -1,0 +1,42 @@
+# IUD, 82_Nina
+# Objects(19):
+O, (_1, (, 1.0, ORRInside
+O, )_1, ), 1.0, ORRInsideRR
+O, +_1, +, 1.0, ORRInsideRRR
+O, +_2, +, 1.0, ORRR
+O, q_1, q, 1.0, O
+O, _3, -, 1.0, ORRRR
+O, _1, \sqrt, 1.0, ORR
+O, 1_1, 1, 1.0, ORRInsideRRRR
+O, A_2, A, 1.0, ORRRRAboveRR
+O, B_1, B, 1.0, ORRInsideRAbove
+O, -_2, -, 1.0, ORRRRAboveR
+O, 2_1, 2, 1.0, ORRInsideRRSup
+O, B_2, B, 1.0, ORRRRAbove
+O, A_1, A, 1.0, ORRInsideRAboveRR
+O, =_1, =, 1.0, OR
+O, C_1, C, 1.0, ORRInsideRBelow
+O, C_2, C, 1.0, ORRRRBelow
+O, _2, -, 1.0, ORRInsideR
+O, -_1, -, 1.0, ORRInsideRAboveR
+
+# Relations from SRT:
+EO, (_1, _2, Right, 1.0
+EO, )_1, +_1, Right, 1.0
+EO, )_1, 2_1, Sup, 1.0
+EO, +_1, 1_1, Right, 1.0
+EO, +_2, _3, Right, 1.0
+EO, -_1, A_1, Right, 1.0
+EO, -_2, A_2, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, B_1, -_1, Right, 1.0
+EO, B_2, -_2, Right, 1.0
+EO, _1, (_1, Inside, 1.0
+EO, _1, +_2, Right, 1.0
+EO, _1, _2, Inside, 1.0
+EO, _2, )_1, Right, 1.0
+EO, _2, B_1, Above, 1.0
+EO, _2, C_1, Below, 1.0
+EO, _3, B_2, Above, 1.0
+EO, _3, C_2, Below, 1.0
+EO, q_1, =_1, Right, 1.0

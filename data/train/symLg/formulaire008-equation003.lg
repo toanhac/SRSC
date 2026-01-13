@@ -1,0 +1,33 @@
+# IUD, 2011_IVC_DEPART_F008_E003
+# Objects(15):
+O, 0_5, 0, 1.0, ORRBelowRRRRRR
+O, 6_1, 6, 1.0, ORRAboveRRR
+O, _1, -, 1.0, ORR
+O, times_2, \times, 1.0, ORRBelowRR
+O, theta_1, \theta, 1.0, O
+O, =_1, =, 1.0, OR
+O, 0_1, 0, 1.0, ORRAboveRRRR
+O, 6_2, 6, 1.0, ORRBelow
+O, 1_1, 1, 1.0, ORRBelowRRR
+O, 0_2, 0, 1.0, ORRBelowR
+O, 0_4, 0, 1.0, ORRBelowRRRRR
+O, 0_3, 0, 1.0, ORRBelowRRRR
+O, times_1, \times, 1.0, ORRAboveR
+O, 3_1, 3, 1.0, ORRAboveRR
+O, n_1, n, 1.0, ORRAbove
+
+# Relations from SRT:
+EO, 0_2, times_2, Right, 1.0
+EO, 0_3, 0_4, Right, 1.0
+EO, 0_4, 0_5, Right, 1.0
+EO, 1_1, 0_3, Right, 1.0
+EO, 3_1, 6_1, Right, 1.0
+EO, 6_1, 0_1, Right, 1.0
+EO, 6_2, 0_2, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, _1, 6_2, Below, 1.0
+EO, _1, n_1, Above, 1.0
+EO, n_1, times_1, Right, 1.0
+EO, theta_1, =_1, Right, 1.0
+EO, times_1, 3_1, Right, 1.0
+EO, times_2, 1_1, Right, 1.0

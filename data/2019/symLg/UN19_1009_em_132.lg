@@ -1,0 +1,11 @@
+# IUD, CROHME19_132
+# Objects(4):
+O, \int_1, \int, 1.0, O
+O, d_1, d, 1.0, OR
+O, 3_1, 3, 1.0, ORSup
+O, x_1, x, 1.0, ORR
+
+# Relations from SRT:
+R, \int_1, d_1, Right, 1.0
+R, d_1, 3_1, Sup, 1.0
+R, d_1, x_1, Right, 1.0

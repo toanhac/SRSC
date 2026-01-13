@@ -1,0 +1,9 @@
+# IUD, MfrDB1199
+# Objects(3):
+O, 5_1, 5, 1.0, ORR
+O, 2_1, 2, 1.0, O
+O, +_1, +, 1.0, OR
+
+# Relations from SRT:
+EO, +_1, 5_1, Right, 1.0
+EO, 2_1, +_1, Right, 1.0

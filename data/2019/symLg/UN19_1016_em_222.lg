@@ -1,0 +1,21 @@
+# IUD, CROHME19_222
+# Objects(9):
+O, \log_1, \log, 1.0, ORRR
+O, 1_1, 1, 1.0, ORRRRR
+O, )_1, ), 1.0, ORRRRRRRR
+O, -_1, -, 1.0, ORR
+O, x_1, x, 1.0, O
+O, (_1, (, 1.0, ORRRR
+O, -_2, -, 1.0, ORRRRRR
+O, =_1, =, 1.0, OR
+O, y_1, y, 1.0, ORRRRRRR
+
+# Relations from SRT:
+R, (_1, 1_1, Right, 1.0
+R, -_1, \log_1, Right, 1.0
+R, -_2, y_1, Right, 1.0
+R, 1_1, -_2, Right, 1.0
+R, =_1, -_1, Right, 1.0
+R, \log_1, (_1, Right, 1.0
+R, x_1, =_1, Right, 1.0
+R, y_1, )_1, Right, 1.0

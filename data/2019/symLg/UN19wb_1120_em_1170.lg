@@ -1,0 +1,41 @@
+# IUD, CROHME19_1170
+# Objects(19):
+O, q_2, q, 1.0, ORRR
+O, |_1, |, 1.0, O
+O, |_12, |, 1.0, ORRRRRRRRRRRRRRRR
+O, |_9, |, 1.0, ORRRRRRRRRRRR
+O, prime_2, \prime, 1.0, ORRRRRRRRRRRRRRSup
+O, q_3, q, 1.0, ORRRRRRRRR
+O, |_6, |, 1.0, ORRRRRRRR
+O, q_4, q, 1.0, ORRRRRRRRRRRRRR
+O, le_1, \leq, 1.0, ORRRRRR
+O, |_8, |, 1.0, ORRRRRRRRRRR
+O, |_2, |, 1.0, OR
+O, |_11, |, 1.0, ORRRRRRRRRRRRRRR
+O, |_5, |, 1.0, ORRRRRRR
+O, |_10, |, 1.0, ORRRRRRRRRRRRR
+O, |_4, |, 1.0, ORRRRR
+O, |_3, |, 1.0, ORRRR
+O, q_1, q, 1.0, ORR
+O, prime_1, \prime, 1.0, ORRRSup
+O, |_7, |, 1.0, ORRRRRRRRRR
+
+# Relations from SRT:
+R, le_1, |_5, Right, 1.0
+R, q_1, q_2, Right, 1.0
+R, q_2, prime_1, Sup, 1.0
+R, q_2, |_3, Right, 1.0
+R, q_3, |_7, Right, 1.0
+R, q_4, prime_2, Sup, 1.0
+R, q_4, |_11, Right, 1.0
+R, |_10, q_4, Right, 1.0
+R, |_11, |_12, Right, 1.0
+R, |_1, |_2, Right, 1.0
+R, |_2, q_1, Right, 1.0
+R, |_3, |_4, Right, 1.0
+R, |_4, le_1, Right, 1.0
+R, |_5, |_6, Right, 1.0
+R, |_6, q_3, Right, 1.0
+R, |_7, |_8, Right, 1.0
+R, |_8, |_9, Right, 1.0
+R, |_9, |_10, Right, 1.0

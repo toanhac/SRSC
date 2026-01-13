@@ -33,8 +33,8 @@ pip install -r requirements.txt
 ## Training
 Next, navigate to SRSC folder and run `train.py`. It may take **X** hours on **N** NVIDIA ABCXYZ gpus using ddp.
 ```bash
-# Generate ground truth brefore training
-python scripts/pregenerate_ground_truth.py --data_zip data.zip --output_dir data/cached_maps --split all
+# Generate ground truth brefore training (already done)
+# python scripts/pregenerate_ground_truth.py --data_zip data.zip --output_dir data/cached_maps --split all
 # Train SRSC model using N gpus and ddp
 python train.py --config config.yaml  
 ```

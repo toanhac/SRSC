@@ -1,0 +1,43 @@
+# IUD, CROHME_2016_em_625
+# Objects(20):
+O, 0_4, 0, 1.0, ORRRRRRRRRRRR
+O, COMMA_2, COMMA, 1.0, ORRRRRRRRRRRRR
+O, ._2, ., 1.0, ORRRRRRRRR
+O, 9_3, 9, 1.0, ORRRRRRRRRRRRRRRRR
+O, 0_3, 0, 1.0, ORRRRRRRR
+O, 7_1, 7, 1.0, ORRRRRRRRRRRRRRRRRR
+O, 9_2, 9, 1.0, ORRRRRRRRRR
+O, 6_1, 6, 1.0, ORRRRRRRRRRR
+O, 0_5, 0, 1.0, ORRRRRRRRRRRRRRR
+O, 0_1, 0, 1.0, OR
+O, COMMA_1, COMMA, 1.0, ORRRRRR
+O, -_3, -, 1.0, ORRRRRRRRRRRRRR
+O, 9_1, 9, 1.0, ORRR
+O, 0_2, 0, 1.0, ORRRR
+O, -_2, -, 1.0, ORRRRRRR
+O, ._1, ., 1.0, ORR
+O, -_1, -, 1.0, O
+O, 9_4, 9, 1.0, ORRRRRRRRRRRRRRRRRRR
+O, ._3, ., 1.0, ORRRRRRRRRRRRRRRR
+O, 1_1, 1, 1.0, ORRRRR
+
+# Relations from SRT:
+EO, -_1, 0_1, Right, 1.0
+EO, -_2, 0_3, Right, 1.0
+EO, -_3, 0_5, Right, 1.0
+EO, ._1, 9_1, Right, 1.0
+EO, ._2, 9_2, Right, 1.0
+EO, ._3, 9_3, Right, 1.0
+EO, 0_1, ._1, Right, 1.0
+EO, 0_2, 1_1, Right, 1.0
+EO, 0_3, ._2, Right, 1.0
+EO, 0_4, COMMA_2, Right, 1.0
+EO, 0_5, ._3, Right, 1.0
+EO, 1_1, COMMA_1, Right, 1.0
+EO, 6_1, 0_4, Right, 1.0
+EO, 7_1, 9_4, Right, 1.0
+EO, 9_1, 0_2, Right, 1.0
+EO, 9_2, 6_1, Right, 1.0
+EO, 9_3, 7_1, Right, 1.0
+EO, COMMA_1, -_2, Right, 1.0
+EO, COMMA_2, -_3, Right, 1.0

@@ -1,0 +1,17 @@
+# IUD, CROHME_2016_em_575
+# Objects(7):
+O, +_1, +, 1.0, OSubSubR
+O, k_2, k, 1.0, OSubRSub
+O, x_2, x, 1.0, OSubR
+O, C_1, C, 1.0, O
+O, k_1, k, 1.0, OSubSub
+O, 1_1, 1, 1.0, OSubSubRR
+O, x_1, x, 1.0, OSub
+
+# Relations from SRT:
+EO, +_1, 1_1, Right, 1.0
+EO, C_1, x_1, Sub, 1.0
+EO, k_1, +_1, Right, 1.0
+EO, x_1, k_1, Sub, 1.0
+EO, x_1, x_2, Right, 1.0
+EO, x_2, k_2, Sub, 1.0

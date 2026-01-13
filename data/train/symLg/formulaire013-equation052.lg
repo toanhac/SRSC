@@ -1,0 +1,21 @@
+# IUD, 2011_IVC_DEPART_F013_E052
+# Objects(9):
+O, =_1, =, 1.0, ORRRR
+O, (_1, (, 1.0, OR
+O, (_2, (, 1.0, ORRRRRR
+O, beta_1, \beta, 1.0, ORR
+O, cos_1, \cos, 1.0, O
+O, )_2, ), 1.0, ORRRRRRRR
+O, sin_1, \sin, 1.0, ORRRRR
+O, alpha_1, \alpha, 1.0, ORRRRRRR
+O, )_1, ), 1.0, ORRR
+
+# Relations from SRT:
+EO, (_1, beta_1, Right, 1.0
+EO, (_2, alpha_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, =_1, sin_1, Right, 1.0
+EO, alpha_1, )_2, Right, 1.0
+EO, beta_1, )_1, Right, 1.0
+EO, cos_1, (_1, Right, 1.0
+EO, sin_1, (_2, Right, 1.0

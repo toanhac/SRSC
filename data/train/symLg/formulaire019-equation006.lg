@@ -1,0 +1,41 @@
+# IUD, 2011_IVC_depart_F019_E006
+# Objects(19):
+O, d_1, d, 1.0, ORRRRRRRRRRRRRRR
+O, +_4, +, 1.0, ORRRRRRRRRRRRRR
+O, x_1, x, 1.0, O
+O, +_1, +, 1.0, ORR
+O, =_1, =, 1.0, ORRRRR
+O, x_4, x, 1.0, ORRRRRRRRRRRRR
+O, +_3, +, 1.0, ORRRRRRRRRRR
+O, x_2, x, 1.0, ORRRRRRR
+O, x_3, x, 1.0, ORRRRRRRRRR
+O, 2_1, 2, 1.0, ORSup
+O, c_1, c, 1.0, ORRRRRRRRRRRR
+O, 2_2, 2, 1.0, ORRRRRRRRRRSup
+O, b_1, b, 1.0, ORRRRRRRRR
+O, y_2, y, 1.0, ORRRR
+O, 3_1, 3, 1.0, ORRRRRRRSup
+O, y_1, y, 1.0, OR
+O, +_2, +, 1.0, ORRRRRRRR
+O, a_1, a, 1.0, ORRRRRR
+O, e_1, e, 1.0, ORRR
+
+# Relations from SRT:
+EO, +_1, e_1, Right, 1.0
+EO, +_2, b_1, Right, 1.0
+EO, +_3, c_1, Right, 1.0
+EO, +_4, d_1, Right, 1.0
+EO, =_1, a_1, Right, 1.0
+EO, a_1, x_2, Right, 1.0
+EO, b_1, x_3, Right, 1.0
+EO, c_1, x_4, Right, 1.0
+EO, e_1, y_2, Right, 1.0
+EO, x_1, y_1, Right, 1.0
+EO, x_2, +_2, Right, 1.0
+EO, x_2, 3_1, Sup, 1.0
+EO, x_3, +_3, Right, 1.0
+EO, x_3, 2_2, Sup, 1.0
+EO, x_4, +_4, Right, 1.0
+EO, y_1, +_1, Right, 1.0
+EO, y_1, 2_1, Sup, 1.0
+EO, y_2, =_1, Right, 1.0

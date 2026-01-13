@@ -1,0 +1,29 @@
+# IUD, MfrDB2490
+# Objects(13):
+O, x_1, x, 1.0, OAbove
+O, 3_1, 3, 1.0, OBelowSup
+O, )_1, ), 1.0, ORRRR
+O, x_2, x, 1.0, ORRRBelow
+O, -_2, -, 1.0, ORRRRSup
+O, 2_2, 2, 1.0, ORRRAbove
+O, 2_1, 2, 1.0, OBelow
+O, \frac_2, -, 1.0, ORRR
+O, 4_2, 4, 1.0, ORRRRSupR
+O, (_1, (, 1.0, ORR
+O, \frac_1, -, 1.0, O
+O, 4_1, 4, 1.0, OAboveSup
+O, -_1, -, 1.0, OR
+
+# Relations from SRT:
+EO, (_1, \frac_2, Right, 1.0
+EO, )_1, -_2, Sup, 1.0
+EO, -_1, (_1, Right, 1.0
+EO, -_2, 4_2, Right, 1.0
+EO, 2_1, 3_1, Sup, 1.0
+EO, \frac_1, -_1, Right, 1.0
+EO, \frac_1, 2_1, Below, 1.0
+EO, \frac_1, x_1, Above, 1.0
+EO, \frac_2, )_1, Right, 1.0
+EO, \frac_2, 2_2, Above, 1.0
+EO, \frac_2, x_2, Below, 1.0
+EO, x_1, 4_1, Sup, 1.0

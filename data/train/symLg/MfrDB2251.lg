@@ -1,0 +1,47 @@
+# IUD, MfrDB2251
+# Objects(22):
+O, d_2, d, 1.0, OBelow
+O, t_3, t, 1.0, ORRRRRRRR
+O, (_1, (, 1.0, ORR
+O, P_2, P, 1.0, ORRRRRR
+O, )_4, ), 1.0, ORRRRRRRRRRRRRRRRRR
+O, t_2, t, 1.0, ORRR
+O, (_3, (, 1.0, ORRRRRRRRRRRRRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRRRRR
+O, t_1, t, 1.0, OBelowR
+O, P_1, P, 1.0, OR
+O, \frac_1, -, 1.0, O
+O, P_3, P, 1.0, ORRRRRRRRRRRRRR
+O, -_1, -, 1.0, ORRRRRRRRRRRRR
+O, d_1, d, 1.0, OAbove
+O, (_4, (, 1.0, ORRRRRRRRRRR
+O, \cdot_1, ., 1.0, ORRRRRRRRRR
+O, (_2, (, 1.0, ORRRRRRR
+O, )_1, ), 1.0, ORRRR
+O, t_4, t, 1.0, ORRRRRRRRRRRRRRRR
+O, =_1, =, 1.0, ORRRRR
+O, 1_1, 1, 1.0, ORRRRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, t_2, Right, 1.0
+EO, (_2, t_3, Right, 1.0
+EO, (_3, t_4, Right, 1.0
+EO, (_4, 1_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, \cdot_1, Right, 1.0
+EO, )_3, )_4, Right, 1.0
+EO, -_1, P_3, Right, 1.0
+EO, 1_1, -_1, Right, 1.0
+EO, =_1, P_2, Right, 1.0
+EO, P_1, (_1, Right, 1.0
+EO, P_2, (_2, Right, 1.0
+EO, P_3, (_3, Right, 1.0
+EO, \cdot_1, (_4, Right, 1.0
+EO, \frac_1, P_1, Right, 1.0
+EO, \frac_1, d_1, Above, 1.0
+EO, \frac_1, d_2, Below, 1.0
+EO, d_2, t_1, Right, 1.0
+EO, t_2, )_1, Right, 1.0
+EO, t_3, )_2, Right, 1.0
+EO, t_4, )_3, Right, 1.0

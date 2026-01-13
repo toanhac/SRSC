@@ -1,0 +1,13 @@
+# IUD, MfrDB0541
+# Objects(5):
+O, x_1, x, 1.0, O
+O, b_1, b, 1.0, ORRRR
+O, =_1, =, 1.0, OR
+O, a_1, a, 1.0, ORR
+O, \times_1, \times, 1.0, ORRR
+
+# Relations from SRT:
+EO, =_1, a_1, Right, 1.0
+EO, \times_1, b_1, Right, 1.0
+EO, a_1, \times_1, Right, 1.0
+EO, x_1, =_1, Right, 1.0

@@ -1,0 +1,22 @@
+# IUD, MfrDB0574
+# Objects(9):
+O, 5_1, 5, 1.0, OInsideRRR
+O, +_1, +, 1.0, OInsideRR
+O, \sqrt_1, \sqrt, 1.0, O
+O, )_1, ), 1.0, OInsideRRRRRRR
+O, 1_2, 1, 1.0, OInsideRRRRR
+O, 2_1, 2, 1.0, OInsideRRRRRR
+O, (_1, (, 1.0, OInside
+O, 1_1, 1, 1.0, OInsideR
+O, \times_1, \times, 1.0, OInsideRRRR
+
+# Relations from SRT:
+EO, (_1, 1_1, Right, 1.0
+EO, +_1, 5_1, Right, 1.0
+EO, 1_1, +_1, Right, 1.0
+EO, 1_2, 2_1, Right, 1.0
+EO, 2_1, )_1, Right, 1.0
+EO, 5_1, \times_1, Right, 1.0
+EO, \sqrt_1, (_1, Inside, 1.0
+EO, \sqrt_1, 1_1, Inside, 1.0
+EO, \times_1, 1_2, Right, 1.0

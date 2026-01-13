@@ -1,0 +1,49 @@
+# IUD, CROHME19_1115
+# Objects(23):
+O, 2_1, 2, 1.0, ORRRRRRRRRRRRRRRSub
+O, )_1, ), 1.0, ORRR
+O, theta_1, \theta, 1.0, ORRRRRR
+O, r_1, r, 1.0, ORRRRRRRRR
+O, z_1, z, 1.0, O
+O, phi_1, \phi, 1.0, ORRRRRRRR
+O, s_1, s, 1.0, ORR
+O, sin_1, \sin, 1.0, ORRRRR
+O, cos_1, \cos, 1.0, ORRRRRRR
+O, +_2, +, 1.0, ORRRRRRRRRRRRRRRR
+O, r_3, r, 1.0, ORRRRRRRRRRRRRRRRRRR
+O, sin_3, \sin, 1.0, ORRRRRRRRRRRRR
+O, +_1, +, 1.0, ORRRRRRRRRR
+O, cos_2, \cos, 1.0, ORRRRRRRRRRRRRRRRR
+O, 1_1, 1, 1.0, ORRRRRRRRRSub
+O, phi_2, \phi, 1.0, ORRRRRRRRRRRRRR
+O, 3_1, 3, 1.0, ORRRRRRRRRRRRRRRRRRRSub
+O, =_1, =, 1.0, ORRRR
+O, theta_3, \theta, 1.0, ORRRRRRRRRRRRRRRRRR
+O, (_1, (, 1.0, OR
+O, r_2, r, 1.0, ORRRRRRRRRRRRRRR
+O, theta_2, \theta, 1.0, ORRRRRRRRRRRR
+O, sin_2, \sin, 1.0, ORRRRRRRRRRR
+
+# Relations from SRT:
+R, (_1, s_1, Right, 1.0
+R, )_1, =_1, Right, 1.0
+R, +_1, sin_2, Right, 1.0
+R, +_2, cos_2, Right, 1.0
+R, =_1, sin_1, Right, 1.0
+R, cos_1, phi_1, Right, 1.0
+R, cos_2, theta_3, Right, 1.0
+R, phi_1, r_1, Right, 1.0
+R, phi_2, r_2, Right, 1.0
+R, r_1, +_1, Right, 1.0
+R, r_1, 1_1, Sub, 1.0
+R, r_2, +_2, Right, 1.0
+R, r_2, 2_1, Sub, 1.0
+R, r_3, 3_1, Sub, 1.0
+R, s_1, )_1, Right, 1.0
+R, sin_1, theta_1, Right, 1.0
+R, sin_2, theta_2, Right, 1.0
+R, sin_3, phi_2, Right, 1.0
+R, theta_1, cos_1, Right, 1.0
+R, theta_2, sin_3, Right, 1.0
+R, theta_3, r_3, Right, 1.0
+R, z_1, (_1, Right, 1.0

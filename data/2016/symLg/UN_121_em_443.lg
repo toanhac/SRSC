@@ -1,0 +1,27 @@
+# IUD, CROHME_2016_em_443
+# Objects(12):
+O, -_2, -, 1.0, ORRRRR
+O, 1_1, 1, 1.0, OSub
+O, 2_1, 2, 1.0, OSubR
+O, 2_2, 2, 1.0, ORRRSub
+O, =_2, =, 1.0, ORRRR
+O, tan_1, \tan, 1.0, ORRRRRR
+O, -_1, -, 1.0, ORR
+O, theta_1, \theta, 1.0, ORRRRRRR
+O, 1_2, 1, 1.0, ORRRSubR
+O, =_1, =, 1.0, OR
+O, F_2, F, 1.0, ORRR
+O, F_1, F, 1.0, O
+
+# Relations from SRT:
+EO, -_1, F_2, Right, 1.0
+EO, -_2, tan_1, Right, 1.0
+EO, 1_1, 2_1, Right, 1.0
+EO, 2_2, 1_2, Right, 1.0
+EO, =_1, -_1, Right, 1.0
+EO, =_2, -_2, Right, 1.0
+EO, F_1, 1_1, Sub, 1.0
+EO, F_1, =_1, Right, 1.0
+EO, F_2, 2_2, Sub, 1.0
+EO, F_2, =_2, Right, 1.0
+EO, tan_1, theta_1, Right, 1.0

@@ -1,0 +1,25 @@
+# IUD, 2011_IVC_depart_F031_E043
+# Objects(11):
+O, gamma_3, \gamma, 1.0, ORRR
+O, gamma_2, \gamma, 1.0, ORR
+O, gamma_5, \gamma, 1.0, ORRRRR
+O, gamma_4, \gamma, 1.0, ORRRR
+O, 1_1, 1, 1.0, ORRRSup
+O, 3_1, 3, 1.0, ORRRRRSup
+O, 5_1, 5, 1.0, OSup
+O, =_1, =, 1.0, OR
+O, 2_1, 2, 1.0, ORRRRSup
+O, 0_1, 0, 1.0, ORRSup
+O, gamma_1, \gamma, 1.0, O
+
+# Relations from SRT:
+EO, =_1, gamma_2, Right, 1.0
+EO, gamma_1, 5_1, Sup, 1.0
+EO, gamma_1, =_1, Right, 1.0
+EO, gamma_2, 0_1, Sup, 1.0
+EO, gamma_2, gamma_3, Right, 1.0
+EO, gamma_3, 1_1, Sup, 1.0
+EO, gamma_3, gamma_4, Right, 1.0
+EO, gamma_4, 2_1, Sup, 1.0
+EO, gamma_4, gamma_5, Right, 1.0
+EO, gamma_5, 3_1, Sup, 1.0

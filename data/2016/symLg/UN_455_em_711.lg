@@ -1,0 +1,15 @@
+# IUD, CROHME_2016_em_711
+# Objects(6):
+O, prime_1, \prime, 1.0, OSubSup
+O, prime_2, \prime, 1.0, OSubRSup
+O, A_1, A, 1.0, O
+O, c_1, c, 1.0, OSubRR
+O, o_2, o, 1.0, OSubR
+O, o_1, o, 1.0, OSub
+
+# Relations from SRT:
+EO, A_1, o_1, Sub, 1.0
+EO, o_1, o_2, Right, 1.0
+EO, o_1, prime_1, Sup, 1.0
+EO, o_2, c_1, Right, 1.0
+EO, o_2, prime_2, Sup, 1.0

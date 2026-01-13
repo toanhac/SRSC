@@ -1,0 +1,45 @@
+# IUD, CROHME19_836
+# Objects(21):
+O, cos_2, \cos, 1.0, ORRR
+O, =_1, =, 1.0, ORR
+O, sin_2, \sin, 1.0, ORRRRRRRRRR
+O, -_1, -, 1.0, ORRRRRRRRRRRRRRR
+O, theta_1, \theta, 1.0, ORRRR
+O, prime_1, \prime, 1.0, ORRRRRRSup
+O, phi_2, \phi, 1.0, ORRRRRRRRRRRRRRRR
+O, gamma_1, \gamma, 1.0, OR
+O, theta_4, \theta, 1.0, ORRRRRRRRRRR
+O, prime_2, \prime, 1.0, ORRRRRRRRRRRSup
+O, theta_3, \theta, 1.0, ORRRRRRRRR
+O, prime_3, \prime, 1.0, ORRRRRRRRRRRRRRRRSup
+O, cos_1, \cos, 1.0, O
+O, phi_1, \phi, 1.0, ORRRRRRRRRRRRRR
+O, sin_1, \sin, 1.0, ORRRRRRRR
+O, cos_3, \cos, 1.0, ORRRRR
+O, +_1, +, 1.0, ORRRRRRR
+O, (_1, (, 1.0, ORRRRRRRRRRRRR
+O, theta_2, \theta, 1.0, ORRRRRR
+O, cos_4, \cos, 1.0, ORRRRRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRRRRRRRRRRRR
+
+# Relations from SRT:
+R, (_1, phi_1, Right, 1.0
+R, +_1, sin_1, Right, 1.0
+R, -_1, phi_2, Right, 1.0
+R, =_1, cos_2, Right, 1.0
+R, cos_1, gamma_1, Right, 1.0
+R, cos_2, theta_1, Right, 1.0
+R, cos_3, theta_2, Right, 1.0
+R, cos_4, (_1, Right, 1.0
+R, gamma_1, =_1, Right, 1.0
+R, phi_1, -_1, Right, 1.0
+R, phi_2, )_1, Right, 1.0
+R, phi_2, prime_3, Sup, 1.0
+R, sin_1, theta_3, Right, 1.0
+R, sin_2, theta_4, Right, 1.0
+R, theta_1, cos_3, Right, 1.0
+R, theta_2, +_1, Right, 1.0
+R, theta_2, prime_1, Sup, 1.0
+R, theta_3, sin_2, Right, 1.0
+R, theta_4, cos_4, Right, 1.0
+R, theta_4, prime_2, Sup, 1.0

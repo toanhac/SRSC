@@ -1,0 +1,39 @@
+# IUD, 2011_IVC_depart_F019_E002
+# Objects(18):
+O, b_3, b, 1.0, ORRRRRRRRRRR
+O, a_2, a, 1.0, ORRRR
+O, 1_2, 1, 1.0, ORRSub
+O, COMMA_3, COMMA, 1.0, ORRRRR
+O, 1_1, 1, 1.0, OSub
+O, a_3, a, 1.0, ORRRRRRRRR
+O, b_2, b, 1.0, ORRRRRR
+O, COMMA_1, COMMA, 1.0, OR
+O, a_1, a, 1.0, O
+O, 2_2, 2, 1.0, ORRRRRRSub
+O, COMMA_5, COMMA, 1.0, ORRRRRRRRRR
+O, COMMA_2, COMMA, 1.0, ORRR
+O, g_2, g, 1.0, ORRRRRRRRRRRSub
+O, 2_1, 2, 1.0, ORRRRSub
+O, b_1, b, 1.0, ORR
+O, \ldots_1, \ldots, 1.0, ORRRRRRRR
+O, g_1, g, 1.0, ORRRRRRRRRSub
+O, COMMA_4, COMMA, 1.0, ORRRRRRR
+
+# Relations from SRT:
+EO, COMMA_1, b_1, Right, 1.0
+EO, COMMA_2, a_2, Right, 1.0
+EO, COMMA_3, b_2, Right, 1.0
+EO, COMMA_4, \ldots_1, Right, 1.0
+EO, COMMA_5, b_3, Right, 1.0
+EO, \ldots_1, a_3, Right, 1.0
+EO, a_1, 1_1, Sub, 1.0
+EO, a_1, COMMA_1, Right, 1.0
+EO, a_2, 2_1, Sub, 1.0
+EO, a_2, COMMA_3, Right, 1.0
+EO, a_3, COMMA_5, Right, 1.0
+EO, a_3, g_1, Sub, 1.0
+EO, b_1, 1_2, Sub, 1.0
+EO, b_1, COMMA_2, Right, 1.0
+EO, b_2, 2_2, Sub, 1.0
+EO, b_2, COMMA_4, Right, 1.0
+EO, b_3, g_2, Sub, 1.0

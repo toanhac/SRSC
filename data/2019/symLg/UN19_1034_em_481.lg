@@ -1,0 +1,19 @@
+# IUD, CROHME19_481
+# Objects(8):
+O, h_1, h, 1.0, O
+O, \pi_1, \pi, 1.0, ORRRR
+O, (_1, (, 1.0, ORRR
+O, p_1, p, 1.0, ORRRRRR
+O, )_1, ), 1.0, ORRRRRRR
+O, =_1, =, 1.0, OR
+O, \tan_1, \tan, 1.0, ORR
+O, /_1, /, 1.0, ORRRRR
+
+# Relations from SRT:
+R, (_1, \pi_1, Right, 1.0
+R, /_1, p_1, Right, 1.0
+R, =_1, \tan_1, Right, 1.0
+R, \pi_1, /_1, Right, 1.0
+R, \tan_1, (_1, Right, 1.0
+R, h_1, =_1, Right, 1.0
+R, p_1, )_1, Right, 1.0

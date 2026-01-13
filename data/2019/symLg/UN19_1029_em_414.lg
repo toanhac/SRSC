@@ -1,0 +1,15 @@
+# IUD, CROHME19_414
+# Objects(6):
+O, x_1, x, 1.0, ORRRRR
+O, t_1, t, 1.0, ORRR
+O, \sin_1, \sin, 1.0, ORR
+O, G_1, G, 1.0, O
+O, \sin_2, \sin, 1.0, ORRRR
+O, =_1, =, 1.0, OR
+
+# Relations from SRT:
+R, =_1, \sin_1, Right, 1.0
+R, G_1, =_1, Right, 1.0
+R, \sin_1, t_1, Right, 1.0
+R, \sin_2, x_1, Right, 1.0
+R, t_1, \sin_2, Right, 1.0

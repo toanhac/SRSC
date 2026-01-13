@@ -1,0 +1,9 @@
+# IUD, MfrDB0742
+# Objects(3):
+O, 3_2, 3, 1.0, ORR
+O, \times_1, \times, 1.0, OR
+O, 3_1, 3, 1.0, O
+
+# Relations from SRT:
+EO, 3_1, \times_1, Right, 1.0
+EO, \times_1, 3_2, Right, 1.0

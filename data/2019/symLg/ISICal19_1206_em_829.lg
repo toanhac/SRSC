@@ -1,0 +1,9 @@
+# IUD, CROHME19_829
+# Objects(3):
+O, infin_1, \infty, 1.0, OAbove
+O, _1, -, 1.0, O
+O, infin_2, \infty, 1.0, OBelow
+
+# Relations from SRT:
+R, _1, infin_1, Above, 1.0
+R, _1, infin_2, Below, 1.0

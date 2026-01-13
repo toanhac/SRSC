@@ -1,0 +1,15 @@
+# IUD, CROHME_2016_em_727
+# Objects(6):
+O, n_1, n, 1.0, OSupRRSub
+O, a_2, a, 1.0, OSupRR
+O, x_1, x, 1.0, O
+O, a_1, a, 1.0, OSup
+O, hellip_1, \ldots, 1.0, OSupR
+O, 1_1, 1, 1.0, OSupSub
+
+# Relations from SRT:
+EO, a_1, 1_1, Sub, 1.0
+EO, a_1, hellip_1, Right, 1.0
+EO, a_2, n_1, Sub, 1.0
+EO, hellip_1, a_2, Right, 1.0
+EO, x_1, a_1, Sup, 1.0

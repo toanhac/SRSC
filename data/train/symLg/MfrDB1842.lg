@@ -1,0 +1,25 @@
+# IUD, MfrDB1842
+# Objects(11):
+O, 6_4, 6, 1.0, ORRRRR
+O, (_1, (, 1.0, ORRRR
+O, )_1, ), 1.0, ORRRRRR
+O, =_1, =, 1.0, ORRR
+O, 4_1, 4, 1.0, ORRRRRRSup
+O, \cdot_1, ., 1.0, OR
+O, x_1, x, 1.0, ORRRRRSup
+O, 6_2, 6, 1.0, OSup
+O, 2_1, 2, 1.0, ORRSup
+O, 6_3, 6, 1.0, ORR
+O, 6_1, 6, 1.0, O
+
+# Relations from SRT:
+EO, (_1, 6_4, Right, 1.0
+EO, )_1, 4_1, Sup, 1.0
+EO, 6_1, 6_2, Sup, 1.0
+EO, 6_1, \cdot_1, Right, 1.0
+EO, 6_3, 2_1, Sup, 1.0
+EO, 6_3, =_1, Right, 1.0
+EO, 6_4, )_1, Right, 1.0
+EO, 6_4, x_1, Sup, 1.0
+EO, =_1, (_1, Right, 1.0
+EO, \cdot_1, 6_3, Right, 1.0

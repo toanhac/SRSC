@@ -1,0 +1,33 @@
+# IUD, "2009213-137-6.ink"
+# Objects(15):
+O, 14:15:16:17:18:, \sin, 1.0, ORRRRR
+O, 20:21:, n, 1.0, ORRRRRRR
+O, 9:, -, 1.0, ORR
+O, 10:, 1, 1.0, ORRR
+O, 6:, 1, 1.0, OBelowRR
+O, 11:, ), 1.0, ORRRR
+O, 19:, (, 1.0, ORRRRRR
+O, 0:1:, \sum, 1.0, O
+O, 8:, (, 1.0, OR
+O, 4:5:, =, 1.0, OBelowR
+O, 2:3:, n, 1.0, OBelow
+O, 12:13:, n, 1.0, ORRRRSup
+O, 24:, ), 1.0, ORRRRRRRRR
+O, 7:, N, 1.0, OAbove
+O, 22:23:, x, 1.0, ORRRRRRRR
+
+# Relations from SRT:
+EO, 0:1:, 2:3:, Below, 1.0
+EO, 0:1:, 7:, Above, 1.0
+EO, 0:1:, 8:, Right, 1.0
+EO, 10:, 11:, Right, 1.0
+EO, 11:, 12:13:, Sup, 1.0
+EO, 11:, 14:15:16:17:18:, Right, 1.0
+EO, 14:15:16:17:18:, 19:, Right, 1.0
+EO, 19:, 20:21:, Right, 1.0
+EO, 20:21:, 22:23:, Right, 1.0
+EO, 22:23:, 24:, Right, 1.0
+EO, 2:3:, 4:5:, Right, 1.0
+EO, 4:5:, 6:, Right, 1.0
+EO, 8:, 9:, Right, 1.0
+EO, 9:, 10:, Right, 1.0

@@ -1,0 +1,39 @@
+# IUD, CROHME_2016_em_601
+# Objects(18):
+O, +_1, +, 1.0, ORRBelowRRRR
+O, 4_1, 4, 1.0, ORRBelow
+O, -_1, -, 1.0, ORRAboveRRRR
+O, pi_1, \pi, 1.0, ORRAbove
+O, tan_1, \tan, 1.0, O
+O, )_2, ), 1.0, ORRBelowRRRRRR
+O, )_3, ), 1.0, ORRR
+O, 1_1, 1, 1.0, ORRAboveRRRRR
+O, (_1, (, 1.0, OR
+O, 1_2, 1, 1.0, ORRBelowRRRRR
+O, _1, -, 1.0, ORR
+O, 2_1, 2, 1.0, ORRAboveRR
+O, 2_2, 2, 1.0, ORRBelowRR
+O, k_1, k, 1.0, ORRAboveRRR
+O, (_2, (, 1.0, ORRAboveR
+O, )_1, ), 1.0, ORRAboveRRRRRR
+O, L_1, L, 1.0, ORRBelowRRR
+O, (_3, (, 1.0, ORRBelowR
+
+# Relations from SRT:
+EO, (_1, _1, Right, 1.0
+EO, (_2, 2_1, Right, 1.0
+EO, (_3, 2_2, Right, 1.0
+EO, +_1, 1_2, Right, 1.0
+EO, -_1, 1_1, Right, 1.0
+EO, 1_1, )_1, Right, 1.0
+EO, 1_2, )_2, Right, 1.0
+EO, 2_1, k_1, Right, 1.0
+EO, 2_2, L_1, Right, 1.0
+EO, 4_1, (_3, Right, 1.0
+EO, L_1, +_1, Right, 1.0
+EO, _1, )_3, Right, 1.0
+EO, _1, 4_1, Below, 1.0
+EO, _1, pi_1, Above, 1.0
+EO, k_1, -_1, Right, 1.0
+EO, pi_1, (_2, Right, 1.0
+EO, tan_1, (_1, Right, 1.0

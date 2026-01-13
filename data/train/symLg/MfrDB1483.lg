@@ -1,0 +1,49 @@
+# IUD, MfrDB1483
+# Objects(23):
+O, )_2, ), 1.0, ORRRRRRRRRRRRR
+O, 0_1, 0, 1.0, OBelow
+O, (_1, (, 1.0, ORR
+O, \int_2, \int, 1.0, ORRRRRRRRR
+O, x_3, x, 1.0, ORRRRRRRRRRRR
+O, \int_1, \int, 1.0, O
+O, x_1, x, 1.0, ORRR
+O, x_4, x, 1.0, ORRRRRRRRRRRRRRR
+O, d_1, d, 1.0, ORRRRR
+O, b_2, b, 1.0, ORRRRRRRRRAbove
+O, f_1, f, 1.0, OR
+O, f_2, f, 1.0, ORRRRRRRRRR
+O, \vec_1, \rightarrow, 1.0, ORRRRRRRRBelowR
+O, \infty_1, \infty, 1.0, OAbove
+O, =_1, =, 1.0, ORRRRRRR
+O, 0_2, 0, 1.0, ORRRRRRRRRBelow
+O, )_1, ), 1.0, ORRRR
+O, \infty_2, \infty, 1.0, ORRRRRRRRBelowRR
+O, (_2, (, 1.0, ORRRRRRRRRRR
+O, b_1, b, 1.0, ORRRRRRRRBelow
+O, x_2, x, 1.0, ORRRRRR
+O, d_2, d, 1.0, ORRRRRRRRRRRRRR
+O, \lim_1, \lim, 1.0, ORRRRRRRR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, (_2, x_3, Right, 1.0
+EO, )_1, d_1, Right, 1.0
+EO, )_2, d_2, Right, 1.0
+EO, =_1, \lim_1, Right, 1.0
+EO, \int_1, 0_1, Below, 1.0
+EO, \int_1, \infty_1, Above, 1.0
+EO, \int_1, f_1, Right, 1.0
+EO, \int_2, 0_2, Below, 1.0
+EO, \int_2, b_2, Above, 1.0
+EO, \int_2, f_2, Right, 1.0
+EO, \lim_1, \int_2, Right, 1.0
+EO, \lim_1, b_1, Below, 1.0
+EO, \vec_1, \infty_2, Right, 1.0
+EO, b_1, \vec_1, Right, 1.0
+EO, d_1, x_2, Right, 1.0
+EO, d_2, x_4, Right, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, f_2, (_2, Right, 1.0
+EO, x_1, )_1, Right, 1.0
+EO, x_2, =_1, Right, 1.0
+EO, x_3, )_2, Right, 1.0

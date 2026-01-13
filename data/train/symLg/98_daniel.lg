@@ -1,0 +1,32 @@
+# IUD, 98_daniel
+# Objects(14):
+O, +_2, +, 1.0, ORRRBelowInsideRRR
+O, alpha_1, \alpha, 1.0, OR
+O, cos_1, \cos, 1.0, O
+O, 2_3, 2, 1.0, ORRRBelowInsideRRRRSup
+O, b_1, b, 1.0, ORRRBelowInsideRR
+O, _2, \sqrt, 1.0, ORRRBelow
+O, 2_1, 2, 1.0, ORRRBelowInsideSup
+O, +_1, +, 1.0, ORRRBelowInsideR
+O, 2_2, 2, 1.0, ORRRBelowInsideRRSup
+O, c_1, c, 1.0, ORRRBelowInsideRRRR
+O, a_1, a, 1.0, ORRRAbove
+O, _1, -, 1.0, ORRR
+O, a_2, a, 1.0, ORRRBelowInside
+O, =_1, =, 1.0, ORR
+
+# Relations from SRT:
+EO, +_1, b_1, Right, 1.0
+EO, +_2, c_1, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, _1, _2, Below, 1.0
+EO, _1, a_1, Above, 1.0
+EO, _2, +_1, Inside, 1.0
+EO, _2, a_2, Inside, 1.0
+EO, a_2, +_1, Right, 1.0
+EO, a_2, 2_1, Sup, 1.0
+EO, alpha_1, =_1, Right, 1.0
+EO, b_1, +_2, Right, 1.0
+EO, b_1, 2_2, Sup, 1.0
+EO, c_1, 2_3, Sup, 1.0
+EO, cos_1, alpha_1, Right, 1.0

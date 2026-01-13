@@ -1,0 +1,29 @@
+# IUD, MfrDB0053
+# Objects(13):
+O, d_1, d, 1.0, ORR
+O, \int_1, \int, 1.0, O
+O, 3_2, 3, 1.0, ORRRRRBelow
+O, 3_1, 3, 1.0, ORSup
+O, x_3, x, 1.0, ORRRRRR
+O, +_1, +, 1.0, ORRRRRRR
+O, x_1, x, 1.0, OR
+O, =_1, =, 1.0, ORRRR
+O, x_2, x, 1.0, ORRR
+O, 1_1, 1, 1.0, ORRRRRAbove
+O, \frac_1, -, 1.0, ORRRRR
+O, C_1, C, 1.0, ORRRRRRRR
+O, 3_3, 3, 1.0, ORRRRRRSup
+
+# Relations from SRT:
+EO, +_1, C_1, Right, 1.0
+EO, =_1, \frac_1, Right, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, 3_2, Below, 1.0
+EO, \frac_1, x_3, Right, 1.0
+EO, \int_1, x_1, Right, 1.0
+EO, d_1, x_2, Right, 1.0
+EO, x_1, 3_1, Sup, 1.0
+EO, x_1, d_1, Right, 1.0
+EO, x_2, =_1, Right, 1.0
+EO, x_3, +_1, Right, 1.0
+EO, x_3, 3_3, Sup, 1.0

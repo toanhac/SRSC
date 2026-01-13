@@ -1,0 +1,9 @@
+# IUD, CROHME19_754
+# Objects(3):
+O, 2_1, 2, 1.0, OInsideSup
+O, _1, \sqrt, 1.0, O
+O, x_1, x, 1.0, OInside
+
+# Relations from SRT:
+R, _1, x_1, Inside, 1.0
+R, x_1, 2_1, Sup, 1.0

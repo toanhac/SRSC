@@ -1,0 +1,25 @@
+# IUD, MfrDB1624
+# Objects(11):
+O, c_1, c, 1.0, ORRRRSupRRRRSup
+O, )_1, ), 1.0, ORRRR
+O, b_1, b, 1.0, ORRRRSupRRR
+O, 2_1, 2, 1.0, OR
+O, (_1, (, 1.0, O
+O, -_2, -, 1.0, ORRRRSupRR
+O, 3_1, 3, 1.0, ORRRRSupR
+O, )_2, ), 1.0, ORRRRSupRRRR
+O, a_1, a, 1.0, ORRR
+O, (_2, (, 1.0, ORRRRSup
+O, -_1, -, 1.0, ORR
+
+# Relations from SRT:
+EO, (_1, 2_1, Right, 1.0
+EO, (_2, 3_1, Right, 1.0
+EO, )_1, (_2, Sup, 1.0
+EO, )_2, c_1, Sup, 1.0
+EO, -_1, a_1, Right, 1.0
+EO, -_2, b_1, Right, 1.0
+EO, 2_1, -_1, Right, 1.0
+EO, 3_1, -_2, Right, 1.0
+EO, a_1, )_1, Right, 1.0
+EO, b_1, )_2, Right, 1.0

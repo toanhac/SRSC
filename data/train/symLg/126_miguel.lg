@@ -1,0 +1,51 @@
+# IUD, 126_miguel
+# Objects(24):
+O, |_1, |, 1.0, O
+O, 1_3, 1, 1.0, ORRRRRRRRAbove
+O, x_1, x, 1.0, OR
+O, n_3, n, 1.0, ORRRRRRBelowSub
+O, 1_2, 1, 1.0, ORRRRRRBelowRSubRR
+O, +_1, +, 1.0, ORRRRRRBelowRSubR
+O, _2, -, 1.0, ORRRRRR
+O, 2_1, 2, 1.0, ORRRRRRRRBelowSup
+O, q_4, q, 1.0, ORRRRRRRRBelow
+O, |_2, |, 1.0, ORRRR
+O, n_2, n, 1.0, ORRRBelowSub
+O, p_1, p, 1.0, ORRRAbove
+O, n_5, n, 1.0, ORRRRRRRRBelowSub
+O, q_1, q, 1.0, ORRRBelow
+O, q_3, q, 1.0, ORRRRRRBelowR
+O, n_1, n, 1.0, ORRRAboveSub
+O, _1, -, 1.0, ORRR
+O, _3, -, 1.0, ORRRRRRRR
+O, -_1, -, 1.0, ORR
+O, le_1, \leq, 1.0, ORRRRR
+O, <_1, \lt, 1.0, ORRRRRRR
+O, n_4, n, 1.0, ORRRRRRBelowRSub
+O, q_2, q, 1.0, ORRRRRRBelow
+O, 1_1, 1, 1.0, ORRRRRRAbove
+
+# Relations from SRT:
+EO, +_1, 1_2, Right, 1.0
+EO, -_1, _1, Right, 1.0
+EO, <_1, _3, Right, 1.0
+EO, _1, p_1, Above, 1.0
+EO, _1, q_1, Below, 1.0
+EO, _1, |_2, Right, 1.0
+EO, _2, 1_1, Above, 1.0
+EO, _2, <_1, Right, 1.0
+EO, _2, q_2, Below, 1.0
+EO, _3, 1_3, Above, 1.0
+EO, _3, q_4, Below, 1.0
+EO, le_1, _2, Right, 1.0
+EO, n_4, +_1, Right, 1.0
+EO, p_1, n_1, Sub, 1.0
+EO, q_1, n_2, Sub, 1.0
+EO, q_2, n_3, Sub, 1.0
+EO, q_2, q_3, Right, 1.0
+EO, q_3, n_4, Sub, 1.0
+EO, q_4, 2_1, Sup, 1.0
+EO, q_4, n_5, Sub, 1.0
+EO, x_1, -_1, Right, 1.0
+EO, |_1, x_1, Right, 1.0
+EO, |_2, le_1, Right, 1.0

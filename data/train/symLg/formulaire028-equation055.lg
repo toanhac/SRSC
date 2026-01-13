@@ -1,0 +1,55 @@
+# IUD, 2011_IVC_depart_F028_E055
+# Objects(26):
+O, +_1, +, 1.0, ORRRR
+O, 1_2, 1, 1.0, ORRRRR
+O, 9_1, 9, 1.0, ORRRRRRR
+O, 6_1, 6, 1.0, ORRRRRRRRRRRRRR
+O, 1_1, 1, 1.0, OR
+O, )_1, ), 1.0, ORRRRRRRR
+O, (_2, (, 1.0, ORRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRRRRRRRR
+O, (_3, (, 1.0, ORRRRRRRRRRR
+O, +_2, +, 1.0, ORRRRRRRRRRRRRRR
+O, 1_3, 1, 1.0, ORRRRRRRRRRRR
+O, (_1, (, 1.0, O
+O, 2_2, 2, 1.0, ORRRRRRRRRRRRRRRRRRRR
+O, 8_1, 8, 1.0, ORRRRRRRRRRRRRRRRRRRRRRRRR
+O, 3_1, 3, 1.0, ORRRRRRRRRRRRRRRRRRRRR
+O, 3_2, 3, 1.0, ORRRRRRRRRRRRRRRRRRRRRRRR
+O, 4_1, 4, 1.0, ORR
+O, 1_4, 1, 1.0, ORRRRRRRRRRRRRRRRR
+O, 7_1, 7, 1.0, ORRR
+O, /_1, /, 1.0, ORRRRRRRRR
+O, \leq_1, \leq, 1.0, ORRRRRRRRRRRRRRRRRRRRRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRRRRRRRRRR
+O, 7_2, 7, 1.0, ORRRRRR
+O, 2_1, 2, 1.0, ORRRRRRRRRRRRRRRR
+O, 7_3, 7, 1.0, ORRRRRRRRRRRRR
+O, /_2, /, 1.0, ORRRRRRRRRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, 1_1, Right, 1.0
+EO, (_2, (_3, Right, 1.0
+EO, (_3, 1_3, Right, 1.0
+EO, )_1, /_1, Right, 1.0
+EO, )_2, /_2, Right, 1.0
+EO, )_3, \leq_1, Right, 1.0
+EO, +_1, 1_2, Right, 1.0
+EO, +_2, 2_1, Right, 1.0
+EO, /_1, (_2, Right, 1.0
+EO, /_2, 2_2, Right, 1.0
+EO, 1_1, 4_1, Right, 1.0
+EO, 1_2, 7_2, Right, 1.0
+EO, 1_3, 7_3, Right, 1.0
+EO, 1_4, )_2, Right, 1.0
+EO, 2_1, 1_4, Right, 1.0
+EO, 2_2, 3_1, Right, 1.0
+EO, 3_1, )_3, Right, 1.0
+EO, 3_2, 8_1, Right, 1.0
+EO, 4_1, 7_1, Right, 1.0
+EO, 6_1, +_2, Right, 1.0
+EO, 7_1, +_1, Right, 1.0
+EO, 7_2, 9_1, Right, 1.0
+EO, 7_3, 6_1, Right, 1.0
+EO, 9_1, )_1, Right, 1.0
+EO, \leq_1, 3_2, Right, 1.0

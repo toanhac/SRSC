@@ -1,0 +1,23 @@
+# IUD, 2011_IVC_depart_F029_E015
+# Objects(10):
+O, 2_1, 2, 1.0, ORRRRRRR
+O, =_1, =, 1.0, ORRRRR
+O, 1_1, 1, 1.0, O
+O, 0_2, 0, 1.0, ORRRRRRRRR
+O, 6_1, 6, 1.0, ORRRRRRRR
+O, 8_1, 8, 1.0, OR
+O, 7_1, 7, 1.0, ORRR
+O, 1_2, 1, 1.0, ORRRRRR
+O, 0_1, 0, 1.0, ORRRR
+O, times_1, \times, 1.0, ORR
+
+# Relations from SRT:
+EO, 0_1, =_1, Right, 1.0
+EO, 1_1, 8_1, Right, 1.0
+EO, 1_2, 2_1, Right, 1.0
+EO, 2_1, 6_1, Right, 1.0
+EO, 6_1, 0_2, Right, 1.0
+EO, 7_1, 0_1, Right, 1.0
+EO, 8_1, times_1, Right, 1.0
+EO, =_1, 1_2, Right, 1.0
+EO, times_1, 7_1, Right, 1.0

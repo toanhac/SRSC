@@ -1,0 +1,13 @@
+# IUD, 2013_IVC_CROHME_F4_E26
+# Objects(5):
+O, ne_1, \neq, 1.0, OR
+O, e_1, e, 1.0, ORRR
+O, }_1, \}, 1.0, ORRRR
+O, G_1, G, 1.0, O
+O, {_1, \{, 1.0, ORR
+
+# Relations from SRT:
+EO, G_1, ne_1, Right, 1.0
+EO, e_1, }_1, Right, 1.0
+EO, ne_1, {_1, Right, 1.0
+EO, {_1, e_1, Right, 1.0

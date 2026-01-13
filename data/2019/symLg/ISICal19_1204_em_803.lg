@@ -1,0 +1,13 @@
+# IUD, CROHME19_803
+# Objects(5):
+O, -_1, -, 1.0, OR
+O, x_1, x, 1.0, O
+O, x_2, x, 1.0, ORR
+O, 4_1, 4, 1.0, OSup
+O, 7_1, 7, 1.0, ORRSup
+
+# Relations from SRT:
+R, -_1, x_2, Right, 1.0
+R, x_1, -_1, Right, 1.0
+R, x_1, 4_1, Sup, 1.0
+R, x_2, 7_1, Sup, 1.0

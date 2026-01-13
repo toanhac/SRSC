@@ -1,0 +1,45 @@
+# IUD, MfrDB0008
+# Objects(21):
+O, 1_1, 1, 1.0, OInsideAboveBelowRR
+O, \frac_1, -, 1.0, OInside
+O, 2_1, 2, 1.0, OInsideAboveRSup
+O, n_1, n, 1.0, OInsideAboveAbove
+O, x_1, x, 1.0, OInsideAboveR
+O, 1_2, 1, 1.0, ORRAboveBelowRR
+O, x_2, x, 1.0, ORRAboveR
+O, i_4, i, 1.0, ORRAboveRSub
+O, =_2, =, 1.0, ORRAboveBelowR
+O, \sqrt_1, \sqrt, 1.0, O
+O, n_2, n, 1.0, OInsideBelow
+O, i_3, i, 1.0, ORRAboveBelow
+O, \sum_2, \sum, 1.0, ORRAbove
+O, \geq_1, \geq, 1.0, OR
+O, n_3, n, 1.0, ORRAboveAbove
+O, n_4, n, 1.0, ORRBelow
+O, i_1, i, 1.0, OInsideAboveBelow
+O, =_1, =, 1.0, OInsideAboveBelowR
+O, \sum_1, \sum, 1.0, OInsideAbove
+O, i_2, i, 1.0, OInsideAboveRSub
+O, \frac_2, -, 1.0, ORR
+
+# Relations from SRT:
+EO, =_1, 1_1, Right, 1.0
+EO, =_2, 1_2, Right, 1.0
+EO, \frac_1, \sum_1, Above, 1.0
+EO, \frac_1, n_2, Below, 1.0
+EO, \frac_2, \sum_2, Above, 1.0
+EO, \frac_2, n_4, Below, 1.0
+EO, \geq_1, \frac_2, Right, 1.0
+EO, \sqrt_1, \frac_1, Inside, 1.0
+EO, \sqrt_1, \geq_1, Right, 1.0
+EO, \sum_1, i_1, Below, 1.0
+EO, \sum_1, n_1, Above, 1.0
+EO, \sum_1, x_1, Right, 1.0
+EO, \sum_2, i_3, Below, 1.0
+EO, \sum_2, n_3, Above, 1.0
+EO, \sum_2, x_2, Right, 1.0
+EO, i_1, =_1, Right, 1.0
+EO, i_3, =_2, Right, 1.0
+EO, x_1, 2_1, Sup, 1.0
+EO, x_1, i_2, Sub, 1.0
+EO, x_2, i_4, Sub, 1.0

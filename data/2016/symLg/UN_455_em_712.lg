@@ -1,0 +1,39 @@
+# IUD, CROHME_2016_em_712
+# Objects(18):
+O, hellip_2, \ldots, 1.0, ORRRRR
+O, 1_2, 1, 1.0, ORRRSubSub
+O, alpha_3, \alpha, 1.0, ORRRSub
+O, gamma_2, \gamma, 1.0, ORRRR
+O, =_1, =, 1.0, OR
+O, gamma_3, \gamma, 1.0, ORRRRRR
+O, alpha_4, \alpha, 1.0, ORRRRSub
+O, gamma_1, \gamma, 1.0, ORRR
+O, r_1, r, 1.0, ORRSupRRSub
+O, alpha_5, \alpha, 1.0, ORRRRRRSub
+O, alpha_1, \alpha, 1.0, ORRSup
+O, hellip_1, \ldots, 1.0, ORRSupR
+O, 1_1, 1, 1.0, ORRSupSub
+O, 2_1, 2, 1.0, ORRRRSubSub
+O, alpha_2, \alpha, 1.0, ORRSupRR
+O, r_2, r, 1.0, ORRRRRRSubSub
+O, a_1, a, 1.0, ORR
+O, A_1, A, 1.0, O
+
+# Relations from SRT:
+EO, =_1, a_1, Right, 1.0
+EO, A_1, =_1, Right, 1.0
+EO, a_1, alpha_1, Sup, 1.0
+EO, a_1, gamma_1, Right, 1.0
+EO, alpha_1, 1_1, Sub, 1.0
+EO, alpha_1, hellip_1, Right, 1.0
+EO, alpha_2, r_1, Sub, 1.0
+EO, alpha_3, 1_2, Sub, 1.0
+EO, alpha_4, 2_1, Sub, 1.0
+EO, alpha_5, r_2, Sub, 1.0
+EO, gamma_1, alpha_3, Sub, 1.0
+EO, gamma_1, gamma_2, Right, 1.0
+EO, gamma_2, alpha_4, Sub, 1.0
+EO, gamma_2, hellip_2, Right, 1.0
+EO, gamma_3, alpha_5, Sub, 1.0
+EO, hellip_1, alpha_2, Right, 1.0
+EO, hellip_2, gamma_3, Right, 1.0

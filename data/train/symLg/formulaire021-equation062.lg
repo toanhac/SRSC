@@ -1,0 +1,47 @@
+# IUD, 2011_IVC_depart_F021_E062
+# Objects(22):
+O, +_1, +, 1.0, ORRRRRRRRRR
+O, =_1, =, 1.0, ORRRR
+O, f_1, f, 1.0, ORRRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRR
+O, y_1, y, 1.0, ORRRRRRRRR
+O, x_3, x, 1.0, ORRRRRRRRRRRRRRRR
+O, 0_1, 0, 1.0, ORRRRRRRRRSub
+O, )_1, ), 1.0, ORRR
+O, COMMA_2, COMMA, 1.0, ORRRRRRRRRRRRRRRRR
+O, h_1, h, 1.0, O
+O, (_2, (, 1.0, ORRRRRR
+O, COMMA_1, COMMA, 1.0, ORRRRRRRR
+O, x_1, x, 1.0, ORR
+O, y_2, y, 1.0, ORRRRRRRRRRRRRRRRRR
+O, f_2, f, 1.0, ORRRRRRRRRRRRRR
+O, (_1, (, 1.0, OR
+O, (_3, (, 1.0, ORRRRRRRRRRRRRRR
+O, 0_2, 0, 1.0, ORRRRRRRRRRRRRRRRRRSub
+O, x_2, x, 1.0, ORRRRRRR
+O, t_1, t, 1.0, ORRRRRRRRRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRRRRRRR
+O, -_1, -, 1.0, ORRRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, (_2, x_2, Right, 1.0
+EO, (_3, x_3, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, -_1, Right, 1.0
+EO, +_1, t_1, Right, 1.0
+EO, -_1, f_2, Right, 1.0
+EO, =_1, f_1, Right, 1.0
+EO, COMMA_1, y_1, Right, 1.0
+EO, COMMA_2, y_2, Right, 1.0
+EO, f_1, (_2, Right, 1.0
+EO, f_2, (_3, Right, 1.0
+EO, h_1, (_1, Right, 1.0
+EO, t_1, )_2, Right, 1.0
+EO, x_1, )_1, Right, 1.0
+EO, x_2, COMMA_1, Right, 1.0
+EO, x_3, COMMA_2, Right, 1.0
+EO, y_1, +_1, Right, 1.0
+EO, y_1, 0_1, Sub, 1.0
+EO, y_2, )_3, Right, 1.0
+EO, y_2, 0_2, Sub, 1.0

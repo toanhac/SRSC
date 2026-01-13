@@ -1,0 +1,41 @@
+# IUD, 2011_IVC_depart_F011_E054
+# Objects(18):
+O, 1_4, 1, 1.0, ORRRRRRRRR
+O, =_1, =, 1.0, OR
+O, 1_3, 1, 1.0, ORRRRRRRR
+O, 2_2, 2, 1.0, ORRRRInsideRR
+O, -_2, -, 1.0, ORRRRRRRRRRInside
+O, 1_2, 1, 1.0, ORRRRInsideRRR
+O, 1_5, 1, 1.0, ORRRRRRRRRRInsideR
+O, 3_1, 3, 1.0, OSup
+O, +_1, +, 1.0, ORRR
+O, 1_1, 1, 1.0, ORRRRInsideR
+O, =_2, =, 1.0, ORRRRR
+O, +_2, +, 1.0, ORRRRRRR
+O, _1, \sqrt, 1.0, ORRRR
+O, 2_1, 2, 1.0, ORR
+O, u_1, u, 1.0, O
+O, -_1, -, 1.0, ORRRRInside
+O, _2, \sqrt, 1.0, ORRRRRRRRRR
+O, 2_3, 2, 1.0, ORRRRRR
+
+# Relations from SRT:
+EO, +_1, _1, Right, 1.0
+EO, +_2, 1_3, Right, 1.0
+EO, -_1, 1_1, Right, 1.0
+EO, -_2, 1_5, Right, 1.0
+EO, 1_1, 2_2, Right, 1.0
+EO, 1_3, 1_4, Right, 1.0
+EO, 1_4, _2, Right, 1.0
+EO, 2_1, +_1, Right, 1.0
+EO, 2_2, 1_2, Right, 1.0
+EO, 2_3, +_2, Right, 1.0
+EO, =_1, 2_1, Right, 1.0
+EO, =_2, 2_3, Right, 1.0
+EO, _1, -_1, Inside, 1.0
+EO, _1, 1_1, Inside, 1.0
+EO, _1, =_2, Right, 1.0
+EO, _2, -_2, Inside, 1.0
+EO, _2, 1_5, Inside, 1.0
+EO, u_1, 3_1, Sup, 1.0
+EO, u_1, =_1, Right, 1.0

@@ -1,0 +1,37 @@
+# IUD, CROHME_2016_em_660
+# Objects(17):
+O, 2_2, 2, 1.0, ORRRRRRSup
+O, 2_1, 2, 1.0, ORRSup
+O, i_3, i, 1.0, ORRRRRRRSub
+O, i_2, i, 1.0, ORRRSub
+O, h_1, h, 1.0, O
+O, f_1, f, 1.0, ORRRR
+O, i_1, i, 1.0, OSub
+O, sin_1, \sin, 1.0, ORR
+O, theta_1, \theta, 1.0, ORRR
+O, -_1, -, 1.0, OSup
+O, theta_2, \theta, 1.0, ORRRRRRR
+O, -_2, -, 1.0, ORRRRSup
+O, 1_1, 1, 1.0, OSupR
+O, +_1, +, 1.0, ORRRRR
+O, 1_2, 1, 1.0, ORRRRSupR
+O, =_1, =, 1.0, OR
+O, cos_1, \cos, 1.0, ORRRRRR
+
+# Relations from SRT:
+EO, +_1, cos_1, Right, 1.0
+EO, -_1, 1_1, Right, 1.0
+EO, -_2, 1_2, Right, 1.0
+EO, =_1, sin_1, Right, 1.0
+EO, cos_1, 2_2, Sup, 1.0
+EO, cos_1, theta_2, Right, 1.0
+EO, f_1, +_1, Right, 1.0
+EO, f_1, -_2, Sup, 1.0
+EO, h_1, -_1, Sup, 1.0
+EO, h_1, =_1, Right, 1.0
+EO, h_1, i_1, Sub, 1.0
+EO, sin_1, 2_1, Sup, 1.0
+EO, sin_1, theta_1, Right, 1.0
+EO, theta_1, f_1, Right, 1.0
+EO, theta_1, i_2, Sub, 1.0
+EO, theta_2, i_3, Sub, 1.0

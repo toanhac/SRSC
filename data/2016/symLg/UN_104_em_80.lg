@@ -1,0 +1,13 @@
+# IUD, CROHME_2016_em_80
+# Objects(5):
+O, 2_1, 2, 1.0, OBelow
+O, _1, -, 1.0, O
+O, h_2, h, 1.0, ORR
+O, h_1, h, 1.0, OAbove
+O, log_1, \log, 1.0, OR
+
+# Relations from SRT:
+EO, _1, 2_1, Below, 1.0
+EO, _1, h_1, Above, 1.0
+EO, _1, log_1, Right, 1.0
+EO, log_1, h_2, Right, 1.0

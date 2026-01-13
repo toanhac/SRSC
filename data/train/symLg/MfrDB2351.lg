@@ -1,0 +1,49 @@
+# IUD, MfrDB2351
+# Objects(23):
+O, x_2, x, 1.0, ORRRRRRRRRAbove
+O, (_2, (, 1.0, ORRRRRRRRRRRR
+O, -_1, -, 1.0, ORRRRRRRRRRRRRAboveR
+O, \cos_1, \cos, 1.0, ORRRRRRRRRRR
+O, y_2, y, 1.0, ORRRRRRRRRAboveRR
+O, +_1, +, 1.0, ORR
+O, (_1, (, 1.0, ORRRRRRRR
+O, y_3, y, 1.0, ORRRRRRRRRRRRRAboveRR
+O, \sin_2, \sin, 1.0, ORRR
+O, y_1, y, 1.0, ORRRR
+O, x_1, x, 1.0, OR
+O, x_3, x, 1.0, ORRRRRRRRRRRRRAbove
+O, \frac_1, -, 1.0, ORRRRRRRRR
+O, +_2, +, 1.0, ORRRRRRRRRAboveR
+O, 2_3, 2, 1.0, ORRRRRRRRRRRRRBelow
+O, =_1, =, 1.0, ORRRRR
+O, \sin_1, \sin, 1.0, O
+O, 2_1, 2, 1.0, ORRRRRR
+O, )_1, ), 1.0, ORRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRRRR
+O, \frac_2, -, 1.0, ORRRRRRRRRRRRR
+O, \sin_3, \sin, 1.0, ORRRRRRR
+O, 2_2, 2, 1.0, ORRRRRRRRRBelow
+
+# Relations from SRT:
+EO, (_1, \frac_1, Right, 1.0
+EO, (_2, \frac_2, Right, 1.0
+EO, )_1, \cos_1, Right, 1.0
+EO, +_1, \sin_2, Right, 1.0
+EO, +_2, y_2, Right, 1.0
+EO, -_1, y_3, Right, 1.0
+EO, 2_1, \sin_3, Right, 1.0
+EO, =_1, 2_1, Right, 1.0
+EO, \cos_1, (_2, Right, 1.0
+EO, \frac_1, )_1, Right, 1.0
+EO, \frac_1, 2_2, Below, 1.0
+EO, \frac_1, x_2, Above, 1.0
+EO, \frac_2, )_2, Right, 1.0
+EO, \frac_2, 2_3, Below, 1.0
+EO, \frac_2, x_3, Above, 1.0
+EO, \sin_1, x_1, Right, 1.0
+EO, \sin_2, y_1, Right, 1.0
+EO, \sin_3, (_1, Right, 1.0
+EO, x_1, +_1, Right, 1.0
+EO, x_2, +_2, Right, 1.0
+EO, x_3, -_1, Right, 1.0
+EO, y_1, =_1, Right, 1.0

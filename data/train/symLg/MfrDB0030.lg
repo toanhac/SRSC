@@ -1,0 +1,22 @@
+# IUD, MfrDB0030
+# Objects(9):
+O, 1_1, 1, 1.0, OAboveInsideR
+O, \sqrt_3, \sqrt, 1.0, OBelow
+O, \frac_1, -, 1.0, O
+O, 5_1, 5, 1.0, OAboveRRInside
+O, \sqrt_2, \sqrt, 1.0, OAboveRR
+O, 2_1, 2, 1.0, OAboveInside
+O, \sqrt_1, \sqrt, 1.0, OAbove
+O, 7_1, 7, 1.0, OBelowInside
+O, -_1, -, 1.0, OAboveR
+
+# Relations from SRT:
+EO, -_1, \sqrt_2, Right, 1.0
+EO, 2_1, 1_1, Right, 1.0
+EO, \frac_1, \sqrt_1, Above, 1.0
+EO, \frac_1, \sqrt_3, Below, 1.0
+EO, \sqrt_1, -_1, Right, 1.0
+EO, \sqrt_1, 1_1, Inside, 1.0
+EO, \sqrt_1, 2_1, Inside, 1.0
+EO, \sqrt_2, 5_1, Inside, 1.0
+EO, \sqrt_3, 7_1, Inside, 1.0

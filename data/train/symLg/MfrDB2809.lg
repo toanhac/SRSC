@@ -1,0 +1,7 @@
+# IUD, MfrDB2809
+# Objects(2):
+O, 2_1, 2, 1.0, OSup
+O, 1_1, 1, 1.0, O
+
+# Relations from SRT:
+EO, 1_1, 2_1, Sup, 1.0

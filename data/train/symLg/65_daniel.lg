@@ -1,0 +1,13 @@
+# IUD, 65_daniel
+# Objects(5):
+O, theta_1, \theta, 1.0, ORRRR
+O, =_1, =, 1.0, OR
+O, x_1, x, 1.0, O
+O, cos_1, \cos, 1.0, ORRR
+O, r_1, r, 1.0, ORR
+
+# Relations from SRT:
+EO, =_1, r_1, Right, 1.0
+EO, cos_1, theta_1, Right, 1.0
+EO, r_1, cos_1, Right, 1.0
+EO, x_1, =_1, Right, 1.0

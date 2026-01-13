@@ -1,0 +1,43 @@
+# IUD, 101_herbert
+# Objects(20):
+O, i_1, i, 1.0, ORRRSub
+O, =_1, =, 1.0, OR
+O, -_2, -, 1.0, ORRRRRRRR
+O, S_1, S, 1.0, O
+O, r_1, r, 1.0, ORRRRRRRRRRRRR
+O, -_1, -, 1.0, ORRRRR
+O, pi_1, \pi, 1.0, ORRRRRRRRRRR
+O, =_2, =, 1.0, ORRRSubR
+O, (_1, (, 1.0, ORR
+O, (_2, (, 1.0, ORRRRRR
+O, 2_2, 2, 1.0, ORRRRRRRRRRRRRSup
+O, theta_1, \theta, 1.0, ORRRR
+O, )_1, ), 1.0, ORRRRRRRRRR
+O, sum_1, \sum, 1.0, ORRR
+O, n_2, n, 1.0, ORRRRRRR
+O, i_2, i, 1.0, ORRRRSub
+O, n_1, n, 1.0, ORRRSup
+O, 2_1, 2, 1.0, ORRRRRRRRR
+O, 1_1, 1, 1.0, ORRRSubRR
+O, )_2, ), 1.0, ORRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, sum_1, Right, 1.0
+EO, (_2, n_2, Right, 1.0
+EO, )_1, pi_1, Right, 1.0
+EO, )_2, r_1, Right, 1.0
+EO, -_1, (_2, Right, 1.0
+EO, -_2, 2_1, Right, 1.0
+EO, 2_1, )_1, Right, 1.0
+EO, =_1, (_1, Right, 1.0
+EO, =_2, 1_1, Right, 1.0
+EO, S_1, =_1, Right, 1.0
+EO, i_1, =_2, Right, 1.0
+EO, n_2, -_2, Right, 1.0
+EO, pi_1, )_2, Right, 1.0
+EO, r_1, 2_2, Sup, 1.0
+EO, sum_1, i_1, Sub, 1.0
+EO, sum_1, n_1, Sup, 1.0
+EO, sum_1, theta_1, Right, 1.0
+EO, theta_1, -_1, Right, 1.0
+EO, theta_1, i_2, Sub, 1.0

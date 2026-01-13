@@ -1,0 +1,27 @@
+# IUD, 2011_KME2_w19_e30
+# Objects(12):
+O, 1_1, 1, 1.0, OAbove
+O, 3_1, 3, 1.0, OBelowRRRRR
+O, +_1, +, 1.0, OBelowRRRR
+O, i_1, i, 1.0, OBelow
+O, n_1, n, 1.0, OBelowRRR
+O, i_2, i, 1.0, OR
+O, 0_1, 0, 1.0, OAboveR
+O, =_1, =, 1.0, OBelowR
+O, 2_1, 2, 1.0, OBelowRR
+O, x_1, x, 1.0, ORR
+O, m_1, m, 1.0, OBelowRRRRRR
+O, \sum_1, \sum, 1.0, O
+
+# Relations from SRT:
+EO, +_1, 3_1, Right, 1.0
+EO, 1_1, 0_1, Right, 1.0
+EO, 2_1, n_1, Right, 1.0
+EO, 3_1, m_1, Right, 1.0
+EO, =_1, 2_1, Right, 1.0
+EO, \sum_1, 1_1, Above, 1.0
+EO, \sum_1, i_1, Below, 1.0
+EO, \sum_1, i_2, Right, 1.0
+EO, i_1, =_1, Right, 1.0
+EO, i_2, x_1, Right, 1.0
+EO, n_1, +_1, Right, 1.0

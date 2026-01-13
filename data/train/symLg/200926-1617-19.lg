@@ -1,0 +1,19 @@
+# IUD, "200926-1617-19.ink"
+# Objects(8):
+O, 0:, x, 1.0, O
+O, 1:, 2, 1.0, OSup
+O, 2:3:, +, 1.0, OR
+O, 8:, 2, 1.0, ORRRRSup
+O, 7:, z, 1.0, ORRRR
+O, 4:, y, 1.0, ORR
+O, 6:, =, 1.0, ORRR
+O, 5:, 2, 1.0, ORRSup
+
+# Relations from SRT:
+EO, 0:, 1:, Sup, 1.0
+EO, 0:, 2:3:, Right, 1.0
+EO, 2:3:, 4:, Right, 1.0
+EO, 4:, 5:, Sup, 1.0
+EO, 4:, 6:, Right, 1.0
+EO, 6:, 7:, Right, 1.0
+EO, 7:, 8:, Sup, 1.0

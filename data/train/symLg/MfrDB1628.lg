@@ -1,0 +1,15 @@
+# IUD, MfrDB1628
+# Objects(6):
+O, \frac_1, -, 1.0, OInside
+O, \sqrt_1, \sqrt, 1.0, O
+O, 5_1, 5, 1.0, OInsideBelow
+O, 1_1, 1, 1.0, OInsideAbove
+O, -_1, -, 1.0, OInsideAboveR
+O, a_1, a, 1.0, OInsideAboveRR
+
+# Relations from SRT:
+EO, -_1, a_1, Right, 1.0
+EO, 1_1, -_1, Right, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, 5_1, Below, 1.0
+EO, \sqrt_1, \frac_1, Inside, 1.0

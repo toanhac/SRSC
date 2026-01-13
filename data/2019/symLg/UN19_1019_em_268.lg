@@ -1,0 +1,45 @@
+# IUD, CROHME19_268
+# Objects(21):
+O, )_1, ), 1.0, OAboveRRRRR
+O, n_1, n, 1.0, OAboveRR
+O, 4_2, 4, 1.0, ORRRR
+O, 2_1, 2, 1.0, OAboveR
+O, 2_4, 2, 1.0, OAboveRRRRRRRRRR
+O, (_1, (, 1.0, OAbove
+O, +_1, +, 1.0, OR
+O, 4_1, 4, 1.0, ORR
+O, _1, -, 1.0, O
+O, n_4, n, 1.0, ORRRRR
+O, 2_3, 2, 1.0, OAboveRRRRRRR
+O, =_1, =, 1.0, ORRR
+O, -_1, -, 1.0, OAboveRRR
+O, n_3, n, 1.0, OBelow
+O, n_2, n, 1.0, OAboveRRRRRRRR
+O, 1_1, 1, 1.0, OBelowRR
+O, -_2, -, 1.0, OAboveRRRRRRRRR
+O, -_3, -, 1.0, OBelowR
+O, 2_2, 2, 1.0, OAboveRRRR
+O, (_2, (, 1.0, OAboveRRRRRR
+O, )_2, ), 1.0, OAboveRRRRRRRRRRR
+
+# Relations from SRT:
+R, (_1, 2_1, Right, 1.0
+R, (_2, 2_3, Right, 1.0
+R, )_1, (_2, Right, 1.0
+R, +_1, 4_1, Right, 1.0
+R, -_1, 2_2, Right, 1.0
+R, -_2, 2_4, Right, 1.0
+R, -_3, 1_1, Right, 1.0
+R, 2_1, n_1, Right, 1.0
+R, 2_2, )_1, Right, 1.0
+R, 2_3, n_2, Right, 1.0
+R, 2_4, )_2, Right, 1.0
+R, 4_1, =_1, Right, 1.0
+R, 4_2, n_4, Right, 1.0
+R, =_1, 4_2, Right, 1.0
+R, _1, (_1, Above, 1.0
+R, _1, +_1, Right, 1.0
+R, _1, n_3, Below, 1.0
+R, n_1, -_1, Right, 1.0
+R, n_2, -_2, Right, 1.0
+R, n_3, -_3, Right, 1.0

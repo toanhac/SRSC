@@ -1,0 +1,15 @@
+# IUD, "200923-1254-80.ink"
+# Objects(6):
+O, 5:, d, 1.0, OSupRR
+O, 2:3:, x, 1.0, OSupR
+O, 4:, 2, 1.0, OSupRSup
+O, 1:, \int, 1.0, OSup
+O, 6:7:, x, 1.0, OSupRRR
+O, 0:, e, 1.0, O
+
+# Relations from SRT:
+EO, 0:, 1:, Sup, 1.0
+EO, 1:, 2:3:, Right, 1.0
+EO, 2:3:, 4:, Sup, 1.0
+EO, 2:3:, 5:, Right, 1.0
+EO, 5:, 6:7:, Right, 1.0

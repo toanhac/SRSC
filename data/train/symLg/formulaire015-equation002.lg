@@ -1,0 +1,47 @@
+# IUD, 2011_IVC_depart_F015_E002
+# Objects(22):
+O, (_2, (, 1.0, ORRRRRRRRRRRR
+O, x_4, x, 1.0, ORRRRRRRRRRRRRRR
+O, 4_1, 4, 1.0, ORRRRRRRRRSup
+O, COMMA_2, COMMA, 1.0, ORRRRRRRRRRRRRR
+O, f_1, f, 1.0, O
+O, \alpha_2, \alpha, 1.0, ORRRRR
+O, 2_1, 2, 1.0, ORRRRRRSub
+O, COMMA_1, COMMA, 1.0, ORRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRRRRRR
+O, 2_2, 2, 1.0, ORRRRRRRRRRRRRRRSub
+O, \alpha_1, \alpha, 1.0, ORR
+O, x_3, x, 1.0, ORRRRRRRRRRRRR
+O, \alpha_3, \alpha, 1.0, ORRRRRRRRR
+O, (_1, (, 1.0, OR
+O, 1_2, 1, 1.0, ORRRRRRRRRRRRRSub
+O, x_1, x, 1.0, ORRR
+O, =_1, =, 1.0, ORRRRRRRR
+O, \times_1, \times, 1.0, ORRRRRRRRRR
+O, 1_1, 1, 1.0, ORRRSub
+O, x_2, x, 1.0, ORRRRRR
+O, f_2, f, 1.0, ORRRRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRR
+
+# Relations from SRT:
+EO, (_1, \alpha_1, Right, 1.0
+EO, (_2, x_3, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, =_1, \alpha_3, Right, 1.0
+EO, COMMA_1, \alpha_2, Right, 1.0
+EO, COMMA_2, x_4, Right, 1.0
+EO, \alpha_1, x_1, Right, 1.0
+EO, \alpha_2, x_2, Right, 1.0
+EO, \alpha_3, 4_1, Sup, 1.0
+EO, \alpha_3, \times_1, Right, 1.0
+EO, \times_1, f_2, Right, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, f_2, (_2, Right, 1.0
+EO, x_1, 1_1, Sub, 1.0
+EO, x_1, COMMA_1, Right, 1.0
+EO, x_2, )_1, Right, 1.0
+EO, x_2, 2_1, Sub, 1.0
+EO, x_3, 1_2, Sub, 1.0
+EO, x_3, COMMA_2, Right, 1.0
+EO, x_4, )_2, Right, 1.0
+EO, x_4, 2_2, Sub, 1.0

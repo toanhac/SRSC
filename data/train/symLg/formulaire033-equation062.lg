@@ -1,0 +1,9 @@
+# IUD, 2011_IVC_depart_F033_E062
+# Objects(3):
+O, \sum_1, \sum, 1.0, O
+O, n_1, n, 1.0, ORSub
+O, u_1, u, 1.0, OR
+
+# Relations from SRT:
+EO, \sum_1, u_1, Right, 1.0
+EO, u_1, n_1, Sub, 1.0

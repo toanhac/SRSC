@@ -1,0 +1,27 @@
+# IUD, MfrDB2147
+# Objects(12):
+O, x_2, x, 1.0, ORAboveRRR
+O, \cos_1, \cos, 1.0, ORAboveRR
+O, =_1, =, 1.0, ORR
+O, 1_1, 1, 1.0, ORAbove
+O, 0_2, 0, 1.0, ORRR
+O, 0_1, 0, 1.0, OBelowRR
+O, x_3, x, 1.0, ORBelow
+O, \vec_1, \rightarrow, 1.0, OBelowR
+O, x_1, x, 1.0, OBelow
+O, \lim_1, \lim, 1.0, O
+O, \frac_1, -, 1.0, OR
+O, -_1, -, 1.0, ORAboveR
+
+# Relations from SRT:
+EO, -_1, \cos_1, Right, 1.0
+EO, 1_1, -_1, Right, 1.0
+EO, =_1, 0_2, Right, 1.0
+EO, \cos_1, x_2, Right, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, =_1, Right, 1.0
+EO, \frac_1, x_3, Below, 1.0
+EO, \lim_1, \frac_1, Right, 1.0
+EO, \lim_1, x_1, Below, 1.0
+EO, \vec_1, 0_1, Right, 1.0
+EO, x_1, \vec_1, Right, 1.0

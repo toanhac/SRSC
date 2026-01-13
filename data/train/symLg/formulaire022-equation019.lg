@@ -1,0 +1,21 @@
+# IUD, 2011_IVC_depart_F022_E019
+# Objects(9):
+O, COMMA_2, COMMA, 1.0, ORRRR
+O, \pi_2, \pi, 1.0, ORRRRR
+O, \pi_1, \pi, 1.0, OR
+O, g_1, g, 1.0, ORRRRRSub
+O, COMMA_1, COMMA, 1.0, ORR
+O, \ldots_1, \ldots, 1.0, ORRR
+O, 1_1, 1, 1.0, ORSub
+O, (_1, (, 1.0, O
+O, )_1, ), 1.0, ORRRRRR
+
+# Relations from SRT:
+EO, (_1, \pi_1, Right, 1.0
+EO, COMMA_1, \ldots_1, Right, 1.0
+EO, COMMA_2, \pi_2, Right, 1.0
+EO, \ldots_1, COMMA_2, Right, 1.0
+EO, \pi_1, 1_1, Sub, 1.0
+EO, \pi_1, COMMA_1, Right, 1.0
+EO, \pi_2, )_1, Right, 1.0
+EO, \pi_2, g_1, Sub, 1.0

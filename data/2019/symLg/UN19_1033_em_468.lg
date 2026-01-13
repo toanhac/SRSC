@@ -1,0 +1,9 @@
+# IUD, CROHME19_468
+# Objects(3):
+O, \lambda_1, \lambda, 1.0, O
+O, \lambda_2, \lambda, 1.0, ORR
+O, \log_1, \log, 1.0, OR
+
+# Relations from SRT:
+R, \lambda_1, \log_1, Right, 1.0
+R, \log_1, \lambda_2, Right, 1.0

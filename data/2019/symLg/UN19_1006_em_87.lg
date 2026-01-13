@@ -1,0 +1,40 @@
+# IUD, CROHME19_87
+# Objects(18):
+O, x_1, x, 1.0, ORRR
+O, 1_1, 1, 1.0, ORRRRRRInsideSub
+O, _1, \sqrt, 1.0, ORRRRRR
+O, |_2, |, 1.0, ORRRR
+O, +_2, +, 1.0, ORRRRRRInsideRRR
+O, |_1, |, 1.0, ORR
+O, x_4, x, 1.0, ORRRRRRInsideRRRR
+O, 2_3, 2, 1.0, ORRRRRRInsideRRSup
+O, +_1, +, 1.0, ORRRRRRInsideR
+O, x_2, x, 1.0, ORRRRRRInside
+O, x_3, x, 1.0, ORRRRRRInsideRR
+O, 2_2, 2, 1.0, ORRRRRRInsideRRSub
+O, 2_1, 2, 1.0, ORRRRRRInsideSup
+O, 2_4, 2, 1.0, ORRRRRRInsideRRRRSup
+O, 3_1, 3, 1.0, ORRRRRRInsideRRRRSub
+O, =_1, =, 1.0, OR
+O, =_2, =, 1.0, ORRRRR
+O, r_1, r, 1.0, O
+
+# Relations from SRT:
+R, +_1, x_3, Right, 1.0
+R, +_2, x_4, Right, 1.0
+R, =_1, |_1, Right, 1.0
+R, =_2, _1, Right, 1.0
+R, _1, +_1, Inside, 1.0
+R, _1, x_2, Inside, 1.0
+R, r_1, =_1, Right, 1.0
+R, x_1, |_2, Right, 1.0
+R, x_2, +_1, Right, 1.0
+R, x_2, 1_1, Sub, 1.0
+R, x_2, 2_1, Sup, 1.0
+R, x_3, +_2, Right, 1.0
+R, x_3, 2_2, Sub, 1.0
+R, x_3, 2_3, Sup, 1.0
+R, x_4, 2_4, Sup, 1.0
+R, x_4, 3_1, Sub, 1.0
+R, |_1, x_1, Right, 1.0
+R, |_2, =_2, Right, 1.0

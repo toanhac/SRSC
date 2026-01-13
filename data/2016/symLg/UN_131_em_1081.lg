@@ -1,0 +1,13 @@
+# IUD, CROHME_2016_em_1081
+# Objects(5):
+O, z_1, z, 1.0, ORR
+O, tan_1, \tan, 1.0, ORRR
+O, =_1, =, 1.0, OR
+O, r_1, r, 1.0, O
+O, alpha_1, \alpha, 1.0, ORRRR
+
+# Relations from SRT:
+EO, =_1, z_1, Right, 1.0
+EO, r_1, =_1, Right, 1.0
+EO, tan_1, alpha_1, Right, 1.0
+EO, z_1, tan_1, Right, 1.0

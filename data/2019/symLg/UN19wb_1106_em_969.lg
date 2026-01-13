@@ -1,0 +1,39 @@
+# IUD, CROHME19_969
+# Objects(18):
+O, _1, -, 1.0, O
+O, p_2, p, 1.0, ORRRRRRSubRRR
+O, l_1, l, 1.0, ORRRSub
+O, k_1, k, 1.0, ORRR
+O, 1_1, 1, 1.0, OAbove
+O, l_3, l, 1.0, ORRRRRRSub
+O, pi_1, \pi, 1.0, OBelowR
+O, o_4, o, 1.0, ORRRRRRSubRR
+O, o_1, o, 1.0, ORRRSubR
+O, 2_1, 2, 1.0, OBelow
+O, int_2, \int, 1.0, ORRRR
+O, o_3, o, 1.0, ORRRRRRSubR
+O, o_2, o, 1.0, ORRRSubRR
+O, p_1, p, 1.0, ORRRSubRRR
+O, d_2, d, 1.0, ORRRRR
+O, l_2, l, 1.0, ORRRRRR
+O, d_1, d, 1.0, ORR
+O, int_1, \int, 1.0, OR
+
+# Relations from SRT:
+R, 2_1, pi_1, Right, 1.0
+R, _1, 1_1, Above, 1.0
+R, _1, 2_1, Below, 1.0
+R, _1, int_1, Right, 1.0
+R, d_1, k_1, Right, 1.0
+R, d_2, l_2, Right, 1.0
+R, int_1, d_1, Right, 1.0
+R, int_2, d_2, Right, 1.0
+R, k_1, int_2, Right, 1.0
+R, k_1, l_1, Sub, 1.0
+R, l_1, o_1, Right, 1.0
+R, l_2, l_3, Sub, 1.0
+R, l_3, o_3, Right, 1.0
+R, o_1, o_2, Right, 1.0
+R, o_2, p_1, Right, 1.0
+R, o_3, o_4, Right, 1.0
+R, o_4, p_2, Right, 1.0

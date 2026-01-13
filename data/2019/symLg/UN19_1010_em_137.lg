@@ -1,0 +1,29 @@
+# IUD, CROHME19_137
+# Objects(13):
+O, (_1, (, 1.0, OR
+O, 0_1, 0, 1.0, ORRRRRRRRRRRR
+O, \alpha_1, \alpha, 1.0, ORRR
+O, \sin_2, \sin, 1.0, ORRRRRR
+O, \beta_1, \beta, 1.0, ORRRRRRRRR
+O, \sin_1, \sin, 1.0, O
+O, (_2, (, 1.0, ORRRRRRR
+O, \pi_1, \pi, 1.0, ORR
+O, )_2, ), 1.0, ORRRRRRRRRR
+O, =_2, =, 1.0, ORRRRRRRRRRR
+O, =_1, =, 1.0, ORRRRR
+O, \pi_2, \pi, 1.0, ORRRRRRRR
+O, )_1, ), 1.0, ORRRR
+
+# Relations from SRT:
+R, (_1, \pi_1, Right, 1.0
+R, (_2, \pi_2, Right, 1.0
+R, )_1, =_1, Right, 1.0
+R, )_2, =_2, Right, 1.0
+R, =_1, \sin_2, Right, 1.0
+R, =_2, 0_1, Right, 1.0
+R, \alpha_1, )_1, Right, 1.0
+R, \beta_1, )_2, Right, 1.0
+R, \pi_1, \alpha_1, Right, 1.0
+R, \pi_2, \beta_1, Right, 1.0
+R, \sin_1, (_1, Right, 1.0
+R, \sin_2, (_2, Right, 1.0

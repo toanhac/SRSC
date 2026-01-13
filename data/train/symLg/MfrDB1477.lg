@@ -1,0 +1,17 @@
+# IUD, MfrDB1477
+# Objects(7):
+O, x_2, x, 1.0, ORRR
+O, \int_1, \int, 1.0, O
+O, \sqrt_1, \sqrt, 1.0, OR
+O, d_1, d, 1.0, ORR
+O, x_1, x, 1.0, ORInside
+O, 1_1, 1, 1.0, OAbove
+O, 0_1, 0, 1.0, OBelow
+
+# Relations from SRT:
+EO, \int_1, 0_1, Below, 1.0
+EO, \int_1, 1_1, Above, 1.0
+EO, \int_1, \sqrt_1, Right, 1.0
+EO, \sqrt_1, d_1, Right, 1.0
+EO, \sqrt_1, x_1, Inside, 1.0
+EO, d_1, x_2, Right, 1.0

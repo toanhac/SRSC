@@ -1,0 +1,10 @@
+# IUD, 2011_IVC_depart_F015_E051
+# Objects(3):
+O, 2_1, 2, 1.0, OInside
+O, 9_1, 9, 1.0, OInsideR
+O, _1, \sqrt, 1.0, O
+
+# Relations from SRT:
+EO, 2_1, 9_1, Right, 1.0
+EO, _1, 2_1, Inside, 1.0
+EO, _1, 9_1, Inside, 1.0

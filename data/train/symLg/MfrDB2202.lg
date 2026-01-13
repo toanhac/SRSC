@@ -1,0 +1,37 @@
+# IUD, MfrDB2202
+# Objects(17):
+O, -_2, -, 1.0, ORRRRRRRR
+O, b_1, b, 1.0, ORRR
+O, c_1, c, 1.0, ORRRRRRRRR
+O, |_5, |, 1.0, ORRRRRRRRRRRR
+O, |_3, |, 1.0, ORRRRRR
+O, -_1, -, 1.0, ORR
+O, b_2, b, 1.0, ORRRRRRRRRRRRRRR
+O, |_1, |, 1.0, O
+O, |_6, |, 1.0, ORRRRRRRRRRRRRRRR
+O, -_3, -, 1.0, ORRRRRRRRRRRRRR
+O, a_2, a, 1.0, ORRRRRRR
+O, \leq_1, \leq, 1.0, ORRRRR
+O, c_2, c, 1.0, ORRRRRRRRRRRRR
+O, a_1, a, 1.0, OR
+O, |_4, |, 1.0, ORRRRRRRRRR
+O, +_1, +, 1.0, ORRRRRRRRRRR
+O, |_2, |, 1.0, ORRRR
+
+# Relations from SRT:
+EO, +_1, |_5, Right, 1.0
+EO, -_1, b_1, Right, 1.0
+EO, -_2, c_1, Right, 1.0
+EO, -_3, b_2, Right, 1.0
+EO, \leq_1, |_3, Right, 1.0
+EO, a_1, -_1, Right, 1.0
+EO, a_2, -_2, Right, 1.0
+EO, b_1, |_2, Right, 1.0
+EO, b_2, |_6, Right, 1.0
+EO, c_1, |_4, Right, 1.0
+EO, c_2, -_3, Right, 1.0
+EO, |_1, a_1, Right, 1.0
+EO, |_2, \leq_1, Right, 1.0
+EO, |_3, a_2, Right, 1.0
+EO, |_4, +_1, Right, 1.0
+EO, |_5, c_2, Right, 1.0

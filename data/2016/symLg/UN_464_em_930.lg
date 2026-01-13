@@ -1,0 +1,11 @@
+# IUD, CROHME_2016_em_930
+# Objects(4):
+O, y_1, y, 1.0, O
+O, ne_1, \neq, 1.0, OR
+O, x_1, x, 1.0, ORRR
+O, a_1, a, 1.0, ORR
+
+# Relations from SRT:
+EO, a_1, x_1, Right, 1.0
+EO, ne_1, a_1, Right, 1.0
+EO, y_1, ne_1, Right, 1.0

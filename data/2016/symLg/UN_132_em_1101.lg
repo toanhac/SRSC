@@ -1,0 +1,55 @@
+# IUD, CROHME_2016_em_1101
+# Objects(26):
+O, pm_2, \pm, 1.0, ORRRRR
+O, -_1, -, 1.0, ORRRRRRRRRRRR
+O, pi_4, \pi, 1.0, ORRRRRRRRRRRRRRRR
+O, =_2, =, 1.0, ORRRRRRRRRRRRRRRRRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRRRRR
+O, 0_1, 0, 1.0, ORRRRRRRRRRRRRRRRRRRRRRRRR
+O, pm_6, \pm, 1.0, ORRRRRRRRRRRRRRRRRRRRR
+O, pm_4, \pm, 1.0, ORRRRRRRRRRRRRRR
+O, pm_1, \pm, 1.0, ORR
+O, f_1, f, 1.0, O
+O, pi_2, \pi, 1.0, ORRRRRR
+O, pi_1, \pi, 1.0, ORRR
+O, (_1, (, 1.0, OR
+O, )_2, ), 1.0, ORRRRRRRRRRRRRRRRRRRRRRR
+O, pi_3, \pi, 1.0, ORRRRRRRRR
+O, f_2, f, 1.0, ORRRRRRRRRRRRR
+O, pm_5, \pm, 1.0, ORRRRRRRRRRRRRRRRRR
+O, COMMA_1, COMMA, 1.0, ORRRR
+O, pi_5, \pi, 1.0, ORRRRRRRRRRRRRRRRRRR
+O, =_1, =, 1.0, ORRRRRRRRRRR
+O, pm_3, \pm, 1.0, ORRRRRRRR
+O, (_2, (, 1.0, ORRRRRRRRRRRRRR
+O, COMMA_4, COMMA, 1.0, ORRRRRRRRRRRRRRRRRRRR
+O, COMMA_3, COMMA, 1.0, ORRRRRRRRRRRRRRRRR
+O, COMMA_2, COMMA, 1.0, ORRRRRRR
+O, pi_6, \pi, 1.0, ORRRRRRRRRRRRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, pm_1, Right, 1.0
+EO, (_2, pm_4, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, =_2, Right, 1.0
+EO, -_1, f_2, Right, 1.0
+EO, =_1, -_1, Right, 1.0
+EO, =_2, 0_1, Right, 1.0
+EO, COMMA_1, pm_2, Right, 1.0
+EO, COMMA_2, pm_3, Right, 1.0
+EO, COMMA_3, pm_5, Right, 1.0
+EO, COMMA_4, pm_6, Right, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, f_2, (_2, Right, 1.0
+EO, pi_1, COMMA_1, Right, 1.0
+EO, pi_2, COMMA_2, Right, 1.0
+EO, pi_3, )_1, Right, 1.0
+EO, pi_4, COMMA_3, Right, 1.0
+EO, pi_5, COMMA_4, Right, 1.0
+EO, pi_6, )_2, Right, 1.0
+EO, pm_1, pi_1, Right, 1.0
+EO, pm_2, pi_2, Right, 1.0
+EO, pm_3, pi_3, Right, 1.0
+EO, pm_4, pi_4, Right, 1.0
+EO, pm_5, pi_5, Right, 1.0
+EO, pm_6, pi_6, Right, 1.0

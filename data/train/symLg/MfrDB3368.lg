@@ -1,0 +1,29 @@
+# IUD, MfrDB3368
+# Objects(13):
+O, x_1, x, 1.0, ORR
+O, |_1, |, 1.0, OR
+O, n_1, n, 1.0, OBelow
+O, +_1, +, 1.0, ORRSubR
+O, n_2, n, 1.0, ORRSub
+O, |_2, |, 1.0, ORRRRR
+O, \vec_1, \rightarrow, 1.0, OBelowR
+O, \lim_1, \lim, 1.0, O
+O, x_2, x, 1.0, ORRRR
+O, n_3, n, 1.0, ORRRRSub
+O, -_1, -, 1.0, ORRR
+O, 1_1, 1, 1.0, ORRSubRR
+O, \infty_1, \infty, 1.0, OBelowRR
+
+# Relations from SRT:
+EO, +_1, 1_1, Right, 1.0
+EO, -_1, x_2, Right, 1.0
+EO, \lim_1, n_1, Below, 1.0
+EO, \lim_1, |_1, Right, 1.0
+EO, \vec_1, \infty_1, Right, 1.0
+EO, n_1, \vec_1, Right, 1.0
+EO, n_2, +_1, Right, 1.0
+EO, x_1, -_1, Right, 1.0
+EO, x_1, n_2, Sub, 1.0
+EO, x_2, n_3, Sub, 1.0
+EO, x_2, |_2, Right, 1.0
+EO, |_1, x_1, Right, 1.0

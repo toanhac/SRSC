@@ -1,0 +1,9 @@
+# IUD, 2011_IVC_depart_F009_E012
+# Objects(3):
+O, 0_1, 0, 1.0, ORR
+O, u_1, u, 1.0, O
+O, \neq_1, \neq, 1.0, OR
+
+# Relations from SRT:
+EO, \neq_1, 0_1, Right, 1.0
+EO, u_1, \neq_1, Right, 1.0

@@ -1,0 +1,9 @@
+# IUD, CROHME_2016_em_1010
+# Objects(3):
+O, z_1, z, 1.0, OSub
+O, h_1, h, 1.0, O
+O, z_2, z, 1.0, OSubR
+
+# Relations from SRT:
+EO, h_1, z_1, Sub, 1.0
+EO, z_1, z_2, Right, 1.0

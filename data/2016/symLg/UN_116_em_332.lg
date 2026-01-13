@@ -1,0 +1,17 @@
+# IUD, CROHME_2016_em_332
+# Objects(7):
+O, g_1, g, 1.0, ORRRR
+O, P_1, P, 1.0, ORRRRSup
+O, 2_1, 2, 1.0, OSup
+O, tan_1, \tan, 1.0, O
+O, alpha_1, \alpha, 1.0, ORR
+O, (_1, (, 1.0, OR
+O, )_1, ), 1.0, ORRR
+
+# Relations from SRT:
+EO, (_1, alpha_1, Right, 1.0
+EO, )_1, g_1, Right, 1.0
+EO, alpha_1, )_1, Right, 1.0
+EO, g_1, P_1, Sup, 1.0
+EO, tan_1, (_1, Right, 1.0
+EO, tan_1, 2_1, Sup, 1.0

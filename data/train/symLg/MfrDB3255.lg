@@ -1,0 +1,27 @@
+# IUD, MfrDB3255
+# Objects(12):
+O, _2, -, 1.0, OInside
+O, -_1, -, 1.0, OInsideBelowRR
+O, n_2, n, 1.0, OInsideBelowR
+O, n_1, n, 1.0, OInsideAbove
+O, 1_2, 1, 1.0, OInsideBelowRRR
+O, )_1, ), 1.0, OInsideBelowRRRR
+O, 1_1, 1, 1.0, OInsideAboveRR
+O, 2_1, 2, 1.0, OInsideBelowRRRRSup
+O, +_1, +, 1.0, OInsideAboveR
+O, (_1, (, 1.0, OInsideBelow
+O, _1, \sqrt, 1.0, O
+O, n_3, n, 1.0, OAbove
+
+# Relations from SRT:
+EO, (_1, n_2, Right, 1.0
+EO, )_1, 2_1, Sup, 1.0
+EO, +_1, 1_1, Right, 1.0
+EO, -_1, 1_2, Right, 1.0
+EO, 1_2, )_1, Right, 1.0
+EO, _1, _2, Inside, 1.0
+EO, _1, n_3, Above, 1.0
+EO, _2, (_1, Below, 1.0
+EO, _2, n_1, Above, 1.0
+EO, n_1, +_1, Right, 1.0
+EO, n_2, -_1, Right, 1.0

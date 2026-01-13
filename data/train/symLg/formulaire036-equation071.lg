@@ -1,0 +1,24 @@
+# IUD, 2011_IVC_depart_F036_E071
+# Objects(10):
+O, pm_1, \pm, 1.0, ORRAbove
+O, 1_2, 1, 1.0, ORRBelowInside
+O, _2, \sqrt, 1.0, ORRBelow
+O, a_1, a, 1.0, O
+O, 1_1, 1, 1.0, ORRAboveR
+O, _1, -, 1.0, ORR
+O, 2_1, 2, 1.0, ORRBelowInsideRRSup
+O, -_1, -, 1.0, ORRBelowInsideR
+O, beta_1, \beta, 1.0, ORRBelowInsideRR
+O, =_1, =, 1.0, OR
+
+# Relations from SRT:
+EO, -_1, beta_1, Right, 1.0
+EO, 1_2, -_1, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, _1, _2, Below, 1.0
+EO, _1, pm_1, Above, 1.0
+EO, _2, -_1, Inside, 1.0
+EO, _2, 1_2, Inside, 1.0
+EO, a_1, =_1, Right, 1.0
+EO, beta_1, 2_1, Sup, 1.0
+EO, pm_1, 1_1, Right, 1.0

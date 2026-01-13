@@ -1,0 +1,33 @@
+# IUD, 2011_IVC_depart_F023_E055
+# Objects(15):
+O, 6_1, 6, 1.0, ORRRRRRRRRRR
+O, 7_1, 7, 1.0, OR
+O, -_1, -, 1.0, ORR
+O, 6_2, 6, 1.0, ORRRRRRRRRRRR
+O, 0_1, 0, 1.0, ORRRRRRRRRRRRRR
+O, /_1, /, 1.0, ORRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRRR
+O, 7_2, 7, 1.0, ORRR
+O, -_2, -, 1.0, ORRRRR
+O, 8_1, 8, 1.0, ORRRRRRR
+O, 7_3, 7, 1.0, ORRRR
+O, \geq_1, \geq, 1.0, ORRRRRRRRRRRRR
+O, 7_4, 7, 1.0, ORRRRRR
+O, 1_1, 1, 1.0, ORRRRRRRRRR
+O, (_1, (, 1.0, O
+
+# Relations from SRT:
+EO, (_1, 7_1, Right, 1.0
+EO, )_1, /_1, Right, 1.0
+EO, -_1, 7_2, Right, 1.0
+EO, -_2, 7_4, Right, 1.0
+EO, /_1, 1_1, Right, 1.0
+EO, 1_1, 6_1, Right, 1.0
+EO, 6_1, 6_2, Right, 1.0
+EO, 6_2, \geq_1, Right, 1.0
+EO, 7_1, -_1, Right, 1.0
+EO, 7_2, 7_3, Right, 1.0
+EO, 7_3, -_2, Right, 1.0
+EO, 7_4, 8_1, Right, 1.0
+EO, 8_1, )_1, Right, 1.0
+EO, \geq_1, 0_1, Right, 1.0

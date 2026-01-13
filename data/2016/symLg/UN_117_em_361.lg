@@ -1,0 +1,49 @@
+# IUD, CROHME_2016_em_361
+# Objects(23):
+O, 1_2, 1, 1.0, ORRBelowRR
+O, _2, -, 1.0, ORR
+O, -_1, -, 1.0, ORRBelowRRR
+O, (_2, (, 1.0, ORRBelowR
+O, 1_1, 1, 1.0, OAboveRR
+O, (_1, (, 1.0, OAboveR
+O, 2_2, 2, 1.0, ORRBelow
+O, theta_4, \theta, 1.0, ORRBelowRRRRR
+O, )_1, ), 1.0, OAboveRRRRRR
+O, )_2, ), 1.0, ORRBelowRRRRRR
+O, =_1, =, 1.0, OR
+O, theta_2, \theta, 1.0, OBelowRR
+O, +_1, +, 1.0, OAboveRRR
+O, f_1, f, 1.0, OAbove
+O, f_2, f, 1.0, ORRAbove
+O, sin_2, \sin, 1.0, ORRAboveR
+O, cos_2, \cos, 1.0, ORRBelowRRRR
+O, _1, -, 1.0, O
+O, theta_3, \theta, 1.0, ORRAboveRR
+O, theta_1, \theta, 1.0, OAboveRRRRR
+O, cos_1, \cos, 1.0, OAboveRRRR
+O, 2_1, 2, 1.0, OBelow
+O, sin_1, \sin, 1.0, OBelowR
+
+# Relations from SRT:
+EO, (_1, 1_1, Right, 1.0
+EO, (_2, 1_2, Right, 1.0
+EO, +_1, cos_1, Right, 1.0
+EO, -_1, cos_2, Right, 1.0
+EO, 1_1, +_1, Right, 1.0
+EO, 1_2, -_1, Right, 1.0
+EO, 2_1, sin_1, Right, 1.0
+EO, 2_2, (_2, Right, 1.0
+EO, =_1, _2, Right, 1.0
+EO, _1, 2_1, Below, 1.0
+EO, _1, =_1, Right, 1.0
+EO, _1, f_1, Above, 1.0
+EO, _2, 2_2, Below, 1.0
+EO, _2, f_2, Above, 1.0
+EO, cos_1, theta_1, Right, 1.0
+EO, cos_2, theta_4, Right, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, f_2, sin_2, Right, 1.0
+EO, sin_1, theta_2, Right, 1.0
+EO, sin_2, theta_3, Right, 1.0
+EO, theta_1, )_1, Right, 1.0
+EO, theta_4, )_2, Right, 1.0

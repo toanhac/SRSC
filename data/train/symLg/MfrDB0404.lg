@@ -1,0 +1,11 @@
+# IUD, MfrDB0404
+# Objects(4):
+O, 8_1, 8, 1.0, ORRR
+O, 4_1, 4, 1.0, O
+O, \times_1, \times, 1.0, ORR
+O, A_1, A, 1.0, OR
+
+# Relations from SRT:
+EO, 4_1, A_1, Right, 1.0
+EO, A_1, \times_1, Right, 1.0
+EO, \times_1, 8_1, Right, 1.0

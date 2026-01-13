@@ -1,0 +1,35 @@
+# IUD, MfrDB3532
+# Objects(16):
+O, =_2, =, 1.0, ORRRRRRBelowR
+O, (_1, (, 1.0, O
+O, +_1, +, 1.0, ORR
+O, 1_1, 1, 1.0, OR
+O, k_2, k, 1.0, ORRRRRRRR
+O, n_2, n, 1.0, ORRRRRRR
+O, k_3, k, 1.0, ORRRRRRRRRSup
+O, )_1, ), 1.0, ORRRR
+O, x_1, x, 1.0, ORRR
+O, k_1, k, 1.0, ORRRRRRBelow
+O, x_2, x, 1.0, ORRRRRRRRR
+O, \sum_1, \sum, 1.0, ORRRRRR
+O, \infty_1, \infty, 1.0, ORRRRRRAbove
+O, 0_1, 0, 1.0, ORRRRRRBelowRR
+O, =_1, =, 1.0, ORRRRR
+O, n_1, n, 1.0, ORRRRSup
+
+# Relations from SRT:
+EO, (_1, 1_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_1, n_1, Sup, 1.0
+EO, +_1, x_1, Right, 1.0
+EO, 1_1, +_1, Right, 1.0
+EO, =_1, \sum_1, Right, 1.0
+EO, =_2, 0_1, Right, 1.0
+EO, \sum_1, \infty_1, Above, 1.0
+EO, \sum_1, k_1, Below, 1.0
+EO, \sum_1, n_2, Right, 1.0
+EO, k_1, =_2, Right, 1.0
+EO, k_2, x_2, Right, 1.0
+EO, n_2, k_2, Right, 1.0
+EO, x_1, )_1, Right, 1.0
+EO, x_2, k_3, Sup, 1.0

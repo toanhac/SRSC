@@ -1,0 +1,41 @@
+# IUD, MfrDB0006
+# Objects(19):
+O, n_3, n, 1.0, ORRRRRRBelow
+O, t_1, t, 1.0, ORRR
+O, (_2, (, 1.0, ORRRRRRAboveRRR
+O, 2_2, 2, 1.0, ORRRRRRAboveRRRRRRSup
+O, |_1, |, 1.0, ORRRRRRAboveR
+O, f_1, f, 1.0, ORRRRRRAboveRRRR
+O, x_1, x, 1.0, OR
+O, \frac_1, -, 1.0, ORRRRRR
+O, |_2, |, 1.0, ORRRRRRAboveRRRRRR
+O, X_1, X, 1.0, ORRRRRRAboveRR
+O, )_1, ), 1.0, ORRRR
+O, \sum_2, \sum, 1.0, ORRRRRRAbove
+O, (_1, (, 1.0, ORR
+O, )_2, ), 1.0, ORRRRRRAboveRRRRR
+O, n_1, n, 1.0, OBelow
+O, 2_1, 2, 1.0, ORSup
+O, n_2, n, 1.0, ORRRRRRAboveBelow
+O, =_1, =, 1.0, ORRRRR
+O, \sum_1, \sum, 1.0, O
+
+# Relations from SRT:
+EO, (_1, t_1, Right, 1.0
+EO, (_2, f_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, |_2, Right, 1.0
+EO, =_1, \frac_1, Right, 1.0
+EO, X_1, (_2, Right, 1.0
+EO, \frac_1, \sum_2, Above, 1.0
+EO, \frac_1, n_3, Below, 1.0
+EO, \sum_1, n_1, Below, 1.0
+EO, \sum_1, x_1, Right, 1.0
+EO, \sum_2, n_2, Below, 1.0
+EO, \sum_2, |_1, Right, 1.0
+EO, f_1, )_2, Right, 1.0
+EO, t_1, )_1, Right, 1.0
+EO, x_1, (_1, Right, 1.0
+EO, x_1, 2_1, Sup, 1.0
+EO, |_1, X_1, Right, 1.0
+EO, |_2, 2_2, Sup, 1.0

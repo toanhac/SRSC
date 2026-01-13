@@ -1,0 +1,43 @@
+# IUD, CROHME19_332
+# Objects(20):
+O, )_2, ), 1.0, ORRRRRRRRRRRRRRRR
+O, \lim_1, \lim, 1.0, ORRR
+O, \log_2, \log, 1.0, ORRRRR
+O, COMMA_1, COMMA, 1.0, ORRRRRRRRRRRRR
+O, z_1, z, 1.0, ORRRBelow
+O, |_2, |, 1.0, ORRRRRRRR
+O, z_2, z, 1.0, ORRRRRRR
+O, +_1, +, 1.0, ORRRRRRRRR
+O, |_1, |, 1.0, ORRRRRR
+O, \infty_1, \infty, 1.0, ORRRBelowRR
+O, G_1, G, 1.0, ORRRRRRRRRR
+O, (_1, (, 1.0, ORRRR
+O, z_3, z, 1.0, ORRRRRRRRRRRR
+O, =_1, =, 1.0, ORR
+O, \rightarrow_1, \rightarrow, 1.0, ORRRBelowR
+O, \infty_2, \infty, 1.0, ORRRRRRRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRRRRRRRRRR
+O, r_1, r, 1.0, OR
+O, \log_1, \log, 1.0, O
+O, (_2, (, 1.0, ORRRRRRRRRRR
+
+# Relations from SRT:
+R, (_1, \log_2, Right, 1.0
+R, (_2, z_3, Right, 1.0
+R, )_1, )_2, Right, 1.0
+R, +_1, G_1, Right, 1.0
+R, =_1, \lim_1, Right, 1.0
+R, COMMA_1, \infty_2, Right, 1.0
+R, G_1, (_2, Right, 1.0
+R, \infty_2, )_1, Right, 1.0
+R, \lim_1, (_1, Right, 1.0
+R, \lim_1, z_1, Below, 1.0
+R, \log_1, r_1, Right, 1.0
+R, \log_2, |_1, Right, 1.0
+R, \rightarrow_1, \infty_1, Right, 1.0
+R, r_1, =_1, Right, 1.0
+R, z_1, \rightarrow_1, Right, 1.0
+R, z_2, |_2, Right, 1.0
+R, z_3, COMMA_1, Right, 1.0
+R, |_1, z_2, Right, 1.0
+R, |_2, +_1, Right, 1.0

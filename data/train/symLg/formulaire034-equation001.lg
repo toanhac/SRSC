@@ -1,0 +1,17 @@
+# IUD, 2011_IVC_depart_F034_E001
+# Objects(7):
+O, k_1, k, 1.0, OSub
+O, =_1, -, 1.0, OSubR
+O, 1_1, 1, 1.0, OSubRR
+O, \sum_1, \sum, 1.0, O
+O, k_2, k, 1.0, OR
+O, 4_1, 4, 1.0, OSup
+O, 2_1, 2, 1.0, ORSup
+
+# Relations from SRT:
+EO, =_1, 1_1, Right, 1.0
+EO, \sum_1, 4_1, Sup, 1.0
+EO, \sum_1, k_1, Sub, 1.0
+EO, \sum_1, k_2, Right, 1.0
+EO, k_1, =_1, Right, 1.0
+EO, k_2, 2_1, Sup, 1.0

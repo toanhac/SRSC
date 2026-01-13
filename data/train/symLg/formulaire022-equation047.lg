@@ -1,0 +1,15 @@
+# IUD, 2011_IVC_depart_F022_E047
+# Objects(6):
+O, Y_1, Y, 1.0, OR
+O, d_1, d, 1.0, ORRR
+O, )_1, ), 1.0, ORRRR
+O, Y_2, Y, 1.0, ORRRSub
+O, COMMA_1, COMMA, 1.0, ORR
+O, (_1, (, 1.0, O
+
+# Relations from SRT:
+EO, (_1, Y_1, Right, 1.0
+EO, COMMA_1, d_1, Right, 1.0
+EO, Y_1, COMMA_1, Right, 1.0
+EO, d_1, )_1, Right, 1.0
+EO, d_1, Y_2, Sub, 1.0

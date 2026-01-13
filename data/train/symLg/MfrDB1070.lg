@@ -1,0 +1,7 @@
+# IUD, MfrDB1070
+# Objects(2):
+O, 5_1, 5, 1.0, OSup
+O, e_1, e, 1.0, O
+
+# Relations from SRT:
+EO, e_1, 5_1, Sup, 1.0

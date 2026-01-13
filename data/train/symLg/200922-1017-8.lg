@@ -1,0 +1,46 @@
+# IUD, "200922-1017-8.ink"
+# Objects(21):
+O, 19:, (, 1.0, ORBelowInsideR
+O, 5:, (, 1.0, ORAboveR
+O, 34:35:, x, 1.0, ORRR
+O, 14:, \sqrt, 1.0, ORBelow
+O, 10:9:, +, 1.0, ORAboveRRRR
+O, 1:2:3:4:, \sin, 1.0, ORAbove
+O, 11:12:, 1, 1.0, ORAboveRRRRR
+O, 22:, ), 1.0, ORBelowInsideRRR
+O, 33:, d, 1.0, ORR
+O, 32:, ), 1.0, ORBelowInsideRRRRRRRR
+O, 23:24:, +, 1.0, ORBelowInsideRRRR
+O, 20:21:, x, 1.0, ORBelowInsideRR
+O, 6:7:, x, 1.0, ORAboveRR
+O, 18:, 3, 1.0, ORBelowInsideSup
+O, 8:, ), 1.0, ORAboveRRR
+O, 15:16:17:, \cos, 1.0, ORBelowInside
+O, 13:, -, 1.0, OR
+O, 25:26:27:28:, \tan, 1.0, ORBelowInsideRRRRR
+O, 0:, \int, 1.0, O
+O, 29:, (, 1.0, ORBelowInsideRRRRRR
+O, 30:31:, x, 1.0, ORBelowInsideRRRRRRR
+
+# Relations from SRT:
+EO, 0:, 13:, Right, 1.0
+EO, 10:9:, 11:12:, Right, 1.0
+EO, 13:, 14:, Below, 1.0
+EO, 13:, 1:2:3:4:, Above, 1.0
+EO, 13:, 33:, Right, 1.0
+EO, 14:, 15:16:17:, Inside, 1.0
+EO, 14:, 19:, Inside, 1.0
+EO, 15:16:17:, 18:, Sup, 1.0
+EO, 15:16:17:, 19:, Right, 1.0
+EO, 19:, 20:21:, Right, 1.0
+EO, 1:2:3:4:, 5:, Right, 1.0
+EO, 20:21:, 22:, Right, 1.0
+EO, 22:, 23:24:, Right, 1.0
+EO, 23:24:, 25:26:27:28:, Right, 1.0
+EO, 25:26:27:28:, 29:, Right, 1.0
+EO, 29:, 30:31:, Right, 1.0
+EO, 30:31:, 32:, Right, 1.0
+EO, 33:, 34:35:, Right, 1.0
+EO, 5:, 6:7:, Right, 1.0
+EO, 6:7:, 8:, Right, 1.0
+EO, 8:, 10:9:, Right, 1.0

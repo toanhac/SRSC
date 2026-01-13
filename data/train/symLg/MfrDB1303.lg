@@ -1,0 +1,26 @@
+# IUD, MfrDB1303
+# Objects(11):
+O, 2_1, 2, 1.0, ORRRRRInsideRRSup
+O, \sqrt_1, \sqrt, 1.0, ORRRRR
+O, z_1, z, 1.0, ORR
+O, =_1, =, 1.0, ORRRR
+O, |_2, |, 1.0, ORRR
+O, \sin_1, \sin, 1.0, OR
+O, |_1, |, 1.0, O
+O, 1_1, 1, 1.0, ORRRRRInside
+O, \cos_1, \cos, 1.0, ORRRRRInsideRR
+O, z_2, z, 1.0, ORRRRRInsideRRR
+O, -_1, -, 1.0, ORRRRRInsideR
+
+# Relations from SRT:
+EO, -_1, \cos_1, Right, 1.0
+EO, 1_1, -_1, Right, 1.0
+EO, =_1, \sqrt_1, Right, 1.0
+EO, \cos_1, 2_1, Sup, 1.0
+EO, \cos_1, z_2, Right, 1.0
+EO, \sin_1, z_1, Right, 1.0
+EO, \sqrt_1, -_1, Inside, 1.0
+EO, \sqrt_1, 1_1, Inside, 1.0
+EO, z_1, |_2, Right, 1.0
+EO, |_1, \sin_1, Right, 1.0
+EO, |_2, =_1, Right, 1.0

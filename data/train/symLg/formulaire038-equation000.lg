@@ -1,0 +1,21 @@
+# IUD, 2011_IVC_depart_F038_E000
+# Objects(7):
+O, 9_1, 9, 1.0, OR
+O, 7_1, 7, 1.0, ORRRR
+O, +_1, +, 1.0, ORRR
+O, 6_1, 6, 1.0, ORR
+O, 6_2, 6, 1.0, ORRRR
+O, 8_1, 8, 1.0, ORRRRR
+O, 1_1, 1, 1.0, O
+
+# Relations from SRT:
+EO, +_1, 6_2, Right, 1.0
+EO, +_1, 7_1, Right, 1.0
+EO, 1_1, 9_1, Right, 1.0
+EO, 6_1, +_1, Right, 1.0
+EO, 6_2, 8_1, Right, 1.0
+EO, 8_1, +_1, Right, 1.0
+EO, 9_1, 6_1, Right, 1.0
+# Unused Strokes:
+N, 3, +, 1.0
+N, 4, +, 1.0

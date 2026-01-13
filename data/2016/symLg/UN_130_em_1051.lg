@@ -1,0 +1,17 @@
+# IUD, CROHME_2016_em_1051
+# Objects(7):
+O, 1_1, 1, 1.0, ORRSup
+O, infin_1, \infty, 1.0, OSubR
+O, -_1, -, 1.0, OSub
+O, int_1, \int, 1.0, O
+O, x_1, x, 1.0, ORR
+O, infin_2, \infty, 1.0, OSup
+O, d_1, d, 1.0, OR
+
+# Relations from SRT:
+EO, -_1, infin_1, Right, 1.0
+EO, d_1, x_1, Right, 1.0
+EO, int_1, -_1, Sub, 1.0
+EO, int_1, d_1, Right, 1.0
+EO, int_1, infin_2, Sup, 1.0
+EO, x_1, 1_1, Sup, 1.0

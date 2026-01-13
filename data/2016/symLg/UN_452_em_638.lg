@@ -1,0 +1,17 @@
+# IUD, CROHME_2016_em_638
+# Objects(7):
+O, d_2, d, 1.0, ORRR
+O, d_1, d, 1.0, OR
+O, x_1, x, 1.0, ORR
+O, 3_1, 3, 1.0, ORSup
+O, int_1, \int, 1.0, O
+O, y_1, y, 1.0, ORRRR
+O, 3_2, 3, 1.0, ORRRSup
+
+# Relations from SRT:
+EO, d_1, 3_1, Sup, 1.0
+EO, d_1, x_1, Right, 1.0
+EO, d_2, 3_2, Sup, 1.0
+EO, d_2, y_1, Right, 1.0
+EO, int_1, d_1, Right, 1.0
+EO, x_1, d_2, Right, 1.0

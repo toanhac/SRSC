@@ -1,0 +1,39 @@
+# IUD, CROHME_2016_em_800
+# Objects(18):
+O, times_2, \times, 1.0, ORRRR
+O, 3_2, 3, 1.0, ORRRRR
+O, -_2, -, 1.0, ORRRRRRRRRRR
+O, 3_1, 3, 1.0, ORRRBelow
+O, times_3, \times, 1.0, ORRRRRR
+O, 2_1, 2, 1.0, ORBelow
+O, 4_1, 4, 1.0, ORBelowR
+O, 1_1, 1, 1.0, ORAbove
+O, _1, -, 1.0, OR
+O, times_4, \times, 1.0, ORRRRRRRR
+O, 8_1, 8, 1.0, ORRRAbove
+O, _2, -, 1.0, ORRR
+O, =_1, =, 1.0, ORRRRRRRRRR
+O, -_1, -, 1.0, O
+O, times_1, \times, 1.0, ORR
+O, 4_2, 4, 1.0, ORRRRRRRRRRRR
+O, 6_1, 6, 1.0, ORRRRRRRRR
+O, 2_2, 2, 1.0, ORRRRRRR
+
+# Relations from SRT:
+EO, -_1, _1, Right, 1.0
+EO, -_2, 4_2, Right, 1.0
+EO, 2_1, 4_1, Right, 1.0
+EO, 2_2, times_4, Right, 1.0
+EO, 3_2, times_3, Right, 1.0
+EO, 6_1, =_1, Right, 1.0
+EO, =_1, -_2, Right, 1.0
+EO, _1, 1_1, Above, 1.0
+EO, _1, 2_1, Below, 1.0
+EO, _1, times_1, Right, 1.0
+EO, _2, 3_1, Below, 1.0
+EO, _2, 8_1, Above, 1.0
+EO, _2, times_2, Right, 1.0
+EO, times_1, _2, Right, 1.0
+EO, times_2, 3_2, Right, 1.0
+EO, times_3, 2_2, Right, 1.0
+EO, times_4, 6_1, Right, 1.0

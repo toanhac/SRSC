@@ -1,0 +1,11 @@
+# IUD, CROHME_2016_em_28
+# Objects(4):
+O, g_1, g, 1.0, OR
+O, exist_1, \exists, 1.0, O
+O, G_1, G, 1.0, ORRR
+O, in_1, \in, 1.0, ORR
+
+# Relations from SRT:
+EO, exist_1, g_1, Right, 1.0
+EO, g_1, in_1, Right, 1.0
+EO, in_1, G_1, Right, 1.0

@@ -1,0 +1,35 @@
+# IUD, MfrDB1470
+# Objects(16):
+O, n_3, n, 1.0, ORRRRRR
+O, +_1, +, 1.0, ORRRRRRR
+O, 2_1, 2, 1.0, ORRRBelow
+O, \frac_1, -, 1.0, ORRR
+O, 1_3, 1, 1.0, ORRRRRRRR
+O, (_1, (, 1.0, ORRRRR
+O, n_1, n, 1.0, OAbove
+O, 1_1, 1, 1.0, OBelowRR
+O, \sum_1, \sum, 1.0, O
+O, =_1, =, 1.0, OBelowR
+O, =_2, =, 1.0, ORR
+O, 1_2, 1, 1.0, ORRRAbove
+O, n_2, n, 1.0, ORRRR
+O, )_1, ), 1.0, ORRRRRRRRR
+O, i_2, i, 1.0, OR
+O, i_1, i, 1.0, OBelow
+
+# Relations from SRT:
+EO, (_1, n_3, Right, 1.0
+EO, +_1, 1_3, Right, 1.0
+EO, 1_3, )_1, Right, 1.0
+EO, =_1, 1_1, Right, 1.0
+EO, =_2, \frac_1, Right, 1.0
+EO, \frac_1, 1_2, Above, 1.0
+EO, \frac_1, 2_1, Below, 1.0
+EO, \frac_1, n_2, Right, 1.0
+EO, \sum_1, i_1, Below, 1.0
+EO, \sum_1, i_2, Right, 1.0
+EO, \sum_1, n_1, Above, 1.0
+EO, i_1, =_1, Right, 1.0
+EO, i_2, =_2, Right, 1.0
+EO, n_2, (_1, Right, 1.0
+EO, n_3, +_1, Right, 1.0

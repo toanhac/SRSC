@@ -1,0 +1,29 @@
+# IUD, 2011_IVC_depart_F003_E024
+# Objects(13):
+O, \alpha_2, \alpha, 1.0, ORSup
+O, p_3, p, 1.0, ORRR
+O, \alpha_3, \alpha, 1.0, ORRRSup
+O, k_1, k, 1.0, ORRRSub
+O, \ldots_1, \ldots, 1.0, ORR
+O, k_2, k, 1.0, ORRRSupSub
+O, 1_1, 1, 1.0, OSub
+O, p_1, p, 1.0, O
+O, \alpha_1, \alpha, 1.0, OSup
+O, 2_2, 2, 1.0, ORSupSub
+O, p_2, p, 1.0, OR
+O, 2_1, 2, 1.0, ORSub
+O, 1_2, 1, 1.0, OSupSub
+
+# Relations from SRT:
+EO, \alpha_1, 1_2, Sub, 1.0
+EO, \alpha_2, 2_2, Sub, 1.0
+EO, \alpha_3, k_2, Sub, 1.0
+EO, \ldots_1, p_3, Right, 1.0
+EO, p_1, 1_1, Sub, 1.0
+EO, p_1, \alpha_1, Sup, 1.0
+EO, p_1, p_2, Right, 1.0
+EO, p_2, 2_1, Sub, 1.0
+EO, p_2, \alpha_2, Sup, 1.0
+EO, p_2, \ldots_1, Right, 1.0
+EO, p_3, \alpha_3, Sup, 1.0
+EO, p_3, k_1, Sub, 1.0

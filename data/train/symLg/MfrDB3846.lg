@@ -1,0 +1,35 @@
+# IUD, MfrDB3846
+# Objects(16):
+O, +_1, +, 1.0, ORRRR
+O, \frac_3, -, 1.0, ORRRRR
+O, 2_1, 2, 1.0, ORBelowSup
+O, 1_1, 1, 1.0, ORAbove
+O, (_1, (, 1.0, O
+O, \frac_1, -, 1.0, OR
+O, m_2, m, 1.0, ORRRAboveR
+O, 3_1, 3, 1.0, ORRRAbove
+O, m_3, m, 1.0, ORRRRRBelow
+O, m_1, m, 1.0, ORBelow
+O, \frac_2, -, 1.0, ORRR
+O, )_1, ), 1.0, ORRRRRR
+O, -_1, -, 1.0, ORR
+O, n_1, n, 1.0, ORRRBelow
+O, 2_2, 2, 1.0, ORRRRRAbove
+O, n_2, n, 1.0, ORRRRRBelowSub
+
+# Relations from SRT:
+EO, (_1, \frac_1, Right, 1.0
+EO, +_1, \frac_3, Right, 1.0
+EO, -_1, \frac_2, Right, 1.0
+EO, 3_1, m_2, Right, 1.0
+EO, \frac_1, -_1, Right, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, m_1, Below, 1.0
+EO, \frac_2, +_1, Right, 1.0
+EO, \frac_2, 3_1, Above, 1.0
+EO, \frac_2, n_1, Below, 1.0
+EO, \frac_3, )_1, Right, 1.0
+EO, \frac_3, 2_2, Above, 1.0
+EO, \frac_3, m_3, Below, 1.0
+EO, m_1, 2_1, Sup, 1.0
+EO, m_3, n_2, Sub, 1.0

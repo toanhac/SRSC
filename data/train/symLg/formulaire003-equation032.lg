@@ -1,0 +1,41 @@
+# IUD, 2011_IVC_depart_F003_E032
+# Objects(19):
+O, \int_1, \int, 1.0, ORRRRR
+O, u_1, u, 1.0, ORRRRRRRR
+O, \infty_1, \infty, 1.0, ORRRRRSubR
+O, (_2, (, 1.0, ORRRRRRR
+O, r_2, r, 1.0, ORRRRRRRRRRSupR
+O, u_2, u, 1.0, ORRRRRRRRRRSupRR
+O, (_1, (, 1.0, OR
+O, i_1, i, 1.0, ORRRRRRRRRRSup
+O, =_1, =, 1.0, ORRRR
+O, d_1, d, 1.0, ORRRRRRRRRRR
+O, )_1, ), 1.0, ORRR
+O, g_1, g, 1.0, ORRRRRR
+O, \infty_2, \infty, 1.0, ORRRRRSup
+O, r_1, r, 1.0, ORR
+O, e_1, e, 1.0, ORRRRRRRRRR
+O, -_1, -, 1.0, ORRRRRSub
+O, )_2, ), 1.0, ORRRRRRRRR
+O, u_3, u, 1.0, ORRRRRRRRRRRR
+O, h_1, h, 1.0, O
+
+# Relations from SRT:
+EO, (_1, r_1, Right, 1.0
+EO, (_2, u_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, e_1, Right, 1.0
+EO, -_1, \infty_1, Right, 1.0
+EO, =_1, \int_1, Right, 1.0
+EO, \int_1, -_1, Sub, 1.0
+EO, \int_1, \infty_2, Sup, 1.0
+EO, \int_1, g_1, Right, 1.0
+EO, d_1, u_3, Right, 1.0
+EO, e_1, d_1, Right, 1.0
+EO, e_1, i_1, Sup, 1.0
+EO, g_1, (_2, Right, 1.0
+EO, h_1, (_1, Right, 1.0
+EO, i_1, r_2, Right, 1.0
+EO, r_1, )_1, Right, 1.0
+EO, r_2, u_2, Right, 1.0
+EO, u_1, )_2, Right, 1.0

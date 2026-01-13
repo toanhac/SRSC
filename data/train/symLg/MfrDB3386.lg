@@ -1,0 +1,39 @@
+# IUD, MfrDB3386
+# Objects(18):
+O, 3_1, 3, 1.0, OAbove
+O, =_1, =, 1.0, OR
+O, A_1, A, 1.0, ORRRAbove
+O, +_1, +, 1.0, OAboveRR
+O, x_2, x, 1.0, ORRRBelow
+O, x_1, x, 1.0, OAboveR
+O, y_2, y, 1.0, ORRRBelowRR
+O, 2_2, 2, 1.0, ORRRBelowRRSup
+O, \frac_2, -, 1.0, ORRR
+O, z_1, z, 1.0, OBelow
+O, )_1, ), 1.0, ORRRR
+O, y_1, y, 1.0, OAboveRRR
+O, -_1, -, 1.0, ORRRAboveR
+O, 1_1, 1, 1.0, ORRRAboveRR
+O, 2_1, 2, 1.0, ORRRBelowSup
+O, (_1, (, 1.0, ORR
+O, \frac_1, -, 1.0, O
+O, +_2, +, 1.0, ORRRBelowR
+
+# Relations from SRT:
+EO, (_1, \frac_2, Right, 1.0
+EO, +_1, y_1, Right, 1.0
+EO, +_2, y_2, Right, 1.0
+EO, -_1, 1_1, Right, 1.0
+EO, 3_1, x_1, Right, 1.0
+EO, =_1, (_1, Right, 1.0
+EO, A_1, -_1, Right, 1.0
+EO, \frac_1, 3_1, Above, 1.0
+EO, \frac_1, =_1, Right, 1.0
+EO, \frac_1, z_1, Below, 1.0
+EO, \frac_2, )_1, Right, 1.0
+EO, \frac_2, A_1, Above, 1.0
+EO, \frac_2, x_2, Below, 1.0
+EO, x_1, +_1, Right, 1.0
+EO, x_2, +_2, Right, 1.0
+EO, x_2, 2_1, Sup, 1.0
+EO, y_2, 2_2, Sup, 1.0

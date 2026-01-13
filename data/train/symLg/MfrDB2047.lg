@@ -1,0 +1,15 @@
+# IUD, MfrDB2047
+# Objects(6):
+O, \sqrt_1, \sqrt, 1.0, O
+O, +_1, +, 1.0, OR
+O, 3_1, 3, 1.0, OInsideSup
+O, a_2, a, 1.0, ORR
+O, a_1, a, 1.0, OInside
+O, 4_1, 4, 1.0, ORRSup
+
+# Relations from SRT:
+EO, +_1, a_2, Right, 1.0
+EO, \sqrt_1, +_1, Right, 1.0
+EO, \sqrt_1, a_1, Inside, 1.0
+EO, a_1, 3_1, Sup, 1.0
+EO, a_2, 4_1, Sup, 1.0

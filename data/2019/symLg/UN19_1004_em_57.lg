@@ -1,0 +1,37 @@
+# IUD, CROHME19_57
+# Objects(17):
+O, 5_1, 5, 1.0, ORRBelowR
+O, 9_1, 9, 1.0, ORRRRRR
+O, COMMA_1, COMMA, 1.0, ORRRRR
+O, 4_1, 4, 1.0, ORRRRRRRR
+O, 0_1, 0, 1.0, ORRRR
+O, P_1, P, 1.0, O
+O, _2, \sqrt, 1.0, ORRAboveR
+O, x_1, x, 1.0, OSubRR
+O, =_2, =, 1.0, ORRR
+O, m_1, m, 1.0, OSub
+O, =_1, =, 1.0, OR
+O, 1_1, 1, 1.0, ORRBelow
+O, _1, -, 1.0, ORR
+O, 8_1, 8, 1.0, ORRAbove
+O, 3_1, 3, 1.0, ORRAboveRInside
+O, a_1, a, 1.0, OSubR
+O, 2_1, 2, 1.0, ORRRRRRR
+
+# Relations from SRT:
+R, 0_1, COMMA_1, Right, 1.0
+R, 1_1, 5_1, Right, 1.0
+R, 2_1, 4_1, Right, 1.0
+R, 8_1, _2, Right, 1.0
+R, 9_1, 2_1, Right, 1.0
+R, =_1, _1, Right, 1.0
+R, =_2, 0_1, Right, 1.0
+R, COMMA_1, 9_1, Right, 1.0
+R, P_1, =_1, Right, 1.0
+R, P_1, m_1, Sub, 1.0
+R, _1, 1_1, Below, 1.0
+R, _1, 8_1, Above, 1.0
+R, _1, =_2, Right, 1.0
+R, _2, 3_1, Inside, 1.0
+R, a_1, x_1, Right, 1.0
+R, m_1, a_1, Right, 1.0

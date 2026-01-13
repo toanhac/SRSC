@@ -1,0 +1,17 @@
+# IUD, MfrDB1784
+# Objects(7):
+O, \cdot_2, ., 1.0, ORRRRR
+O, a_1, a, 1.0, ORR
+O, b_1, b, 1.0, ORRRR
+O, \cdot_1, ., 1.0, ORRR
+O, =_1, =, 1.0, OR
+O, V_1, V, 1.0, O
+O, c_1, c, 1.0, ORRRRRR
+
+# Relations from SRT:
+EO, =_1, a_1, Right, 1.0
+EO, V_1, =_1, Right, 1.0
+EO, \cdot_1, b_1, Right, 1.0
+EO, \cdot_2, c_1, Right, 1.0
+EO, a_1, \cdot_1, Right, 1.0
+EO, b_1, \cdot_2, Right, 1.0

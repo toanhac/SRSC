@@ -1,0 +1,41 @@
+# IUD, 2011_IVC_depart_F034_E057
+# Objects(19):
+O, t_2, t, 1.0, ORRRRRRRRRRSup
+O, (_1, (, 1.0, OR
+O, 0_2, 0, 1.0, ORRRRRRRRRRSub
+O, )_3, ), 1.0, ORRRRRRRRRRRRRR
+O, (_3, (, 1.0, ORRRRRRRRRRRR
+O, t_1, t, 1.0, ORR
+O, X_3, X, 1.0, ORRRRRRRRRRR
+O, X_1, X, 1.0, O
+O, \int_1, \int, 1.0, ORRRRRRRRRR
+O, s_2, s, 1.0, ORRRRRRRRRRRRRRRR
+O, X_2, X, 1.0, ORRRRR
+O, )_2, ), 1.0, ORRRRRRRR
+O, (_2, (, 1.0, ORRRRRR
+O, d_1, d, 1.0, ORRRRRRRRRRRRRRR
+O, =_1, =, 1.0, ORRRR
+O, s_1, s, 1.0, ORRRRRRRRRRRRR
+O, )_1, ), 1.0, ORRR
+O, 0_1, 0, 1.0, ORRRRRRR
+O, +_1, +, 1.0, ORRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, t_1, Right, 1.0
+EO, (_2, 0_1, Right, 1.0
+EO, (_3, s_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, +_1, Right, 1.0
+EO, )_3, d_1, Right, 1.0
+EO, +_1, \int_1, Right, 1.0
+EO, 0_1, )_2, Right, 1.0
+EO, =_1, X_2, Right, 1.0
+EO, X_1, (_1, Right, 1.0
+EO, X_2, (_2, Right, 1.0
+EO, X_3, (_3, Right, 1.0
+EO, \int_1, 0_2, Sub, 1.0
+EO, \int_1, X_3, Right, 1.0
+EO, \int_1, t_2, Sup, 1.0
+EO, d_1, s_2, Right, 1.0
+EO, s_1, )_3, Right, 1.0
+EO, t_1, )_1, Right, 1.0

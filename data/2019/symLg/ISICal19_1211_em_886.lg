@@ -1,0 +1,19 @@
+# IUD, CROHME19_886
+# Objects(8):
+O, le_2, \leq, 1.0, ORRRR
+O, le_1, \leq, 1.0, ORR
+O, 0_2, 0, 1.0, ORRRRRSub
+O, x_2, x, 1.0, ORRR
+O, -_1, -, 1.0, O
+O, 0_1, 0, 1.0, ORSub
+O, x_1, x, 1.0, OR
+O, x_3, x, 1.0, ORRRRR
+
+# Relations from SRT:
+R, -_1, x_1, Right, 1.0
+R, le_1, x_2, Right, 1.0
+R, le_2, x_3, Right, 1.0
+R, x_1, 0_1, Sub, 1.0
+R, x_1, le_1, Right, 1.0
+R, x_2, le_2, Right, 1.0
+R, x_3, 0_2, Sub, 1.0

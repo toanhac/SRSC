@@ -1,0 +1,28 @@
+# IUD, 2011_KME2_w20_e95
+# Objects(11):
+O, \sqrt_4, \sqrt, 1.0, OInsideRRInsideRRInsideRR
+O, 1_1, 1, 1.0, OInside
+O, 2_1, 2, 1.0, OInsideRRInside
+O, +_3, +, 1.0, OInsideRRInsideRRInsideR
+O, \sqrt_2, \sqrt, 1.0, OInsideRR
+O, 3_1, 3, 1.0, OInsideRRInsideRRInside
+O, \sqrt_3, \sqrt, 1.0, OInsideRRInsideRR
+O, \sqrt_1, \sqrt, 1.0, O
+O, +_2, +, 1.0, OInsideRRInsideR
+O, +_1, +, 1.0, OInsideR
+O, 4_1, 4, 1.0, OInsideRRInsideRRInsideRRInside
+
+# Relations from SRT:
+EO, +_1, \sqrt_2, Right, 1.0
+EO, +_2, \sqrt_3, Right, 1.0
+EO, +_3, \sqrt_4, Right, 1.0
+EO, 1_1, +_1, Right, 1.0
+EO, 2_1, +_2, Right, 1.0
+EO, 3_1, +_3, Right, 1.0
+EO, \sqrt_1, +_1, Inside, 1.0
+EO, \sqrt_1, 1_1, Inside, 1.0
+EO, \sqrt_2, +_2, Inside, 1.0
+EO, \sqrt_2, 2_1, Inside, 1.0
+EO, \sqrt_3, +_3, Inside, 1.0
+EO, \sqrt_3, 3_1, Inside, 1.0
+EO, \sqrt_4, 4_1, Inside, 1.0

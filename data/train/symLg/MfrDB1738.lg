@@ -1,0 +1,47 @@
+# IUD, MfrDB1738
+# Objects(22):
+O, (_2, (, 1.0, ORRRRRRRRRR
+O, COMMA_1, COMMA, 1.0, ORRR
+O, y_3, y, 1.0, ORRRRRRRRRRRRRRRRRR
+O, +_1, +, 1.0, ORRRRRRRRRRRRRRR
+O, x_2, x, 1.0, ORRRRRRRRRRR
+O, F_1, F, 1.0, O
+O, COMMA_2, COMMA, 1.0, ORRRRR
+O, y_2, y, 1.0, ORRRRRRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRR
+O, x_1, x, 1.0, ORR
+O, (_1, (, 1.0, OR
+O, )_2, ), 1.0, ORRRRRRRRRRRRRR
+O, =_1, =, 1.0, ORRRRRRRR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRRRRRRRRR
+O, COMMA_4, COMMA, 1.0, ORRRRRRRRRRRRRRRRRRR
+O, x_3, x, 1.0, ORRRRRRRRRRRRRRRRRRRR
+O, G_1, G, 1.0, ORRRRRRRRR
+O, H_1, H, 1.0, ORRRRRRRRRRRRRRRR
+O, y_1, y, 1.0, ORRRR
+O, (_3, (, 1.0, ORRRRRRRRRRRRRRRRR
+O, z_1, z, 1.0, ORRRRRR
+O, COMMA_3, COMMA, 1.0, ORRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, (_2, x_2, Right, 1.0
+EO, (_3, y_3, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, +_1, Right, 1.0
+EO, +_1, H_1, Right, 1.0
+EO, =_1, G_1, Right, 1.0
+EO, COMMA_1, y_1, Right, 1.0
+EO, COMMA_2, z_1, Right, 1.0
+EO, COMMA_3, y_2, Right, 1.0
+EO, COMMA_4, x_3, Right, 1.0
+EO, F_1, (_1, Right, 1.0
+EO, G_1, (_2, Right, 1.0
+EO, H_1, (_3, Right, 1.0
+EO, x_1, COMMA_1, Right, 1.0
+EO, x_2, COMMA_3, Right, 1.0
+EO, x_3, )_3, Right, 1.0
+EO, y_1, COMMA_2, Right, 1.0
+EO, y_2, )_2, Right, 1.0
+EO, y_3, COMMA_4, Right, 1.0
+EO, z_1, )_1, Right, 1.0

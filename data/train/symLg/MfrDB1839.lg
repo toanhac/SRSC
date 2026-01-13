@@ -1,0 +1,39 @@
+# IUD, MfrDB1839
+# Objects(18):
+O, v_2, v, 1.0, ORRRRR
+O, 2_1, 2, 1.0, ORRInsideAbove
+O, z_1, z, 1.0, ORRInsideAboveRRSub
+O, \sqrt_2, \sqrt, 1.0, ORRRR
+O, \sqrt_1, \sqrt, 1.0, ORR
+O, \frac_1, -, 1.0, ORRInside
+O, k_2, k, 1.0, ORRRRRSub
+O, z_2, z, 1.0, ORRInsideBelowSub
+O, v_1, v, 1.0, O
+O, 2_2, 2, 1.0, ORRRRInside
+O, k_1, k, 1.0, ORRInsideAboveR
+O, M_1, M, 1.0, ORRInsideAboveRR
+O, =_1, =, 1.0, OR
+O, h_1, h, 1.0, ORRInsideBelowRR
+O, =_2, =, 1.0, ORRR
+O, +_1, +, 1.0, ORRInsideBelowR
+O, p_1, p, 1.0, OSub
+O, R_1, R, 1.0, ORRInsideBelow
+
+# Relations from SRT:
+EO, +_1, h_1, Right, 1.0
+EO, 2_1, k_1, Right, 1.0
+EO, =_1, \sqrt_1, Right, 1.0
+EO, =_2, \sqrt_2, Right, 1.0
+EO, M_1, z_1, Sub, 1.0
+EO, R_1, +_1, Right, 1.0
+EO, R_1, z_2, Sub, 1.0
+EO, \frac_1, 2_1, Above, 1.0
+EO, \frac_1, R_1, Below, 1.0
+EO, \sqrt_1, =_2, Right, 1.0
+EO, \sqrt_1, \frac_1, Inside, 1.0
+EO, \sqrt_2, 2_2, Inside, 1.0
+EO, \sqrt_2, v_2, Right, 1.0
+EO, k_1, M_1, Right, 1.0
+EO, v_1, =_1, Right, 1.0
+EO, v_1, p_1, Sub, 1.0
+EO, v_2, k_2, Sub, 1.0

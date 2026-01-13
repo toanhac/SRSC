@@ -1,0 +1,19 @@
+# IUD, MfrDB0007
+# Objects(8):
+O, 2_1, 2, 1.0, OSub
+O, =_1, =, 1.0, OR
+O, V_1, V, 1.0, O
+O, 2_2, 2, 1.0, ORRBelowInside
+O, \frac_1, -, 1.0, ORR
+O, V_2, V, 1.0, ORRAbove
+O, \sqrt_1, \sqrt, 1.0, ORRBelow
+O, P_1, P, 1.0, ORRAboveSub
+
+# Relations from SRT:
+EO, =_1, \frac_1, Right, 1.0
+EO, V_1, 2_1, Sub, 1.0
+EO, V_1, =_1, Right, 1.0
+EO, V_2, P_1, Sub, 1.0
+EO, \frac_1, V_2, Above, 1.0
+EO, \frac_1, \sqrt_1, Below, 1.0
+EO, \sqrt_1, 2_2, Inside, 1.0

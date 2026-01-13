@@ -1,0 +1,26 @@
+# IUD, MfrDB3374
+# Objects(11):
+O, \sqrt_3, \sqrt, 1.0, ORRR
+O, y_2, y, 1.0, ORRRInside
+O, \sqrt_2, \sqrt, 1.0, ORR
+O, \sqrt_4, \sqrt, 1.0, ORRRR
+O, x_1, x, 1.0, OInside
+O, x_2, x, 1.0, ORRInside
+O, y_1, y, 1.0, OInsideR
+O, =_1, =, 1.0, OR
+O, z_1, z, 1.0, OInsideRR
+O, z_2, z, 1.0, ORRRRInside
+O, \sqrt_1, \sqrt, 1.0, O
+
+# Relations from SRT:
+EO, =_1, \sqrt_2, Right, 1.0
+EO, \sqrt_1, =_1, Right, 1.0
+EO, \sqrt_1, x_1, Inside, 1.0
+EO, \sqrt_1, y_1, Inside, 1.0
+EO, \sqrt_2, \sqrt_3, Right, 1.0
+EO, \sqrt_2, x_2, Inside, 1.0
+EO, \sqrt_3, \sqrt_4, Right, 1.0
+EO, \sqrt_3, y_2, Inside, 1.0
+EO, \sqrt_4, z_2, Inside, 1.0
+EO, x_1, y_1, Right, 1.0
+EO, y_1, z_1, Right, 1.0

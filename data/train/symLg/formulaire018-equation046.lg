@@ -1,0 +1,15 @@
+# IUD, 2011_IVC_depart_F018_E046
+# Objects(6):
+O, z_1, z, 1.0, O
+O, r_1, r, 1.0, ORR
+O, i_1, i, 1.0, ORRRSup
+O, e_1, e, 1.0, ORRR
+O, \theta_1, \theta, 1.0, ORRRSupR
+O, =_1, =, 1.0, OR
+
+# Relations from SRT:
+EO, =_1, r_1, Right, 1.0
+EO, e_1, i_1, Sup, 1.0
+EO, i_1, \theta_1, Right, 1.0
+EO, r_1, e_1, Right, 1.0
+EO, z_1, =_1, Right, 1.0

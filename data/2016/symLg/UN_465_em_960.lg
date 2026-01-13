@@ -1,0 +1,41 @@
+# IUD, CROHME_2016_em_960
+# Objects(19):
+O, y_1, y, 1.0, O
+O, (_1, (, 1.0, ORRR
+O, x_2, x, 1.0, ORRRR
+O, (_2, (, 1.0, ORRRRRRRR
+O, i_2, i, 1.0, ORRSub
+O, x_3, x, 1.0, ORRRRRRRRR
+O, i_5, i, 1.0, ORRRRRRRRRRRSub
+O, i_1, i, 1.0, OSub
+O, )_1, ), 1.0, ORRRRRRR
+O, a_1, a, 1.0, ORRRRRRRRRRR
+O, -_1, -, 1.0, ORRRRR
+O, 2_1, 2, 1.0, OSup
+O, =_1, =, 1.0, OR
+O, i_4, i, 1.0, ORRRRRRRRRSub
+O, i_3, i, 1.0, ORRRRSub
+O, )_2, ), 1.0, ORRRRRRRRRRRR
+O, -_2, -, 1.0, ORRRRRRRRRR
+O, 1_1, 1, 1.0, ORRRRRR
+O, x_1, x, 1.0, ORR
+
+# Relations from SRT:
+EO, (_1, x_2, Right, 1.0
+EO, (_2, x_3, Right, 1.0
+EO, )_1, (_2, Right, 1.0
+EO, -_1, 1_1, Right, 1.0
+EO, -_2, a_1, Right, 1.0
+EO, 1_1, )_1, Right, 1.0
+EO, =_1, x_1, Right, 1.0
+EO, a_1, )_2, Right, 1.0
+EO, a_1, i_5, Sub, 1.0
+EO, x_1, (_1, Right, 1.0
+EO, x_1, i_2, Sub, 1.0
+EO, x_2, -_1, Right, 1.0
+EO, x_2, i_3, Sub, 1.0
+EO, x_3, -_2, Right, 1.0
+EO, x_3, i_4, Sub, 1.0
+EO, y_1, 2_1, Sup, 1.0
+EO, y_1, =_1, Right, 1.0
+EO, y_1, i_1, Sub, 1.0

@@ -1,0 +1,49 @@
+# IUD, MfrDB3111
+# Objects(23):
+O, x_2, x, 1.0, ORRRRRRR
+O, (_1, (, 1.0, ORRR
+O, f_1, f, 1.0, ORR
+O, b_1, b, 1.0, ORAbove
+O, |_2, |, 1.0, ORRRRRRRR
+O, f_2, f, 1.0, ORRRRRRRRRRRR
+O, |_4, |, 1.0, ORRRRRRRRRRRRRRRR
+O, |_3, |, 1.0, ORRRRRRRRRRR
+O, a_1, a, 1.0, ORBelow
+O, a_2, a, 1.0, ORRRRRRRRRRBelow
+O, |_1, |, 1.0, O
+O, \int_2, \int, 1.0, ORRRRRRRRRR
+O, d_1, d, 1.0, ORRRRRR
+O, \leq_1, \leq, 1.0, ORRRRRRRRR
+O, x_4, x, 1.0, ORRRRRRRRRRRRRRRRRR
+O, (_2, (, 1.0, ORRRRRRRRRRRRR
+O, b_2, b, 1.0, ORRRRRRRRRRAbove
+O, )_2, ), 1.0, ORRRRRRRRRRRRRRR
+O, x_1, x, 1.0, ORRRR
+O, )_1, ), 1.0, ORRRRR
+O, d_2, d, 1.0, ORRRRRRRRRRRRRRRRR
+O, \int_1, \int, 1.0, OR
+O, x_3, x, 1.0, ORRRRRRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, (_2, x_3, Right, 1.0
+EO, )_1, d_1, Right, 1.0
+EO, )_2, |_4, Right, 1.0
+EO, \int_1, a_1, Below, 1.0
+EO, \int_1, b_1, Above, 1.0
+EO, \int_1, f_1, Right, 1.0
+EO, \int_2, a_2, Below, 1.0
+EO, \int_2, b_2, Above, 1.0
+EO, \int_2, |_3, Right, 1.0
+EO, \leq_1, \int_2, Right, 1.0
+EO, d_1, x_2, Right, 1.0
+EO, d_2, x_4, Right, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, f_2, (_2, Right, 1.0
+EO, x_1, )_1, Right, 1.0
+EO, x_2, |_2, Right, 1.0
+EO, x_3, )_2, Right, 1.0
+EO, |_1, \int_1, Right, 1.0
+EO, |_2, \leq_1, Right, 1.0
+EO, |_3, f_2, Right, 1.0
+EO, |_4, d_2, Right, 1.0

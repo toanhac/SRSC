@@ -1,0 +1,11 @@
+# IUD, CROHME19_507
+# Objects(4):
+O, \beta_1, \beta, 1.0, OR
+O, i_2, i, 1.0, ORSup
+O, \sum_1, \sum, 1.0, O
+O, i_1, i, 1.0, OBelow
+
+# Relations from SRT:
+R, \beta_1, i_2, Sup, 1.0
+R, \sum_1, \beta_1, Right, 1.0
+R, \sum_1, i_1, Below, 1.0

@@ -1,0 +1,42 @@
+# IUD, MfrDB1626
+# Objects(19):
+O, 1_2, 1, 1.0, OAboveRRInsideRR
+O, (_1, (, 1.0, ORRR
+O, 2_1, 2, 1.0, OAboveRRInsideR
+O, 1_1, 1, 1.0, OAboveRRInside
+O, COMMA_1, COMMA, 1.0, ORRRRR
+O, f_1, f, 1.0, ORR
+O, b_2, b, 1.0, ORRRRRR
+O, b_1, b, 1.0, OAbove
+O, 1_4, 1, 1.0, OBelowRRRR
+O, 0_1, 0, 1.0, OBelowRRR
+O, a_1, a, 1.0, OBelow
+O, a_2, a, 1.0, ORRRR
+O, )_1, ), 1.0, ORRRRRRR
+O, -_1, -, 1.0, OBelowR
+O, +_1, +, 1.0, OAboveR
+O, \sqrt_1, \sqrt, 1.0, OAboveRR
+O, 1_3, 1, 1.0, OBelowRR
+O, \frac_1, -, 1.0, O
+O, =_1, =, 1.0, OR
+
+# Relations from SRT:
+EO, (_1, a_2, Right, 1.0
+EO, +_1, \sqrt_1, Right, 1.0
+EO, -_1, 1_3, Right, 1.0
+EO, 0_1, 1_4, Right, 1.0
+EO, 1_1, 2_1, Right, 1.0
+EO, 1_3, 0_1, Right, 1.0
+EO, 2_1, 1_2, Right, 1.0
+EO, =_1, f_1, Right, 1.0
+EO, COMMA_1, b_2, Right, 1.0
+EO, \frac_1, =_1, Right, 1.0
+EO, \frac_1, a_1, Below, 1.0
+EO, \frac_1, b_1, Above, 1.0
+EO, \sqrt_1, 1_1, Inside, 1.0
+EO, \sqrt_1, 2_1, Inside, 1.0
+EO, a_1, -_1, Right, 1.0
+EO, a_2, COMMA_1, Right, 1.0
+EO, b_1, +_1, Right, 1.0
+EO, b_2, )_1, Right, 1.0
+EO, f_1, (_1, Right, 1.0

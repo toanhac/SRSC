@@ -1,0 +1,9 @@
+# IUD, 2011_IVC_depart_F018_E069
+# Objects(3):
+O, \gamma_1, \gamma, 1.0, OSub
+O, k_1, k, 1.0, OSup
+O, t_1, t, 1.0, O
+
+# Relations from SRT:
+EO, t_1, \gamma_1, Sub, 1.0
+EO, t_1, k_1, Sup, 1.0

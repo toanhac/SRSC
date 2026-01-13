@@ -1,0 +1,18 @@
+# IUD, CROHME19_98
+# Objects(7):
+O, g_2, g, 1.0, OInsideR
+O, t_2, t, 1.0, OInsideSubR
+O, g_1, g, 1.0, OInside
+O, _1, \sqrt, 1.0, O
+O, x_1, x, 1.0, OInsideRSub
+O, x_2, x, 1.0, OInsideRSubR
+O, t_1, t, 1.0, OInsideSub
+
+# Relations from SRT:
+R, _1, g_1, Inside, 1.0
+R, _1, g_2, Inside, 1.0
+R, g_1, g_2, Right, 1.0
+R, g_1, t_1, Sub, 1.0
+R, g_2, x_1, Sub, 1.0
+R, t_1, t_2, Right, 1.0
+R, x_1, x_2, Right, 1.0

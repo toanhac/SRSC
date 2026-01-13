@@ -1,0 +1,29 @@
+# IUD, 2011_IVC_depart_F022_E034
+# Objects(13):
+O, COMMA_3, COMMA, 1.0, ORRRRRR
+O, d_2, d, 1.0, ORRR
+O, (_1, (, 1.0, O
+O, )_1, ), 1.0, ORRRRRRRR
+O, d_3, d, 1.0, ORRRRR
+O, COMMA_1, COMMA, 1.0, ORR
+O, d_1, d, 1.0, OR
+O, 2_1, 2, 1.0, ORRRSub
+O, 1_1, 1, 1.0, ORSub
+O, d_4, d, 1.0, ORRRRRRR
+O, 3_1, 3, 1.0, ORRRRRSub
+O, COMMA_2, COMMA, 1.0, ORRRR
+O, 4_1, 4, 1.0, ORRRRRRRSub
+
+# Relations from SRT:
+EO, (_1, d_1, Right, 1.0
+EO, COMMA_1, d_2, Right, 1.0
+EO, COMMA_2, d_3, Right, 1.0
+EO, COMMA_3, d_4, Right, 1.0
+EO, d_1, 1_1, Sub, 1.0
+EO, d_1, COMMA_1, Right, 1.0
+EO, d_2, 2_1, Sub, 1.0
+EO, d_2, COMMA_2, Right, 1.0
+EO, d_3, 3_1, Sub, 1.0
+EO, d_3, COMMA_3, Right, 1.0
+EO, d_4, )_1, Right, 1.0
+EO, d_4, 4_1, Sub, 1.0

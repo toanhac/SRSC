@@ -1,0 +1,11 @@
+# IUD, CROHME_2016_em_976
+# Objects(4):
+O, log_1, \log, 1.0, OR
+O, y_2, y, 1.0, ORR
+O, y_1, y, 1.0, OInside
+O, _1, \sqrt, 1.0, O
+
+# Relations from SRT:
+EO, _1, log_1, Right, 1.0
+EO, _1, y_1, Inside, 1.0
+EO, log_1, y_2, Right, 1.0

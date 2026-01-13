@@ -1,0 +1,18 @@
+# IUD, 2011_KAIST_Data2_26_sub_9
+# Objects(7):
+O, 4_1, 4, 1.0, OInsideRR
+O, 2_1, 2, 1.0, OInsideSup
+O, a_1, a, 1.0, OInsideRRR
+O, c_1, c, 1.0, OInsideRRRR
+O, b_1, b, 1.0, OInside
+O, _1, \sqrt, 1.0, O
+O, -_1, -, 1.0, OInsideR
+
+# Relations from SRT:
+EO, -_1, 4_1, Right, 1.0
+EO, 4_1, a_1, Right, 1.0
+EO, _1, -_1, Inside, 1.0
+EO, _1, b_1, Inside, 1.0
+EO, a_1, c_1, Right, 1.0
+EO, b_1, -_1, Right, 1.0
+EO, b_1, 2_1, Sup, 1.0

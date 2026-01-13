@@ -1,0 +1,33 @@
+# IUD, 2011_IVC_depart_F014_E014
+# Objects(15):
+O, =_1, =, 1.0, ORR
+O, \rightarrow_1, \rightarrow, 1.0, OBelowR
+O, x_2, x, 1.0, ORAboveRR
+O, (_2, (, 1.0, ORBelowR
+O, )_2, ), 1.0, ORBelowRRR
+O, (_1, (, 1.0, ORAboveR
+O, a_1, a, 1.0, OBelowRR
+O, x_3, x, 1.0, ORBelowRR
+O, f_1, f, 1.0, ORAbove
+O, _1, -, 1.0, OR
+O, 1_1, 1, 1.0, ORRR
+O, x_1, x, 1.0, OBelow
+O, )_1, ), 1.0, ORAboveRRR
+O, \lim_1, \lim, 1.0, O
+O, g_1, g, 1.0, ORBelow
+
+# Relations from SRT:
+EO, (_1, x_2, Right, 1.0
+EO, (_2, x_3, Right, 1.0
+EO, =_1, 1_1, Right, 1.0
+EO, \lim_1, _1, Right, 1.0
+EO, \lim_1, x_1, Below, 1.0
+EO, \rightarrow_1, a_1, Right, 1.0
+EO, _1, =_1, Right, 1.0
+EO, _1, f_1, Above, 1.0
+EO, _1, g_1, Below, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, g_1, (_2, Right, 1.0
+EO, x_1, \rightarrow_1, Right, 1.0
+EO, x_2, )_1, Right, 1.0
+EO, x_3, )_2, Right, 1.0

@@ -1,0 +1,47 @@
+# IUD, 2011_IVC_depart_F006_E044
+# Objects(22):
+O, _3, -, 1.0, ORRRRRRR
+O, -_2, -, 1.0, ORRRRRBelowR
+O, _2, \sqrt, 1.0, ORRRRRAbove
+O, 4_2, 4, 1.0, ORRRRRRRBelowRR
+O, -_3, -, 1.0, ORRRRRRRAboveR
+O, =_2, =, 1.0, ORRRRRR
+O, -_4, -, 1.0, ORRRRRRRBelowR
+O, f_1, f, 1.0, O
+O, -_1, -, 1.0, ORRRRRAboveR
+O, 2_2, 2, 1.0, ORRRRRRRAboveRR
+O, )_1, ), 1.0, ORRR
+O, x_2, x, 1.0, ORRRRRAboveInside
+O, _1, -, 1.0, ORRRRR
+O, 2_3, 2, 1.0, ORRRRRRRBelowSup
+O, (_1, (, 1.0, OR
+O, x_3, x, 1.0, ORRRRRBelow
+O, 2_1, 2, 1.0, ORRRRRAboveRR
+O, 4_1, 4, 1.0, ORRRRRBelowRR
+O, u_2, u, 1.0, ORRRRRRRBelow
+O, x_1, x, 1.0, ORR
+O, =_1, =, 1.0, ORRRR
+O, u_1, u, 1.0, ORRRRRRRAbove
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, -_1, 2_1, Right, 1.0
+EO, -_2, 4_1, Right, 1.0
+EO, -_3, 2_2, Right, 1.0
+EO, -_4, 4_2, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, =_2, _3, Right, 1.0
+EO, _1, =_2, Right, 1.0
+EO, _1, _2, Above, 1.0
+EO, _1, x_3, Below, 1.0
+EO, _2, -_1, Right, 1.0
+EO, _2, x_2, Inside, 1.0
+EO, _3, u_1, Above, 1.0
+EO, _3, u_2, Below, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, u_1, -_3, Right, 1.0
+EO, u_2, -_4, Right, 1.0
+EO, u_2, 2_3, Sup, 1.0
+EO, x_1, )_1, Right, 1.0
+EO, x_3, -_2, Right, 1.0

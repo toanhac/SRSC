@@ -1,0 +1,18 @@
+# IUD, CROHME19_1040
+# Objects(7):
+O, 2_1, 2, 1.0, ORBelowInsideRR
+O, pm_1, \pm, 1.0, O
+O, 1_2, 1, 1.0, ORBelowInside
+O, _2, \sqrt, 1.0, ORBelow
+O, 3_1, 3, 1.0, ORBelowInsideR
+O, _1, -, 1.0, OR
+O, 1_1, 1, 1.0, ORAbove
+
+# Relations from SRT:
+R, 1_2, 3_1, Right, 1.0
+R, 3_1, 2_1, Right, 1.0
+R, _1, 1_1, Above, 1.0
+R, _1, _2, Below, 1.0
+R, _2, 1_2, Inside, 1.0
+R, _2, 3_1, Inside, 1.0
+R, pm_1, _1, Right, 1.0

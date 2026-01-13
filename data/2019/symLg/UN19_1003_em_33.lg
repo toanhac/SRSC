@@ -1,0 +1,9 @@
+# IUD, CROHME19_33
+# Objects(3):
+O, f_1, f, 1.0, O
+O, \sin_1, \sin, 1.0, OR
+O, \alpha_1, \alpha, 1.0, ORR
+
+# Relations from SRT:
+R, \sin_1, \alpha_1, Right, 1.0
+R, f_1, \sin_1, Right, 1.0

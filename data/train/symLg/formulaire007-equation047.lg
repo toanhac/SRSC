@@ -1,0 +1,17 @@
+# IUD, 2011_IVC_depart_F007_E047
+# Objects(7):
+O, \ldots_1, \ldots, 1.0, ORR
+O, k_1, k, 1.0, O
+O, k_2, k, 1.0, ORRRR
+O, 1_1, 1, 1.0, OSub
+O, COMMA_2, COMMA, 1.0, ORRR
+O, COMMA_1, COMMA, 1.0, OR
+O, m_1, m, 1.0, ORRRRSub
+
+# Relations from SRT:
+EO, COMMA_1, \ldots_1, Right, 1.0
+EO, COMMA_2, k_2, Right, 1.0
+EO, \ldots_1, COMMA_2, Right, 1.0
+EO, k_1, 1_1, Sub, 1.0
+EO, k_1, COMMA_1, Right, 1.0
+EO, k_2, m_1, Sub, 1.0

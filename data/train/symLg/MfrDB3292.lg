@@ -1,0 +1,9 @@
+# IUD, MfrDB3292
+# Objects(3):
+O, b_1, b, 1.0, ORR
+O, a_1, a, 1.0, O
+O, =_1, =, 1.0, OR
+
+# Relations from SRT:
+EO, =_1, b_1, Right, 1.0
+EO, a_1, =_1, Right, 1.0

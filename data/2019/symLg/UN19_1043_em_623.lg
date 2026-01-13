@@ -1,0 +1,23 @@
+# IUD, CROHME19_623
+# Objects(10):
+O, \cos_1, \cos, 1.0, ORRRRRR
+O, 2_1, 2, 1.0, O
+O, \alpha_2, \alpha, 1.0, ORRRRRRRR
+O, -_1, -, 1.0, ORRRRR
+O, \sin_1, \sin, 1.0, OR
+O, 1_1, 1, 1.0, ORRRR
+O, 2_2, 2, 1.0, ORSup
+O, \alpha_1, \alpha, 1.0, ORR
+O, =_1, =, 1.0, ORRR
+O, 2_3, 2, 1.0, ORRRRRRR
+
+# Relations from SRT:
+R, -_1, \cos_1, Right, 1.0
+R, 1_1, -_1, Right, 1.0
+R, 2_1, \sin_1, Right, 1.0
+R, 2_3, \alpha_2, Right, 1.0
+R, =_1, 1_1, Right, 1.0
+R, \alpha_1, =_1, Right, 1.0
+R, \cos_1, 2_3, Right, 1.0
+R, \sin_1, 2_2, Sup, 1.0
+R, \sin_1, \alpha_1, Right, 1.0

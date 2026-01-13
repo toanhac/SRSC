@@ -1,0 +1,13 @@
+# IUD, "2009213-137-183.ink"
+# Objects(5):
+O, 2:, (, 1.0, ORR
+O, 3:4:5:, F, 1.0, ORRR
+O, 6:, ), 1.0, ORRRR
+O, 0:, -, 1.0, O
+O, 1:, w, 1.0, OR
+
+# Relations from SRT:
+EO, 0:, 1:, Right, 1.0
+EO, 1:, 2:, Right, 1.0
+EO, 2:, 3:4:5:, Right, 1.0
+EO, 3:4:5:, 6:, Right, 1.0

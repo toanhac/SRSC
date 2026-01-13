@@ -1,0 +1,27 @@
+# IUD, CROHME19_722
+# Objects(12):
+O, 1_1, 1, 1.0, ORRRSupRR
+O, =_1, =, 1.0, OR
+O, sum_1, \sum, 1.0, ORR
+O, H_1, H, 1.0, O
+O, n_2, n, 1.0, ORRRSup
+O, b_1, b, 1.0, ORRRR
+O, n_1, n, 1.0, OSub
+O, j_2, j, 1.0, ORRRSub
+O, j_1, j, 1.0, ORRBelow
+O, j_3, j, 1.0, ORRRRSub
+O, a_1, a, 1.0, ORRR
+O, -_1, -, 1.0, ORRRSupR
+
+# Relations from SRT:
+R, -_1, 1_1, Right, 1.0
+R, =_1, sum_1, Right, 1.0
+R, H_1, =_1, Right, 1.0
+R, H_1, n_1, Sub, 1.0
+R, a_1, b_1, Right, 1.0
+R, a_1, j_2, Sub, 1.0
+R, a_1, n_2, Sup, 1.0
+R, b_1, j_3, Sub, 1.0
+R, n_2, -_1, Right, 1.0
+R, sum_1, a_1, Right, 1.0
+R, sum_1, j_1, Below, 1.0

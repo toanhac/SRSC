@@ -1,0 +1,48 @@
+# IUD, CROHME_2016_em_708
+# Objects(22):
+O, =_1, =, 1.0, OR
+O, n_1, n, 1.0, ORRInside
+O, a_2, a, 1.0, ORRInsideRRSub
+O, +_1, +, 1.0, ORRInsideR
+O, a_3, a, 1.0, ORRInsideRRRRRSub
+O, m_1, m, 1.0, ORRInsideRR
+O, cos_1, \cos, 1.0, ORRInsideRRRRRRR
+O, n_2, n, 1.0, ORRInsideRRRRR
+O, a_4, a, 1.0, ORRInsideRRRRRRSub
+O, +_2, +, 1.0, ORRInsideRRR
+O, a_1, a, 1.0, ORRInsideSub
+O, 2_4, 2, 1.0, ORRInsideRRRRRRRRR
+O, alpha_1, \alpha, 1.0, OSub
+O, 2_2, 2, 1.0, ORRInsideRRSup
+O, (_1, (, 1.0, ORRInsideRRRRRRRR
+O, V_1, V, 1.0, O
+O, )_1, ), 1.0, ORRInsideRRRRRRRRRRR
+O, 2_3, 2, 1.0, ORRInsideRRRR
+O, _1, \sqrt, 1.0, ORR
+O, alpha_2, \alpha, 1.0, ORRInsideRRRRRRRRRR
+O, 2_1, 2, 1.0, ORRInsideSup
+O, m_2, m, 1.0, ORRInsideRRRRRR
+
+# Relations from SRT:
+EO, (_1, 2_4, Right, 1.0
+EO, +_1, m_1, Right, 1.0
+EO, +_2, 2_3, Right, 1.0
+EO, 2_3, n_2, Right, 1.0
+EO, 2_4, alpha_2, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, V_1, =_1, Right, 1.0
+EO, V_1, alpha_1, Sub, 1.0
+EO, _1, +_1, Inside, 1.0
+EO, _1, n_1, Inside, 1.0
+EO, alpha_2, )_1, Right, 1.0
+EO, cos_1, (_1, Right, 1.0
+EO, m_1, +_2, Right, 1.0
+EO, m_1, 2_2, Sup, 1.0
+EO, m_1, a_2, Sub, 1.0
+EO, m_2, a_4, Sub, 1.0
+EO, m_2, cos_1, Right, 1.0
+EO, n_1, +_1, Right, 1.0
+EO, n_1, 2_1, Sup, 1.0
+EO, n_1, a_1, Sub, 1.0
+EO, n_2, a_3, Sub, 1.0
+EO, n_2, m_2, Right, 1.0

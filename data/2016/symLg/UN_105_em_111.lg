@@ -1,0 +1,16 @@
+# IUD, CROHME_2016_em_111
+# Objects(6):
+O, k_1, k, 1.0, OInsideRSub
+O, n_1, n, 1.0, OInsideR
+O, +_1, +, 1.0, OInsideRR
+O, 1_1, 1, 1.0, OInsideRRR
+O, _1, \sqrt, 1.0, O
+O, 2_1, 2, 1.0, OInside
+
+# Relations from SRT:
+EO, +_1, 1_1, Right, 1.0
+EO, 2_1, n_1, Right, 1.0
+EO, _1, 2_1, Inside, 1.0
+EO, _1, n_1, Inside, 1.0
+EO, n_1, +_1, Right, 1.0
+EO, n_1, k_1, Sub, 1.0

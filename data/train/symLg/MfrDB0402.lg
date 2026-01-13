@@ -1,0 +1,11 @@
+# IUD, MfrDB0402
+# Objects(4):
+O, 5_1, 5, 1.0, OAboveR
+O, 4_1, 4, 1.0, OBelow
+O, 1_1, 1, 1.0, OAbove
+O, \frac_1, -, 1.0, O
+
+# Relations from SRT:
+EO, 1_1, 5_1, Right, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, 4_1, Below, 1.0

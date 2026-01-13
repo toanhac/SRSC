@@ -1,0 +1,43 @@
+# IUD, CROHME_2016_em_1025
+# Objects(20):
+O, 2_1, 2, 1.0, ORRRRRRSubRAbove
+O, G_5, G, 1.0, ORRRRRRRR
+O, +_2, +, 1.0, ORRRRR
+O, -_3, -, 1.0, ORRRRRRRRSub
+O, =_1, =, 1.0, OR
+O, -_2, -, 1.0, ORRRRRRSub
+O, 3_2, 3, 1.0, ORRRRRRSubRBelow
+O, 1_1, 1, 1.0, ORRRRSubRAbove
+O, G_4, G, 1.0, ORRRRRR
+O, +_1, +, 1.0, ORRR
+O, -_1, -, 1.0, ORRRRSub
+O, 0_1, 0, 1.0, ORRSub
+O, _1, -, 1.0, ORRRRSubR
+O, G_3, G, 1.0, ORRRR
+O, 1_2, 1, 1.0, ORRRRRRRRSubR
+O, _2, -, 1.0, ORRRRRRSubR
+O, 3_1, 3, 1.0, ORRRRSubRBelow
+O, G_1, G, 1.0, O
+O, G_2, G, 1.0, ORR
+O, +_3, +, 1.0, ORRRRRRR
+
+# Relations from SRT:
+EO, +_1, G_3, Right, 1.0
+EO, +_2, G_4, Right, 1.0
+EO, +_3, G_5, Right, 1.0
+EO, -_1, _1, Right, 1.0
+EO, -_2, _2, Right, 1.0
+EO, -_3, 1_2, Right, 1.0
+EO, =_1, G_2, Right, 1.0
+EO, G_1, =_1, Right, 1.0
+EO, G_2, +_1, Right, 1.0
+EO, G_2, 0_1, Sub, 1.0
+EO, G_3, +_2, Right, 1.0
+EO, G_3, -_1, Sub, 1.0
+EO, G_4, +_3, Right, 1.0
+EO, G_4, -_2, Sub, 1.0
+EO, G_5, -_3, Sub, 1.0
+EO, _1, 1_1, Above, 1.0
+EO, _1, 3_1, Below, 1.0
+EO, _2, 2_1, Above, 1.0
+EO, _2, 3_2, Below, 1.0

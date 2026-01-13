@@ -1,0 +1,27 @@
+# IUD, CROHME19_1027
+# Objects(12):
+O, rarr_1, \rightarrow, 1.0, OBelowR
+O, =_1, =, 1.0, ORRRRRRR
+O, p_2, p, 1.0, ORRRR
+O, p_1, p, 1.0, OBelow
+O, infin_1, \infty, 1.0, OBelowRR
+O, u_1, u, 1.0, OR
+O, (_1, (, 1.0, ORR
+O, )_1, ), 1.0, ORRRRRR
+O, lim_1, \lim, 1.0, O
+O, |_1, |, 1.0, ORRR
+O, infin_2, \infty, 1.0, ORRRRRRRR
+O, |_2, |, 1.0, ORRRRR
+
+# Relations from SRT:
+R, (_1, |_1, Right, 1.0
+R, )_1, =_1, Right, 1.0
+R, =_1, infin_2, Right, 1.0
+R, lim_1, p_1, Below, 1.0
+R, lim_1, u_1, Right, 1.0
+R, p_1, rarr_1, Right, 1.0
+R, p_2, |_2, Right, 1.0
+R, rarr_1, infin_1, Right, 1.0
+R, u_1, (_1, Right, 1.0
+R, |_1, p_2, Right, 1.0
+R, |_2, )_1, Right, 1.0

@@ -1,0 +1,41 @@
+# IUD, CROHME_2016_em_144
+# Objects(19):
+O, z_5, z, 1.0, ORRRRRR
+O, z_8, z, 1.0, ORRRRRRRRRR
+O, +_3, +, 1.0, ORRRRRRRR
+O, 1_1, 1, 1.0, OSub
+O, 1_2, 1, 1.0, ORRRSub
+O, z_2, z, 1.0, OR
+O, 2_1, 2, 1.0, ORSub
+O, +_2, +, 1.0, ORRRRR
+O, 2_2, 2, 1.0, ORRRRRRRRRSub
+O, z_6, z, 1.0, ORRRRRRR
+O, z_7, z, 1.0, ORRRRRRRRR
+O, z_3, z, 1.0, ORRR
+O, 4_1, 4, 1.0, ORRRRRRRSub
+O, z_4, z, 1.0, ORRRR
+O, 3_2, 3, 1.0, ORRRRRRRRRRSub
+O, 1_3, 1, 1.0, ORRRRRRSub
+O, z_1, z, 1.0, O
+O, +_1, +, 1.0, ORR
+O, 3_1, 3, 1.0, ORRRRSub
+
+# Relations from SRT:
+EO, +_1, z_3, Right, 1.0
+EO, +_2, z_5, Right, 1.0
+EO, +_3, z_7, Right, 1.0
+EO, z_1, 1_1, Sub, 1.0
+EO, z_1, z_2, Right, 1.0
+EO, z_2, +_1, Right, 1.0
+EO, z_2, 2_1, Sub, 1.0
+EO, z_3, 1_2, Sub, 1.0
+EO, z_3, z_4, Right, 1.0
+EO, z_4, +_2, Right, 1.0
+EO, z_4, 3_1, Sub, 1.0
+EO, z_5, 1_3, Sub, 1.0
+EO, z_5, z_6, Right, 1.0
+EO, z_6, +_3, Right, 1.0
+EO, z_6, 4_1, Sub, 1.0
+EO, z_7, 2_2, Sub, 1.0
+EO, z_7, z_8, Right, 1.0
+EO, z_8, 3_2, Sub, 1.0

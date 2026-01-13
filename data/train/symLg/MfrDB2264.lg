@@ -1,0 +1,9 @@
+# IUD, MfrDB2264
+# Objects(3):
+O, 2_1, 2, 1.0, OBelow
+O, 1_1, 1, 1.0, OAbove
+O, \frac_1, -, 1.0, O
+
+# Relations from SRT:
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, 2_1, Below, 1.0

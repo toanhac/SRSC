@@ -1,0 +1,23 @@
+# IUD, MfrDB0036
+# Objects(10):
+O, 3_2, 3, 1.0, ORRRRRRR
+O, \cdot_1, ., 1.0, OR
+O, 5_1, 5, 1.0, ORRRRRRRRR
+O, 3_1, 3, 1.0, ORR
+O, \geq_1, \geq, 1.0, ORRRRRR
+O, 1_2, 1, 1.0, ORRRRR
+O, \cdot_2, ., 1.0, ORRR
+O, \cdot_3, ., 1.0, ORRRRRRRR
+O, 1_1, 1, 1.0, ORRRR
+O, 2_1, 2, 1.0, O
+
+# Relations from SRT:
+EO, 1_1, 1_2, Right, 1.0
+EO, 1_2, \geq_1, Right, 1.0
+EO, 2_1, \cdot_1, Right, 1.0
+EO, 3_1, \cdot_2, Right, 1.0
+EO, 3_2, \cdot_3, Right, 1.0
+EO, \cdot_1, 3_1, Right, 1.0
+EO, \cdot_2, 1_1, Right, 1.0
+EO, \cdot_3, 5_1, Right, 1.0
+EO, \geq_1, 3_2, Right, 1.0

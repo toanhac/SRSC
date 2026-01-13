@@ -1,0 +1,19 @@
+# IUD, CROHME19_795
+# Objects(8):
+O, AUTO_2, 2, 1.0, O
+O, AUTO_3, +, 1.0, O
+O, AUTO_7, x, 1.0, O
+O, AUTO_5, \sin, 1.0, O
+O, AUTO_0, H, 1.0, O
+O, AUTO_1, p, 1.0, O
+O, AUTO_4, i, 1.0, O
+O, AUTO_6, =, 1.0, O
+
+# Relations from SRT:
+R, +_1, i_1, Right, 1.0
+R, =_1, p_1, Right, 1.0
+R, H_1, =_1, Right, 1.0
+R, i_1, sin_1, Right, 1.0
+R, p_1, +_1, Right, 1.0
+R, p_1, 2_1, Sup, 1.0
+R, sin_1, x_1, Right, 1.0

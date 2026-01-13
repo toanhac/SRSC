@@ -1,0 +1,34 @@
+# IUD, MfrDB1136
+# Objects(15):
+O, y_1, y, 1.0, O
+O, \pm_1, \pm, 1.0, ORRAboveRR
+O, c_1, c, 1.0, ORRAboveRRRInsideRRRR
+O, a_1, a, 1.0, ORRAboveR
+O, \frac_1, -, 1.0, ORR
+O, 2_2, 2, 1.0, ORRBelow
+O, \sqrt_1, \sqrt, 1.0, ORRAboveRRR
+O, =_1, =, 1.0, OR
+O, a_3, a, 1.0, ORRBelowR
+O, 2_1, 2, 1.0, ORRAboveRRRInsideSup
+O, a_2, a, 1.0, ORRAboveRRRInsideRRR
+O, 4_1, 4, 1.0, ORRAboveRRRInsideRR
+O, b_1, b, 1.0, ORRAboveRRRInside
+O, -_1, -, 1.0, ORRAbove
+O, -_2, -, 1.0, ORRAboveRRRInsideR
+
+# Relations from SRT:
+EO, -_1, a_1, Right, 1.0
+EO, -_2, 4_1, Right, 1.0
+EO, 2_2, a_3, Right, 1.0
+EO, 4_1, a_2, Right, 1.0
+EO, =_1, \frac_1, Right, 1.0
+EO, \frac_1, -_1, Above, 1.0
+EO, \frac_1, 2_2, Below, 1.0
+EO, \pm_1, \sqrt_1, Right, 1.0
+EO, \sqrt_1, -_2, Inside, 1.0
+EO, \sqrt_1, b_1, Inside, 1.0
+EO, a_1, \pm_1, Right, 1.0
+EO, a_2, c_1, Right, 1.0
+EO, b_1, -_2, Right, 1.0
+EO, b_1, 2_1, Sup, 1.0
+EO, y_1, =_1, Right, 1.0

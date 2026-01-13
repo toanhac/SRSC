@@ -1,0 +1,19 @@
+# IUD, "200922-947-68.ink"
+# Objects(8):
+O, 10:, ), 1.0, ORRR
+O, 13:14:15:, \infty, 1.0, ORRRRR
+O, 4:5:6:, \pi, 1.0, ORRAbove
+O, 0:1:2:3:, \tan, 1.0, O
+O, 9:, (, 1.0, OR
+O, 8:, 2, 1.0, ORRBelow
+O, 11:12:, =, 1.0, ORRRR
+O, 7:, -, 1.0, ORR
+
+# Relations from SRT:
+EO, 0:1:2:3:, 9:, Right, 1.0
+EO, 10:, 11:12:, Right, 1.0
+EO, 11:12:, 13:14:15:, Right, 1.0
+EO, 7:, 10:, Right, 1.0
+EO, 7:, 4:5:6:, Above, 1.0
+EO, 7:, 8:, Below, 1.0
+EO, 9:, 7:, Right, 1.0

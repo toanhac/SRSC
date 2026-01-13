@@ -1,0 +1,34 @@
+# IUD, 116_david
+# Objects(15):
+O, b_1, b, 1.0, ORRAboveR
+O, -_1, -, 1.0, ORRAbove
+O, 4_1, 4, 1.0, ORRAboveRRRInsideRR
+O, b_2, b, 1.0, ORRAboveRRRInside
+O, 2_2, 2, 1.0, ORRBelow
+O, _1, -, 1.0, ORR
+O, 2_1, 2, 1.0, ORRAboveRRRInsideSup
+O, -_2, -, 1.0, ORRAboveRRRInsideR
+O, c_1, c, 1.0, ORRAboveRRRInsideRRRR
+O, a_1, a, 1.0, ORRAboveRRRInsideRRR
+O, a_2, a, 1.0, ORRBelowR
+O, =_1, =, 1.0, OR
+O, x_1, x, 1.0, O
+O, pm_1, \pm, 1.0, ORRAboveRR
+O, _2, \sqrt, 1.0, ORRAboveRRR
+
+# Relations from SRT:
+EO, -_1, b_1, Right, 1.0
+EO, -_2, 4_1, Right, 1.0
+EO, 2_2, a_2, Right, 1.0
+EO, 4_1, a_1, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, _1, -_1, Above, 1.0
+EO, _1, 2_2, Below, 1.0
+EO, _2, -_2, Inside, 1.0
+EO, _2, b_2, Inside, 1.0
+EO, a_1, c_1, Right, 1.0
+EO, b_1, pm_1, Right, 1.0
+EO, b_2, -_2, Right, 1.0
+EO, b_2, 2_1, Sup, 1.0
+EO, pm_1, _2, Right, 1.0
+EO, x_1, =_1, Right, 1.0

@@ -1,0 +1,21 @@
+# IUD, MfrDB1492
+# Objects(9):
+O, t_2, t, 1.0, ORRRRRR
+O, =_1, =, 1.0, OR
+O, 0_1, 0, 1.0, ORRSub
+O, v_2, v, 1.0, ORR
+O, g_1, g, 1.0, ORRRRR
+O, v_1, v, 1.0, O
+O, t_1, t, 1.0, ORRR
+O, -_1, -, 1.0, ORRRR
+O, 2_1, 2, 1.0, ORRRRRRSup
+
+# Relations from SRT:
+EO, -_1, g_1, Right, 1.0
+EO, =_1, v_2, Right, 1.0
+EO, g_1, t_2, Right, 1.0
+EO, t_1, -_1, Right, 1.0
+EO, t_2, 2_1, Sup, 1.0
+EO, v_1, =_1, Right, 1.0
+EO, v_2, 0_1, Sub, 1.0
+EO, v_2, t_1, Right, 1.0

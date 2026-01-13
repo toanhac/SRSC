@@ -1,0 +1,49 @@
+# IUD, CROHME19_318
+# Objects(23):
+O, a_2, a, 1.0, ORRRRRRSub
+O, g_1, g, 1.0, ORRRRRR
+O, 2_1, 2, 1.0, OBelowRR
+O, -_1, -, 1.0, ORRR
+O, \rightarrow_1, \rightarrow, 1.0, OBelowR
+O, _1, -, 1.0, ORRRR
+O, b_2, b, 1.0, ORRRRRRSubR
+O, d_1, d, 1.0, OBelow
+O, )_2, ), 1.0, ORRRRRRRRRRRRR
+O, 2_3, 2, 1.0, ORRRRRRRRRRRR
+O, d_2, d, 1.0, ORRRRRRRRRR
+O, (_1, (, 1.0, OR
+O, -_2, -, 1.0, ORRRRRRRRRRR
+O, b_1, b, 1.0, ORRSubR
+O, \lim_1, \lim, 1.0, O
+O, 1_1, 1, 1.0, ORRRRAbove
+O, /_1, /, 1.0, ORRRRRRRR
+O, (_2, (, 1.0, ORRRRRRRRR
+O, )_1, ), 1.0, ORRRRRRR
+O, a_1, a, 1.0, ORRSub
+O, 2_2, 2, 1.0, ORRRRBelow
+O, R_2, R, 1.0, ORRRRR
+O, R_1, R, 1.0, ORR
+
+# Relations from SRT:
+R, (_1, R_1, Right, 1.0
+R, (_2, d_2, Right, 1.0
+R, )_1, /_1, Right, 1.0
+R, -_1, _1, Right, 1.0
+R, -_2, 2_3, Right, 1.0
+R, /_1, (_2, Right, 1.0
+R, 2_3, )_2, Right, 1.0
+R, R_1, -_1, Right, 1.0
+R, R_1, a_1, Sub, 1.0
+R, R_2, g_1, Right, 1.0
+R, \lim_1, (_1, Right, 1.0
+R, \lim_1, d_1, Below, 1.0
+R, \rightarrow_1, 2_1, Right, 1.0
+R, _1, 1_1, Above, 1.0
+R, _1, 2_2, Below, 1.0
+R, _1, R_2, Right, 1.0
+R, a_1, b_1, Right, 1.0
+R, a_2, b_2, Right, 1.0
+R, d_1, \rightarrow_1, Right, 1.0
+R, d_2, -_2, Right, 1.0
+R, g_1, )_1, Right, 1.0
+R, g_1, a_2, Sub, 1.0

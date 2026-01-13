@@ -1,0 +1,25 @@
+# IUD, MfrDB0112
+# Objects(11):
+O, \sqrt_2, \sqrt, 1.0, OInsideAbove
+O, 5_1, 5, 1.0, OInsideBelowInside
+O, \sqrt_3, \sqrt, 1.0, OInsideAboveRR
+O, \sqrt_1, \sqrt, 1.0, O
+O, \sqrt_4, \sqrt, 1.0, OInsideBelow
+O, 2_1, 2, 1.0, OInsideAboveInside
+O, 3_1, 3, 1.0, OInsideAboveRRInside
+O, \frac_1, -, 1.0, OInside
+O, +_1, +, 1.0, OInsideAboveR
+O, -_1, -, 1.0, OInsideBelowR
+O, x_1, x, 1.0, OInsideBelowRR
+
+# Relations from SRT:
+EO, +_1, \sqrt_3, Right, 1.0
+EO, -_1, x_1, Right, 1.0
+EO, \frac_1, \sqrt_2, Above, 1.0
+EO, \frac_1, \sqrt_4, Below, 1.0
+EO, \sqrt_1, \frac_1, Inside, 1.0
+EO, \sqrt_2, +_1, Right, 1.0
+EO, \sqrt_2, 2_1, Inside, 1.0
+EO, \sqrt_3, 3_1, Inside, 1.0
+EO, \sqrt_4, -_1, Right, 1.0
+EO, \sqrt_4, 5_1, Inside, 1.0

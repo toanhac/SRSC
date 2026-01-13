@@ -1,0 +1,53 @@
+# IUD, 2011_IVC_depart_F018_E042
+# Objects(25):
+O, COMMA_2, COMMA, 1.0, ORRRR
+O, d_4, d, 1.0, ORRRRRRRRRRRRR
+O, 2_1, 2, 1.0, ORRRSub
+O, (_1, (, 1.0, O
+O, COMMA_7, COMMA, 1.0, ORRRRRRRRRRRRRR
+O, p_3, p, 1.0, ORRRRRRR
+O, COMMA_6, COMMA, 1.0, ORRRRRRRRRRRR
+O, d_1, d, 1.0, ORRRRR
+O, 1_1, 1, 1.0, ORSub
+O, )_1, ), 1.0, ORRRRRRRRRRRRRRRR
+O, p_4, p, 1.0, ORRRRRRRRRRRRRRR
+O, p_1, p, 1.0, OR
+O, COMMA_1, COMMA, 1.0, ORR
+O, d_2, d, 1.0, ORRRRRRRRR
+O, d_3, d, 1.0, ORRRRRRRRRRR
+O, p_2, p, 1.0, ORRR
+O, 4_1, 4, 1.0, ORRRRRRRRRRRRRSub
+O, 2_2, 2, 1.0, ORRRRRRRRRSub
+O, COMMA_5, COMMA, 1.0, ORRRRRRRRRR
+O, 4_2, 4, 1.0, ORRRRRRRRRRRRRRRSub
+O, 1_2, 1, 1.0, ORRRRRSub
+O, 3_2, 3, 1.0, ORRRRRRRRRRRSub
+O, COMMA_4, COMMA, 1.0, ORRRRRRRR
+O, 3_1, 3, 1.0, ORRRRRRRSub
+O, COMMA_3, COMMA, 1.0, ORRRRRR
+
+# Relations from SRT:
+EO, (_1, p_1, Right, 1.0
+EO, COMMA_1, p_2, Right, 1.0
+EO, COMMA_2, d_1, Right, 1.0
+EO, COMMA_3, p_3, Right, 1.0
+EO, COMMA_4, d_2, Right, 1.0
+EO, COMMA_5, d_3, Right, 1.0
+EO, COMMA_6, d_4, Right, 1.0
+EO, COMMA_7, p_4, Right, 1.0
+EO, d_1, 1_2, Sub, 1.0
+EO, d_1, COMMA_3, Right, 1.0
+EO, d_2, 2_2, Sub, 1.0
+EO, d_2, COMMA_5, Right, 1.0
+EO, d_3, 3_2, Sub, 1.0
+EO, d_3, COMMA_6, Right, 1.0
+EO, d_4, 4_1, Sub, 1.0
+EO, d_4, COMMA_7, Right, 1.0
+EO, p_1, 1_1, Sub, 1.0
+EO, p_1, COMMA_1, Right, 1.0
+EO, p_2, 2_1, Sub, 1.0
+EO, p_2, COMMA_2, Right, 1.0
+EO, p_3, 3_1, Sub, 1.0
+EO, p_3, COMMA_4, Right, 1.0
+EO, p_4, )_1, Right, 1.0
+EO, p_4, 4_2, Sub, 1.0

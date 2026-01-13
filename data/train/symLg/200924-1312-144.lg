@@ -1,0 +1,11 @@
+# IUD, "200924-1312-144.ink"
+# Objects(4):
+O, 3:4:, Y, 1.0, OBelowInside
+O, 0:, n, 1.0, OAbove
+O, 1:, -, 1.0, O
+O, 2:, \sqrt, 1.0, OBelow
+
+# Relations from SRT:
+EO, 1:, 0:, Above, 1.0
+EO, 1:, 2:, Below, 1.0
+EO, 2:, 3:4:, Inside, 1.0

@@ -1,0 +1,25 @@
+# IUD, 2011_KAIST_Data2_25_sub_71
+# Objects(11):
+O, B_2, B, 1.0, OBelowR
+O, \cos_2, \cos, 1.0, OBelowRRR
+O, +_2, +, 1.0, OBelowRR
+O, C_1, C, 1.0, OAboveRRRR
+O, B_1, B, 1.0, OAboveR
+O, +_1, +, 1.0, OAboveRR
+O, \cos_1, \cos, 1.0, OBelow
+O, \sin_2, \sin, 1.0, OAboveRRR
+O, \sin_1, \sin, 1.0, OAbove
+O, C_2, C, 1.0, OBelowRRRR
+O, -_1, -, 1.0, O
+
+# Relations from SRT:
+EO, +_1, \sin_2, Right, 1.0
+EO, +_2, \cos_2, Right, 1.0
+EO, -_1, \cos_1, Below, 1.0
+EO, -_1, \sin_1, Above, 1.0
+EO, B_1, +_1, Right, 1.0
+EO, B_2, +_2, Right, 1.0
+EO, \cos_1, B_2, Right, 1.0
+EO, \cos_2, C_2, Right, 1.0
+EO, \sin_1, B_1, Right, 1.0
+EO, \sin_2, C_1, Right, 1.0

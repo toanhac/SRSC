@@ -1,0 +1,17 @@
+# IUD, 2011_IVC_depart_F015_E052
+# Objects(7):
+O, q_1, q, 1.0, O
+O, \pi_1, \pi, 1.0, ORRSupRR
+O, z_1, z, 1.0, ORRSupRRR
+O, e_1, e, 1.0, ORR
+O, =_1, =, 1.0, OR
+O, i_1, i, 1.0, ORRSupR
+O, 2_1, 2, 1.0, ORRSup
+
+# Relations from SRT:
+EO, 2_1, i_1, Right, 1.0
+EO, =_1, e_1, Right, 1.0
+EO, \pi_1, z_1, Right, 1.0
+EO, e_1, 2_1, Sup, 1.0
+EO, i_1, \pi_1, Right, 1.0
+EO, q_1, =_1, Right, 1.0

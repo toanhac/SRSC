@@ -1,0 +1,51 @@
+# IUD, 2011_KAIST_Data1_6_sub_28
+# Objects(24):
+O, n_1, n, 1.0, ORSupAbove
+O, -_3, -, 1.0, ORRRRRRSup
+O, (_1, (, 1.0, O
+O, 2_3, 2, 1.0, ORRRRRRSupBelow
+O, 2_1, 2, 1.0, ORSupBelow
+O, -_2, -, 1.0, ORRRSup
+O, -_4, -, 1.0, ORRRRRRR
+O, n_2, n, 1.0, ORRRSupAbove
+O, =_1, =, 1.0, ORRRRRRRRRR
+O, z_1, z, 1.0, OR
+O, y_2, y, 1.0, ORRRRRRRR
+O, y_1, y, 1.0, ORRR
+O, )_1, ), 1.0, ORRRR
+O, -_1, -, 1.0, ORSup
+O, n_4, n, 1.0, ORRRRRRRRSupAbove
+O, n_3, n, 1.0, ORRRRRRSupAbove
+O, z_2, z, 1.0, ORRRRRR
+O, 2_4, 2, 1.0, ORRRRRRRRSupBelow
+O, 2_2, 2, 1.0, ORRRSupBelow
+O, +_1, +, 1.0, ORR
+O, -_5, -, 1.0, ORRRRRRRRSup
+O, x_1, x, 1.0, ORRRRRRRRRRR
+O, (_2, (, 1.0, ORRRRR
+O, )_2, ), 1.0, ORRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, z_1, Right, 1.0
+EO, (_2, z_2, Right, 1.0
+EO, )_1, (_2, Right, 1.0
+EO, )_2, =_1, Right, 1.0
+EO, +_1, y_1, Right, 1.0
+EO, -_1, 2_1, Below, 1.0
+EO, -_1, n_1, Above, 1.0
+EO, -_2, 2_2, Below, 1.0
+EO, -_2, n_2, Above, 1.0
+EO, -_3, 2_3, Below, 1.0
+EO, -_3, n_3, Above, 1.0
+EO, -_4, y_2, Right, 1.0
+EO, -_5, 2_4, Below, 1.0
+EO, -_5, n_4, Above, 1.0
+EO, =_1, x_1, Right, 1.0
+EO, y_1, )_1, Right, 1.0
+EO, y_1, -_2, Sup, 1.0
+EO, y_2, )_2, Right, 1.0
+EO, y_2, -_5, Sup, 1.0
+EO, z_1, +_1, Right, 1.0
+EO, z_1, -_1, Sup, 1.0
+EO, z_2, -_3, Sup, 1.0
+EO, z_2, -_4, Right, 1.0

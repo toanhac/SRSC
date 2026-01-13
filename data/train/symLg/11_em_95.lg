@@ -1,0 +1,11 @@
+# IUD, 2013_IVC_CROHME_F11_E95
+# Objects(4):
+O, forall_1, \forall, 1.0, O
+O, u_1, u, 1.0, OR
+O, in_1, \in, 1.0, ORR
+O, V_1, V, 1.0, ORRR
+
+# Relations from SRT:
+EO, forall_1, u_1, Right, 1.0
+EO, in_1, V_1, Right, 1.0
+EO, u_1, in_1, Right, 1.0

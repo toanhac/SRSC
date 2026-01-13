@@ -1,0 +1,9 @@
+# IUD, CROHME19_380
+# Objects(3):
+O, 3_1, 3, 1.0, ORR
+O, \Delta_1, \Delta, 1.0, O
+O, \geq_1, \geq, 1.0, OR
+
+# Relations from SRT:
+R, \Delta_1, \geq_1, Right, 1.0
+R, \geq_1, 3_1, Right, 1.0

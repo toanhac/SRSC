@@ -1,0 +1,26 @@
+# IUD, "200925-1126-58.ink"
+# Objects(11):
+O, 10:11:, \sum, 1.0, ORInsideRRBelow
+O, 0:1:2:3:, E, 1.0, ORInside
+O, 9:, -, 1.0, ORInsideRR
+O, 17:18:, \sqrt, 1.0, OR
+O, 15:, -, 1.0, ORInsideRRBelowRR
+O, 16:, b, 1.0, ORInsideRRBelowRRR
+O, 19:, [, 1.0, O
+O, 4:, -, 1.0, ORInsideR
+O, 20:, ], 1.0, ORR
+O, 5:6:7:8:, E, 1.0, ORInsideRRAbove
+O, 12:13:14:, I, 1.0, ORInsideRRBelowR
+
+# Relations from SRT:
+EO, 0:1:2:3:, 4:, Right, 1.0
+EO, 10:11:, 12:13:14:, Right, 1.0
+EO, 12:13:14:, 15:, Right, 1.0
+EO, 15:, 16:, Right, 1.0
+EO, 17:18:, 0:1:2:3:, Inside, 1.0
+EO, 17:18:, 20:, Right, 1.0
+EO, 17:18:, 4:, Inside, 1.0
+EO, 19:, 17:18:, Right, 1.0
+EO, 4:, 9:, Right, 1.0
+EO, 9:, 10:11:, Below, 1.0
+EO, 9:, 5:6:7:8:, Above, 1.0

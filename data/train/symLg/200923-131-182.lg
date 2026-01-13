@@ -1,0 +1,12 @@
+# IUD, "200923-131-182.ink"
+# Objects(4):
+O, 2:3:, \sum, 1.0, OInsideR
+O, 7:, \sqrt, 1.0, O
+O, 4:5:6:, I, 1.0, OInsideRR
+O, 0:1:, N, 1.0, OInside
+
+# Relations from SRT:
+EO, 0:1:, 2:3:, Right, 1.0
+EO, 2:3:, 4:5:6:, Right, 1.0
+EO, 7:, 0:1:, Inside, 1.0
+EO, 7:, 2:3:, Inside, 1.0

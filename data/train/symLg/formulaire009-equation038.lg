@@ -1,0 +1,11 @@
+# IUD, 2011_IVC_DEPART_F009_E038
+# Objects(4):
+O, )_1, ), 1.0, ORRR
+O, pi_1, \pi, 1.0, ORR
+O, c_1, c, 1.0, O
+O, (_1, (, 1.0, OR
+
+# Relations from SRT:
+EO, (_1, pi_1, Right, 1.0
+EO, c_1, (_1, Right, 1.0
+EO, pi_1, )_1, Right, 1.0

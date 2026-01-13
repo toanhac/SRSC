@@ -1,0 +1,15 @@
+# IUD, CROHME_2016_em_742
+# Objects(6):
+O, j_1, j, 1.0, ORRR
+O, COMMA_1, COMMA, 1.0, ORR
+O, k_1, k, 1.0, ORRRRR
+O, forall_1, \forall, 1.0, O
+O, COMMA_2, COMMA, 1.0, ORRRR
+O, i_1, i, 1.0, OR
+
+# Relations from SRT:
+EO, COMMA_1, j_1, Right, 1.0
+EO, COMMA_2, k_1, Right, 1.0
+EO, forall_1, i_1, Right, 1.0
+EO, i_1, COMMA_1, Right, 1.0
+EO, j_1, COMMA_2, Right, 1.0

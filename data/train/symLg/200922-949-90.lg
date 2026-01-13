@@ -1,0 +1,13 @@
+# IUD, "200922-949-90.ink"
+# Objects(5):
+O, 2:3:, \geq, 1.0, OBelowR
+O, 0:, \sum, 1.0, O
+O, 7:, c, 1.0, OR
+O, 1:, z, 1.0, OBelow
+O, 4:5:6:, F, 1.0, OBelowRR
+
+# Relations from SRT:
+EO, 0:, 1:, Below, 1.0
+EO, 0:, 7:, Right, 1.0
+EO, 1:, 2:3:, Right, 1.0
+EO, 2:3:, 4:5:6:, Right, 1.0

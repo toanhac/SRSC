@@ -1,0 +1,45 @@
+# IUD, MfrDB3098
+# Objects(21):
+O, )_2, ), 1.0, ORRRRRRRRRRR
+O, x_3, x, 1.0, ORRRRRRRRRRRRRRRAbove
+O, \frac_1, -, 1.0, ORRRRRRRRRRRRRRR
+O, x_2, x, 1.0, ORRRRRRRRR
+O, f_2, f, 1.0, ORRRRRRR
+O, =_1, =, 1.0, ORRRRRR
+O, (_3, (, 1.0, ORRRRRRRRRRRRRR
+O, COMMA_1, COMMA, 1.0, ORRR
+O, 2_1, 2, 1.0, ORRRRRRRRRRRRRSub
+O, y_1, y, 1.0, ORRRR
+O, )_1, ), 1.0, ORRRRR
+O, f_1, f, 1.0, O
+O, y_2, y, 1.0, ORRRRRRRRRR
+O, x_1, x, 1.0, ORR
+O, )_3, ), 1.0, ORRRRRRRRRRRRRRRR
+O, f_3, f, 1.0, ORRRRRRRRRRRRR
+O, 1_1, 1, 1.0, ORRRRRRRSub
+O, +_1, +, 1.0, ORRRRRRRRRRRR
+O, y_3, y, 1.0, ORRRRRRRRRRRRRRRBelow
+O, (_2, (, 1.0, ORRRRRRRR
+O, (_1, (, 1.0, OR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, (_2, x_2, Right, 1.0
+EO, (_3, \frac_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, +_1, Right, 1.0
+EO, +_1, f_3, Right, 1.0
+EO, =_1, f_2, Right, 1.0
+EO, COMMA_1, y_1, Right, 1.0
+EO, \frac_1, )_3, Right, 1.0
+EO, \frac_1, x_3, Above, 1.0
+EO, \frac_1, y_3, Below, 1.0
+EO, f_1, (_1, Right, 1.0
+EO, f_2, (_2, Right, 1.0
+EO, f_2, 1_1, Sub, 1.0
+EO, f_3, (_3, Right, 1.0
+EO, f_3, 2_1, Sub, 1.0
+EO, x_1, COMMA_1, Right, 1.0
+EO, x_2, y_2, Right, 1.0
+EO, y_1, )_1, Right, 1.0
+EO, y_2, )_2, Right, 1.0

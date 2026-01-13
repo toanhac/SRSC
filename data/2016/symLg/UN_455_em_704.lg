@@ -1,0 +1,17 @@
+# IUD, CROHME_2016_em_704
+# Objects(7):
+O, x_1, x, 1.0, ORAbove
+O, sum_1, \sum, 1.0, O
+O, j_3, j, 1.0, ORBelow
+O, !_1, !, 1.0, ORBelowR
+O, j_2, j, 1.0, ORAboveSup
+O, j_1, j, 1.0, OBelow
+O, _1, -, 1.0, OR
+
+# Relations from SRT:
+EO, _1, j_3, Below, 1.0
+EO, _1, x_1, Above, 1.0
+EO, j_3, !_1, Right, 1.0
+EO, sum_1, _1, Right, 1.0
+EO, sum_1, j_1, Below, 1.0
+EO, x_1, j_2, Sup, 1.0

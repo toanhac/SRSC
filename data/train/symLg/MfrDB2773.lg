@@ -1,0 +1,7 @@
+# IUD, MfrDB2773
+# Objects(2):
+O, \sin_1, \sin, 1.0, O
+O, x_1, x, 1.0, OR
+
+# Relations from SRT:
+EO, \sin_1, x_1, Right, 1.0

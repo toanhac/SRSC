@@ -1,0 +1,41 @@
+# IUD, 2011_KAIST_Data2_17_sub_98
+# Objects(19):
+O, -_2, -, 1.0, OR
+O, 4_2, 4, 1.0, ORAboveRR
+O, 4_4, 4, 1.0, ORBelowRR
+O, \rightarrow_1, \rightarrow, 1.0, OBelowR
+O, 1_1, 1, 1.0, OBelowRRAbove
+O, x_1, x, 1.0, OBelow
+O, -_1, -, 1.0, OBelowRR
+O, -_6, -, 1.0, ORBelowR
+O, -_3, -, 1.0, ORAboveR
+O, 4_1, 4, 1.0, OBelowRRBelow
+O, x_3, x, 1.0, ORBelowRRR
+O, 1_3, 1, 1.0, ORAboveRRSupRRAbove
+O, -_4, -, 1.0, ORAboveRRSupR
+O, 1_4, 1, 1.0, ORBelow
+O, x_2, x, 1.0, ORAboveRRSup
+O, \lim_1, \lim, 1.0, O
+O, 1_2, 1, 1.0, ORAbove
+O, 4_3, 4, 1.0, ORAboveRRSupRRBelow
+O, -_5, -, 1.0, ORAboveRRSupRR
+
+# Relations from SRT:
+EO, -_1, 1_1, Above, 1.0
+EO, -_1, 4_1, Below, 1.0
+EO, -_2, 1_2, Above, 1.0
+EO, -_2, 1_4, Below, 1.0
+EO, -_3, 4_2, Right, 1.0
+EO, -_4, -_5, Right, 1.0
+EO, -_5, 1_3, Above, 1.0
+EO, -_5, 4_3, Below, 1.0
+EO, -_6, 4_4, Right, 1.0
+EO, 1_2, -_3, Right, 1.0
+EO, 1_4, -_6, Right, 1.0
+EO, 4_2, x_2, Sup, 1.0
+EO, 4_4, x_3, Right, 1.0
+EO, \lim_1, -_2, Right, 1.0
+EO, \lim_1, x_1, Below, 1.0
+EO, \rightarrow_1, -_1, Right, 1.0
+EO, x_1, \rightarrow_1, Right, 1.0
+EO, x_2, -_4, Right, 1.0

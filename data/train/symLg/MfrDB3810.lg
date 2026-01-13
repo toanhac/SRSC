@@ -1,0 +1,35 @@
+# IUD, MfrDB3810
+# Objects(16):
+O, 3_3, 3, 1.0, ORRRRRRRRR
+O, +_1, +, 1.0, ORRRRRRRR
+O, y_3, y, 1.0, ORRRRRRRRRRR
+O, 3_2, 3, 1.0, ORRRRRR
+O, \cos_1, \cos, 1.0, O
+O, y_2, y, 1.0, ORRRRRRR
+O, =_1, =, 1.0, ORR
+O, 3_1, 3, 1.0, OSup
+O, y_1, y, 1.0, OR
+O, \frac_1, -, 1.0, ORRR
+O, (_1, (, 1.0, ORRRR
+O, )_1, ), 1.0, ORRRRRRRRRRRR
+O, \cos_3, \cos, 1.0, ORRRRRRRRRR
+O, 4_1, 4, 1.0, ORRRBelow
+O, 1_1, 1, 1.0, ORRRAbove
+O, \cos_2, \cos, 1.0, ORRRRR
+
+# Relations from SRT:
+EO, (_1, \cos_2, Right, 1.0
+EO, +_1, 3_3, Right, 1.0
+EO, 3_2, y_2, Right, 1.0
+EO, 3_3, \cos_3, Right, 1.0
+EO, =_1, \frac_1, Right, 1.0
+EO, \cos_1, 3_1, Sup, 1.0
+EO, \cos_1, y_1, Right, 1.0
+EO, \cos_2, 3_2, Right, 1.0
+EO, \cos_3, y_3, Right, 1.0
+EO, \frac_1, (_1, Right, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, 4_1, Below, 1.0
+EO, y_1, =_1, Right, 1.0
+EO, y_2, +_1, Right, 1.0
+EO, y_3, )_1, Right, 1.0

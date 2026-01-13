@@ -1,0 +1,9 @@
+# IUD, CROHME19_370
+# Objects(3):
+O, \times_1, \times, 1.0, OR
+O, G_1, G, 1.0, O
+O, G_2, G, 1.0, ORR
+
+# Relations from SRT:
+R, G_1, \times_1, Right, 1.0
+R, \times_1, G_2, Right, 1.0

@@ -1,0 +1,43 @@
+# IUD, CROHME_2016_em_11
+# Objects(20):
+O, _2, \sqrt, 1.0, ORRAboveRR
+O, )_1, ), 1.0, ORRRRRRRRR
+O, _1, -, 1.0, ORR
+O, 2_1, 2, 1.0, ORRBelow
+O, p_1, p, 1.0, ORRRRRRRR
+O, 2_2, 2, 1.0, ORRRRRRRAbove
+O, n_2, n, 1.0, ORRAboveRRInside
+O, n_1, n, 1.0, OSub
+O, =_1, =, 1.0, OR
+O, +_1, +, 1.0, ORRRRR
+O, -_1, -, 1.0, ORRAbove
+O, _3, -, 1.0, ORRRRRRR
+O, (_1, (, 1.0, ORRR
+O, i_1, i, 1.0, ORRAboveR
+O, a_1, a, 1.0, O
+O, n_3, n, 1.0, ORRRRSub
+O, n_4, n, 1.0, ORRRRRRRBelow
+O, q_1, q, 1.0, ORRRR
+O, n_5, n, 1.0, ORRRRRRRRSub
+O, i_2, i, 1.0, ORRRRRR
+
+# Relations from SRT:
+EO, (_1, q_1, Right, 1.0
+EO, +_1, i_2, Right, 1.0
+EO, -_1, i_1, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, _1, (_1, Right, 1.0
+EO, _1, -_1, Above, 1.0
+EO, _1, 2_1, Below, 1.0
+EO, _2, n_2, Inside, 1.0
+EO, _3, 2_2, Above, 1.0
+EO, _3, n_4, Below, 1.0
+EO, _3, p_1, Right, 1.0
+EO, a_1, =_1, Right, 1.0
+EO, a_1, n_1, Sub, 1.0
+EO, i_1, _2, Right, 1.0
+EO, i_2, _3, Right, 1.0
+EO, p_1, )_1, Right, 1.0
+EO, p_1, n_5, Sub, 1.0
+EO, q_1, +_1, Right, 1.0
+EO, q_1, n_3, Sub, 1.0

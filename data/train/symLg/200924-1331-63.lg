@@ -1,0 +1,17 @@
+# IUD, "200924-1331-63.ink"
+# Objects(7):
+O, 2:, -, 1.0, OR
+O, 7:8:, i, 1.0, ORAboveRR
+O, 5:6:, +, 1.0, ORAboveR
+O, 0:, o, 1.0, O
+O, 3:, C, 1.0, ORBelow
+O, 4:, e, 1.0, ORAbove
+O, 1:, \sigma, 1.0, OSub
+
+# Relations from SRT:
+EO, 0:, 1:, Sub, 1.0
+EO, 0:, 2:, Right, 1.0
+EO, 2:, 3:, Below, 1.0
+EO, 2:, 4:, Above, 1.0
+EO, 4:, 5:6:, Right, 1.0
+EO, 5:6:, 7:8:, Right, 1.0

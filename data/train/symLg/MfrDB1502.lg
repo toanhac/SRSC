@@ -1,0 +1,34 @@
+# IUD, MfrDB1502
+# Objects(15):
+O, n_2, n, 1.0, ORRInside
+O, 0_1, 0, 1.0, ORRRRRRR
+O, \lim_1, \lim, 1.0, O
+O, n_3, n, 1.0, ORRRRInside
+O, -_1, -, 1.0, ORRR
+O, =_1, =, 1.0, ORRRRRR
+O, \sqrt_2, \sqrt, 1.0, ORRRR
+O, \sqrt_1, \sqrt, 1.0, ORR
+O, n_1, n, 1.0, OBelow
+O, \infty_1, \infty, 1.0, OBelowRR
+O, (_1, (, 1.0, OR
+O, +_1, +, 1.0, ORRInsideR
+O, 2_1, 2, 1.0, ORRInsideRR
+O, )_1, ), 1.0, ORRRRR
+O, \vec_1, \rightarrow, 1.0, OBelowR
+
+# Relations from SRT:
+EO, (_1, \sqrt_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, +_1, 2_1, Right, 1.0
+EO, -_1, \sqrt_2, Right, 1.0
+EO, =_1, 0_1, Right, 1.0
+EO, \lim_1, (_1, Right, 1.0
+EO, \lim_1, n_1, Below, 1.0
+EO, \sqrt_1, +_1, Inside, 1.0
+EO, \sqrt_1, -_1, Right, 1.0
+EO, \sqrt_1, n_2, Inside, 1.0
+EO, \sqrt_2, )_1, Right, 1.0
+EO, \sqrt_2, n_3, Inside, 1.0
+EO, \vec_1, \infty_1, Right, 1.0
+EO, n_1, \vec_1, Right, 1.0
+EO, n_2, +_1, Right, 1.0

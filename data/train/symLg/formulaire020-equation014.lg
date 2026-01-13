@@ -1,0 +1,49 @@
+# IUD, 2011_IVC_depart_F020_E014
+# Objects(23):
+O, a_3, a, 1.0, ORRRRRRAboveRRRR
+O, k_1, k, 1.0, ORRRBelow
+O, +_1, +, 1.0, ORRRRRRAboveR
+O, =_2, =, 1.0, ORRRBelowR
+O, k_2, k, 1.0, ORRRRSub
+O, 1_2, 1, 1.0, ORRRBelowRR
+O, n_5, n, 1.0, ORRRRRRBelow
+O, n_2, n, 1.0, ORRBelow
+O, \ldots_1, \ldots, 1.0, ORRRRRRAboveRR
+O, \sum_1, \sum, 1.0, ORRR
+O, a_1, a, 1.0, ORRRR
+O, n_4, n, 1.0, ORRRRRRAboveRRRRSub
+O, n_3, n, 1.0, ORRRAbove
+O, =_1, =, 1.0, OR
+O, +_2, +, 1.0, ORRRRRRAboveRRR
+O, a_2, a, 1.0, ORRRRRRAbove
+O, _2, -, 1.0, ORRRRRR
+O, 1_3, 1, 1.0, ORRRRRRAboveSub
+O, n_1, n, 1.0, OSub
+O, c_1, c, 1.0, O
+O, =_3, =, 1.0, ORRRRR
+O, 1_1, 1, 1.0, ORRAbove
+O, _1, -, 1.0, ORR
+
+# Relations from SRT:
+EO, +_1, \ldots_1, Right, 1.0
+EO, +_2, a_3, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, =_2, 1_2, Right, 1.0
+EO, =_3, _2, Right, 1.0
+EO, \ldots_1, +_2, Right, 1.0
+EO, \sum_1, a_1, Right, 1.0
+EO, \sum_1, k_1, Below, 1.0
+EO, \sum_1, n_3, Above, 1.0
+EO, _1, 1_1, Above, 1.0
+EO, _1, \sum_1, Right, 1.0
+EO, _1, n_2, Below, 1.0
+EO, _2, a_2, Above, 1.0
+EO, _2, n_5, Below, 1.0
+EO, a_1, =_3, Right, 1.0
+EO, a_1, k_2, Sub, 1.0
+EO, a_2, +_1, Right, 1.0
+EO, a_2, 1_3, Sub, 1.0
+EO, a_3, n_4, Sub, 1.0
+EO, c_1, =_1, Right, 1.0
+EO, c_1, n_1, Sub, 1.0
+EO, k_1, =_2, Right, 1.0

@@ -1,0 +1,28 @@
+# IUD, "2009213-137-72.ink"
+# Objects(11):
+O, 5:, 1, 1.0, OInsideRRInside
+O, 9:, 1, 1.0, OInsideRRInsideRRInside
+O, 1:, 1, 1.0, OInside
+O, 6:7:, +, 1.0, OInsideRRInsideR
+O, 8:, \sqrt, 1.0, OInsideRRInsideRR
+O, 13:14:, x, 1.0, OInsideRRInsideRRInsideRRInside
+O, 10:11:, +, 1.0, OInsideRRInsideRRInsideR
+O, 0:15:, \sqrt, 1.0, O
+O, 2:3:, +, 1.0, OInsideR
+O, 4:, \sqrt, 1.0, OInsideRR
+O, 12:, \sqrt, 1.0, OInsideRRInsideRRInsideRR
+
+# Relations from SRT:
+EO, 0:15:, 1:, Inside, 1.0
+EO, 0:15:, 2:3:, Inside, 1.0
+EO, 10:11:, 12:, Right, 1.0
+EO, 12:, 13:14:, Inside, 1.0
+EO, 1:, 2:3:, Right, 1.0
+EO, 2:3:, 4:, Right, 1.0
+EO, 4:, 5:, Inside, 1.0
+EO, 4:, 6:7:, Inside, 1.0
+EO, 5:, 6:7:, Right, 1.0
+EO, 6:7:, 8:, Right, 1.0
+EO, 8:, 10:11:, Inside, 1.0
+EO, 8:, 9:, Inside, 1.0
+EO, 9:, 10:11:, Right, 1.0

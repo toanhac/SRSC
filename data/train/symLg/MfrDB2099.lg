@@ -1,0 +1,31 @@
+# IUD, MfrDB2099
+# Objects(14):
+O, 2_1, 2, 1.0, O
+O, x_1, x, 1.0, ORRR
+O, -_1, -, 1.0, ORRRR
+O, (_2, (, 1.0, ORRRRRRRRR
+O, -_2, -, 1.0, ORRRRRRRRRRR
+O, x_2, x, 1.0, ORRRRRRRRRRRR
+O, 3_1, 3, 1.0, ORRRRR
+O, =_1, =, 1.0, ORRRRRRR
+O, 5_1, 5, 1.0, ORRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRRR
+O, (_1, (, 1.0, ORR
+O, )_1, ), 1.0, ORRRRRR
+O, \log_2, \log, 1.0, ORRRRRRRR
+O, \log_1, \log, 1.0, OR
+
+# Relations from SRT:
+EO, (_1, x_1, Right, 1.0
+EO, (_2, 5_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, -_1, 3_1, Right, 1.0
+EO, -_2, x_2, Right, 1.0
+EO, 2_1, \log_1, Right, 1.0
+EO, 3_1, )_1, Right, 1.0
+EO, 5_1, -_2, Right, 1.0
+EO, =_1, \log_2, Right, 1.0
+EO, \log_1, (_1, Right, 1.0
+EO, \log_2, (_2, Right, 1.0
+EO, x_1, -_1, Right, 1.0
+EO, x_2, )_2, Right, 1.0

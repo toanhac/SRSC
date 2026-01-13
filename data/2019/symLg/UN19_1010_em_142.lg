@@ -1,0 +1,7 @@
+# IUD, CROHME19_142
+# Objects(2):
+O, A_1, A, 1.0, O
+O, A_2, A, 1.0, OR
+
+# Relations from SRT:
+R, A_1, A_2, Right, 1.0

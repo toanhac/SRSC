@@ -1,0 +1,9 @@
+# IUD, 2011_IVC_depart_F039_E016
+# Objects(3):
+O, theta_1, \theta, 1.0, O
+O, n_1, n, 1.0, OSupSup
+O, 3_1, 3, 1.0, OSup
+
+# Relations from SRT:
+EO, 3_1, n_1, Sup, 1.0
+EO, theta_1, 3_1, Sup, 1.0

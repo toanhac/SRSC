@@ -1,0 +1,11 @@
+# IUD, CROHME19_1023
+# Objects(4):
+O, -_1, -, 1.0, O
+O, x_1, x, 1.0, OR
+O, a_1, a, 1.0, ORRR
+O, -_2, -, 1.0, ORR
+
+# Relations from SRT:
+R, -_1, x_1, Right, 1.0
+R, -_2, a_1, Right, 1.0
+R, x_1, -_2, Right, 1.0

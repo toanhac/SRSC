@@ -1,0 +1,33 @@
+# IUD, 2011_IVC_depart_F028_E052
+# Objects(15):
+O, \lim_1, \lim, 1.0, O
+O, =_1, =, 1.0, ORRRR
+O, \infty_2, \infty, 1.0, ORRRRRR
+O, )_1, ), 1.0, ORRR
+O, n_1, n, 1.0, OBelow
+O, n_2, n, 1.0, ORRSubR
+O, \rightarrow_1, \rightarrow, 1.0, OBelowR
+O, u_1, u, 1.0, ORR
+O, +_1, +, 1.0, OBelowRR
+O, 2_1, 2, 1.0, ORRSub
+O, +_2, +, 1.0, ORRSubRR
+O, \infty_1, \infty, 1.0, OBelowRRR
+O, 1_1, 1, 1.0, ORRSubRRR
+O, (_1, (, 1.0, OR
+O, -_1, -, 1.0, ORRRRR
+
+# Relations from SRT:
+EO, (_1, u_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, +_1, \infty_1, Right, 1.0
+EO, +_2, 1_1, Right, 1.0
+EO, -_1, \infty_2, Right, 1.0
+EO, 2_1, n_2, Right, 1.0
+EO, =_1, -_1, Right, 1.0
+EO, \lim_1, (_1, Right, 1.0
+EO, \lim_1, n_1, Below, 1.0
+EO, \rightarrow_1, +_1, Right, 1.0
+EO, n_1, \rightarrow_1, Right, 1.0
+EO, n_2, +_2, Right, 1.0
+EO, u_1, )_1, Right, 1.0
+EO, u_1, 2_1, Sub, 1.0

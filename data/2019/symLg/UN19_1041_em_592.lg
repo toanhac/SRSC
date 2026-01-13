@@ -1,0 +1,13 @@
+# IUD, CROHME19_592
+# Objects(5):
+O, y_1, y, 1.0, OSup
+O, c_1, c, 1.0, OR
+O, x_1, x, 1.0, OSub
+O, i_1, i, 1.0, ORSub
+O, \int_1, \int, 1.0, O
+
+# Relations from SRT:
+R, \int_1, c_1, Right, 1.0
+R, \int_1, x_1, Sub, 1.0
+R, \int_1, y_1, Sup, 1.0
+R, c_1, i_1, Sub, 1.0

@@ -1,0 +1,55 @@
+# IUD, CROHME19_488
+# Objects(25):
+O, \pi_1, \pi, 1.0, ORRRRRRRRRRRAboveRR
+O, _3, \sqrt, 1.0, ORRRRRRRRRRRBelow
+O, -_3, -, 1.0, ORRRRRRRRRRRAboveRRRInsideR
+O, _2, \sqrt, 1.0, ORRRRRRRRRRRAboveRRR
+O, -_1, -, 1.0, O
+O, 4_2, 4, 1.0, ORRRRRR
+O, 1_2, 1, 1.0, ORRRRRRRRRRRBelowInside
+O, +_3, +, 1.0, ORRRRRRRRRRRBelowInsideR
+O, B_1, B, 1.0, ORRRRRRRRRRRAboveR
+O, _1, -, 1.0, ORRRRRRRRRRR
+O, 1_1, 1, 1.0, ORRRRRRRRRRRAboveRRRInside
+O, 4_1, 4, 1.0, OR
+O, 3_1, 3, 1.0, ORRRRRRRRRRRBelowInsideRR
+O, b_1, b, 1.0, ORRRRRRRRR
+O, (_1, (, 1.0, ORR
+O, x_1, x, 1.0, ORRRRRRRRRRRAboveRRRInsideRR
+O, +_2, +, 1.0, ORRRRRRRR
+O, +_1, +, 1.0, ORRRR
+O, 2_1, 2, 1.0, ORRRRRRRRRRRAboveRRSup
+O, \gamma_1, \gamma, 1.0, ORRR
+O, \log_1, \log, 1.0, ORRRRR
+O, )_1, ), 1.0, ORRRRRRR
+O, 4_3, 4, 1.0, ORRRRRRRRRRRAbove
+O, x_2, x, 1.0, ORRRRRRRRRRRBelowInsideRRR
+O, -_2, -, 1.0, ORRRRRRRRRR
+
+# Relations from SRT:
+R, (_1, \gamma_1, Right, 1.0
+R, )_1, +_2, Right, 1.0
+R, +_1, \log_1, Right, 1.0
+R, +_2, b_1, Right, 1.0
+R, +_3, 3_1, Right, 1.0
+R, -_1, 4_1, Right, 1.0
+R, -_2, _1, Right, 1.0
+R, -_3, x_1, Right, 1.0
+R, 1_1, -_3, Right, 1.0
+R, 1_2, +_3, Right, 1.0
+R, 3_1, x_2, Right, 1.0
+R, 4_1, (_1, Right, 1.0
+R, 4_2, )_1, Right, 1.0
+R, 4_3, B_1, Right, 1.0
+R, B_1, \pi_1, Right, 1.0
+R, \gamma_1, +_1, Right, 1.0
+R, \log_1, 4_2, Right, 1.0
+R, \pi_1, 2_1, Sup, 1.0
+R, \pi_1, _2, Right, 1.0
+R, _1, 4_3, Above, 1.0
+R, _1, _3, Below, 1.0
+R, _2, -_3, Inside, 1.0
+R, _2, 1_1, Inside, 1.0
+R, _3, +_3, Inside, 1.0
+R, _3, 1_2, Inside, 1.0
+R, b_1, -_2, Right, 1.0

@@ -1,0 +1,39 @@
+# IUD, CROHME_2016_em_297
+# Objects(18):
+O, 1_2, 1, 1.0, ORRRR
+O, times_1, \times, 1.0, ORRRRRRR
+O, +_1, +, 1.0, ORRRRR
+O, _1, -, 1.0, ORRRRRRRR
+O, 2_2, 2, 1.0, ORRRRRRRRRRRRBelow
+O, 2_1, 2, 1.0, ORRRRRRRRBelow
+O, =_1, =, 1.0, OR
+O, t_1, t, 1.0, ORR
+O, 1_4, 1, 1.0, ORRRRRRRRRRRRAbove
+O, +_2, +, 1.0, ORRRRRRRRRRR
+O, t_2, t, 1.0, ORRRRRRRRRR
+O, =_2, =, 1.0, ORRRRRRRRR
+O, c_1, c, 1.0, O
+O, -_1, -, 1.0, ORRR
+O, 3_1, 3, 1.0, ORRRRRR
+O, 1_1, 1, 1.0, OSub
+O, 1_3, 1, 1.0, ORRRRRRRRAbove
+O, _2, -, 1.0, ORRRRRRRRRRRR
+
+# Relations from SRT:
+EO, +_1, 3_1, Right, 1.0
+EO, +_2, _2, Right, 1.0
+EO, -_1, 1_2, Right, 1.0
+EO, 1_2, +_1, Right, 1.0
+EO, 3_1, times_1, Right, 1.0
+EO, =_1, t_1, Right, 1.0
+EO, =_2, t_2, Right, 1.0
+EO, _1, 1_3, Above, 1.0
+EO, _1, 2_1, Below, 1.0
+EO, _1, =_2, Right, 1.0
+EO, _2, 1_4, Above, 1.0
+EO, _2, 2_2, Below, 1.0
+EO, c_1, 1_1, Sub, 1.0
+EO, c_1, =_1, Right, 1.0
+EO, t_1, -_1, Right, 1.0
+EO, t_2, +_2, Right, 1.0
+EO, times_1, _1, Right, 1.0

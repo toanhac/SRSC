@@ -1,0 +1,25 @@
+# IUD, 2011_IVC_depart_F034_E072
+# Objects(11):
+O, b_1, b, 1.0, ORR
+O, k_1, k, 1.0, ORSub
+O, 1_1, 1, 1.0, ORSubRR
+O, b_2, b, 1.0, ORRRR
+O, n_2, n, 1.0, ORSup
+O, =_2, =, 1.0, ORRR
+O, k_2, k, 1.0, ORRSub
+O, n_1, n, 1.0, OSub
+O, \sum_1, \sum, 1.0, OR
+O, \lim_1, \lim, 1.0, O
+O, =_1, -, 1.0, ORSubR
+
+# Relations from SRT:
+EO, =_1, 1_1, Right, 1.0
+EO, =_2, b_2, Right, 1.0
+EO, \lim_1, \sum_1, Right, 1.0
+EO, \lim_1, n_1, Sub, 1.0
+EO, \sum_1, b_1, Right, 1.0
+EO, \sum_1, k_1, Sub, 1.0
+EO, \sum_1, n_2, Sup, 1.0
+EO, b_1, =_2, Right, 1.0
+EO, b_1, k_2, Sub, 1.0
+EO, k_1, =_1, Right, 1.0

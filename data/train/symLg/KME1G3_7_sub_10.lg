@@ -1,0 +1,21 @@
+# IUD, 2011_KME1_w7_e10
+# Objects(9):
+O, x_1, x, 1.0, ORAboveInside
+O, x_2, x, 1.0, ORRR
+O, -_1, -, 1.0, OR
+O, a_1, a, 1.0, OSub
+O, 2_1, 2, 1.0, ORBelow
+O, d_1, d, 1.0, ORR
+O, b_1, b, 1.0, OSup
+O, \int_1, \int, 1.0, O
+O, \sqrt_1, \sqrt, 1.0, ORAbove
+
+# Relations from SRT:
+EO, -_1, 2_1, Below, 1.0
+EO, -_1, \sqrt_1, Above, 1.0
+EO, -_1, d_1, Right, 1.0
+EO, \int_1, -_1, Right, 1.0
+EO, \int_1, a_1, Sub, 1.0
+EO, \int_1, b_1, Sup, 1.0
+EO, \sqrt_1, x_1, Inside, 1.0
+EO, d_1, x_2, Right, 1.0

@@ -1,0 +1,23 @@
+# IUD, CROHME_2016_em_1020
+# Objects(10):
+O, y_2, y, 1.0, ORR
+O, a_1, a, 1.0, OSub
+O, c_1, c, 1.0, O
+O, a_2, a, 1.0, ORSup
+O, b_2, b, 1.0, ORRSup
+O, y_3, y, 1.0, ORRR
+O, y_1, y, 1.0, OR
+O, c_2, c, 1.0, OSubRR
+O, c_3, c, 1.0, ORRRSup
+O, b_1, b, 1.0, OSubR
+
+# Relations from SRT:
+EO, a_1, b_1, Right, 1.0
+EO, b_1, c_2, Right, 1.0
+EO, c_1, a_1, Sub, 1.0
+EO, c_1, y_1, Right, 1.0
+EO, y_1, a_2, Sup, 1.0
+EO, y_1, y_2, Right, 1.0
+EO, y_2, b_2, Sup, 1.0
+EO, y_2, y_3, Right, 1.0
+EO, y_3, c_3, Sup, 1.0

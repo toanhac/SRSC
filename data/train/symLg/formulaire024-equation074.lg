@@ -1,0 +1,33 @@
+# IUD, 2011_IVC_depart_F024_E074
+# Objects(15):
+O, \theta_3, \theta, 1.0, ORRRRRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRR
+O, p_1, p, 1.0, O
+O, =_1, =, 1.0, ORRRR
+O, \cos_1, \cos, 1.0, ORRRRRRRRRRRR
+O, +_1, +, 1.0, ORRRRRRR
+O, n_2, n, 1.0, ORRRRRRRRRRRRSup
+O, 1_1, 1, 1.0, ORRRRRRRR
+O, )_1, ), 1.0, ORRR
+O, n_1, n, 1.0, ORRRRRR
+O, \theta_2, \theta, 1.0, ORRRRRRRRRRR
+O, (_2, (, 1.0, ORRRRR
+O, \theta_1, \theta, 1.0, ORR
+O, (_1, (, 1.0, OR
+O, \sin_1, \sin, 1.0, ORRRRRRRRRR
+
+# Relations from SRT:
+EO, (_1, \theta_1, Right, 1.0
+EO, (_2, n_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, \sin_1, Right, 1.0
+EO, +_1, 1_1, Right, 1.0
+EO, 1_1, )_2, Right, 1.0
+EO, =_1, (_2, Right, 1.0
+EO, \cos_1, \theta_3, Right, 1.0
+EO, \cos_1, n_2, Sup, 1.0
+EO, \sin_1, \theta_2, Right, 1.0
+EO, \theta_1, )_1, Right, 1.0
+EO, \theta_2, \cos_1, Right, 1.0
+EO, n_1, +_1, Right, 1.0
+EO, p_1, (_1, Right, 1.0

@@ -1,0 +1,9 @@
+# IUD, 2011_IVC_depart_F035_E069
+# Objects(3):
+O, 2_1, 2, 1.0, OSup
+O, \beta_1, \beta, 1.0, O
+O, m_1, m, 1.0, OSub
+
+# Relations from SRT:
+EO, \beta_1, 2_1, Sup, 1.0
+EO, \beta_1, m_1, Sub, 1.0

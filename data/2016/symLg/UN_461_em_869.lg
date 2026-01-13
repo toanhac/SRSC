@@ -1,0 +1,9 @@
+# IUD, CROHME_2016_em_869
+# Objects(3):
+O, B_1, B, 1.0, OInside
+O, _1, \sqrt, 1.0, O
+O, infin_1, \infty, 1.0, OInsideSub
+
+# Relations from SRT:
+EO, B_1, infin_1, Sub, 1.0
+EO, _1, B_1, Inside, 1.0

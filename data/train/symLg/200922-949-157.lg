@@ -1,0 +1,23 @@
+# IUD, "200922-949-157.ink"
+# Objects(10):
+O, 8:, -, 1.0, OR
+O, 11:, e, 1.0, ORRR
+O, 4:, V, 1.0, OSubRR
+O, 5:, m, 1.0, OSup
+O, 9:, u, 1.0, ORBelow
+O, 6:7:, \theta, 1.0, ORAbove
+O, 10:, d, 1.0, ORR
+O, 2:3:, +, 1.0, OSubR
+O, 1:, \gamma, 1.0, OSub
+O, 0:, \int, 1.0, O
+
+# Relations from SRT:
+EO, 0:, 1:, Sub, 1.0
+EO, 0:, 5:, Sup, 1.0
+EO, 0:, 8:, Right, 1.0
+EO, 10:, 11:, Right, 1.0
+EO, 1:, 2:3:, Right, 1.0
+EO, 2:3:, 4:, Right, 1.0
+EO, 8:, 10:, Right, 1.0
+EO, 8:, 6:7:, Above, 1.0
+EO, 8:, 9:, Below, 1.0

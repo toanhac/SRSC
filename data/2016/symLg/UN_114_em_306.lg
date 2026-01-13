@@ -1,0 +1,43 @@
+# IUD, CROHME_2016_em_306
+# Objects(20):
+O, _4, -, 1.0, ORRRRRRR
+O, _2, -, 1.0, ORR
+O, _3, -, 1.0, ORRRRR
+O, )_1, ), 1.0, ORRRRRRRR
+O, 2_1, 2, 1.0, ORRBelow
+O, -_3, -, 1.0, ORRRRRR
+O, +_1, +, 1.0, OR
+O, q_1, q, 1.0, OBelow
+O, (_1, (, 1.0, ORRRR
+O, pi_3, \pi, 1.0, ORRRRRRRAbove
+O, -_1, -, 1.0, ORRBelowRR
+O, pi_2, \pi, 1.0, ORRRRRBelow
+O, pi_1, \pi, 1.0, ORRBelowR
+O, 4_2, 4, 1.0, ORRAbove
+O, q_2, q, 1.0, ORRBelowRRR
+O, 2_2, 2, 1.0, ORRRRRRRBelow
+O, _1, -, 1.0, O
+O, 4_1, 4, 1.0, OAbove
+O, -_2, -, 1.0, ORRR
+O, 8_1, 8, 1.0, ORRRRRAbove
+
+# Relations from SRT:
+EO, (_1, _3, Right, 1.0
+EO, +_1, _2, Right, 1.0
+EO, -_1, q_2, Right, 1.0
+EO, -_2, (_1, Right, 1.0
+EO, -_3, _4, Right, 1.0
+EO, 2_1, pi_1, Right, 1.0
+EO, _1, +_1, Right, 1.0
+EO, _1, 4_1, Above, 1.0
+EO, _1, q_1, Below, 1.0
+EO, _2, -_2, Right, 1.0
+EO, _2, 2_1, Below, 1.0
+EO, _2, 4_2, Above, 1.0
+EO, _3, -_3, Right, 1.0
+EO, _3, 8_1, Above, 1.0
+EO, _3, pi_2, Below, 1.0
+EO, _4, )_1, Right, 1.0
+EO, _4, 2_2, Below, 1.0
+EO, _4, pi_3, Above, 1.0
+EO, pi_1, -_1, Right, 1.0

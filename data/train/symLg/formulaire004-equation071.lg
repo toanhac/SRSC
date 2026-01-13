@@ -1,0 +1,11 @@
+# IUD, 2011_IVC_DEPART_F004_E071
+# Objects(4):
+O, 0_1, 0, 1.0, OBelowR
+O, 1_2, 1, 1.0, OBelow
+O, 1_1, 1, 1.0, OAbove
+O, _1, -, 1.0, O
+
+# Relations from SRT:
+EO, 1_2, 0_1, Right, 1.0
+EO, _1, 1_1, Above, 1.0
+EO, _1, 1_2, Below, 1.0

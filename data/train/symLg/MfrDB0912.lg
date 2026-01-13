@@ -1,0 +1,7 @@
+# IUD, MfrDB0912
+# Objects(2):
+O, 5_1, 5, 1.0, OInside
+O, \sqrt_1, \sqrt, 1.0, O
+
+# Relations from SRT:
+EO, \sqrt_1, 5_1, Inside, 1.0

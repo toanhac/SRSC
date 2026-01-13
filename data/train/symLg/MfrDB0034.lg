@@ -1,0 +1,49 @@
+# IUD, MfrDB0034
+# Objects(23):
+O, 5_1, 5, 1.0, OAboveRRRRRRSup
+O, \frac_1, -, 1.0, O
+O, 8_2, 8, 1.0, OBelowRRRRRR
+O, 3_1, 3, 1.0, OAboveRRSup
+O, 2_2, 2, 1.0, OAboveRR
+O, 6_2, 6, 1.0, OBelowRR
+O, 1_1, 1, 1.0, OAbove
+O, +_6, +, 1.0, OBelowRRRRR
+O, 4_1, 4, 1.0, OAboveRRRRSup
+O, 7_2, 7, 1.0, OBelowRRRR
+O, 2_1, 2, 1.0, OAboveSup
+O, +_3, +, 1.0, OAboveRRRRR
+O, 5_2, 5, 1.0, OBelow
+O, 6_1, 6, 1.0, OBelowSup
+O, 7_1, 7, 1.0, OBelowRRSup
+O, 8_1, 8, 1.0, OBelowRRRRSup
+O, +_1, +, 1.0, OAboveR
+O, +_5, +, 1.0, OBelowRRR
+O, +_2, +, 1.0, OAboveRRR
+O, 3_2, 3, 1.0, OAboveRRRR
+O, 4_2, 4, 1.0, OAboveRRRRRR
+O, 9_1, 9, 1.0, OBelowRRRRRRSup
+O, +_4, +, 1.0, OBelowR
+
+# Relations from SRT:
+EO, +_1, 2_2, Right, 1.0
+EO, +_2, 3_2, Right, 1.0
+EO, +_3, 4_2, Right, 1.0
+EO, +_4, 6_2, Right, 1.0
+EO, +_5, 7_2, Right, 1.0
+EO, +_6, 8_2, Right, 1.0
+EO, 1_1, +_1, Right, 1.0
+EO, 1_1, 2_1, Sup, 1.0
+EO, 2_2, +_2, Right, 1.0
+EO, 2_2, 3_1, Sup, 1.0
+EO, 3_2, +_3, Right, 1.0
+EO, 3_2, 4_1, Sup, 1.0
+EO, 4_2, 5_1, Sup, 1.0
+EO, 5_2, +_4, Right, 1.0
+EO, 5_2, 6_1, Sup, 1.0
+EO, 6_2, +_5, Right, 1.0
+EO, 6_2, 7_1, Sup, 1.0
+EO, 7_2, +_6, Right, 1.0
+EO, 7_2, 8_1, Sup, 1.0
+EO, 8_2, 9_1, Sup, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, 5_2, Below, 1.0

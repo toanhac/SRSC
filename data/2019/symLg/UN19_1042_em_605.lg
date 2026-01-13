@@ -1,0 +1,31 @@
+# IUD, CROHME19_605
+# Objects(14):
+O, [_1, [, 1.0, OR
+O, F_2, F, 1.0, ORRRRRR
+O, \lim_1, \lim, 1.0, ORRRRR
+O, 0_1, 0, 1.0, ORRRRRBelowRR
+O, [_2, [, 1.0, ORRRRRRR
+O, a_1, a, 1.0, ORRRRRBelow
+O, f_2, f, 1.0, ORRRRRRRR
+O, ]_1, ], 1.0, ORRR
+O, F_1, F, 1.0, O
+O, ]_2, ], 1.0, ORRRRRRRRR
+O, \rightarrow_1, \rightarrow, 1.0, ORRRRRBelowR
+O, =_1, =, 1.0, ORRRR
+O, a_2, a, 1.0, ORRRRRRSub
+O, f_1, f, 1.0, ORR
+
+# Relations from SRT:
+R, =_1, \lim_1, Right, 1.0
+R, F_1, [_1, Right, 1.0
+R, F_2, [_2, Right, 1.0
+R, F_2, a_2, Sub, 1.0
+R, [_1, f_1, Right, 1.0
+R, [_2, f_2, Right, 1.0
+R, \lim_1, F_2, Right, 1.0
+R, \lim_1, a_1, Below, 1.0
+R, \rightarrow_1, 0_1, Right, 1.0
+R, ]_1, =_1, Right, 1.0
+R, a_1, \rightarrow_1, Right, 1.0
+R, f_1, ]_1, Right, 1.0
+R, f_2, ]_2, Right, 1.0

@@ -1,0 +1,57 @@
+# IUD, CROHME_2016_em_184
+# Objects(27):
+O, s_1, s, 1.0, O
+O, 4_1, 4, 1.0, ORRRRRRRRBelow
+O, +_1, +, 1.0, ORRRRRRRRR
+O, =_1, =, 1.0, ORRRR
+O, 1_1, 1, 1.0, ORRRRRAbove
+O, n_4, n, 1.0, ORRRRRRRRRRRRRRAbove
+O, _4, -, 1.0, ORRRRRRRRRRR
+O, _5, -, 1.0, ORRRRRRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRRRRRR
+O, cos_2, \cos, 1.0, ORRRRRRRRRRRRR
+O, n_1, n, 1.0, ORR
+O, n_2, n, 1.0, ORRRRRRRRAbove
+O, (_2, (, 1.0, ORRRRRR
+O, pi_2, \pi, 1.0, ORRRRRRRRRRRAboveR
+O, (_1, (, 1.0, OR
+O, )_1, ), 1.0, ORRR
+O, pi_3, \pi, 1.0, ORRRRRRRRRRRRRRAboveR
+O, 4_3, 4, 1.0, ORRRRRRRRRRRRRRBelow
+O, _1, -, 1.0, ORRRRR
+O, 4_2, 4, 1.0, ORRRRRRRRRRRBelow
+O, _2, \sqrt, 1.0, ORRRRRBelow
+O, n_3, n, 1.0, ORRRRRRRRRRRAbove
+O, _3, -, 1.0, ORRRRRRRR
+O, sin_1, \sin, 1.0, ORRRRRRRRRR
+O, cos_1, \cos, 1.0, ORRRRRRR
+O, pi_1, \pi, 1.0, ORRRRRRRRAboveR
+O, 2_1, 2, 1.0, ORRRRRBelowInside
+
+# Relations from SRT:
+EO, (_1, n_1, Right, 1.0
+EO, (_2, cos_1, Right, 1.0
+EO, )_1, =_1, Right, 1.0
+EO, )_2, cos_2, Right, 1.0
+EO, +_1, sin_1, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, _1, (_2, Right, 1.0
+EO, _1, 1_1, Above, 1.0
+EO, _1, _2, Below, 1.0
+EO, _2, 2_1, Inside, 1.0
+EO, _3, +_1, Right, 1.0
+EO, _3, 4_1, Below, 1.0
+EO, _3, n_2, Above, 1.0
+EO, _4, )_2, Right, 1.0
+EO, _4, 4_2, Below, 1.0
+EO, _4, n_3, Above, 1.0
+EO, _5, 4_3, Below, 1.0
+EO, _5, n_4, Above, 1.0
+EO, cos_1, _3, Right, 1.0
+EO, cos_2, _5, Right, 1.0
+EO, n_1, )_1, Right, 1.0
+EO, n_2, pi_1, Right, 1.0
+EO, n_3, pi_2, Right, 1.0
+EO, n_4, pi_3, Right, 1.0
+EO, s_1, (_1, Right, 1.0
+EO, sin_1, _4, Right, 1.0

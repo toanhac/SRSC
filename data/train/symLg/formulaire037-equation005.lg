@@ -1,0 +1,17 @@
+# IUD, 2011_IVC_depart_F037_E005
+# Objects(7):
+O, 9_2, 9, 1.0, ORRRRR
+O, 9_1, 9, 1.0, ORR
+O, 7_1, 7, 1.0, ORRR
+O, \times_1, \times, 1.0, OR
+O, 6_1, 6, 1.0, ORRRRRR
+O, \geq_1, \geq, 1.0, ORRRR
+O, 1_1, 1, 1.0, O
+
+# Relations from SRT:
+EO, 1_1, \times_1, Right, 1.0
+EO, 7_1, \geq_1, Right, 1.0
+EO, 9_1, 7_1, Right, 1.0
+EO, 9_2, 6_1, Right, 1.0
+EO, \geq_1, 9_2, Right, 1.0
+EO, \times_1, 9_1, Right, 1.0

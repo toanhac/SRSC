@@ -1,0 +1,47 @@
+# IUD, 2011_IVC_depart_F035_E043
+# Objects(22):
+O, 2_4, 2, 1.0, ORRRRRRRRSup
+O, \theta_1, \theta, 1.0, ORRRRRRRR
+O, \theta_2, \theta, 1.0, ORRRRRRRRRRRR
+O, \phi_1, \phi, 1.0, ORRRRRRRRRRRRRR
+O, 2_7, 2, 1.0, ORRRRRRRRRRRRRRSup
+O, r_1, r, 1.0, ORRRR
+O, \sin_1, \sin, 1.0, ORRRRRRRRRRR
+O, d_3, d, 1.0, ORRRRRRR
+O, +_2, +, 1.0, ORRRRRRRRR
+O, r_2, r, 1.0, ORRRRRR
+O, +_1, +, 1.0, ORRRRR
+O, =_1, =, 1.0, ORR
+O, d_4, d, 1.0, ORRRRRRRRRRRRR
+O, 2_2, 2, 1.0, ORRRRSup
+O, 2_6, 2, 1.0, ORRRRRRRRRRRSup
+O, 2_3, 2, 1.0, ORRRRRRSup
+O, 2_5, 2, 1.0, ORRRRRRRRRRSup
+O, d_2, d, 1.0, ORRR
+O, s_1, s, 1.0, OR
+O, 2_1, 2, 1.0, ORSup
+O, d_1, d, 1.0, O
+O, r_3, r, 1.0, ORRRRRRRRRR
+
+# Relations from SRT:
+EO, +_1, r_2, Right, 1.0
+EO, +_2, r_3, Right, 1.0
+EO, =_1, d_2, Right, 1.0
+EO, \phi_1, 2_7, Sup, 1.0
+EO, \sin_1, 2_6, Sup, 1.0
+EO, \sin_1, \theta_2, Right, 1.0
+EO, \theta_1, +_2, Right, 1.0
+EO, \theta_1, 2_4, Sup, 1.0
+EO, \theta_2, d_4, Right, 1.0
+EO, d_1, s_1, Right, 1.0
+EO, d_2, r_1, Right, 1.0
+EO, d_3, \theta_1, Right, 1.0
+EO, d_4, \phi_1, Right, 1.0
+EO, r_1, +_1, Right, 1.0
+EO, r_1, 2_2, Sup, 1.0
+EO, r_2, 2_3, Sup, 1.0
+EO, r_2, d_3, Right, 1.0
+EO, r_3, 2_5, Sup, 1.0
+EO, r_3, \sin_1, Right, 1.0
+EO, s_1, 2_1, Sup, 1.0
+EO, s_1, =_1, Right, 1.0

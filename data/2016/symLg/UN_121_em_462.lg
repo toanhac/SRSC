@@ -1,0 +1,15 @@
+# IUD, CROHME_2016_em_462
+# Objects(6):
+O, 4_1, 4, 1.0, OR
+O, -_1, -, 1.0, ORRRR
+O, =_1, =, 1.0, ORRR
+O, alpha_1, \alpha, 1.0, ORR
+O, cos_1, \cos, 1.0, O
+O, 1_1, 1, 1.0, ORRRRR
+
+# Relations from SRT:
+EO, -_1, 1_1, Right, 1.0
+EO, 4_1, alpha_1, Right, 1.0
+EO, =_1, -_1, Right, 1.0
+EO, alpha_1, =_1, Right, 1.0
+EO, cos_1, 4_1, Right, 1.0

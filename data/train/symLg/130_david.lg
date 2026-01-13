@@ -1,0 +1,49 @@
+# IUD, 130_david
+# Objects(23):
+O, 1_4, 1, 1.0, ORRRRRRRRRRRRAbove
+O, 2_1, 2, 1.0, ORRRRSup
+O, )_1, ), 1.0, ORRRR
+O, ctdot_1, \ldots, 1.0, ORRRRRRRRRR
+O, 4_3, 4, 1.0, ORRRRRRRBelow
+O, +_1, +, 1.0, OR
+O, +_3, +, 1.0, ORRRRRRRRR
+O, 4_1, 4, 1.0, OBelow
+O, _3, -, 1.0, ORRRRRRR
+O, 3_1, 3, 1.0, ORRRRRRRRSup
+O, _2, -, 1.0, ORRR
+O, =_1, =, 1.0, ORRRRRRRRRRR
+O, )_2, ), 1.0, ORRRRRRRR
+O, 1_1, 1, 1.0, OAbove
+O, _4, -, 1.0, ORRRRRRRRRRRR
+O, +_2, +, 1.0, ORRRRR
+O, _1, -, 1.0, O
+O, 1_2, 1, 1.0, ORRRAbove
+O, 4_2, 4, 1.0, ORRRBelow
+O, (_2, (, 1.0, ORRRRRR
+O, 3_2, 3, 1.0, ORRRRRRRRRRRRBelow
+O, 1_3, 1, 1.0, ORRRRRRRAbove
+O, (_1, (, 1.0, ORR
+
+# Relations from SRT:
+EO, (_1, _2, Right, 1.0
+EO, (_2, _3, Right, 1.0
+EO, )_1, +_2, Right, 1.0
+EO, )_1, 2_1, Sup, 1.0
+EO, )_2, +_3, Right, 1.0
+EO, )_2, 3_1, Sup, 1.0
+EO, +_1, (_1, Right, 1.0
+EO, +_2, (_2, Right, 1.0
+EO, +_3, ctdot_1, Right, 1.0
+EO, =_1, _4, Right, 1.0
+EO, _1, +_1, Right, 1.0
+EO, _1, 1_1, Above, 1.0
+EO, _1, 4_1, Below, 1.0
+EO, _2, )_1, Right, 1.0
+EO, _2, 1_2, Above, 1.0
+EO, _2, 4_2, Below, 1.0
+EO, _3, )_2, Right, 1.0
+EO, _3, 1_3, Above, 1.0
+EO, _3, 4_3, Below, 1.0
+EO, _4, 1_4, Above, 1.0
+EO, _4, 3_2, Below, 1.0
+EO, ctdot_1, =_1, Right, 1.0

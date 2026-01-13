@@ -1,0 +1,13 @@
+# IUD, 2011_IVC_depart_F026_E034
+# Objects(5):
+O, j_1, j, 1.0, ORRSub
+O, c_1, c, 1.0, O
+O, i_1, i, 1.0, OSub
+O, \neq_1, \neq, 1.0, OR
+O, c_2, c, 1.0, ORR
+
+# Relations from SRT:
+EO, \neq_1, c_2, Right, 1.0
+EO, c_1, \neq_1, Right, 1.0
+EO, c_1, i_1, Sub, 1.0
+EO, c_2, j_1, Sub, 1.0

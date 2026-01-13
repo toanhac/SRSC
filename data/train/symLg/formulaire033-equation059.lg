@@ -1,0 +1,33 @@
+# IUD, 2011_IVC_depart_F033_E059
+# Objects(15):
+O, pi_1, \pi, 1.0, ORRRRAboveR
+O, r_1, r, 1.0, ORRBelow
+O, 2_1, 2, 1.0, ORRAboveSup
+O, =_2, =, 1.0, ORRR
+O, t_1, t, 1.0, ORRRRBelow
+O, 2_2, 2, 1.0, ORRRRAboveRSup
+O, 4_1, 4, 1.0, ORRRRAbove
+O, a_1, a, 1.0, O
+O, _2, -, 1.0, ORRRR
+O, r_2, r, 1.0, ORRRRAboveRR
+O, c_1, c, 1.0, OSub
+O, =_1, =, 1.0, OR
+O, _1, -, 1.0, ORR
+O, 2_3, 2, 1.0, ORRRRBelowSup
+O, v_1, v, 1.0, ORRAbove
+
+# Relations from SRT:
+EO, 4_1, pi_1, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, =_2, _2, Right, 1.0
+EO, _1, =_2, Right, 1.0
+EO, _1, r_1, Below, 1.0
+EO, _1, v_1, Above, 1.0
+EO, _2, 4_1, Above, 1.0
+EO, _2, t_1, Below, 1.0
+EO, a_1, =_1, Right, 1.0
+EO, a_1, c_1, Sub, 1.0
+EO, pi_1, 2_2, Sup, 1.0
+EO, pi_1, r_2, Right, 1.0
+EO, t_1, 2_3, Sup, 1.0
+EO, v_1, 2_1, Sup, 1.0

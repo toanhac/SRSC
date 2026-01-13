@@ -1,0 +1,39 @@
+# IUD, 2011_IVC_depart_F016_E065
+# Objects(18):
+O, +_1, +, 1.0, ORRR
+O, 1_3, 1, 1.0, ORRRRRRRRRRRRR
+O, 5_1, 5, 1.0, ORRRRRR
+O, 7_1, 7, 1.0, ORRRRRRR
+O, 7_2, 7, 1.0, ORRRRRRRRRR
+O, 1_2, 1, 1.0, ORRRRR
+O, 6_2, 6, 1.0, ORRRRRRRRR
+O, 1_4, 1, 1.0, ORRRRRRRRRRRRRRRR
+O, 7_3, 7, 1.0, ORRRRRRRRRRRRRRR
+O, 0_1, 0, 1.0, ORRRRRRRRRRRRRR
+O, 4_1, 4, 1.0, ORRRRRRRRRRRRRRRRR
+O, 1_1, 1, 1.0, O
+O, 6_1, 6, 1.0, ORR
+O, (_1, (, 1.0, ORRRR
+O, 9_1, 9, 1.0, OR
+O, )_1, ), 1.0, ORRRRRRRRRRR
+O, \geq_1, \geq, 1.0, ORRRRRRRRRRRR
+O, \times_1, \times, 1.0, ORRRRRRRR
+
+# Relations from SRT:
+EO, (_1, 1_2, Right, 1.0
+EO, )_1, \geq_1, Right, 1.0
+EO, +_1, (_1, Right, 1.0
+EO, 0_1, 7_3, Right, 1.0
+EO, 1_1, 9_1, Right, 1.0
+EO, 1_2, 5_1, Right, 1.0
+EO, 1_3, 0_1, Right, 1.0
+EO, 1_4, 4_1, Right, 1.0
+EO, 5_1, 7_1, Right, 1.0
+EO, 6_1, +_1, Right, 1.0
+EO, 6_2, 7_2, Right, 1.0
+EO, 7_1, \times_1, Right, 1.0
+EO, 7_2, )_1, Right, 1.0
+EO, 7_3, 1_4, Right, 1.0
+EO, 9_1, 6_1, Right, 1.0
+EO, \geq_1, 1_3, Right, 1.0
+EO, \times_1, 6_2, Right, 1.0

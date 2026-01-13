@@ -1,0 +1,13 @@
+# IUD, 2011_IVC_DEPART_F012_E038
+# Objects(5):
+O, 1_1, 1, 1.0, ORSupRR
+O, alpha_2, \alpha, 1.0, ORSup
+O, x_1, x, 1.0, OR
+O, -_1, -, 1.0, ORSupR
+O, alpha_1, \alpha, 1.0, O
+
+# Relations from SRT:
+EO, -_1, 1_1, Right, 1.0
+EO, alpha_1, x_1, Right, 1.0
+EO, alpha_2, -_1, Right, 1.0
+EO, x_1, alpha_2, Sup, 1.0

@@ -1,0 +1,9 @@
+# IUD, CROHME19_1079
+# Objects(3):
+O, 9_1, 9, 1.0, OAbove
+O, 7_1, 7, 1.0, OBelow
+O, _1, -, 1.0, O
+
+# Relations from SRT:
+R, _1, 7_1, Below, 1.0
+R, _1, 9_1, Above, 1.0

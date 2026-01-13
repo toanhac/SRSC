@@ -1,0 +1,23 @@
+# IUD, "2009213-137-32.ink"
+# Objects(10):
+O, 13:, c, 1.0, ORRRRRR
+O, 10:9:, x, 1.0, ORRRR
+O, 3:4:, 4, 1.0, ORSup
+O, 0:, a, 1.0, O
+O, 11:12:, +, 1.0, ORRRRR
+O, 1:2:, x, 1.0, OR
+O, 16:, 0, 1.0, ORRRRRRRR
+O, 14:15:, =, 1.0, ORRRRRRR
+O, 5:6:, +, 1.0, ORR
+O, 7:8:, b, 1.0, ORRR
+
+# Relations from SRT:
+EO, 0:, 1:2:, Right, 1.0
+EO, 10:9:, 11:12:, Right, 1.0
+EO, 11:12:, 13:, Right, 1.0
+EO, 13:, 14:15:, Right, 1.0
+EO, 14:15:, 16:, Right, 1.0
+EO, 1:2:, 3:4:, Sup, 1.0
+EO, 1:2:, 5:6:, Right, 1.0
+EO, 5:6:, 7:8:, Right, 1.0
+EO, 7:8:, 10:9:, Right, 1.0

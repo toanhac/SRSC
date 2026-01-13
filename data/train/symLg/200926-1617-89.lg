@@ -1,0 +1,17 @@
+# IUD, "200926-1617-89.ink"
+# Objects(7):
+O, 7:, \mu, 1.0, ORRRRR
+O, 5:, v, 1.0, ORRR
+O, 0:, \int, 1.0, O
+O, 6:, d, 1.0, ORRRR
+O, 8:, G, 1.0, ORRRRRSub
+O, 3:4:, +, 1.0, ORR
+O, 1:2:, Y, 1.0, OR
+
+# Relations from SRT:
+EO, 0:, 1:2:, Right, 1.0
+EO, 1:2:, 3:4:, Right, 1.0
+EO, 3:4:, 5:, Right, 1.0
+EO, 5:, 6:, Right, 1.0
+EO, 6:, 7:, Right, 1.0
+EO, 7:, 8:, Sub, 1.0

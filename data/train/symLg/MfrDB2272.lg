@@ -1,0 +1,11 @@
+# IUD, MfrDB2272
+# Objects(4):
+O, 5_2, 5, 1.0, OAbove
+O, \sqrt_1, \sqrt, 1.0, O
+O, 5_3, 5, 1.0, OAboveR
+O, 5_1, 5, 1.0, OInside
+
+# Relations from SRT:
+EO, 5_2, 5_3, Right, 1.0
+EO, \sqrt_1, 5_1, Inside, 1.0
+EO, \sqrt_1, 5_2, Above, 1.0

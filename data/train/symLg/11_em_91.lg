@@ -1,0 +1,7 @@
+# IUD, 2013_IVC_CROHME_F11_E91
+# Objects(2):
+O, Delta_1, \Delta, 1.0, O
+O, L_1, L, 1.0, OR
+
+# Relations from SRT:
+EO, Delta_1, L_1, Right, 1.0

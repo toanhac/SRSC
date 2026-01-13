@@ -1,0 +1,31 @@
+# IUD, MfrDB1620
+# Objects(14):
+O, 1_2, 1, 1.0, ORR
+O, -_2, -, 1.0, ORRRRRRRRSupR
+O, y_2, y, 1.0, ORRRRRRRRSupRR
+O, \frac_1, -, 1.0, O
+O, 1_1, 1, 1.0, OAbove
+O, -_1, -, 1.0, ORRRRR
+O, y_1, y, 1.0, ORRRRRRR
+O, (_1, (, 1.0, OR
+O, 2_1, 2, 1.0, OBelow
+O, 9_1, 9, 1.0, ORRR
+O, x_1, x, 1.0, ORRRR
+O, )_1, ), 1.0, ORRRRRRRR
+O, x_2, x, 1.0, ORRRRRRRRSup
+O, 2_2, 2, 1.0, ORRRRRR
+
+# Relations from SRT:
+EO, (_1, 1_2, Right, 1.0
+EO, )_1, x_2, Sup, 1.0
+EO, -_1, 2_2, Right, 1.0
+EO, -_2, y_2, Right, 1.0
+EO, 1_2, 9_1, Right, 1.0
+EO, 2_2, y_1, Right, 1.0
+EO, 9_1, x_1, Right, 1.0
+EO, \frac_1, (_1, Right, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_1, 2_1, Below, 1.0
+EO, x_1, -_1, Right, 1.0
+EO, x_2, -_2, Right, 1.0
+EO, y_1, )_1, Right, 1.0

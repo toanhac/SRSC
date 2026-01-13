@@ -1,0 +1,31 @@
+# IUD, MfrDB0022
+# Objects(14):
+O, -_2, -, 1.0, OBelowRR
+O, \frac_2, -, 1.0, OAboveRRRR
+O, 3_1, 3, 1.0, OAboveRRRRAbove
+O, -_1, -, 1.0, OAboveR
+O, 6_1, 6, 1.0, OBelowRRR
+O, 7_1, 7, 1.0, OBelowRRRRSup
+O, 2_1, 2, 1.0, OAboveRR
+O, +_1, +, 1.0, OAboveRRR
+O, (_1, (, 1.0, OBelow
+O, \frac_1, -, 1.0, O
+O, )_1, ), 1.0, OBelowRRRR
+O, 5_1, 5, 1.0, OBelowR
+O, 4_1, 4, 1.0, OAboveRRRRBelow
+O, 1_1, 1, 1.0, OAbove
+
+# Relations from SRT:
+EO, (_1, 5_1, Right, 1.0
+EO, )_1, 7_1, Sup, 1.0
+EO, +_1, \frac_2, Right, 1.0
+EO, -_1, 2_1, Right, 1.0
+EO, -_2, 6_1, Right, 1.0
+EO, 1_1, -_1, Right, 1.0
+EO, 2_1, +_1, Right, 1.0
+EO, 5_1, -_2, Right, 1.0
+EO, 6_1, )_1, Right, 1.0
+EO, \frac_1, (_1, Below, 1.0
+EO, \frac_1, 1_1, Above, 1.0
+EO, \frac_2, 3_1, Above, 1.0
+EO, \frac_2, 4_1, Below, 1.0

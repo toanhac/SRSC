@@ -1,0 +1,31 @@
+# IUD, 2011_IVC_depart_F037_E026
+# Objects(14):
+O, =_2, =, 1.0, ORRRBelowR
+O, =_1, =, 1.0, ORR
+O, i_1, i, 1.0, ORRRBelow
+O, a_2, a, 1.0, ORRRR
+O, \gamma_2, \gamma, 1.0, ORSup
+O, i_3, i, 1.0, ORRRRRSup
+O, 1_1, 1, 1.0, ORRRBelowRR
+O, n_1, n, 1.0, ORRRAbove
+O, b_1, b, 1.0, OR
+O, \sum_1, \sum, 1.0, ORRR
+O, a_1, a, 1.0, O
+O, b_2, b, 1.0, ORRRRR
+O, i_2, i, 1.0, ORRRRSub
+O, \gamma_1, \gamma, 1.0, OSub
+
+# Relations from SRT:
+EO, =_1, \sum_1, Right, 1.0
+EO, =_2, 1_1, Right, 1.0
+EO, \sum_1, a_2, Right, 1.0
+EO, \sum_1, i_1, Below, 1.0
+EO, \sum_1, n_1, Above, 1.0
+EO, a_1, \gamma_1, Sub, 1.0
+EO, a_1, b_1, Right, 1.0
+EO, a_2, b_2, Right, 1.0
+EO, a_2, i_2, Sub, 1.0
+EO, b_1, =_1, Right, 1.0
+EO, b_1, \gamma_2, Sup, 1.0
+EO, b_2, i_3, Sup, 1.0
+EO, i_1, =_2, Right, 1.0

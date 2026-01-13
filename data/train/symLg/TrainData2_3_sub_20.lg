@@ -1,0 +1,21 @@
+# IUD, 2011_KAIST_Data2_3_sub_20
+# Objects(9):
+O, +_2, +, 1.0, ORRR
+O, +_1, +, 1.0, OR
+O, d_1, d, 1.0, ORRRRRR
+O, +_4, +, 1.0, ORRRRRRR
+O, +_3, +, 1.0, ORRRRR
+O, c_1, c, 1.0, ORRRR
+O, a_1, a, 1.0, O
+O, b_1, b, 1.0, ORR
+O, e_1, e, 1.0, ORRRRRRRR
+
+# Relations from SRT:
+EO, +_1, b_1, Right, 1.0
+EO, +_2, c_1, Right, 1.0
+EO, +_3, d_1, Right, 1.0
+EO, +_4, e_1, Right, 1.0
+EO, a_1, +_1, Right, 1.0
+EO, b_1, +_2, Right, 1.0
+EO, c_1, +_3, Right, 1.0
+EO, d_1, +_4, Right, 1.0

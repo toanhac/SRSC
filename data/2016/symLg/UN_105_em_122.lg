@@ -1,0 +1,7 @@
+# IUD, CROHME_2016_em_122
+# Objects(2):
+O, 4_1, 4, 1.0, OSup
+O, T_1, T, 1.0, O
+
+# Relations from SRT:
+EO, T_1, 4_1, Sup, 1.0

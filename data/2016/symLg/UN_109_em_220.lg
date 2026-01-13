@@ -1,0 +1,27 @@
+# IUD, CROHME_2016_em_220
+# Objects(12):
+O, 3_2, 3, 1.0, OSupRRRBelow
+O, 1_1, 1, 1.0, OSupRSub
+O, t_2, t, 1.0, OSupRRRR
+O, _1, -, 1.0, OSup
+O, 3_1, 3, 1.0, OSupBelow
+O, e_1, e, 1.0, O
+O, t_1, t, 1.0, OSupR
+O, +_1, +, 1.0, OSupRR
+O, _2, -, 1.0, OSupRRR
+O, 2_2, 2, 1.0, OSupRRRRSub
+O, 2_1, 2, 1.0, OSupAbove
+O, 1_2, 1, 1.0, OSupRRRAbove
+
+# Relations from SRT:
+EO, +_1, _2, Right, 1.0
+EO, _1, 2_1, Above, 1.0
+EO, _1, 3_1, Below, 1.0
+EO, _1, t_1, Right, 1.0
+EO, _2, 1_2, Above, 1.0
+EO, _2, 3_2, Below, 1.0
+EO, _2, t_2, Right, 1.0
+EO, e_1, _1, Sup, 1.0
+EO, t_1, +_1, Right, 1.0
+EO, t_1, 1_1, Sub, 1.0
+EO, t_2, 2_2, Sub, 1.0

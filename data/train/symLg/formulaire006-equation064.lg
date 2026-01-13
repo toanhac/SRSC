@@ -1,0 +1,40 @@
+# IUD, 2011_IVC_depart_F006_E064
+# Objects(18):
+O, 2_1, 2, 1.0, ORRRInsideBelow
+O, _1, \sqrt, 1.0, ORRR
+O, _4, \sqrt, 1.0, ORRRRBelow
+O, \cos_2, \cos, 1.0, ORRRRBelowInsideRRR
+O, -_1, -, 1.0, ORRRRBelowInsideRR
+O, d_2, d, 1.0, ORRRRAbove
+O, 0_1, 0, 1.0, ORRRRBelowInsideRRRRSub
+O, _2, -, 1.0, ORRRInside
+O, g_1, g, 1.0, ORRRInsideBelowR
+O, \theta_2, \theta, 1.0, ORRRRBelowInsideR
+O, =_1, =, 1.0, ORR
+O, _3, -, 1.0, ORRRR
+O, t_1, t, 1.0, OR
+O, d_1, d, 1.0, O
+O, l_1, l, 1.0, ORRRInsideAbove
+O, \theta_1, \theta, 1.0, ORRRRAboveR
+O, \cos_1, \cos, 1.0, ORRRRBelowInside
+O, \theta_3, \theta, 1.0, ORRRRBelowInsideRRRR
+
+# Relations from SRT:
+EO, -_1, \cos_2, Right, 1.0
+EO, 2_1, g_1, Right, 1.0
+EO, =_1, _1, Right, 1.0
+EO, \cos_1, \theta_2, Right, 1.0
+EO, \cos_2, \theta_3, Right, 1.0
+EO, \theta_2, -_1, Right, 1.0
+EO, \theta_3, 0_1, Sub, 1.0
+EO, _1, _2, Inside, 1.0
+EO, _1, _3, Right, 1.0
+EO, _2, 2_1, Below, 1.0
+EO, _2, l_1, Above, 1.0
+EO, _3, _4, Below, 1.0
+EO, _3, d_2, Above, 1.0
+EO, _4, \cos_1, Inside, 1.0
+EO, _4, \theta_2, Inside, 1.0
+EO, d_1, t_1, Right, 1.0
+EO, d_2, \theta_1, Right, 1.0
+EO, t_1, =_1, Right, 1.0

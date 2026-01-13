@@ -1,0 +1,9 @@
+# IUD, CROHME_2016_em_482
+# Objects(3):
+O, sin_1, \sin, 1.0, O
+O, L_1, L, 1.0, ORR
+O, gamma_1, \gamma, 1.0, OR
+
+# Relations from SRT:
+EO, gamma_1, L_1, Right, 1.0
+EO, sin_1, gamma_1, Right, 1.0

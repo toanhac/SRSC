@@ -1,0 +1,21 @@
+# IUD, "200923-1556-247.ink"
+# Objects(9):
+O, 1:, \sqrt, 1.0, OAboveR
+O, 6:7:8:9:, \tan, 1.0, OBelow
+O, 5:, -, 1.0, O
+O, 0:, \int, 1.0, OAbove
+O, 2:, s, 1.0, OAboveRInside
+O, 10:, g, 1.0, OBelowSup
+O, 11:, q, 1.0, OBelowR
+O, 3:, d, 1.0, OAboveRR
+O, 4:, u, 1.0, OAboveRRR
+
+# Relations from SRT:
+EO, 0:, 1:, Right, 1.0
+EO, 1:, 2:, Inside, 1.0
+EO, 1:, 3:, Right, 1.0
+EO, 3:, 4:, Right, 1.0
+EO, 5:, 0:, Above, 1.0
+EO, 5:, 6:7:8:9:, Below, 1.0
+EO, 6:7:8:9:, 10:, Sup, 1.0
+EO, 6:7:8:9:, 11:, Right, 1.0
