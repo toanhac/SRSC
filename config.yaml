@@ -22,7 +22,6 @@ model:
   d_model: 256
   growth_rate: 24
   num_layers: 16
-  fusion_out_channels: 512
   
   nhead: 8
   num_decoder_layers: 3
@@ -35,19 +34,13 @@ model:
   self_coverage: true
   
   # Multi-task learning (auxiliary tasks)
-  use_spatial_aux: true
   use_relation_aux: true
-  spatial_hidden_channels: 128
   relation_hidden_channels: 128
-  spatial_loss_weight: 0.1
   relation_loss_weight: 0.1
+  coverage_loss_weight: 0.01
+  num_relation_classes: 7
   
-  # Guided coverage (learnable alpha)
-  use_guided_coverage: true
-  alpha_spatial: 0.05
-  alpha_relation: 0.05
-  coverage_aware_w1: 1.0
-  coverage_aware_w2: 0.5
+  # Multi-task learning (auxiliary tasks)
   
   # Beam search
   beam_size: 10
@@ -69,7 +62,5 @@ data:
   scale_aug: true
   
   # Multi-task ground truth
-  use_spatial_maps: true
   use_relation_maps: true
   gt_cache_dir: data/cached_maps
-  generate_gt_on_fly: false

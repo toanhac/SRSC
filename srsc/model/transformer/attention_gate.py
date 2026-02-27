@@ -10,7 +10,7 @@ class AttentionGate(nn.Module):
         super().__init__()
         
         self.gate_net = nn.Sequential(
-            nn.Linear(3, hidden_dim),
+            nn.Linear(2, hidden_dim),
             nn.ReLU(inplace=True),
             nn.Linear(hidden_dim, hidden_dim),
             nn.ReLU(inplace=True),
@@ -28,7 +28,6 @@ class AttentionGate(nn.Module):
     
     def forward(
         self,
-        spatial_map: Optional[Tensor],
         relation_map: Optional[Tensor],
         coverage: Tensor,
         h: int,
@@ -37,13 +36,6 @@ class AttentionGate(nn.Module):
         b = coverage.shape[0]
         
         features = []
-        
-        if spatial_map is not None:
-            spatial_resized = self._resize_map(spatial_map, h, w)
-            spatial_flat = spatial_resized.view(b, -1, 1)
-            features.append(spatial_flat)
-        else:
-            features.append(torch.zeros(b, h * w, 1, device=coverage.device))
         
         if relation_map is not None:
             if relation_map.shape[1] > 1:

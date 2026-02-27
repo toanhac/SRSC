@@ -11,7 +11,6 @@ from torch import FloatTensor, LongTensor
 from .pos_enc import ImgPosEnc
 
 
-# DenseNet-B
 class _Bottleneck(nn.Module):
     def __init__(self, n_channels: int, growth_rate: int, use_dropout: bool):
         super(_Bottleneck, self).__init__()
@@ -36,7 +35,6 @@ class _Bottleneck(nn.Module):
         return out
 
 
-# single layer
 class _SingleLayer(nn.Module):
     def __init__(self, n_channels: int, growth_rate: int, use_dropout: bool):
         super(_SingleLayer, self).__init__()
@@ -55,7 +53,6 @@ class _SingleLayer(nn.Module):
         return out
 
 
-# transition layer
 class _Transition(nn.Module):
     def __init__(self, n_channels: int, n_out_channels: int, use_dropout: bool):
         super(_Transition, self).__init__()
@@ -122,7 +119,7 @@ class DenseNet(nn.Module):
             n_channels += growth_rate
         return nn.Sequential(*layers)
 
-    def forward(self, x, x_mask, return_intermediate: bool = False):
+    def forward(self, x, x_mask):
         out = self.conv1(x)
         out = self.norm1(out)
         out_mask = x_mask[:, 0::2, 0::2]
@@ -133,19 +130,10 @@ class DenseNet(nn.Module):
         out = self.trans1(out)
         out_mask = out_mask[:, 0::2, 0::2]
         out = self.dense2(out)
-        
-        # F_8x: after dense2, before trans2 (stride 8)
-        f_8x = out
-        f_8x_mask = out_mask
-        
         out = self.trans2(out)
         out_mask = out_mask[:, 0::2, 0::2]
         out = self.dense3(out)
         out = self.post_norm(out)
-        
-        if return_intermediate:
-            # out is F_16x (stride 16), f_8x is stride 8
-            return out, out_mask, f_8x, f_8x_mask
         return out, out_mask
 
 
@@ -155,31 +143,13 @@ class Encoder(pl.LightningModule):
         d_model: int, 
         growth_rate: int, 
         num_layers: int,
-        fusion_out_channels: int = 128,
     ):
         super().__init__()
 
         self.model = DenseNet(growth_rate=growth_rate, num_layers=num_layers)
         
-        # Calculate intermediate channel sizes
-        self.f_16x_channels = self.model.out_channels  # After dense3
-        
-        # F_8x channels: after dense2, before trans2
-        n_dense = num_layers
-        after_dense1 = 2 * growth_rate + n_dense * growth_rate
-        after_trans1 = int(math.floor(after_dense1 * 0.5))
-        self.f_8x_channels = after_trans1 + n_dense * growth_rate
-        
-        # Feature Fusion: 16x→8x (for auxiliary heads only)
-        #print(f"self.f_16x_channels: {self.f_16x_channels}, self.f_8x_channels: {self.f_8x_channels}")
-        from .multiscale_modules import LightweightFeatureFusion
-        self.fusion = LightweightFeatureFusion(
-            deep_channels=self.f_16x_channels,
-            shallow_channels=self.f_8x_channels,
-            out_channels=fusion_out_channels,
-        )
-        
-        # Project F_16x to d_model (for decoder - stride 16)
+        self.f_16x_channels = self.model.out_channels
+
         self.feature_proj = nn.Conv2d(self.f_16x_channels, d_model, kernel_size=1)
         
         self.pos_enc_2d = ImgPosEnc(d_model, normalize=True)
@@ -188,37 +158,12 @@ class Encoder(pl.LightningModule):
 
     def forward(
         self, img: FloatTensor, img_mask: LongTensor
-    ) -> Tuple[FloatTensor, LongTensor, FloatTensor, LongTensor]:
-        """encode image to features for decoder and auxiliary heads
-
-        Parameters
-        ----------
-        img : FloatTensor
-            [b, 1, h', w']
-        img_mask: LongTensor
-            [b, h', w']
-
-        Returns
-        -------
-        Tuple[FloatTensor, LongTensor, FloatTensor, LongTensor]
-            feature_16x: [b, h/16, w/16, d] - for decoder (stride 16)
-            mask_16x: [b, h/16, w/16]
-            feature_8x: [b, h/8, w/8, d] - for auxiliary heads (stride 8)  
-            mask_8x: [b, h/8, w/8]
-        """
-        # Extract features with intermediate
-        f_16x, mask_16x, f_8x, mask_8x = self.model(img, img_mask, return_intermediate=True)
+    ) -> Tuple[FloatTensor, LongTensor]:
+        f_16x, mask_16x = self.model(img, img_mask)
         
-        # Process F_16x for decoder (stride 16)
         feature_16x = self.feature_proj(f_16x)
         feature_16x = rearrange(feature_16x, "b d h w -> b h w d")
         feature_16x = self.pos_enc_2d(feature_16x, mask_16x)
         feature_16x = self.norm(feature_16x)
-        
-        # Feature fusion: 16x→8x for auxiliary heads (stride 8)
-        feature_8x = self.fusion(f_16x, f_8x)  # [B, fusion_channels, H/8, W/8]
-        feature_8x = rearrange(feature_8x, "b d h w -> b h w d")  # [B, H/8, W/8, D]
 
-        return feature_16x, mask_16x, feature_8x, mask_8x
-
-
+        return feature_16x, mask_16x

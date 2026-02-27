@@ -35,6 +35,7 @@ Next, navigate to SRSC folder and run `train.py`. It may take **X** hours on **N
 ```bash
 # Generate ground truth brefore training (already done)
 # python scripts/pregenerate_ground_truth.py --data_zip data.zip --output_dir data/cached_maps --split all
+# python scripts/pregenerate_ground_truth.py --data_dir data --split all --workers 8
 # Train SRSC model using N gpus and ddp
 python train.py --config config.yaml  
 ```

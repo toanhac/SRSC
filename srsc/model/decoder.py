@@ -1,7 +1,8 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 from einops import rearrange
 from torch import FloatTensor, LongTensor
 
@@ -25,18 +26,14 @@ def _build_transformer_decoder(
     dc: int,
     cross_coverage: bool,
     self_coverage: bool,
-    use_guided_coverage: bool = False,
-    spatial_scale: float = 1.0,
-    alpha_spatial: float = 0.3,
-    alpha_relation: float = 0.2,
-    coverage_aware_w1: float = 2.0,
-    coverage_aware_w2: float = 1.0,
-) -> nn.TransformerDecoder:
+    num_relation_classes: int = 7,
+) -> TransformerDecoder:
     decoder_layer = TransformerDecoderLayer(
         d_model=d_model,
         nhead=nhead,
         dim_feedforward=dim_feedforward,
         dropout=dropout,
+        num_relation_classes=num_relation_classes,
     )
     if cross_coverage or self_coverage:
         arm = AttentionRefinementModule(
@@ -44,12 +41,6 @@ def _build_transformer_decoder(
             dc, 
             cross_coverage, 
             self_coverage,
-            use_guided_coverage=use_guided_coverage,
-            spatial_scale=spatial_scale,
-            alpha_spatial=alpha_spatial,
-            alpha_relation=alpha_relation,
-            coverage_aware_w1=coverage_aware_w1,
-            coverage_aware_w2=coverage_aware_w2,
         )
     else:
         arm = None
@@ -69,12 +60,7 @@ class Decoder(DecodeModel):
         dc: int,
         cross_coverage: bool,
         self_coverage: bool,
-        use_guided_coverage: bool = False,
-        spatial_scale: float = 1.0,
-        alpha_spatial: float = 0.3,
-        alpha_relation: float = 0.2,
-        coverage_aware_w1: float = 2.0,
-        coverage_aware_w2: float = 1.0,
+        num_relation_classes: int = 7,
     ):
         super().__init__()
 
@@ -84,6 +70,13 @@ class Decoder(DecodeModel):
 
         self.pos_enc = WordPosEnc(d_model=d_model)
         self.norm = nn.LayerNorm(d_model)
+        self.num_relation_classes = num_relation_classes
+
+        self.relation_proj = nn.Sequential(
+            nn.Conv2d(num_relation_classes, d_model, kernel_size=1, bias=False),
+            nn.BatchNorm2d(d_model),
+            nn.ReLU(inplace=True),
+        )
 
         self.model = _build_transformer_decoder(
             d_model=d_model,
@@ -94,16 +87,9 @@ class Decoder(DecodeModel):
             dc=dc,
             cross_coverage=cross_coverage,
             self_coverage=self_coverage,
-            use_guided_coverage=use_guided_coverage,
-            spatial_scale=spatial_scale,
-            alpha_spatial=alpha_spatial,
-            alpha_relation=alpha_relation,
-            coverage_aware_w1=coverage_aware_w1,
-            coverage_aware_w2=coverage_aware_w2,
         )
 
         self.proj = nn.Linear(d_model, vocab_size)
-        self._cached_spatial_map = None
         self._cached_relation_map = None
 
     def _build_attention_mask(self, length):
@@ -113,15 +99,32 @@ class Decoder(DecodeModel):
         mask.triu_(1)
         return mask
 
+    def _prepare_relation(self, relation_map, h, w):
+        if relation_map is None:
+            return None, None
+        
+        if relation_map.shape[2] != h or relation_map.shape[3] != w:
+            relation_map_resized = F.interpolate(
+                relation_map, size=(h, w), mode='bilinear', align_corners=False
+            )
+        else:
+            relation_map_resized = relation_map
+        
+        r_proj = self.relation_proj(relation_map_resized)
+        r_proj = rearrange(r_proj, "b d h w -> (h w) b d")
+        
+        r_flat = rearrange(relation_map_resized, "b c h w -> b (h w) c")
+        
+        return r_proj, r_flat
+
     def forward(
         self, 
         src: FloatTensor, 
         src_mask: LongTensor, 
         tgt: LongTensor,
-        spatial_map: Optional[FloatTensor] = None,
         relation_map: Optional[FloatTensor] = None,
-        epoch_idx: int = -1,
-    ) -> FloatTensor:
+        return_coverage: bool = False,
+    ) -> Tuple[FloatTensor, Optional[FloatTensor]]:
         _, l = tgt.size()
         tgt_mask = self._build_attention_mask(l)
         tgt_pad_mask = tgt == vocab.PAD_IDX
@@ -131,26 +134,33 @@ class Decoder(DecodeModel):
         tgt = self.norm(tgt)
 
         h = src.shape[1]
+        w = src.shape[2]
         src = rearrange(src, "b h w d -> (h w) b d")
         src_mask = rearrange(src_mask, "b h w -> b (h w)")
         tgt = rearrange(tgt, "b l d -> l b d")
 
-        out = self.model(
+        r_proj, r_flat = self._prepare_relation(relation_map, h, w)
+        
+        if r_proj is not None:
+            src = src + r_proj
+
+        out, coverage_T = self.model(
             tgt=tgt,
             memory=src,
             height=h,
             tgt_mask=tgt_mask,
             tgt_key_padding_mask=tgt_pad_mask,
             memory_key_padding_mask=src_mask,
-            spatial_map=spatial_map,
-            relation_map=relation_map,
-            epoch_idx=epoch_idx,
+            relation_flat=r_flat,
+            return_coverage=return_coverage,
         )
 
         out = rearrange(out, "l b d -> b l d")
         out = self.proj(out)
 
-        return out
+        if return_coverage:
+            return out, coverage_T
+        return out, None
 
     def transform(
         self, 
@@ -159,22 +169,16 @@ class Decoder(DecodeModel):
         input_ids: LongTensor,
     ) -> FloatTensor:
         assert len(src) == 1 and len(src_mask) == 1
-        spatial_map = self._cached_spatial_map
         relation_map = self._cached_relation_map
         
         batch_size = input_ids.shape[0]
-        
-        if spatial_map is not None:
-            if spatial_map.shape[0] != batch_size:
-                spatial_map = spatial_map.repeat(batch_size // spatial_map.shape[0] + 1, 1, 1, 1)[:batch_size]
         
         if relation_map is not None:
             if relation_map.shape[0] != batch_size:
                 relation_map = relation_map.repeat(batch_size // relation_map.shape[0] + 1, 1, 1, 1)[:batch_size]
         
-        word_out = self.forward(
+        word_out, _ = self.forward(
             src[0], src_mask[0], input_ids, 
-            spatial_map=spatial_map,
             relation_map=relation_map,
         )
         return word_out
@@ -188,17 +192,13 @@ class Decoder(DecodeModel):
         alpha: float,
         early_stopping: bool,
         temperature: float,
-        spatial_map: Optional[FloatTensor] = None,
         relation_map: Optional[FloatTensor] = None,
     ) -> List[Hypothesis]:
-        self._cached_spatial_map = spatial_map
         self._cached_relation_map = relation_map
         try:
             result = super().beam_search(
                 src, src_mask, beam_size, max_len, alpha, early_stopping, temperature
             )
         finally:
-            self._cached_spatial_map = None
             self._cached_relation_map = None
         return result
-

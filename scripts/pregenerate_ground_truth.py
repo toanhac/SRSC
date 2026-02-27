@@ -3,25 +3,23 @@
 Pre-generate Ground Truth Maps for SRSC Multi-Task Training
 =============================================================
 
-This script pre-generates both types of ground truth automatically:
-1. Spatial maps (S): Binary masks showing symbol regions [1, H', W']
-2. Relation maps (R): Multi-label multi-channel structure maps [7, H', W']
+This script pre-generates relation ground truth:
+- Relation maps (R): Multi-label multi-channel structure maps [7, H', W']
 
-Size is automatically computed based on encoder 16x downsampling.
+Size is automatically computed based on encoder 8x downsampling (after Feature Fusion).
 
 Usage:
     # Generate for training set only (val/test don't need GT)
-    python scripts/pregenerate_ground_truth.py --data_zip data.zip --split train
+    python scripts/pregenerate_ground_truth.py --data_dir data --split train
     
     # Process with max samples limit (for testing)
-    python scripts/pregenerate_ground_truth.py --data_zip data.zip --split train --max_samples 100
+    python scripts/pregenerate_ground_truth.py --data_dir data --split train --max_samples 100
 """
 
 import os
 import sys
 import argparse
 from pathlib import Path
-from zipfile import ZipFile
 from tqdm import tqdm
 import numpy as np
 from PIL import Image
@@ -30,71 +28,60 @@ import torch
 project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
-from srsc.datamodule.spatial_gt import SpatialMapGenerator
 from srsc.datamodule.multilabel_relation_gt import (
     MultiLabelRelationMapGenerator as RelationMapGenerator,
     RelationType
 )
 
 # Encoder downsampling: 8x after Feature Fusion (16x→8x)
-ENCODER_DOWNSAMPLE_FACTOR = 8
+ENCODER_DOWNSAMPLE_FACTOR = 16
 
-# Fixed DPI for LaTeX rendering
 DEFAULT_DPI = 200
 
 
 def compute_encoder_output_size(img_height: int, img_width: int) -> tuple:
-    """
-    Compute encoder output size after 8x downsampling (with Feature Fusion).
-    
-    DenseNet encoder with Feature Fusion:
-    1. conv1 (stride=2): ceil(H/2), ceil(W/2)
-    2. max_pool2d (2): ceil(H/4), ceil(W/4)  
-    3. trans1 avg_pool2d (2): ceil(H/8), ceil(W/8) ← F_8x (output after fusion)
-    
-    Note: F_16x is fused back to F_8x resolution via LightweightFeatureFusion
-    """
     h, w = img_height, img_width
-    for _ in range(3):  # Only 3 downsampling stages (8x total)
+    for _ in range(4):
         h = (h + 1) // 2
         w = (w + 1) // 2
     return max(h, 1), max(w, 1)
 
 
-def extract_samples_from_zip(archive: ZipFile, folder: str):
-    """Extract samples from a zip archive."""
+def extract_samples_from_dir(data_dir: Path, folder: str):
+    """Extract samples from a directory."""
     samples = []
-    try:
-        caption_path = f"data/{folder}/caption.txt"
-        with archive.open(caption_path, 'r') as f:
-            captions = f.readlines()
-        
-        for line in captions:
-            line = line.decode().strip()
-            if not line:
-                continue
-            parts = line.split()
-            if len(parts) < 2:
-                continue
-            img_name = parts[0]
-            formula = ' '.join(parts[1:])
-            img_path = f"data/{folder}/img/{img_name}.bmp"
-            try:
-                with archive.open(img_path, 'r') as f:
-                    img = Image.open(f).copy()
-                    if img.mode != 'L':
-                        img = img.convert('L')
-                samples.append((img_name, img, formula))
-            except KeyError:
-                continue
-    except KeyError:
-        print(f"Warning: Could not find {folder} in archive")
+    caption_path = data_dir / folder / "caption.txt"
+    if not caption_path.exists():
+        print(f"Warning: Could not find {folder} in directory")
         return []
+        
+    with open(caption_path, 'r', encoding='utf-8') as f:
+        captions = f.readlines()
+    
+    for line in captions:
+        line = line.strip()
+        if not line:
+            continue
+        parts = line.split()
+        if len(parts) < 2:
+            continue
+        img_name = parts[0]
+        formula = ' '.join(parts[1:])
+        img_path = data_dir / folder / "img" / f"{img_name}.bmp"
+        
+        try:
+            img = Image.open(img_path).copy()
+            if img.mode != 'L':
+                img = img.convert('L')
+            samples.append((img_name, img, formula))
+        except Exception:
+            continue
+            
     return samples
 
 
 def process_single_sample(args):
-    """Process a single sample to generate both spatial and relation maps."""
+    """Process a single sample to generate relation map."""
     img_name, img_pil, latex, output_dir = args
     
     try:
@@ -102,9 +89,6 @@ def process_single_sample(args):
         
         # Compute target size based on encoder output
         target_h, target_w = compute_encoder_output_size(img_h, img_w)
-        
-        img_np = np.array(img_pil).astype(np.float32)
-        img_tensor = torch.from_numpy(img_np)
         
         result = {
             'img_height': img_h,
@@ -116,16 +100,6 @@ def process_single_sample(args):
         
         output_dir = Path(output_dir)
         output_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Generate SPATIAL map
-        spatial_gen = SpatialMapGenerator(
-            img_height=img_h,
-            img_width=img_w,
-            target_height=target_h,
-            target_width=target_w
-        )
-        spatial_map = spatial_gen(img_tensor).numpy()
-        result['spatial_map'] = spatial_map  # (1, H, W)
         
         # Generate RELATION map (multi-label)
         relation_gen = RelationMapGenerator(
@@ -155,17 +129,17 @@ def main():
         epilog="""
 Examples:
     # Generate for training set only (recommended)
-    python scripts/pregenerate_ground_truth.py --data_zip data.zip --split train
+    python scripts/pregenerate_ground_truth.py --data_dir data --split train
     
     # Generate for all splits
-    python scripts/pregenerate_ground_truth.py --data_zip data.zip --split all
+    python scripts/pregenerate_ground_truth.py --data_dir data --split all
     
     # Test with limited samples and multiple workers
-    python scripts/pregenerate_ground_truth.py --data_zip data.zip --split train --max_samples 100 --workers 4
+    python scripts/pregenerate_ground_truth.py --data_dir data --split train --max_samples 100 --workers 4
         """
     )
-    parser.add_argument('--data_zip', type=str, default='data.zip', 
-                        help='Path to data.zip')
+    parser.add_argument('--data_dir', type=str, default='data', 
+                        help='Path to data directory')
     parser.add_argument('--output_dir', type=str, default='data/cached_maps', 
                         help='Output directory')
     parser.add_argument('--split', type=str, default='train', 
@@ -178,9 +152,9 @@ Examples:
     
     args = parser.parse_args()
     
-    data_zip_path = Path(args.data_zip)
-    if not data_zip_path.exists():
-        print(f"Error: data.zip not found at {data_zip_path}")
+    data_dir_path = Path(args.data_dir)
+    if not data_dir_path.exists():
+        print(f"Error: data directory not found at {data_dir_path}")
         sys.exit(1)
     
     output_dir = Path(args.output_dir)
@@ -189,15 +163,14 @@ Examples:
     print("=" * 70)
     print("PRE-GENERATING GROUND TRUTH MAPS")
     print("=" * 70)
-    print(f"Data zip: {data_zip_path}")
+    print(f"Data dir: {data_dir_path}")
     print(f"Output directory: {output_dir}")
     print(f"Split: {args.split}")
     print(f"Workers: {args.workers}")
     print(f"Encoder downsample: {ENCODER_DOWNSAMPLE_FACTOR}x")
     print(f"Rendering DPI: {DEFAULT_DPI}")
     print()
-    print("Generating both:")
-    print("  - Spatial maps (S): Binary symbol masks [1, H', W']")
+    print("Generating:")
     print(f"  - Relation maps (R): Multi-label structure [7, H', W']")
     print(f"    Classes: {', '.join(RelationType.names())}")
     print("=" * 70)
@@ -212,62 +185,61 @@ Examples:
     total_errors = 0
     all_sizes = []
     
-    with ZipFile(data_zip_path, 'r') as archive:
-        for split in splits:
-            print(f"\nProcessing split: {split}")
-            samples = extract_samples_from_zip(archive, split)
-            if not samples:
-                print(f"No samples found")
-                continue
-            
-            if args.max_samples > 0:
-                samples = samples[:args.max_samples]
-            
-            print(f"Found {len(samples)} samples")
-            
-            split_output_dir = output_dir / split
-            split_output_dir.mkdir(parents=True, exist_ok=True)
-            
-            process_args = [
-                (img_name, img_pil, latex, split_output_dir)
-                for img_name, img_pil, latex in samples
-            ]
-            
-            # Use multiprocessing if workers > 1
-            if args.workers > 1:
-                from multiprocessing import Pool
-                with Pool(args.workers) as pool:
-                    results = list(tqdm(
-                        pool.imap(process_single_sample, process_args),
-                        total=len(process_args),
-                        desc=f"{split}"
-                    ))
-            else:
-                # Single process
-                results = []
-                for proc_args in tqdm(process_args, desc=f"{split}"):
-                    results.append(process_single_sample(proc_args))
-            
-            success = sum(1 for _, ok, _, _ in results if ok)
-            errors = len(results) - success
-            total_success += success
-            total_errors += errors
-            
-            for _, ok, _, sizes in results:
-                if ok and sizes:
-                    all_sizes.append(sizes)
-            
-            print(f"Success: {success}/{len(results)}")
-            if errors > 0:
-                print(f"Errors: {errors}")
-                error_count = 0
-                for name, ok, err, _ in results:
-                    if not ok:
-                        print(f"  - {name}: {err[:150]}...")
-                        error_count += 1
-                        if error_count >= 3:
-                            print(f"  ... and {errors - 3} more errors")
-                        break
+    for split in splits:
+        print(f"\nProcessing split: {split}")
+        samples = extract_samples_from_dir(data_dir_path, split)
+        if not samples:
+            print(f"No samples found")
+            continue
+        
+        if args.max_samples > 0:
+            samples = samples[:args.max_samples]
+        
+        print(f"Found {len(samples)} samples")
+        
+        split_output_dir = output_dir / split
+        split_output_dir.mkdir(parents=True, exist_ok=True)
+        
+        process_args = [
+            (img_name, img_pil, latex, split_output_dir)
+            for img_name, img_pil, latex in samples
+        ]
+        
+        # Use multiprocessing if workers > 1
+        if args.workers > 1:
+            from multiprocessing import Pool
+            with Pool(args.workers) as pool:
+                results = list(tqdm(
+                    pool.imap(process_single_sample, process_args),
+                    total=len(process_args),
+                    desc=f"{split}"
+                ))
+        else:
+            # Single process
+            results = []
+            for proc_args in tqdm(process_args, desc=f"{split}"):
+                results.append(process_single_sample(proc_args))
+        
+        success = sum(1 for _, ok, _, _ in results if ok)
+        errors = len(results) - success
+        total_success += success
+        total_errors += errors
+        
+        for _, ok, _, sizes in results:
+            if ok and sizes:
+                all_sizes.append(sizes)
+        
+        print(f"Success: {success}/{len(results)}")
+        if errors > 0:
+            print(f"Errors: {errors}")
+            error_count = 0
+            for name, ok, err, _ in results:
+                if not ok:
+                    print(f"  - {name}: {err[:150]}...")
+                    error_count += 1
+                    if error_count >= 3:
+                        print(f"  ... and {errors - 3} more errors")
+                    break
     
     if all_sizes:
         img_heights = [s[0] for s in all_sizes]
@@ -302,7 +274,6 @@ Examples:
     print("import numpy as np")
     example_split = 'train' if args.split == 'all' else args.split
     print(f"data = np.load('{output_dir / example_split}/sample_gt.npz')")
-    print("spatial_map = data['spatial_map']   # Shape: (1, H', W')")
     print("relation_map = data['relation_map'] # Shape: (7, H', W') - MULTI-LABEL")
     print("```")
 

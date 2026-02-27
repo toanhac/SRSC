@@ -14,7 +14,6 @@ from torch import FloatTensor, LongTensor
 from torch.utils.data.dataloader import DataLoader
 
 from .vocab import vocab
-from .spatial_gt import AuxiliaryTargetGenerator
 
 Data = List[Tuple[str, Image.Image, List[str]]]
 
@@ -121,21 +120,18 @@ class Batch:
     imgs: FloatTensor
     mask: LongTensor
     indices: List[List[int]]
-    spatial_map: Optional[FloatTensor] = None
     relation_map: Optional[FloatTensor] = None  # Multi-label relation map [B, 7, H, W]
 
     def __len__(self) -> int:
         return len(self.img_bases)
 
     def to(self, device) -> "Batch":
-        spatial = self.spatial_map.to(device) if self.spatial_map is not None else None
         relation = self.relation_map.to(device) if self.relation_map is not None else None
         return Batch(
             img_bases=self.img_bases,
             imgs=self.imgs.to(device),
             mask=self.mask.to(device),
             indices=self.indices,
-            spatial_map=spatial,
             relation_map=relation,
         )
 
@@ -166,14 +162,12 @@ def collate_fn(batch):
 
 class MultiTaskCollator:
     """
-    Collator that loads both spatial and relation ground truth maps.
+    Collator that loads relation ground truth maps.
     
-    Supports two modes:
-    1. Load from cached .npz files (pregenerated) - faster
-    2. Generate on-the-fly (slower, only for spatial)
+    Supports loading from cached .npz files (pregenerated).
     
     Ground truth files should be named: {img_name}_gt.npz
-    With keys: 'spatial_map', 'relation_map'
+    With keys: 'relation_map'
     
     Uses in-memory caching to avoid repeated I/O.
     """
@@ -187,11 +181,9 @@ class MultiTaskCollator:
     def __init__(
         self, 
         cache_dir: Optional[str] = None, 
-        generate_gt_on_fly: bool = True,
         use_relation: bool = True,
     ):
         self.cache_dir = Path(cache_dir) if cache_dir else None
-        self.generate_gt_on_fly = generate_gt_on_fly
         self.use_relation = use_relation
         
         # Preload file existence info to avoid repeated .exists() calls
@@ -221,7 +213,6 @@ class MultiTaskCollator:
         x_mask = torch.ones(n_samples, max_height_x, max_width_x, dtype=torch.bool)
         
         enc_h, enc_w = compute_encoder_output_size(max_height_x, max_width_x)
-        spatial_maps = torch.zeros(n_samples, 1, enc_h, enc_w)
         relation_maps = torch.zeros(n_samples, self.NUM_RELATION_CLASSES, enc_h, enc_w)
         
         for idx, s_x in enumerate(images_x):
@@ -229,7 +220,6 @@ class MultiTaskCollator:
             x[idx, :, :h, :w] = s_x
             x_mask[idx, :h, :w] = 0
             
-            spatial_map = None
             relation_map = None
             fname = fnames[idx]
             
@@ -237,7 +227,6 @@ class MultiTaskCollator:
             cache_key = f"{self.cache_dir}_{fname}" if self.cache_dir else fname
             if cache_key in MultiTaskCollator._gt_cache:
                 cached = MultiTaskCollator._gt_cache[cache_key]
-                spatial_map = cached.get('spatial')
                 if self.use_relation:
                     relation_map = cached.get('relation')
             elif self.cache_dir is not None:
@@ -251,54 +240,12 @@ class MultiTaskCollator:
                     try:
                         data = np.load(cache_path, allow_pickle=True)
                         cache_entry = {}
-                        if 'spatial_map' in data.files:
-                            spatial_map = torch.from_numpy(data['spatial_map'].astype(np.float32))
-                            cache_entry['spatial'] = spatial_map
                         if 'relation_map' in data.files:
                             relation_map = torch.from_numpy(data['relation_map'].astype(np.float32))
                             cache_entry['relation'] = relation_map
                         MultiTaskCollator._gt_cache[cache_key] = cache_entry
                     except Exception as e:
                         pass
-                else:
-                    # Try old format: _spatial.npz
-                    old_filename = f"{fname}_spatial.npz"
-                    if old_filename in existing_files:
-                        old_cache_path = self.cache_dir / old_filename
-                        try:
-                            data = np.load(old_cache_path)
-                            spatial_map = torch.from_numpy(data['spatial_map'].astype(np.float32))
-                            MultiTaskCollator._gt_cache[cache_key] = {'spatial': spatial_map}
-                        except:
-                            pass
-            
-            # Generate spatial on-the-fly if needed (relation requires pregeneration)
-            if spatial_map is None and self.generate_gt_on_fly:
-                target_h, target_w = compute_encoder_output_size(h, w)
-                target_h = max(target_h, 1)
-                target_w = max(target_w, 1)
-                generator = AuxiliaryTargetGenerator(
-                    img_height=h,
-                    img_width=w,
-                    target_height=target_h,
-                    target_width=target_w,
-                )
-                img_tensor = s_x.squeeze(0)
-                spatial_map = generator(img_tensor)
-            
-            # Place spatial map in batch tensor
-            if spatial_map is not None:
-                sm_h, sm_w = spatial_map.shape[1], spatial_map.shape[2]
-                if sm_h <= enc_h and sm_w <= enc_w:
-                    spatial_maps[idx, :, :sm_h, :sm_w] = spatial_map
-                else:
-                    resized = F.interpolate(
-                        spatial_map.unsqueeze(0), 
-                        size=(enc_h, enc_w), 
-                        mode='bilinear',
-                        align_corners=False
-                    ).squeeze(0)
-                    spatial_maps[idx] = resized
             
             # Place relation map in batch tensor
             if relation_map is not None:
@@ -314,7 +261,7 @@ class MultiTaskCollator:
                     ).squeeze(0)
                     relation_maps[idx] = resized
 
-        return Batch(fnames, x, x_mask, seqs_y, spatial_maps, relation_maps)
+        return Batch(fnames, x, x_mask, seqs_y, relation_maps)
 
 
 # Backward compatibility alias
@@ -336,12 +283,8 @@ class CROHMEDatamodule(pl.LightningDataModule):
         num_workers: int = 5,
         scale_aug: bool = False,
         # Multi-task learning options
-        use_spatial_maps: bool = False,
         use_relation_maps: bool = False,
-        gt_cache_dir: Optional[str] = None,  # Unified cache dir for both spatial and relation
-        generate_gt_on_fly: bool = True,  # Renamed from generate_spatial_on_fly
-        # Legacy options (backward compatibility)
-        spatial_cache_dir: Optional[str] = None,
+        gt_cache_dir: Optional[str] = None,
     ) -> None:
         super().__init__()
         assert isinstance(test_year, str)
@@ -353,18 +296,14 @@ class CROHMEDatamodule(pl.LightningDataModule):
         self.scale_aug = scale_aug
         
         # Multi-task configuration
-        self.use_spatial_maps = use_spatial_maps
         self.use_relation_maps = use_relation_maps
-        self.gt_cache_dir = gt_cache_dir or spatial_cache_dir  # Use unified or legacy
-        self.generate_gt_on_fly = generate_gt_on_fly
+        self.gt_cache_dir = gt_cache_dir
 
         print(f"Load data from: {self.zipfile_path}")
-        if use_spatial_maps or use_relation_maps:
+        if use_relation_maps:
             print(f"Multi-task learning enabled:")
-            print(f"  Spatial maps: {use_spatial_maps}")
             print(f"  Relation maps: {use_relation_maps}")
             print(f"  Cache dir: {self.gt_cache_dir}")
-            print(f"  Generate GT on-the-fly: {self.generate_gt_on_fly}")
 
     def setup(self, stage: Optional[str] = None) -> None:
         with ZipFile(self.zipfile_path) as archive:
@@ -387,13 +326,12 @@ class CROHMEDatamodule(pl.LightningDataModule):
                 )
 
     def _get_collate_fn(self, split: str = "train"):
-        if self.use_spatial_maps or self.use_relation_maps:
+        if self.use_relation_maps:
             cache_dir = None
             if self.gt_cache_dir:
                 cache_dir = Path(self.gt_cache_dir) / split
             return MultiTaskCollator(
                 cache_dir=cache_dir,
-                generate_gt_on_fly=self.generate_gt_on_fly,
                 use_relation=self.use_relation_maps,
             )
         return collate_fn
