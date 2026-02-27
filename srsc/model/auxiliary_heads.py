@@ -64,7 +64,7 @@ class RelationHead(nn.Module):
                 nn.init.zeros_(m.bias)
     
     def forward(self, features: torch.Tensor) -> torch.Tensor:
-        x = features.permute(0, 3, 1, 2)
+        x = features.permute(0, 3, 1, 2).contiguous()
         x = self.proj(x)
         x = self.gc_block(x)
         x = self.refine(x)
