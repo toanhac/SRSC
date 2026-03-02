@@ -126,7 +126,7 @@ class TransformerDecoderLayer(nn.Module):
         self.activation = F.relu
         
         self.relation_gate = nn.Linear(d_model, num_relation_classes)
-        self.alpha_rel_bias = nn.Parameter(torch.tensor(-4.0))
+        self.alpha_rel_bias = nn.Parameter(torch.tensor(-3.0))
         self.nhead = nhead
 
     def __setstate__(self, state):

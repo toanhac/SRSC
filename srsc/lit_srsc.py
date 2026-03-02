@@ -40,6 +40,7 @@ class LitSRSC(pl.LightningModule):
         coverage_loss_weight: float = 0.1,
         relation_hidden_channels: int = 128,
         num_relation_classes: int = 7,
+        optimizer_type: str = 'sgd',
     ):
         super().__init__()
         self.save_hyperparameters()
@@ -268,12 +269,22 @@ class LitSRSC(pl.LightningModule):
         )
 
     def configure_optimizers(self):
-        optimizer = optim.SGD(
-            self.parameters(),
-            lr=self.hparams.learning_rate,
-            momentum=0.9,
-            weight_decay=1e-4,
-        )
+        opt_type = self.hparams.get('optimizer_type', 'sgd').lower()
+        
+        if opt_type == 'adamw':
+            optimizer = optim.AdamW(
+                self.parameters(),
+                lr=self.hparams.learning_rate,
+                betas=(0.9, 0.999),
+                weight_decay=0.01,
+            )
+        else:  # sgd (default)
+            optimizer = optim.SGD(
+                self.parameters(),
+                lr=self.hparams.learning_rate,
+                momentum=0.9,
+                weight_decay=1e-4,
+            )
 
         reduce_scheduler = optim.lr_scheduler.ReduceLROnPlateau(
             optimizer,

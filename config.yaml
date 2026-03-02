@@ -24,9 +24,9 @@ model:
   num_layers: 16
   
   nhead: 8
-  num_decoder_layers: 3
+  num_decoder_layers: 4
   dim_feedforward: 1024
-  dropout: 0.3
+  dropout: 0.25
   
   # Coverage (ARM)
   dc: 32
@@ -37,7 +37,7 @@ model:
   use_relation_aux: true
   relation_hidden_channels: 128
   relation_loss_weight: 0.1
-  coverage_loss_weight: 0.01
+  coverage_loss_weight: 0.05
   num_relation_classes: 7
   
   # Multi-task learning (auxiliary tasks)
@@ -50,7 +50,8 @@ model:
   temperature: 1.0
   
   # Training
-  learning_rate: 0.005
+  optimizer_type: adamw  # 'sgd' or 'adamw'
+  learning_rate: 2e-4
   patience: 15
 
 data:
