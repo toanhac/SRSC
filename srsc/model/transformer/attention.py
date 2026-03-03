@@ -335,11 +335,17 @@ def multi_head_attention_forward(
     if v is not None:
         v = v.contiguous().view(-1, bsz * num_heads, head_dim).transpose(0, 1)
 
-    # KV-cache: concatenate with past key/value if provided
+    # KV-cache handling
     if past_key_value is not None:
         past_k, past_v = past_key_value
-        k = torch.cat([past_k, k], dim=1)
-        v = torch.cat([past_v, v], dim=1)
+        if past_k.shape[1] == k.shape[1]:
+            # Cross-attention: encoder K/V are constant, reuse cached directly
+            k = past_k
+            v = past_v
+        else:
+            # Self-attention: append new K/V to growing cache
+            k = torch.cat([past_k, k], dim=1)
+            v = torch.cat([past_v, v], dim=1)
     
     # Store present key/value for cache
     present_key_value = (k, v) if use_cache else None
