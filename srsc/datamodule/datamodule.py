@@ -21,7 +21,7 @@ import cv2
 
 cv2.setNumThreads(0)
 
-MAX_SIZE = 32e5  # Increased from 32e4 to allow larger batches
+MAX_SIZE = 64e5  # Increased to allow larger batches for better GPU utilization
 ENCODER_DOWNSAMPLE_FACTOR = 16
 
 
@@ -339,6 +339,7 @@ class CROHMEDatamodule(pl.LightningDataModule):
             num_workers=self.num_workers,
             collate_fn=self._get_collate_fn("train"),
             pin_memory=True,
+            prefetch_factor=4 if self.num_workers > 0 else None,
             persistent_workers=True if self.num_workers > 0 else False,
         )
 
@@ -349,6 +350,7 @@ class CROHMEDatamodule(pl.LightningDataModule):
             num_workers=self.num_workers,
             collate_fn=self._get_collate_fn(self.test_year),
             pin_memory=True,
+            prefetch_factor=4 if self.num_workers > 0 else None,
             persistent_workers=True if self.num_workers > 0 else False,
         )
 
