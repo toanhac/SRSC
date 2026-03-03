@@ -15,7 +15,55 @@ import torch.nn as nn
 import torch.nn.functional as F
 from typing import Tuple
 
-from .multiscale_modules import GlobalContextBlock
+class GlobalContextBlock(nn.Module):
+    """
+    Global Context (GC) Block for lightweight global context modeling.
+
+    Mechanism:
+    1. Context Modeling: Conv 1x1 + Softmax → global context vector
+    2. Transform: Bottleneck FC layers
+    3. Broadcast: Add global vector to each pixel
+
+    Reference: GCNet (https://arxiv.org/abs/1904.11492)
+    """
+
+    def __init__(self, in_channels: int, reduction_ratio: int = 4):
+        super().__init__()
+
+        mid_channels = max(in_channels // reduction_ratio, 16)
+
+        self.context_conv = nn.Conv2d(in_channels, 1, kernel_size=1)
+
+        self.transform = nn.Sequential(
+            nn.Conv2d(in_channels, mid_channels, kernel_size=1, bias=False),
+            nn.LayerNorm([mid_channels, 1, 1]),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(mid_channels, in_channels, kernel_size=1, bias=False),
+        )
+
+        self._init_weights()
+
+    def _init_weights(self):
+        nn.init.kaiming_normal_(self.context_conv.weight, mode='fan_in')
+        nn.init.zeros_(self.context_conv.bias)
+
+        for m in self.transform.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        B, C, H, W = x.shape
+
+        context_weights = self.context_conv(x).view(B, 1, H * W)
+        context_weights = F.softmax(context_weights, dim=-1)
+
+        x_flat = x.view(B, C, H * W)
+        global_context = torch.bmm(x_flat, context_weights.transpose(1, 2))
+        global_context = global_context.view(B, C, 1, 1)
+
+        global_context = self.transform(global_context)
+
+        return x + global_context
 
 
 class RelationHead(nn.Module):

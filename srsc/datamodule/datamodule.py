@@ -169,14 +169,14 @@ class MultiTaskCollator:
     Ground truth files should be named: {img_name}_gt.npz
     With keys: 'relation_map'
     
-    Uses in-memory caching to avoid repeated I/O.
+    Lazy-loads from disk each time to minimize RAM/VRAM usage.
+    .npz files are ~2-5KB each, so IO overhead is negligible.
     """
     
     NUM_RELATION_CLASSES = 7
     
-    # Class-level cache shared across instances
-    _gt_cache = {}
-    _file_exists_cache = {}  # Cache for file existence checks
+    # Class-level cache for file existence checks only (lightweight set of filenames)
+    _file_exists_cache = {}
     
     def __init__(
         self, 
@@ -193,7 +193,7 @@ class MultiTaskCollator:
                 for f in self.cache_dir.iterdir():
                     existing_files.add(f.name)
             MultiTaskCollator._file_exists_cache[str(self.cache_dir)] = existing_files
-            print(f"  Preloaded {len(existing_files)} cache files from {self.cache_dir}")
+            print(f"  Preloaded {len(existing_files)} cache filenames from {self.cache_dir}")
     
     def __call__(self, batch):
         assert len(batch) == 1
@@ -223,13 +223,7 @@ class MultiTaskCollator:
             relation_map = None
             fname = fnames[idx]
             
-            # Check in-memory cache first
-            cache_key = f"{self.cache_dir}_{fname}" if self.cache_dir else fname
-            if cache_key in MultiTaskCollator._gt_cache:
-                cached = MultiTaskCollator._gt_cache[cache_key]
-                if self.use_relation:
-                    relation_map = cached.get('relation')
-            elif self.cache_dir is not None:
+            if self.cache_dir is not None:
                 # Use preloaded file existence cache (fast set lookup instead of .exists())
                 cache_dir_key = str(self.cache_dir)
                 existing_files = MultiTaskCollator._file_exists_cache.get(cache_dir_key, set())
@@ -239,12 +233,10 @@ class MultiTaskCollator:
                     cache_path = self.cache_dir / gt_filename
                     try:
                         data = np.load(cache_path, allow_pickle=True)
-                        cache_entry = {}
                         if 'relation_map' in data.files:
                             relation_map = torch.from_numpy(data['relation_map'].astype(np.float32))
-                            cache_entry['relation'] = relation_map
-                        MultiTaskCollator._gt_cache[cache_key] = cache_entry
-                    except Exception as e:
+                        data.close()
+                    except Exception:
                         pass
             
             # Place relation map in batch tensor
