@@ -12,6 +12,7 @@ trainer:
         mode: max
         filename: '{epoch}-{step}-{val_ExpRate:.4f}'
   gpus: 1
+  precision: 16
   #gpus: 0,1,2,3
   #accelerator: ddp
   check_val_every_n_epoch: 2
