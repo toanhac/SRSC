@@ -1,5 +1,5 @@
 import warnings
-from typing import Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import torch
 import torch.nn as nn
@@ -98,7 +98,9 @@ class MultiheadAttention(nn.Module):
         need_weights: bool = True,
         attn_mask: Optional[Tensor] = None,
         relation_bias: Optional[Tensor] = None,
-    ) -> Tuple[Tensor, Optional[Tensor]]:
+        past_key_value: Optional[Tuple[Tensor, Tensor]] = None,
+        use_cache: bool = False,
+    ) -> Tuple[Tensor, Optional[Tensor], Optional[Tuple[Tensor, Tensor]]]:
         if not self._qkv_same_embed_dim:
             return multi_head_attention_forward(
                 query,
@@ -124,6 +126,8 @@ class MultiheadAttention(nn.Module):
                 k_proj_weight=self.k_proj_weight,
                 v_proj_weight=self.v_proj_weight,
                 relation_bias=relation_bias,
+                past_key_value=past_key_value,
+                use_cache=use_cache,
             )
         else:
             return multi_head_attention_forward(
@@ -146,6 +150,8 @@ class MultiheadAttention(nn.Module):
                 need_weights=need_weights,
                 attn_mask=attn_mask,
                 relation_bias=relation_bias,
+                past_key_value=past_key_value,
+                use_cache=use_cache,
             )
 
 
@@ -175,7 +181,9 @@ def multi_head_attention_forward(
     static_k: Optional[Tensor] = None,
     static_v: Optional[Tensor] = None,
     relation_bias: Optional[Tensor] = None,
-) -> Tuple[Tensor, Optional[Tensor]]:
+    past_key_value: Optional[Tuple[Tensor, Tensor]] = None,
+    use_cache: bool = False,
+) -> Tuple[Tensor, Optional[Tensor], Optional[Tuple[Tensor, Tensor]]]:
     tgt_len, bsz, embed_dim = query.size()
     assert embed_dim == embed_dim_to_check
     # allow MHA to have different sizes for the feature dimension
@@ -327,6 +335,15 @@ def multi_head_attention_forward(
     if v is not None:
         v = v.contiguous().view(-1, bsz * num_heads, head_dim).transpose(0, 1)
 
+    # KV-cache: concatenate with past key/value if provided
+    if past_key_value is not None:
+        past_k, past_v = past_key_value
+        k = torch.cat([past_k, k], dim=1)
+        v = torch.cat([past_v, v], dim=1)
+    
+    # Store present key/value for cache
+    present_key_value = (k, v) if use_cache else None
+
     if static_k is not None:
         assert static_k.size(0) == bsz * num_heads
         assert static_k.size(2) == head_dim
@@ -404,6 +421,6 @@ def multi_head_attention_forward(
     attn_output = F.linear(attn_output, out_proj_weight, out_proj_bias)
 
     if need_weights:
-        return attn_output, attention
+        return attn_output, attention, present_key_value
     else:
-        return attn_output, None
+        return attn_output, None, present_key_value

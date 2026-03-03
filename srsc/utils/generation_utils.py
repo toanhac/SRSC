@@ -103,6 +103,10 @@ class DecodeModel(pl.LightningModule):
             max_len=max_len,
             temperature=temperature,
         )
+        
+        # Clear KV-cache before rescoring (rescoring uses full forward)
+        if hasattr(self, '_clear_cache'):
+            self._clear_cache()
 
         # reverse half last
         for i in range(half_bb_size, batch_beam_size):
@@ -211,6 +215,32 @@ class DecodeModel(pl.LightningModule):
                 for i in range(len(src)):
                     src[i] = repeat(src[i], "b ... -> (b m) ...", m=beam_size)
                     src_mask[i] = repeat(src_mask[i], "b ... -> (b m) ...", m=beam_size)
+                # Expand KV-cache for beam search
+                if hasattr(self, '_kv_cache') and self._kv_cache is not None:
+                    expanded_cache = []
+                    for layer_cache in self._kv_cache:
+                        self_kv, cross_kv = layer_cache
+                        new_self_kv = None
+                        if self_kv is not None:
+                            new_self_kv = (
+                                repeat(self_kv[0], "b ... -> (b m) ...", m=beam_size),
+                                repeat(self_kv[1], "b ... -> (b m) ...", m=beam_size),
+                            )
+                        new_cross_kv = None
+                        if cross_kv is not None:
+                            new_cross_kv = (
+                                repeat(cross_kv[0], "b ... -> (b m) ...", m=beam_size),
+                                repeat(cross_kv[1], "b ... -> (b m) ...", m=beam_size),
+                            )
+                        expanded_cache.append((new_self_kv, new_cross_kv))
+                    self._kv_cache = expanded_cache
+                    # Also expand cached memory
+                    if hasattr(self, '_cached_memory') and self._cached_memory is not None:
+                        self._cached_memory = repeat(self._cached_memory, "n b d -> n (b m) d", m=beam_size)
+                    if hasattr(self, '_cached_memory_mask') and self._cached_memory_mask is not None:
+                        self._cached_memory_mask = repeat(self._cached_memory_mask, "b n -> (b m) n", m=beam_size)
+                    if hasattr(self, '_cached_r_flat') and self._cached_r_flat is not None:
+                        self._cached_r_flat = repeat(self._cached_r_flat, "b n c -> (b m) n c", m=beam_size)
 
             beam_scores, beam_next_tokens, beam_idx = beam_scorer.process(
                 input_ids=input_ids,
@@ -222,6 +252,10 @@ class DecodeModel(pl.LightningModule):
             input_ids = torch.cat(
                 (input_ids[beam_idx, :], beam_next_tokens.unsqueeze(-1)), dim=-1
             )
+            
+            # Reorder KV-cache to match new beam order
+            if hasattr(self, '_reorder_cache'):
+                self._reorder_cache(beam_idx)
 
             cur_len += 1
 

@@ -23,13 +23,17 @@ class WordPosEnc(pl.LightningModule):
         pe[:, 1::2] = inv_freq.cos()
         self.register_buffer("pe", pe)
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, offset: int = 0) -> torch.Tensor:
         """add positional encoding to feature
 
         Parameters
         ----------
         x : torch.Tensor
             [b, l, d]
+        offset : int
+            Starting position offset for incremental decoding.
+            When offset=0, behaves as before (positions 0..l-1).
+            When offset>0, uses positions offset..offset+l-1.
 
         Returns
         -------
@@ -37,7 +41,7 @@ class WordPosEnc(pl.LightningModule):
             [b, l, d]
         """
         _, seq_len, _ = x.size()
-        emb = self.pe[:seq_len, :]
+        emb = self.pe[offset:offset + seq_len, :]
         x = x + emb[None, :, :]
         return x
 

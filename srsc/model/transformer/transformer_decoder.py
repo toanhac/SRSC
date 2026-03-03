@@ -1,6 +1,6 @@
 import copy
 from functools import partial
-from typing import Optional, Tuple
+from typing import Dict, List, Optional, Tuple
 import math
 
 import torch
@@ -11,6 +11,9 @@ from torch import Tensor
 
 from .arm import AttentionRefinementModule
 from .attention import MultiheadAttention
+
+# Type alias for per-layer cache: (self_attn_kv, cross_attn_kv)
+LayerCache = Tuple[Optional[Tuple[Tensor, Tensor]], Optional[Tuple[Tensor, Tensor]]]
 
 
 def _get_clones(module, N):
@@ -42,15 +45,20 @@ class TransformerDecoder(nn.Module):
         memory_key_padding_mask: Optional[Tensor] = None,
         relation_flat: Optional[Tensor] = None,
         return_coverage: bool = False,
-    ) -> Tuple[Tensor, Optional[Tensor]]:
+        use_cache: bool = False,
+        past_key_values: Optional[List[LayerCache]] = None,
+    ) -> Tuple[Tensor, Optional[Tensor], Optional[List[LayerCache]]]:
         output = tgt
 
         arm = None
         all_gate_values = []
         all_attns = []
+        present_key_values: List[LayerCache] = []
         
         for i, mod in enumerate(self.layers):
-            output, attn, gate_t = mod(
+            layer_past = past_key_values[i] if past_key_values is not None else None
+            
+            output, attn, gate_t, present_kv = mod(
                 output,
                 memory,
                 arm,
@@ -59,9 +67,14 @@ class TransformerDecoder(nn.Module):
                 tgt_key_padding_mask=tgt_key_padding_mask,
                 memory_key_padding_mask=memory_key_padding_mask,
                 relation_flat=relation_flat,
+                use_cache=use_cache,
+                past_self_kv=layer_past[0] if layer_past is not None else None,
+                past_cross_kv=layer_past[1] if layer_past is not None else None,
             )
             all_gate_values.append(gate_t)
             all_attns.append(attn)
+            if use_cache:
+                present_key_values.append(present_kv)
             
             if i != len(self.layers) - 1 and self.arm is not None:
                 arm = partial(
@@ -80,7 +93,7 @@ class TransformerDecoder(nn.Module):
                 all_attns, all_gate_values, memory_key_padding_mask, height
             )
 
-        return output, coverage_T
+        return output, coverage_T, present_key_values if use_cache else None
     
     def _compute_coverage_T(
         self,
@@ -144,14 +157,23 @@ class TransformerDecoderLayer(nn.Module):
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
         relation_flat: Optional[Tensor] = None,
-    ) -> Tuple[Tensor, Tensor, Optional[Tensor]]:
+        use_cache: bool = False,
+        past_self_kv: Optional[Tuple[Tensor, Tensor]] = None,
+        past_cross_kv: Optional[Tuple[Tensor, Tensor]] = None,
+    ) -> Tuple[Tensor, Tensor, Optional[Tensor], Optional[LayerCache]]:
         
+        # Self-attention with KV-cache
         tgt2 = self.norm1(tgt)
-        tgt2 = self.self_attn(
-            tgt2, tgt2, tgt2, attn_mask=tgt_mask, key_padding_mask=tgt_key_padding_mask
-        )[0]
+        tgt2, _, present_self_kv = self.self_attn(
+            tgt2, tgt2, tgt2, 
+            attn_mask=tgt_mask, 
+            key_padding_mask=tgt_key_padding_mask,
+            past_key_value=past_self_kv,
+            use_cache=use_cache,
+        )
         tgt = tgt + self.dropout1(tgt2)
         
+        # Relation bias (computed for query tokens only)
         relation_bias = None
         gate_t = None
         
@@ -166,8 +188,9 @@ class TransformerDecoderLayer(nn.Module):
             
             relation_bias = repeat(rel_bias, "b t n -> (b nh) t n", nh=self.nhead)
         
+        # Cross-attention with KV-cache
         tgt2 = self.norm2(tgt)
-        tgt2, attn = self.multihead_attn(
+        tgt2, attn, present_cross_kv = self.multihead_attn(
             tgt2,
             memory,
             memory,
@@ -175,11 +198,19 @@ class TransformerDecoderLayer(nn.Module):
             attn_mask=memory_mask,
             key_padding_mask=memory_key_padding_mask,
             relation_bias=relation_bias,
+            past_key_value=past_cross_kv,
+            use_cache=use_cache,
         )
         tgt = tgt + self.dropout2(tgt2)
         
+        # FFN
         tgt2 = self.norm3(tgt)
         tgt2 = self.linear2(self.dropout(self.activation(self.linear1(tgt2))))
         tgt = tgt + self.dropout3(tgt2)
         
-        return tgt, attn, gate_t
+        present_kv: Optional[LayerCache] = None
+        if use_cache:
+            present_kv = (present_self_kv, present_cross_kv)
+        
+        return tgt, attn, gate_t, present_kv
+
