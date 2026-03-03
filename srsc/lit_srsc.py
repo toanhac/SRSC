@@ -103,8 +103,8 @@ class LitSRSC(pl.LightningModule):
             relation_pred = relation_pred[:, 1:, :, :]
             relation_gt = relation_gt[:, 1:, :, :]
         
-        relation_gt = relation_gt.clamp(0, 1)
-        relation_pred = relation_pred.clamp(1e-7, 1 - 1e-7)
+        relation_gt = relation_gt.clamp(0, 1).float()
+        relation_pred = relation_pred.float().clamp(1e-7, 1 - 1e-7)
         
         p_t = relation_pred * relation_gt + (1 - relation_pred) * (1 - relation_gt)
         focal_weight = (1 - p_t) ** focal_gamma

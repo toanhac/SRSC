@@ -164,20 +164,14 @@ class MultiTaskCollator:
     """
     Collator that loads relation ground truth maps.
     
-    Supports loading from cached .npz files (pregenerated).
-    
-    Ground truth files should be named: {img_name}_gt.npz
-    With keys: 'relation_map'
-    
-    All relation maps are pre-loaded into RAM at init time to eliminate
-    per-batch disk I/O. Typical memory usage: ~50-200MB for full dataset.
+    All GT .npz files are preloaded into RAM at init time for maximum
+    training speed (no per-batch disk I/O).
     """
     
     NUM_RELATION_CLASSES = 7
     
-    # Class-level cache: maps cache_dir -> {filename: tensor}
-    # Shared across all instances pointing to the same directory.
-    _ram_cache = {}
+    # Class-level cache: shared across collator instances for same cache_dir
+    _gt_cache = {}
     
     def __init__(
         self, 
@@ -187,30 +181,25 @@ class MultiTaskCollator:
         self.cache_dir = Path(cache_dir) if cache_dir else None
         self.use_relation = use_relation
         
-        # Pre-load ALL relation maps into RAM (once per cache_dir)
-        if self.cache_dir is not None and str(self.cache_dir) not in MultiTaskCollator._ram_cache:
-            cache = {}
+        # Preload ALL GT maps into RAM (once per cache_dir)
+        if self.cache_dir is not None and str(self.cache_dir) not in MultiTaskCollator._gt_cache:
+            gt_data = {}
             if self.cache_dir.exists():
                 npz_files = list(self.cache_dir.glob("*_gt.npz"))
-                print(f"  Pre-loading {len(npz_files)} relation maps from {self.cache_dir} into RAM...")
                 for npz_path in npz_files:
                     try:
-                        data = np.load(npz_path, allow_pickle=True)
+                        data = np.load(str(npz_path), allow_pickle=True)
                         if 'relation_map' in data.files:
-                            # Store as float32 tensor in RAM
-                            tensor = torch.from_numpy(data['relation_map'].astype(np.float32))
-                            # Extract sample name: {name}_gt.npz -> {name}
-                            sample_name = npz_path.stem.replace('_gt', '')
-                            cache[sample_name] = tensor
+                            # Key: img_name (strip "_gt.npz" suffix)
+                            img_name = npz_path.stem.replace("_gt", "")
+                            gt_data[img_name] = torch.from_numpy(
+                                data['relation_map'].astype(np.float32)
+                            )
                         data.close()
-                    except Exception as e:
-                        print(f"  Warning: failed to load {npz_path.name}: {e}")
-                
-                # Estimate memory usage
-                total_bytes = sum(t.nelement() * t.element_size() for t in cache.values())
-                print(f"  Loaded {len(cache)} maps into RAM ({total_bytes / 1024 / 1024:.1f} MB)")
-            
-            MultiTaskCollator._ram_cache[str(self.cache_dir)] = cache
+                    except Exception:
+                        pass
+            MultiTaskCollator._gt_cache[str(self.cache_dir)] = gt_data
+            print(f"  Preloaded {len(gt_data)} GT relation maps into RAM from {self.cache_dir}")
     
     def __call__(self, batch):
         assert len(batch) == 1
@@ -232,18 +221,16 @@ class MultiTaskCollator:
         enc_h, enc_w = compute_encoder_output_size(max_height_x, max_width_x)
         relation_maps = torch.zeros(n_samples, self.NUM_RELATION_CLASSES, enc_h, enc_w)
         
-        # Get the in-memory cache for this directory
-        ram_cache = MultiTaskCollator._ram_cache.get(str(self.cache_dir), {}) if self.cache_dir else {}
+        # Get preloaded cache (fast dict lookup)
+        gt_cache = MultiTaskCollator._gt_cache.get(str(self.cache_dir), {}) if self.cache_dir else {}
         
         for idx, s_x in enumerate(images_x):
             h, w = heights_x[idx], widths_x[idx]
             x[idx, :, :h, :w] = s_x
             x_mask[idx, :h, :w] = 0
             
-            fname = fnames[idx]
-            relation_map = ram_cache.get(fname)  # O(1) dict lookup, no disk I/O
+            relation_map = gt_cache.get(fnames[idx])
             
-            # Place relation map in batch tensor
             if relation_map is not None:
                 rm_h, rm_w = relation_map.shape[1], relation_map.shape[2]
                 if rm_h <= enc_h and rm_w <= enc_w:

@@ -108,7 +108,7 @@ def process_single_sample(args):
             dpi=DEFAULT_DPI,
             use_gaussian=True
         )
-        relation_map, symbol_infos, _, _ = relation_gen.generate(latex)
+        relation_map, symbol_infos, _, _ = relation_gen.generate(latex, img_height=img_h, img_width=img_w)
         result['relation_map'] = relation_map  # (7, H, W)
         result['num_symbols'] = len(symbol_infos)
         

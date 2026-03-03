@@ -490,9 +490,16 @@ class MultiLabelRelationMapGenerator:
     def generate(
         self,
         latex: str,
+        img_height: int = 0,
+        img_width: int = 0,
     ) -> Tuple[np.ndarray, List[MultiLabelSymbolInfo], Optional[np.ndarray], Optional[np.ndarray]]:
         """
         Generate multi-label relation map.
+        
+        Args:
+            latex: LaTeX string
+            img_height: Original training image height (for aspect ratio matching)
+            img_width: Original training image width (for aspect ratio matching)
         
         Returns:
             relation_map: [7, H, W] multi-channel map (multiple channels can be active)
@@ -500,7 +507,6 @@ class MultiLabelRelationMapGenerator:
             colored_img: Color-coded rendered image
             gray_img: Grayscale rendered image
         """
-        # Parse LaTeX with multi-label
         tokens = latex.split()
         parser = MultiLabelLaTeXParser(tokens)
         symbol_infos = parser.parse()
@@ -508,16 +514,18 @@ class MultiLabelRelationMapGenerator:
         if not symbol_infos:
             return np.zeros((self.num_classes, self.target_height, self.target_width), dtype=np.float32), symbol_infos, None, None
         
-        # Render with colors
         colored_img, gray_img = self.renderer.render_colored(latex, symbol_infos)
         
         if colored_img is None:
             return np.zeros((self.num_classes, self.target_height, self.target_width), dtype=np.float32), symbol_infos, None, None
         
-        # Detect symbol regions
+        if img_height > 0 and img_width > 0:
+            colored_img = cv2.resize(colored_img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
+            if gray_img is not None:
+                gray_img = cv2.resize(gray_img, (img_width, img_height), interpolation=cv2.INTER_NEAREST)
+        
         regions = detect_symbol_regions(colored_img, symbol_infos)
         
-        # Scale factors
         h, w = colored_img.shape[:2]
         scale_y = self.target_height / h
         scale_x = self.target_width / w

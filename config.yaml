@@ -60,7 +60,7 @@ data:
   test_year: 2014
   train_batch_size: 16
   eval_batch_size: 4
-  num_workers: 5
+  num_workers: 8
   scale_aug: true
   
   # Multi-task ground truth
