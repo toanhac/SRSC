@@ -4,7 +4,9 @@ Auxiliary Task Heads for Multi-Task Learning
 
 This module contains the prediction heads for:
 1. RelationHead: Predicts multi-label relation map [B, 7, H, W]
+   - Uses LightweightASPP for multi-scale context
    - Uses GlobalContextBlock for long-range dependencies
+   - Returns raw logits (use sigmoid externally when probabilities needed)
 
 These heads are attached to the encoder output and trained with
 auxiliary losses alongside the main recognition task.
@@ -13,7 +15,59 @@ auxiliary losses alongside the main recognition task.
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from typing import Tuple
+
+
+class LightweightASPP(nn.Module):
+    """
+    Lightweight Atrous Spatial Pyramid Pooling for multi-scale context.
+    
+    Three parallel branches capture features at different scales:
+    - Branch 1 (1×1): local/point-wise features
+    - Branch 2 (3×3, dilation=2): medium-range (superscript/subscript scale)
+    - Branch 3 (3×3, dilation=4): long-range (fraction/sqrt structure)
+    
+    All branches are fused via concatenation + 1×1 projection.
+    """
+
+    def __init__(self, in_channels: int, out_channels: int, dropout: float = 0.2):
+        super().__init__()
+        
+        branch_channels = out_channels // 3
+        remainder = out_channels - branch_channels * 3
+        
+        self.branch1 = nn.Sequential(
+            nn.Conv2d(in_channels, branch_channels, kernel_size=1, bias=False),
+            nn.BatchNorm2d(branch_channels),
+            nn.ReLU(inplace=True),
+        )
+        
+        self.branch2 = nn.Sequential(
+            nn.Conv2d(in_channels, branch_channels, kernel_size=3, 
+                      padding=2, dilation=2, bias=False),
+            nn.BatchNorm2d(branch_channels),
+            nn.ReLU(inplace=True),
+        )
+        
+        self.branch3 = nn.Sequential(
+            nn.Conv2d(in_channels, branch_channels + remainder, kernel_size=3,
+                      padding=4, dilation=4, bias=False),
+            nn.BatchNorm2d(branch_channels + remainder),
+            nn.ReLU(inplace=True),
+        )
+        
+        self.fuse = nn.Sequential(
+            nn.Conv2d(out_channels, out_channels, kernel_size=1, bias=False),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True),
+            nn.Dropout2d(dropout),
+        )
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        b1 = self.branch1(x)
+        b2 = self.branch2(x)
+        b3 = self.branch3(x)
+        return self.fuse(torch.cat([b1, b2, b3], dim=1))
+
 
 class GlobalContextBlock(nn.Module):
     """
@@ -67,20 +121,28 @@ class GlobalContextBlock(nn.Module):
 
 
 class RelationHead(nn.Module):
-    def __init__(self, d_model: int = 256, hidden_dim: int = 128, num_classes: int = 7, dropout: float = 0.2):
+    """
+    Predicts multi-label structural relation maps from encoder features.
+    
+    Architecture: ASPP (multi-scale) → GC Block (global) → Refine (local) → Output
+    
+    Returns raw logits [B, num_classes, H, W].
+    Apply torch.sigmoid() externally when probabilities are needed.
+    """
+    
+    def __init__(self, d_model: int = 256, hidden_dim: int = 128, 
+                 num_classes: int = 7, dropout: float = 0.2):
         super().__init__()
         
         self.num_classes = num_classes
         
-        self.proj = nn.Sequential(
-            nn.Conv2d(d_model, hidden_dim, kernel_size=1, bias=False),
-            nn.BatchNorm2d(hidden_dim),
-            nn.ReLU(inplace=True),
-            nn.Dropout2d(dropout),
-        )
+        # Multi-scale context aggregation
+        self.aspp = LightweightASPP(d_model, hidden_dim, dropout=dropout)
         
+        # Global context
         self.gc_block = GlobalContextBlock(hidden_dim, reduction_ratio=4)
         
+        # Local refinement with residual connection
         self.refine = nn.Sequential(
             nn.Conv2d(hidden_dim, hidden_dim, kernel_size=3, padding=1, bias=False),
             nn.BatchNorm2d(hidden_dim),
@@ -91,13 +153,8 @@ class RelationHead(nn.Module):
             nn.ReLU(inplace=True),
         )
         
-        self.output = nn.Sequential(
-            nn.Conv2d(hidden_dim, num_classes, kernel_size=1),
-            nn.Sigmoid()
-        )
-        
-        initial_weights = torch.tensor([0.0, 0.5, 1.0, 1.0, 1.0, 1.0, 1.0])
-        self.channel_weights = nn.Parameter(initial_weights)
+        # Output: raw logits (no sigmoid)
+        self.output = nn.Conv2d(hidden_dim, num_classes, kernel_size=1)
         
         self._init_weights()
     
@@ -112,84 +169,20 @@ class RelationHead(nn.Module):
                 nn.init.zeros_(m.bias)
     
     def forward(self, features: torch.Tensor) -> torch.Tensor:
+        """
+        Args:
+            features: [B, H, W, D] encoder output (channel-last)
+        Returns:
+            logits: [B, num_classes, H, W] raw logits
+        """
         x = features.permute(0, 3, 1, 2).contiguous()
-        x = self.proj(x)
+        x = self.aspp(x)
         x = self.gc_block(x)
-        x = self.refine(x)
+        x = x + self.refine(x)  # residual connection
         return self.output(x)
-    
-    def compute_guidance(self, relation_map: torch.Tensor) -> torch.Tensor:
-        if relation_map.shape[1] == 1:
-            return relation_map
-        
-        weights = F.softplus(self.channel_weights)
-        mask = torch.ones_like(weights)
-        mask[0] = 0.0
-        weights = weights * mask
-        weights = weights / (weights.sum() + 1e-8)
-        weights = weights.view(1, -1, 1, 1)
-        
-        num_channels = min(relation_map.shape[1], len(self.channel_weights))
-        guidance = (relation_map[:, :num_channels] * weights[:, :num_channels]).sum(dim=1, keepdim=True)
-        
-        return guidance
-
-
-def compute_relation_loss(
-    pred: torch.Tensor,   # [B, C, H, W]
-    target: torch.Tensor, # [B, C, H, W]
-    mask: torch.Tensor = None,  # [B, H, W]
-    ignore_class_0: bool = True  # Ignore NONE class
-) -> torch.Tensor:
-    """
-    Compute multi-label relation loss using Binary Cross-Entropy.
-    
-    Each channel is treated as an independent binary classification:
-    - Channel k: Is this pixel part of relation k?
-    
-    This allows multiple channels to be active for the same pixel.
-    """
-    if ignore_class_0:
-        # Skip channel 0 (NONE)
-        pred = pred[:, 1:, :, :]
-        target = target[:, 1:, :, :]
-    
-    if mask is not None:
-        # Apply mask to ignore padding regions
-        mask = mask.unsqueeze(1).expand_as(pred)  # [B, C, H, W]
-        
-        # Compute BCE only on valid pixels
-        bce = F.binary_cross_entropy(pred, target, reduction='none')
-        bce = bce * mask
-        loss = bce.sum() / mask.sum().clamp(min=1)
-        return loss
-    else:
-        return F.binary_cross_entropy(pred, target)
-
-
-def get_max_relation_map(relation_pred: torch.Tensor) -> torch.Tensor:
-    """
-    Get maximum relation probability across all channels.
-    
-    This is used in Guided Coverage Attention:
-        max_k R̂_{k,i} = maximum probability at position i
-    
-    Args:
-        relation_pred: [B, C, H, W] multi-label predictions
-        
-    Returns:
-        max_relation: [B, H*W] flattened max values
-    """
-    # Take max across channel dimension, ignoring channel 0 (NONE)
-    max_relation = relation_pred[:, 1:, :, :].max(dim=1)[0]  # [B, H, W]
-    
-    # Flatten for attention computation
-    B, H, W = max_relation.shape
-    return max_relation.view(B, H * W)  # [B, H*W]
 
 
 if __name__ == '__main__':
-    # Test the heads
     batch_size = 2
     H, W, D = 4, 8, 256
     
@@ -200,12 +193,13 @@ if __name__ == '__main__':
     print(f"Input features: {features.shape}")
     
     head = RelationHead(d_model=D)
-    relation_pred = head(features)
+    logits = head(features)
+    probs = torch.sigmoid(logits)
     
-    print(f"\nRelation prediction: {relation_pred.shape}")
-    print(f"  Range: [{relation_pred.min():.4f}, {relation_pred.max():.4f}]")
+    print(f"\nLogits: {logits.shape}")
+    print(f"  Range: [{logits.min():.4f}, {logits.max():.4f}]")
+    print(f"Probabilities (after sigmoid): [{probs.min():.4f}, {probs.max():.4f}]")
     
-    # Test max relation for guided coverage
-    max_rel = get_max_relation_map(relation_pred)
-    print(f"\nMax relation map: {max_rel.shape}")
-    print(f"  For guided coverage attention")
+    # Count parameters
+    total_params = sum(p.numel() for p in head.parameters())
+    print(f"\nTotal parameters: {total_params:,}")

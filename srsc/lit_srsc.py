@@ -44,8 +44,6 @@ class LitSRSC(pl.LightningModule):
     ):
         super().__init__()
         self.save_hyperparameters()
-
-        self.save_hyperparameters()
         self.srsc_model = SRSC(
             d_model=d_model,
             growth_rate=growth_rate,
@@ -86,32 +84,38 @@ class LitSRSC(pl.LightningModule):
 
     def compute_relation_loss(
         self,
-        relation_pred: FloatTensor,
+        relation_logits: FloatTensor,
         relation_gt: FloatTensor,
         ignore_class_0: bool = True,
         focal_gamma: float = 2.0,
     ) -> FloatTensor:
-        if relation_pred.shape[2:] != relation_gt.shape[2:]:
+        """Focal BCE loss on raw logits for numerical stability."""
+        if relation_logits.shape[2:] != relation_gt.shape[2:]:
             relation_gt = F.interpolate(
                 relation_gt,
-                size=relation_pred.shape[2:],
+                size=relation_logits.shape[2:],
                 mode='bilinear',
                 align_corners=False
             )
         
-        if ignore_class_0 and relation_pred.shape[1] > 1:
-            relation_pred = relation_pred[:, 1:, :, :]
+        if ignore_class_0 and relation_logits.shape[1] > 1:
+            relation_logits = relation_logits[:, 1:, :, :]
             relation_gt = relation_gt[:, 1:, :, :]
         
         relation_gt = relation_gt.clamp(0, 1).float()
-        relation_pred = relation_pred.float().clamp(1e-7, 1 - 1e-7)
         
-        p_t = relation_pred * relation_gt + (1 - relation_pred) * (1 - relation_gt)
-        focal_weight = (1 - p_t) ** focal_gamma
+        # Numerically stable focal BCE using logits
+        bce = F.binary_cross_entropy_with_logits(
+            relation_logits, relation_gt, reduction='none'
+        )
         
-        bce = -relation_gt * torch.log(relation_pred) - (1 - relation_gt) * torch.log(1 - relation_pred)
+        # Focal weighting
+        with torch.no_grad():
+            p = torch.sigmoid(relation_logits)
+            p_t = p * relation_gt + (1 - p) * (1 - relation_gt)
+            focal_weight = (1 - p_t) ** focal_gamma
+        
         focal_loss = focal_weight * bce
-        
         return focal_loss.mean()
 
     def compute_coverage_penalty(

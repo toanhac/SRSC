@@ -75,13 +75,13 @@ class SRSC(pl.LightningModule):
         relation_pred = None
         
         if self.use_relation_aux and self.relation_head is not None:
-            relation_pred = self.relation_head(feature_16x)
+            relation_pred = self.relation_head(feature_16x)  # raw logits
         
         relation_for_decoder = None
         if relation_map_gt is not None:
             relation_for_decoder = relation_map_gt
         elif relation_pred is not None:
-            relation_for_decoder = relation_pred.detach()
+            relation_for_decoder = torch.sigmoid(relation_pred).detach()
         
         feature_doubled = torch.cat((feature_16x, feature_16x), dim=0)
         mask_doubled = torch.cat((mask_16x, mask_16x), dim=0)
@@ -127,8 +127,8 @@ class SRSC(pl.LightningModule):
             relation_for_decoder = relation_map
         elif self.use_relation_aux and self.relation_head is not None:
             with torch.no_grad():
-                relation_pred = self.relation_head(feature_16x)
-                relation_for_decoder = relation_pred
+                relation_logits = self.relation_head(feature_16x)
+                relation_for_decoder = torch.sigmoid(relation_logits)
         
         return self.decoder.beam_search(
             [feature_16x], [mask_16x], beam_size, max_len, alpha, early_stopping, temperature,
@@ -136,7 +136,8 @@ class SRSC(pl.LightningModule):
         )
     
     def predict_relation(self, img: FloatTensor, img_mask: LongTensor) -> Optional[FloatTensor]:
+        """Returns relation probabilities (after sigmoid)."""
         if not self.use_relation_aux or self.relation_head is None:
             return None
         feature_16x, _ = self.encoder(img, img_mask)
-        return self.relation_head(feature_16x)
+        return torch.sigmoid(self.relation_head(feature_16x))
