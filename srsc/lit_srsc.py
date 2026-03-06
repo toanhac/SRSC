@@ -104,19 +104,41 @@ class LitSRSC(pl.LightningModule):
         
         relation_gt = relation_gt.clamp(0, 1).float()
         
-        # Numerically stable focal BCE using logits
+        # 1. Focal BCE Loss with Class Weights
+        # Weights for [None, Horizontal, Above, Below, Sup, Sub, Inside]
+        # Since ignore_class_0=True will slice off None, the weights map to the active 6 classes
+        class_weights = torch.tensor([0.3, 1.5, 1.5, 1.2, 1.2, 1.5], device=relation_logits.device)
+        class_weights = class_weights.view(1, -1, 1, 1)
+
         bce = F.binary_cross_entropy_with_logits(
             relation_logits, relation_gt, reduction='none'
         )
         
         # Focal weighting
+        p = torch.sigmoid(relation_logits)
         with torch.no_grad():
-            p = torch.sigmoid(relation_logits)
             p_t = p * relation_gt + (1 - p) * (1 - relation_gt)
             focal_weight = (1 - p_t) ** focal_gamma
+            
+        focal_bce = focal_weight * class_weights * bce
+        focal_loss = focal_bce.mean()
         
-        focal_loss = focal_weight * bce
-        return focal_loss.mean()
+        # 2. Add Dice Loss for spatial structure
+        # Smooth factor to prevent division by zero
+        smooth = 1e-5
+        
+        # Flatten spatial dims to compute dice per channel per batch
+        p_flat = p.view(p.size(0), p.size(1), -1)
+        gt_flat = relation_gt.view(relation_gt.size(0), relation_gt.size(1), -1)
+        
+        intersection = (p_flat * gt_flat).sum(-1)
+        cardinality = p_flat.sum(-1) + gt_flat.sum(-1)
+        
+        dice_score = (2. * intersection + smooth) / (cardinality + smooth)
+        # We can also weight the dice loss by class weights if desired, but standard mean is usually fine
+        dice_loss = (1. - dice_score).mean()
+        
+        return focal_loss + dice_loss
 
     def compute_coverage_penalty(
         self,

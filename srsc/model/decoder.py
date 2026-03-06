@@ -73,7 +73,10 @@ class Decoder(DecodeModel):
         self.num_relation_classes = num_relation_classes
 
         self.relation_proj = nn.Sequential(
-            nn.Conv2d(num_relation_classes, d_model, kernel_size=1, bias=False),
+            nn.Conv2d(num_relation_classes, d_model, kernel_size=3, padding=1, bias=False),
+            nn.BatchNorm2d(d_model),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(d_model, d_model, kernel_size=3, padding=1, bias=False),
             nn.BatchNorm2d(d_model),
             nn.ReLU(inplace=True),
         )
@@ -111,6 +114,7 @@ class Decoder(DecodeModel):
             relation_map_resized = relation_map
         
         r_proj = self.relation_proj(relation_map_resized)
+        r_proj = 0.5 * r_proj + 0.5 * r_proj.detach()
         r_proj = rearrange(r_proj, "b d h w -> (h w) b d")
         
         r_flat = rearrange(relation_map_resized, "b c h w -> b (h w) c")
@@ -151,6 +155,7 @@ class Decoder(DecodeModel):
             tgt_mask=tgt_mask,
             tgt_key_padding_mask=tgt_pad_mask,
             memory_key_padding_mask=src_mask,
+            relation_pos=r_proj,
             relation_flat=r_flat,
             return_coverage=return_coverage,
         )

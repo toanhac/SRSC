@@ -40,6 +40,7 @@ class TransformerDecoder(nn.Module):
         memory_mask: Optional[Tensor] = None,
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
+        relation_pos: Optional[Tensor] = None,
         relation_flat: Optional[Tensor] = None,
         return_coverage: bool = False,
     ) -> Tuple[Tensor, Optional[Tensor]]:
@@ -58,6 +59,7 @@ class TransformerDecoder(nn.Module):
                 memory_mask=memory_mask,
                 tgt_key_padding_mask=tgt_key_padding_mask,
                 memory_key_padding_mask=memory_key_padding_mask,
+                relation_pos=relation_pos,
                 relation_flat=relation_flat,
             )
             all_gate_values.append(gate_t)
@@ -126,7 +128,6 @@ class TransformerDecoderLayer(nn.Module):
         self.activation = F.relu
         
         self.relation_gate = nn.Linear(d_model, num_relation_classes)
-        self.alpha_rel_bias = nn.Parameter(torch.tensor(-3.0))
         self.nhead = nhead
 
     def __setstate__(self, state):
@@ -143,6 +144,7 @@ class TransformerDecoderLayer(nn.Module):
         memory_mask: Optional[Tensor] = None,
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
+        relation_pos: Optional[Tensor] = None,
         relation_flat: Optional[Tensor] = None,
     ) -> Tuple[Tensor, Tensor, Optional[Tensor]]:
         
@@ -152,19 +154,9 @@ class TransformerDecoderLayer(nn.Module):
         )[0]
         tgt = tgt + self.dropout1(tgt2)
         
-        relation_bias = None
-        gate_t = None
-        
         if relation_flat is not None:
             tgt_for_gate = rearrange(tgt, "t b d -> b t d")
             gate_t = torch.sigmoid(self.relation_gate(tgt_for_gate))
-
-            rel_bias = torch.bmm(gate_t, relation_flat.transpose(1, 2))
-            rel_bias = rel_bias / math.sqrt(self.nhead)
-            alpha = torch.sigmoid(self.alpha_rel_bias)
-            rel_bias = alpha * rel_bias
-            
-            relation_bias = repeat(rel_bias, "b t n -> (b nh) t n", nh=self.nhead)
         
         tgt2 = self.norm2(tgt)
         tgt2, attn = self.multihead_attn(
@@ -174,7 +166,7 @@ class TransformerDecoderLayer(nn.Module):
             arm=arm,
             attn_mask=memory_mask,
             key_padding_mask=memory_key_padding_mask,
-            relation_bias=relation_bias,
+            k_pos=relation_pos,
         )
         tgt = tgt + self.dropout2(tgt2)
         

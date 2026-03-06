@@ -15,6 +15,7 @@ trainer:
   precision: 16
   gpus: 0,1
   accelerator: ddp
+  strategy: ddp_find_unused_parameters_false
   check_val_every_n_epoch: 2
   max_epochs: 300
   deterministic: true
