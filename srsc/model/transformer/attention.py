@@ -62,7 +62,7 @@ class MultiheadAttention(nn.Module):
             self.bias_k = self.bias_v = None
 
         self.add_zero_attn = add_zero_attn
-
+        self.lambda_rel = nn.Parameter(torch.tensor(0.3))
         self._reset_parameters()
 
     def _reset_parameters(self):
@@ -326,7 +326,7 @@ def multi_head_attention_forward(
         if k is not None:
             # k is [bsz, src_len, embed_dim] or [tgt_len, bsz, embed_dim] depending on context
             # Typically here k is [tgt_len, bsz, embed_dim]
-            k = k + k_pos
+            k = k + self.lambda_rel* k_pos
             
     q = q.contiguous().view(tgt_len, bsz * num_heads, head_dim).transpose(0, 1)
     if k is not None:
