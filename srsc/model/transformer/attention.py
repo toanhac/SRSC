@@ -101,6 +101,7 @@ class MultiheadAttention(nn.Module):
     ) -> Tuple[Tensor, Optional[Tensor]]:
         if not self._qkv_same_embed_dim:
             return multi_head_attention_forward(
+                self,
                 query,
                 key,
                 value,
@@ -127,6 +128,7 @@ class MultiheadAttention(nn.Module):
             )
         else:
             return multi_head_attention_forward(
+                self,
                 query,
                 key,
                 value,
@@ -150,6 +152,7 @@ class MultiheadAttention(nn.Module):
 
 
 def multi_head_attention_forward(
+    self,
     query: Tensor,
     key: Tensor,
     value: Tensor,
