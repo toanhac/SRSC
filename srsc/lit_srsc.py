@@ -125,22 +125,8 @@ class LitSRSC(pl.LightningModule):
         focal_bce = focal_weight * class_weights * bce
         focal_loss = focal_bce.mean()
         
-        # 2. Add Dice Loss for spatial structure
-        # Smooth factor to prevent division by zero
-        smooth = 1e-5
-        
-        # Flatten spatial dims to compute dice per channel per batch
-        p_flat = p.view(p.size(0), p.size(1), -1)
-        gt_flat = relation_gt.view(relation_gt.size(0), relation_gt.size(1), -1)
-        
-        intersection = (p_flat * gt_flat).sum(-1)
-        cardinality = p_flat.sum(-1) + gt_flat.sum(-1)
-        
-        dice_score = (2. * intersection + smooth) / (cardinality + smooth)
-        # We can also weight the dice loss by class weights if desired, but standard mean is usually fine
-        dice_loss = (1. - dice_score).mean()
-        
-        return focal_loss + dice_loss
+        # Dice loss removed to avoid relation loss dominating recognition (see docs/exprate_35_analysis.md)
+        return focal_loss
 
     def compute_coverage_penalty(
         self,

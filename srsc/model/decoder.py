@@ -94,6 +94,8 @@ class Decoder(DecodeModel):
 
         self.proj = nn.Linear(d_model, vocab_size)
         self._cached_relation_map = None
+        # Scale for relation when adding to memory; learnable so model can reduce if relation hurts
+        self.relation_memory_scale = nn.Parameter(torch.tensor(0.4))
 
     def _build_attention_mask(self, length):
         mask = torch.full(
@@ -114,7 +116,6 @@ class Decoder(DecodeModel):
             relation_map_resized = relation_map
         
         r_proj = self.relation_proj(relation_map_resized)
-        r_proj = 0.8 * r_proj + 0.2 * r_proj.detach()
         r_proj = rearrange(r_proj, "b d h w -> (h w) b d")
         
         r_flat = rearrange(relation_map_resized, "b c h w -> b (h w) c")
@@ -146,7 +147,7 @@ class Decoder(DecodeModel):
         r_proj, r_flat = self._prepare_relation(relation_map, h, w)
         
         if r_proj is not None:
-            src = src + r_proj
+            src = src + self.relation_memory_scale.clamp(0.0, 2.0) * r_proj
 
         out, coverage_T = self.model(
             tgt=tgt,

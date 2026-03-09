@@ -31,13 +31,13 @@ model:
   
   # Coverage (ARM)
   dc: 32
-  cross_coverage: false
-  self_coverage: false
+  cross_coverage: true
+  self_coverage: true
   
   # Multi-task learning (auxiliary tasks)
-  use_relation_aux: true
+  use_relation_aux: false
   relation_hidden_channels: 128
-  relation_loss_weight: 0.1
+  relation_loss_weight: 0.05
   coverage_loss_weight: 0.05
   num_relation_classes: 7
   
