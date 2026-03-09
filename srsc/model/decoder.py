@@ -27,6 +27,7 @@ def _build_transformer_decoder(
     cross_coverage: bool,
     self_coverage: bool,
     num_relation_classes: int = 7,
+    use_rasa: bool = False,
 ) -> TransformerDecoder:
     decoder_layer = TransformerDecoderLayer(
         d_model=d_model,
@@ -34,6 +35,7 @@ def _build_transformer_decoder(
         dim_feedforward=dim_feedforward,
         dropout=dropout,
         num_relation_classes=num_relation_classes,
+        use_rasa=use_rasa,
     )
     if cross_coverage or self_coverage:
         arm = AttentionRefinementModule(
@@ -61,6 +63,7 @@ class Decoder(DecodeModel):
         cross_coverage: bool,
         self_coverage: bool,
         num_relation_classes: int = 7,
+        use_rasa: bool = False,
     ):
         super().__init__()
 
@@ -90,6 +93,8 @@ class Decoder(DecodeModel):
             dc=dc,
             cross_coverage=cross_coverage,
             self_coverage=self_coverage,
+            num_relation_classes=num_relation_classes,
+            use_rasa=use_rasa,
         )
 
         self.proj = nn.Linear(d_model, vocab_size)

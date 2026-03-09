@@ -33,6 +33,9 @@ model:
   dc: 32
   cross_coverage: true
   self_coverage: true
+
+  # RASA: Relation-Aware Self-Attention in decoder Self-Attention (7 relation classes)
+  use_rasa: false
   
   # Multi-task learning (auxiliary tasks)
   use_relation_aux: false
@@ -52,8 +55,8 @@ model:
   
   # Training
   optimizer_type: adamw  # 'sgd' or 'adamw'
-  learning_rate: 2e-4
-  patience: 15
+  learning_rate: 0.04
+  patience: 20
 
 data:
   zipfile_path: data.zip

@@ -41,6 +41,7 @@ class LitSRSC(pl.LightningModule):
         relation_hidden_channels: int = 128,
         num_relation_classes: int = 7,
         optimizer_type: str = 'sgd',
+        use_rasa: bool = False,
     ):
         super().__init__()
         self.save_hyperparameters()
@@ -58,6 +59,7 @@ class LitSRSC(pl.LightningModule):
             use_relation_aux=use_relation_aux,
             relation_hidden_channels=relation_hidden_channels,
             num_relation_classes=num_relation_classes,
+            use_rasa=use_rasa,
         )
 
         self.exprate_recorder = ExpRateRecorder()

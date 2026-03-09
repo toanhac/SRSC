@@ -29,6 +29,7 @@ class SRSC(pl.LightningModule):
         use_relation_aux: bool = False,
         relation_hidden_channels: int = 128,
         num_relation_classes: int = 7,
+        use_rasa: bool = False,
     ):
         super().__init__()
 
@@ -48,6 +49,7 @@ class SRSC(pl.LightningModule):
             cross_coverage=cross_coverage,
             self_coverage=self_coverage,
             num_relation_classes=num_relation_classes,
+            use_rasa=use_rasa,
         )
         
         self.use_relation_aux = use_relation_aux
