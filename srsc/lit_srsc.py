@@ -56,6 +56,8 @@ class LitSRSC(pl.LightningModule):
             cross_coverage=cross_coverage,
             self_coverage=self_coverage,
             use_relation_aux=use_relation_aux,
+            relation_hidden_channels=relation_hidden_channels,
+            num_relation_classes=num_relation_classes,
         )
 
         self.exprate_recorder = ExpRateRecorder()

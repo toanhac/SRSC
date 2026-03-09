@@ -324,12 +324,12 @@ def multi_head_attention_forward(
         assert bias_k is None
         assert bias_v is None
 
-    # Inject Relation Positional Encoding to Keys
-    if k_pos is not None:
-        if k is not None:
-            # k is [bsz, src_len, embed_dim] or [tgt_len, bsz, embed_dim] depending on context
-            # Typically here k is [tgt_len, bsz, embed_dim]
-            k = k + self.lambda_rel* k_pos
+    # # Inject Relation Positional Encoding to Keys
+    # if k_pos is not None:
+    #     if k is not None:
+    #         # k is [bsz, src_len, embed_dim] or [tgt_len, bsz, embed_dim] depending on context
+    #         # Typically here k is [tgt_len, bsz, embed_dim]
+    #         k = k + self.lambda_rel* k_pos
             
     q = q.contiguous().view(tgt_len, bsz * num_heads, head_dim).transpose(0, 1)
     if k is not None:

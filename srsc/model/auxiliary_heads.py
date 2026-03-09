@@ -198,7 +198,7 @@ class RelationHead(nn.Module):
         
         
         # Temperature scaling
-        self.tau = 0.7
+        self.tau = 1.0
         
         self._init_weights()
     

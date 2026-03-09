@@ -114,7 +114,7 @@ class Decoder(DecodeModel):
             relation_map_resized = relation_map
         
         r_proj = self.relation_proj(relation_map_resized)
-        r_proj = 0.5 * r_proj + 0.5 * r_proj.detach()
+        r_proj = 0.8 * r_proj + 0.2 * r_proj.detach()
         r_proj = rearrange(r_proj, "b d h w -> (h w) b d")
         
         r_flat = rearrange(relation_map_resized, "b c h w -> b (h w) c")
