@@ -38,14 +38,15 @@ model:
   use_rasa: false
   
   # Multi-task learning (auxiliary tasks)
-  use_relation_aux: false
+  use_relation_aux: true
+  use_relation_for_decoder: true
+  scheduled_sampling_epochs: 100
   relation_hidden_channels: 128
   relation_loss_weight: 0.05
   coverage_loss_weight: 0.05
   num_relation_classes: 7
   
-  # Multi-task learning (auxiliary tasks)
-  
+
   # Beam search
   beam_size: 10
   max_len: 200

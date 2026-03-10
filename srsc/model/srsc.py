@@ -30,6 +30,8 @@ class SRSC(pl.LightningModule):
         relation_hidden_channels: int = 128,
         num_relation_classes: int = 7,
         use_rasa: bool = False,
+        use_relation_for_decoder: bool = False,
+        scheduled_sampling_epochs: int = 100,
     ):
         super().__init__()
 
@@ -53,6 +55,8 @@ class SRSC(pl.LightningModule):
         )
         
         self.use_relation_aux = use_relation_aux
+        self.use_relation_for_decoder = use_relation_for_decoder
+        self.scheduled_sampling_epochs = scheduled_sampling_epochs
         
         self.relation_head = None
         
@@ -71,19 +75,25 @@ class SRSC(pl.LightningModule):
         relation_map_gt: Optional[FloatTensor] = None,
         return_relation: bool = False,
         return_coverage: bool = False,
+        current_epoch: int = 0,
     ) -> Union[FloatTensor, Tuple[FloatTensor, ...]]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
         
         relation_pred = None
         
         if self.use_relation_aux and self.relation_head is not None:
-            relation_pred = self.relation_head(feature_16x)  # raw logits
+            relation_pred = self.relation_head(feature_16x)
         
         relation_for_decoder = None
-        if relation_map_gt is not None:
-            relation_for_decoder = relation_map_gt
-        elif relation_pred is not None:
-            relation_for_decoder = torch.sigmoid(relation_pred).detach()
+        if self.use_relation_for_decoder and relation_pred is not None:
+            if self.training and relation_map_gt is not None:
+                use_gt_prob = max(0.0, 1.0 - current_epoch / self.scheduled_sampling_epochs)
+                if torch.rand(1).item() < use_gt_prob:
+                    relation_for_decoder = relation_map_gt
+                else:
+                    relation_for_decoder = torch.sigmoid(relation_pred).detach()
+            else:
+                relation_for_decoder = torch.sigmoid(relation_pred).detach()
         
         feature_doubled = torch.cat((feature_16x, feature_16x), dim=0)
         mask_doubled = torch.cat((mask_16x, mask_16x), dim=0)
@@ -127,7 +137,7 @@ class SRSC(pl.LightningModule):
         
         if relation_map is not None:
             relation_for_decoder = relation_map
-        elif self.use_relation_aux and self.relation_head is not None:
+        elif self.use_relation_for_decoder and self.use_relation_aux and self.relation_head is not None:
             with torch.no_grad():
                 relation_logits = self.relation_head(feature_16x)
                 relation_for_decoder = torch.sigmoid(relation_logits)
@@ -138,7 +148,6 @@ class SRSC(pl.LightningModule):
         )
     
     def predict_relation(self, img: FloatTensor, img_mask: LongTensor) -> Optional[FloatTensor]:
-        """Returns relation probabilities (after sigmoid)."""
         if not self.use_relation_aux or self.relation_head is None:
             return None
         feature_16x, _ = self.encoder(img, img_mask)
