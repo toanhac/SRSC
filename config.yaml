@@ -12,7 +12,7 @@ trainer:
         mode: max
         filename: '{epoch}-{step}-{val_ExpRate:.4f}'
   gpus: 1
-  precision: 16
+  # precision: 16
   # gpus: 0,1
   # accelerator: ddp
   check_val_every_n_epoch: 2
@@ -27,7 +27,7 @@ model:
   nhead: 8
   num_decoder_layers: 3
   dim_feedforward: 1024
-  dropout: 0.3
+  dropout: 0.25
   
   # Coverage (ARM)
   dc: 32
@@ -40,7 +40,7 @@ model:
   # Multi-task learning (auxiliary tasks)
   use_relation_aux: true
   use_relation_for_decoder: true
-  scheduled_sampling_epochs: 100
+  scheduled_sampling_epochs: 50
   relation_hidden_channels: 128
   relation_loss_weight: 0.05
   coverage_loss_weight: 0.05
@@ -55,9 +55,9 @@ model:
   temperature: 1.0
   
   # Training
-  optimizer_type: adamw  # 'sgd' or 'adamw'
+  optimizer_type: sgd  # 'sgd' or 'adamw'
   learning_rate: 0.04
-  patience: 20
+  patience: 10
 
 data:
   zipfile_path: data.zip
