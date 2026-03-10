@@ -21,7 +21,7 @@ import cv2
 
 cv2.setNumThreads(0)
 
-MAX_SIZE = 64e5  # Increased to allow larger batches for better GPU utilization
+MAX_SIZE = 32e4  # Increased to allow larger batches for better GPU utilization
 ENCODER_DOWNSAMPLE_FACTOR = 16
 
 
