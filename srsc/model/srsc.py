@@ -13,7 +13,7 @@ from .auxiliary_heads import RelationHead
 
 
 class SRSC(pl.LightningModule):
-    
+
     def __init__(
         self,
         d_model: int,
@@ -29,18 +29,15 @@ class SRSC(pl.LightningModule):
         use_relation_aux: bool = False,
         relation_hidden_channels: int = 128,
         num_relation_classes: int = 7,
-        use_rasa: bool = False,
-        use_relation_for_decoder: bool = False,
-        scheduled_sampling_epochs: int = 100,
     ):
         super().__init__()
 
         self.encoder = Encoder(
-            d_model=d_model, 
-            growth_rate=growth_rate, 
+            d_model=d_model,
+            growth_rate=growth_rate,
             num_layers=num_layers,
         )
-        
+
         self.decoder = Decoder(
             d_model=d_model,
             nhead=nhead,
@@ -51,15 +48,11 @@ class SRSC(pl.LightningModule):
             cross_coverage=cross_coverage,
             self_coverage=self_coverage,
             num_relation_classes=num_relation_classes,
-            use_rasa=use_rasa,
         )
-        
+
         self.use_relation_aux = use_relation_aux
-        self.use_relation_for_decoder = use_relation_for_decoder
-        self.scheduled_sampling_epochs = scheduled_sampling_epochs
-        
         self.relation_head = None
-        
+
         if use_relation_aux:
             self.relation_head = RelationHead(
                 d_model=d_model,
@@ -68,53 +61,44 @@ class SRSC(pl.LightningModule):
             )
 
     def forward(
-        self, 
-        img: FloatTensor, 
-        img_mask: LongTensor, 
+        self,
+        img: FloatTensor,
+        img_mask: LongTensor,
         tgt: LongTensor,
         relation_map_gt: Optional[FloatTensor] = None,
         return_relation: bool = False,
         return_coverage: bool = False,
-        current_epoch: int = 0,
     ) -> Union[FloatTensor, Tuple[FloatTensor, ...]]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
-        
+
         relation_pred = None
-        
         if self.use_relation_aux and self.relation_head is not None:
             relation_pred = self.relation_head(feature_16x)
-        
+
         relation_for_decoder = None
-        if self.use_relation_for_decoder and relation_pred is not None:
-            if self.training and relation_map_gt is not None:
-                use_gt_prob = max(0.0, 1.0 - current_epoch / self.scheduled_sampling_epochs)
-                if torch.rand(1).item() < use_gt_prob:
-                    relation_for_decoder = relation_map_gt
-                else:
-                    relation_for_decoder = torch.sigmoid(relation_pred).detach()
-            else:
-                relation_for_decoder = torch.sigmoid(relation_pred).detach()
-        
+        if relation_pred is not None:
+            relation_for_decoder = torch.sigmoid(relation_pred).detach()
+
         feature_doubled = torch.cat((feature_16x, feature_16x), dim=0)
         mask_doubled = torch.cat((mask_16x, mask_16x), dim=0)
-        
+
         if relation_for_decoder is not None:
             relation_decoder_doubled = torch.cat((relation_for_decoder, relation_for_decoder), dim=0)
         else:
             relation_decoder_doubled = None
-        
+
         out, coverage_T = self.decoder(
-            feature_doubled, mask_doubled, tgt, 
+            feature_doubled, mask_doubled, tgt,
             relation_map=relation_decoder_doubled,
             return_coverage=return_coverage,
         )
-        
+
         results = [out]
         if return_relation:
             results.append(relation_pred)
         if return_coverage:
             results.append(coverage_T)
-        
+
         if len(results) == 1:
             return results[0]
         return tuple(results)
@@ -132,21 +116,19 @@ class SRSC(pl.LightningModule):
         **kwargs,
     ) -> List[Hypothesis]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
-        
+
         relation_for_decoder = None
-        
         if relation_map is not None:
             relation_for_decoder = relation_map
-        elif self.use_relation_for_decoder and self.use_relation_aux and self.relation_head is not None:
+        elif self.use_relation_aux and self.relation_head is not None:
             with torch.no_grad():
-                relation_logits = self.relation_head(feature_16x)
-                relation_for_decoder = torch.sigmoid(relation_logits)
-        
+                relation_for_decoder = torch.sigmoid(self.relation_head(feature_16x))
+
         return self.decoder.beam_search(
             [feature_16x], [mask_16x], beam_size, max_len, alpha, early_stopping, temperature,
             relation_map=relation_for_decoder,
         )
-    
+
     def predict_relation(self, img: FloatTensor, img_mask: LongTensor) -> Optional[FloatTensor]:
         if not self.use_relation_aux or self.relation_head is None:
             return None

@@ -26,22 +26,22 @@ class MaskBatchNorm2d(nn.Module):
 
 class AttentionRefinementModule(nn.Module):
     def __init__(
-        self, 
-        nhead: int, 
-        dc: int, 
-        cross_coverage: bool, 
+        self,
+        nhead: int,
+        dc: int,
+        cross_coverage: bool,
         self_coverage: bool,
+        num_relation_classes: int = 0,
     ):
         super().__init__()
         assert cross_coverage or self_coverage
         self.nhead = nhead
         self.cross_coverage = cross_coverage
         self.self_coverage = self_coverage
+        self.num_relation_classes = num_relation_classes
 
-        if cross_coverage and self_coverage:
-            in_chs = 2 * nhead
-        else:
-            in_chs = nhead
+        coverage_chs = (2 if cross_coverage and self_coverage else 1) * nhead
+        in_chs = coverage_chs + num_relation_classes
 
         self.conv = nn.Conv2d(in_chs, dc, kernel_size=5, padding=2)
         self.act = nn.ReLU(inplace=True)
@@ -49,16 +49,17 @@ class AttentionRefinementModule(nn.Module):
         self.post_norm = MaskBatchNorm2d(nhead)
 
     def forward(
-        self, 
-        prev_attn: Tensor, 
-        key_padding_mask: Tensor, 
-        h: int, 
+        self,
+        prev_attn: Tensor,
+        key_padding_mask: Tensor,
+        h: int,
         curr_attn: Tensor,
+        relation_flat: Optional[Tensor] = None,
     ) -> Tensor:
         t = curr_attn.shape[1]
         b = key_padding_mask.shape[0]
         w = key_padding_mask.shape[1] // h
-        
+
         mask = repeat(key_padding_mask, "b (h w) -> (b t) () h w", h=h, t=t)
 
         curr_attn = rearrange(curr_attn, "(b n) t l -> b n t l", n=self.nhead)
@@ -74,12 +75,17 @@ class AttentionRefinementModule(nn.Module):
         attns = attns.cumsum(dim=2) - attns
         attns = rearrange(attns, "b n t (h w) -> (b t) n h w", h=h)
 
+        if self.num_relation_classes > 0 and relation_flat is not None:
+            r = rearrange(relation_flat, "b (h w) c -> b c h w", h=h)
+            r = repeat(r, "b c h w -> (b t) c h w", t=t)
+            attns = torch.cat([attns, r], dim=1)
+
         cov = self.conv(attns)
         cov = self.act(cov)
         cov = cov.masked_fill(mask, 0.0)
         cov = self.proj(cov)
         cov = self.post_norm(cov, mask)
-        
+
         cov = rearrange(cov, "(b t) n h w -> (b n) t (h w)", t=t)
-        
+
         return cov

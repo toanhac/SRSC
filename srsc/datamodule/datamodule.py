@@ -247,9 +247,6 @@ class MultiTaskCollator:
         return Batch(fnames, x, x_mask, seqs_y, relation_maps)
 
 
-# Backward compatibility alias
-SpatialCollator = MultiTaskCollator
-
 
 def build_dataset(archive, folder: str, batch_size: int):
     data = extract_data(archive, folder)
