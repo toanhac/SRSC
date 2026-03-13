@@ -13,7 +13,7 @@ trainer:
         filename: '{epoch}-{step}-{val_ExpRate:.4f}'
   gpus: 1
   # precision: 16
-  check_val_every_n_epoch: 2
+  check_val_every_n_epoch: 10
   max_epochs: 300
   deterministic: true
 
@@ -27,16 +27,15 @@ model:
   dim_feedforward: 1024
   dropout: 0.3
 
-  # Coverage (RACM: ARM + relation guidance)
+  # Coverage (CoMER ARM - unchanged)
   dc: 32
   cross_coverage: true
   self_coverage: true
 
-  # Multi-task learning: relation head (auxiliary loss + RACM input)
+  # Multi-task learning: relation head (auxiliary supervision + relation-guided attention)
   use_relation_aux: true
   relation_hidden_channels: 128
-  relation_loss_weight: 0.05
-  coverage_loss_weight: 0.05
+  relation_loss_weight: 0.1
   num_relation_classes: 7
 
   # Beam search
@@ -48,7 +47,7 @@ model:
 
   # Training
   optimizer_type: sgd
-  learning_rate: 0.02
+  learning_rate: 0.04
   patience: 20
 
 data:

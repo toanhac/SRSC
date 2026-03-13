@@ -1,18 +1,17 @@
-from typing import List, Tuple, Optional, Union
+from typing import List, Optional, Tuple, Union
 
-import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 from torch import FloatTensor, LongTensor
 
 from srsc.utils.utils import Hypothesis
 
+from .auxiliary_heads import RelationHead
 from .decoder import Decoder
 from .encoder import Encoder
-from .auxiliary_heads import RelationHead
 
 
-class SRSC(pl.LightningModule):
+class SRSC(nn.Module):
 
     def __init__(
         self,
@@ -66,8 +65,7 @@ class SRSC(pl.LightningModule):
         img_mask: LongTensor,
         tgt: LongTensor,
         return_relation: bool = False,
-        return_coverage: bool = False,
-    ) -> Union[FloatTensor, Tuple[FloatTensor, ...]]:
+    ) -> Union[FloatTensor, Tuple[FloatTensor, FloatTensor]]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
 
         relation_pred = None
@@ -82,25 +80,20 @@ class SRSC(pl.LightningModule):
         mask_doubled = torch.cat((mask_16x, mask_16x), dim=0)
 
         if relation_for_decoder is not None:
-            relation_decoder_doubled = torch.cat((relation_for_decoder, relation_for_decoder), dim=0)
+            relation_decoder_doubled = torch.cat(
+                (relation_for_decoder, relation_for_decoder), dim=0
+            )
         else:
             relation_decoder_doubled = None
 
-        out, coverage_T = self.decoder(
+        out, _ = self.decoder(
             feature_doubled, mask_doubled, tgt,
             relation_map=relation_decoder_doubled,
-            return_coverage=return_coverage,
         )
 
-        results = [out]
         if return_relation:
-            results.append(relation_pred)
-        if return_coverage:
-            results.append(coverage_T)
-
-        if len(results) == 1:
-            return results[0]
-        return tuple(results)
+            return out, relation_pred
+        return out
 
     def beam_search(
         self,
@@ -111,24 +104,23 @@ class SRSC(pl.LightningModule):
         alpha: float,
         early_stopping: bool,
         temperature: float,
-        relation_map: Optional[FloatTensor] = None,
         **kwargs,
     ) -> List[Hypothesis]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
 
         relation_for_decoder = None
-        if relation_map is not None:
-            relation_for_decoder = relation_map
-        elif self.use_relation_aux and self.relation_head is not None:
+        if self.use_relation_aux and self.relation_head is not None:
             with torch.no_grad():
                 relation_for_decoder = torch.sigmoid(self.relation_head(feature_16x))
 
         return self.decoder.beam_search(
-            [feature_16x], [mask_16x], beam_size, max_len, alpha, early_stopping, temperature,
-            relation_map=relation_for_decoder,
+            [feature_16x], [mask_16x], beam_size, max_len, alpha, early_stopping,
+            temperature, relation_map=relation_for_decoder,
         )
 
-    def predict_relation(self, img: FloatTensor, img_mask: LongTensor) -> Optional[FloatTensor]:
+    def predict_relation(
+        self, img: FloatTensor, img_mask: LongTensor
+    ) -> Optional[FloatTensor]:
         if not self.use_relation_aux or self.relation_head is None:
             return None
         feature_16x, _ = self.encoder(img, img_mask)

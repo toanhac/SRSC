@@ -41,7 +41,6 @@ def _build_transformer_decoder(
             dc,
             cross_coverage,
             self_coverage,
-            num_relation_classes=num_relation_classes,
         )
     else:
         arm = None
@@ -71,7 +70,6 @@ class Decoder(DecodeModel):
 
         self.pos_enc = WordPosEnc(d_model=d_model)
         self.norm = nn.LayerNorm(d_model)
-        self.num_relation_classes = num_relation_classes
 
         self.model = _build_transformer_decoder(
             d_model=d_model,
@@ -112,8 +110,7 @@ class Decoder(DecodeModel):
         src_mask: LongTensor,
         tgt: LongTensor,
         relation_map: Optional[FloatTensor] = None,
-        return_coverage: bool = False,
-    ) -> Tuple[FloatTensor, Optional[FloatTensor]]:
+    ) -> Tuple[FloatTensor, None]:
         _, l = tgt.size()
         tgt_mask = self._build_attention_mask(l)
         tgt_pad_mask = tgt == vocab.PAD_IDX
@@ -130,7 +127,7 @@ class Decoder(DecodeModel):
 
         r_flat = self._prepare_relation(relation_map, h, w)
 
-        out, coverage_T = self.model(
+        out = self.model(
             tgt=tgt,
             memory=src,
             height=h,
@@ -138,14 +135,10 @@ class Decoder(DecodeModel):
             tgt_key_padding_mask=tgt_pad_mask,
             memory_key_padding_mask=src_mask,
             relation_flat=r_flat,
-            return_coverage=return_coverage,
         )
 
         out = rearrange(out, "l b d -> b l d")
         out = self.proj(out)
-
-        if return_coverage:
-            return out, coverage_T
         return out, None
 
     def transform(
@@ -158,15 +151,13 @@ class Decoder(DecodeModel):
         relation_map = self._cached_relation_map
 
         batch_size = input_ids.shape[0]
-
         if relation_map is not None:
             if relation_map.shape[0] != batch_size:
-                relation_map = relation_map.repeat(batch_size // relation_map.shape[0] + 1, 1, 1, 1)[:batch_size]
+                relation_map = relation_map.repeat(
+                    batch_size // relation_map.shape[0] + 1, 1, 1, 1
+                )[:batch_size]
 
-        word_out, _ = self.forward(
-            src[0], src_mask[0], input_ids,
-            relation_map=relation_map,
-        )
+        word_out, _ = self.forward(src[0], src_mask[0], input_ids, relation_map=relation_map)
         return word_out
 
     def beam_search(
