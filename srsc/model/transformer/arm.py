@@ -42,11 +42,16 @@ class AttentionRefinementModule(nn.Module):
 
         coverage_chs = (2 if cross_coverage and self_coverage else 1) * nhead
         in_chs = coverage_chs + num_relation_classes
+        self.coverage_chs = coverage_chs
 
         self.conv = nn.Conv2d(in_chs, dc, kernel_size=5, padding=2)
         self.act = nn.ReLU(inplace=True)
         self.proj = nn.Conv2d(dc, nhead, kernel_size=1, bias=False)
         self.post_norm = MaskBatchNorm2d(nhead)
+
+        if num_relation_classes > 0:
+            with torch.no_grad():
+                self.conv.weight[:, coverage_chs:].zero_()
 
     def forward(
         self,

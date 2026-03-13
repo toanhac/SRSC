@@ -48,7 +48,7 @@ model:
 
   # Training
   optimizer_type: sgd
-  learning_rate: 0.08
+  learning_rate: 0.02
   patience: 20
 
 data:
