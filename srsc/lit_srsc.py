@@ -72,14 +72,11 @@ class LitSRSC(pl.LightningModule):
         img: FloatTensor, 
         img_mask: LongTensor, 
         tgt: LongTensor,
-        relation_map_gt: Optional[FloatTensor] = None,
         return_relation: bool = False,
         return_coverage: bool = False,
-        epoch_idx: int = -1,
     ) -> FloatTensor:
         return self.srsc_model(
-            img, img_mask, tgt, 
-            relation_map_gt=relation_map_gt,
+            img, img_mask, tgt,
             return_relation=return_relation,
             return_coverage=return_coverage,
         )
@@ -134,28 +131,28 @@ class LitSRSC(pl.LightningModule):
         relation_gt: FloatTensor,
     ) -> FloatTensor:
         B = relation_gt.shape[0]
-        H, W = relation_gt.shape[2], relation_gt.shape[3]
         N = coverage_T.shape[1]
-        
-        if N != H * W:
-            cov_h = int(N ** 0.5)
-            cov_w = N // cov_h if cov_h > 0 else N
-            relation_gt_resized = F.interpolate(
-                relation_gt, size=(cov_h, cov_w), mode='bilinear', align_corners=False
-            )
-        else:
-            relation_gt_resized = relation_gt
-        
+
+        import math
+        H_cov = round(math.sqrt(N * relation_gt.shape[2] / relation_gt.shape[3]))
+        W_cov = N // max(H_cov, 1)
+        if H_cov * W_cov != N:
+            H_cov, W_cov = 1, N
+
+        relation_gt_resized = F.interpolate(
+            relation_gt, size=(H_cov, W_cov), mode='bilinear', align_corners=False
+        )
+
         relation_flat = rearrange(relation_gt_resized, "b c h w -> b (h w) c")
-        
+
         C_r = coverage_T.shape[2]
         if relation_flat.shape[2] != C_r:
             relation_flat = relation_flat[:, :, :C_r]
-        
+
         if coverage_T.shape[0] != B:
             coverage_T = coverage_T[:B]
-        
-        penalty = F.relu(coverage_T - relation_flat)
+
+        penalty = F.relu(relation_flat - coverage_T)
         return penalty.mean()
 
     def _get_auxiliary_gt(self, batch: Batch):
@@ -175,7 +172,6 @@ class LitSRSC(pl.LightningModule):
         
         outputs = self.srsc_model(
             batch.imgs, batch.mask, tgt,
-            relation_map_gt=relation_gt,
             return_relation=need_relation,
             return_coverage=need_coverage,
         )
@@ -243,7 +239,7 @@ class LitSRSC(pl.LightningModule):
             sync_dist=True,
         )
 
-        hyps = self.approximate_joint_search(batch.imgs, batch.mask, relation_gt)
+        hyps = self.approximate_joint_search(batch.imgs, batch.mask, None)
         self.exprate_recorder([h.seq for h in hyps], batch.indices)
         self.log(
             "val_ExpRate",
@@ -254,8 +250,7 @@ class LitSRSC(pl.LightningModule):
         )
 
     def test_step(self, batch: Batch, _):
-        relation_gt = self._get_auxiliary_gt(batch)
-        hyps = self.approximate_joint_search(batch.imgs, batch.mask, relation_gt)
+        hyps = self.approximate_joint_search(batch.imgs, batch.mask, None)
         self.exprate_recorder([h.seq for h in hyps], batch.indices)
         return batch.img_bases, [vocab.indices2label(h.seq) for h in hyps]
 

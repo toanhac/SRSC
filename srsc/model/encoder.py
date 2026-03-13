@@ -38,7 +38,6 @@ class _Bottleneck(nn.Module):
 class _SingleLayer(nn.Module):
     def __init__(self, n_channels: int, growth_rate: int, use_dropout: bool):
         super(_SingleLayer, self).__init__()
-        self.bn1 = nn.BatchNorm2d(n_channels)
         self.conv1 = nn.Conv2d(
             n_channels, growth_rate, kernel_size=3, padding=1, bias=False
         )

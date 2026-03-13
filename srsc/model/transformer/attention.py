@@ -62,7 +62,6 @@ class MultiheadAttention(nn.Module):
             self.bias_k = self.bias_v = None
 
         self.add_zero_attn = add_zero_attn
-        self.lambda_rel = nn.Parameter(torch.tensor(0.3))
         self._reset_parameters()
 
     def _reset_parameters(self):
@@ -97,7 +96,6 @@ class MultiheadAttention(nn.Module):
         key_padding_mask: Optional[Tensor] = None,
         need_weights: bool = True,
         attn_mask: Optional[Tensor] = None,
-        k_pos: Optional[Tensor] = None,
     ) -> Tuple[Tensor, Optional[Tensor]]:
         if not self._qkv_same_embed_dim:
             return multi_head_attention_forward(
@@ -124,7 +122,6 @@ class MultiheadAttention(nn.Module):
                 q_proj_weight=self.q_proj_weight,
                 k_proj_weight=self.k_proj_weight,
                 v_proj_weight=self.v_proj_weight,
-                k_pos=k_pos,
             )
         else:
             return multi_head_attention_forward(
@@ -147,7 +144,6 @@ class MultiheadAttention(nn.Module):
                 key_padding_mask=key_padding_mask,
                 need_weights=need_weights,
                 attn_mask=attn_mask,
-                k_pos=k_pos,
             )
 
 
@@ -177,7 +173,6 @@ def multi_head_attention_forward(
     v_proj_weight: Optional[Tensor] = None,
     static_k: Optional[Tensor] = None,
     static_v: Optional[Tensor] = None,
-    k_pos: Optional[Tensor] = None,
 ) -> Tuple[Tensor, Optional[Tensor]]:
     tgt_len, bsz, embed_dim = query.size()
     assert embed_dim == embed_dim_to_check
@@ -324,13 +319,6 @@ def multi_head_attention_forward(
         assert bias_k is None
         assert bias_v is None
 
-    # # Inject Relation Positional Encoding to Keys
-    # if k_pos is not None:
-    #     if k is not None:
-    #         # k is [bsz, src_len, embed_dim] or [tgt_len, bsz, embed_dim] depending on context
-    #         # Typically here k is [tgt_len, bsz, embed_dim]
-    #         k = k + self.lambda_rel* k_pos
-            
     q = q.contiguous().view(tgt_len, bsz * num_heads, head_dim).transpose(0, 1)
     if k is not None:
         k = k.contiguous().view(-1, bsz * num_heads, head_dim).transpose(0, 1)

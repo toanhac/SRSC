@@ -65,7 +65,6 @@ class SRSC(pl.LightningModule):
         img: FloatTensor,
         img_mask: LongTensor,
         tgt: LongTensor,
-        relation_map_gt: Optional[FloatTensor] = None,
         return_relation: bool = False,
         return_coverage: bool = False,
     ) -> Union[FloatTensor, Tuple[FloatTensor, ...]]:

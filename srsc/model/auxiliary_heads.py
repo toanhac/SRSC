@@ -197,9 +197,6 @@ class RelationHead(nn.Module):
         
         
         
-        # Temperature scaling
-        self.tau = 1.0
-        
         self._init_weights()
     
     def _init_weights(self):
@@ -232,10 +229,6 @@ class RelationHead(nn.Module):
         
         # Apply Channel Interaction (Residual)
         logits = logits + self.channel_interaction(logits)
-        
-        # Temperature Scaling
-        logits = logits / self.tau
-        
         return logits
 
 
