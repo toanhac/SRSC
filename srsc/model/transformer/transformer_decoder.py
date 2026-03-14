@@ -40,12 +40,16 @@ class TransformerDecoder(nn.Module):
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
         relation_flat: Optional[Tensor] = None,
-    ) -> Tensor:
+        return_coverage: bool = False,
+    ) -> Tuple[Tensor, Optional[Tensor]]:
         output = tgt
+
         arm = None
+        all_gate_values = []
+        all_attns = []
 
         for i, mod in enumerate(self.layers):
-            output, attn = mod(
+            output, attn, gate_t = mod(
                 output,
                 memory,
                 arm,
@@ -55,6 +59,8 @@ class TransformerDecoder(nn.Module):
                 memory_key_padding_mask=memory_key_padding_mask,
                 relation_flat=relation_flat,
             )
+            all_gate_values.append(gate_t)
+            all_attns.append(attn)
 
             if i != len(self.layers) - 1 and self.arm is not None:
                 arm = partial(
@@ -62,12 +68,39 @@ class TransformerDecoder(nn.Module):
                     attn,
                     memory_key_padding_mask,
                     height,
+                    relation_flat=relation_flat,
                 )
 
         if self.norm is not None:
             output = self.norm(output)
 
-        return output
+        coverage_T = None
+        if return_coverage and len(all_attns) > 0 and len(all_gate_values) > 0:
+            coverage_T = self._compute_coverage_T(
+                all_attns, all_gate_values, memory_key_padding_mask, height
+            )
+
+        return output, coverage_T
+
+    def _compute_coverage_T(
+        self,
+        all_attns,
+        all_gate_values,
+        memory_key_padding_mask,
+        height,
+    ):
+        last_attn = all_attns[-1]
+        last_gate = all_gate_values[-1]
+
+        if last_gate is None:
+            return None
+
+        nhead = self.layers[0].multihead_attn.num_heads
+        attn_mean = rearrange(last_attn, "(b n) t l -> b n t l", n=nhead).mean(dim=1)
+
+        coverage_T = torch.einsum('btn,btc->bnc', attn_mean, last_gate)
+        coverage_T = coverage_T.clamp(max=1.0)
+        return coverage_T
 
 
 class TransformerDecoderLayer(nn.Module):
@@ -95,28 +128,14 @@ class TransformerDecoderLayer(nn.Module):
         self.dropout3 = nn.Dropout(dropout)
 
         self.activation = F.relu
-        self.nhead = nhead
 
-        self.rel_q_proj = nn.Linear(d_model, num_relation_classes, bias=False)
-        self.rel_scale = nn.Parameter(torch.zeros(1))
+        self.relation_gate = nn.Linear(d_model, num_relation_classes)
+        self.nhead = nhead
 
     def __setstate__(self, state):
         if "activation" not in state:
             state["activation"] = F.relu
         super(TransformerDecoderLayer, self).__setstate__(state)
-
-    def _compute_relation_bias(
-        self, tgt: Tensor, relation_flat: Tensor
-    ) -> Tensor:
-        # tgt: [T, B, d_model], relation_flat: [B, H*W, num_rel]
-        tgt_t = rearrange(tgt, "t b d -> b t d")
-        gate = torch.sigmoid(self.rel_q_proj(tgt_t))           # [B, T, num_rel]
-        r_attn = torch.bmm(gate, relation_flat.transpose(1, 2)) # [B, T, H*W]
-        r_attn = self.rel_scale * r_attn
-
-        B, T, L = r_attn.shape
-        r_bias = r_attn.unsqueeze(1).expand(-1, self.nhead, -1, -1)
-        return r_bias.reshape(B * self.nhead, T, L)
 
     def forward(
         self,
@@ -128,16 +147,18 @@ class TransformerDecoderLayer(nn.Module):
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
         relation_flat: Optional[Tensor] = None,
-    ) -> Tuple[Tensor, Tensor]:
+    ) -> Tuple[Tensor, Tensor, Optional[Tensor]]:
+        gate_t = None
+
         tgt2 = self.self_attn(
             tgt, tgt, tgt, attn_mask=tgt_mask, key_padding_mask=tgt_key_padding_mask
         )[0]
         tgt = tgt + self.dropout1(tgt2)
         tgt = self.norm1(tgt)
 
-        r_bias = None
         if relation_flat is not None:
-            r_bias = self._compute_relation_bias(tgt, relation_flat)
+            tgt_for_gate = rearrange(tgt, "t b d -> b t d")
+            gate_t = torch.sigmoid(self.relation_gate(tgt_for_gate))
 
         tgt2, attn = self.multihead_attn(
             tgt,
@@ -146,7 +167,6 @@ class TransformerDecoderLayer(nn.Module):
             arm=arm,
             attn_mask=memory_mask,
             key_padding_mask=memory_key_padding_mask,
-            r_bias=r_bias,
         )
         tgt = tgt + self.dropout2(tgt2)
         tgt = self.norm2(tgt)
@@ -155,4 +175,4 @@ class TransformerDecoderLayer(nn.Module):
         tgt = tgt + self.dropout3(tgt2)
         tgt = self.norm3(tgt)
 
-        return tgt, attn
+        return tgt, attn, gate_t

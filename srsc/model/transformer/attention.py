@@ -96,7 +96,6 @@ class MultiheadAttention(nn.Module):
         key_padding_mask: Optional[Tensor] = None,
         need_weights: bool = True,
         attn_mask: Optional[Tensor] = None,
-        r_bias: Optional[Tensor] = None,
     ) -> Tuple[Tensor, Optional[Tensor]]:
         if not self._qkv_same_embed_dim:
             return multi_head_attention_forward(
@@ -123,7 +122,6 @@ class MultiheadAttention(nn.Module):
                 q_proj_weight=self.q_proj_weight,
                 k_proj_weight=self.k_proj_weight,
                 v_proj_weight=self.v_proj_weight,
-                r_bias=r_bias,
             )
         else:
             return multi_head_attention_forward(
@@ -146,7 +144,6 @@ class MultiheadAttention(nn.Module):
                 key_padding_mask=key_padding_mask,
                 need_weights=need_weights,
                 attn_mask=attn_mask,
-                r_bias=r_bias,
             )
 
 
@@ -176,7 +173,6 @@ def multi_head_attention_forward(
     v_proj_weight: Optional[Tensor] = None,
     static_k: Optional[Tensor] = None,
     static_v: Optional[Tensor] = None,
-    r_bias: Optional[Tensor] = None,
 ) -> Tuple[Tensor, Optional[Tensor]]:
     tgt_len, bsz, embed_dim = query.size()
     assert embed_dim == embed_dim_to_check
@@ -393,11 +389,8 @@ def multi_head_attention_forward(
         return attn
 
     attention = mask_softmax_dropout(attn_output_weights)
-    if arm is not None or r_bias is not None:
-        if arm is not None:
-            attn_output_weights -= arm(attention)
-        if r_bias is not None:
-            attn_output_weights += r_bias
+    if arm is not None:
+        attn_output_weights -= arm(attention)
         attention = mask_softmax_dropout(attn_output_weights)
 
     attn_output = torch.bmm(attention, v)
