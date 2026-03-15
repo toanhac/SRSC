@@ -13,7 +13,7 @@ trainer:
         filename: '{epoch}-{step}-{val_ExpRate:.4f}'
   gpus: 1
   # precision: 16
-  check_val_every_n_epoch: 2
+  check_val_every_n_epoch: 5
   max_epochs: 300
   deterministic: true
 
@@ -48,8 +48,8 @@ model:
 
   # Training
   optimizer_type: sgd
-  learning_rate: 0.04
-  patience: 20
+  learning_rate: 0.08
+  patience: 15
 
 data:
   zipfile_path: data.zip
