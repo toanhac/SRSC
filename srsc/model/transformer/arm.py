@@ -32,6 +32,7 @@ class AttentionRefinementModule(nn.Module):
         cross_coverage: bool,
         self_coverage: bool,
         num_relation_classes: int = 0,
+        d_model: int = 0,
     ):
         super().__init__()
         assert cross_coverage or self_coverage
@@ -41,7 +42,8 @@ class AttentionRefinementModule(nn.Module):
         self.num_relation_classes = num_relation_classes
 
         coverage_chs = (2 if cross_coverage and self_coverage else 1) * nhead
-        in_chs = coverage_chs + num_relation_classes
+        n_enc_chs = num_relation_classes if (d_model > 0 and num_relation_classes > 0) else 0
+        in_chs = coverage_chs + n_enc_chs
         self.coverage_chs = coverage_chs
 
         self.conv = nn.Conv2d(in_chs, dc, kernel_size=5, padding=2)
@@ -49,7 +51,8 @@ class AttentionRefinementModule(nn.Module):
         self.proj = nn.Conv2d(dc, nhead, kernel_size=1, bias=False)
         self.post_norm = MaskBatchNorm2d(nhead)
 
-        if num_relation_classes > 0:
+        if n_enc_chs > 0:
+            self.enc_proj = nn.Conv2d(d_model, n_enc_chs, kernel_size=1)
             with torch.no_grad():
                 self.conv.weight[:, coverage_chs:].zero_()
 
@@ -59,7 +62,7 @@ class AttentionRefinementModule(nn.Module):
         key_padding_mask: Tensor,
         h: int,
         curr_attn: Tensor,
-        relation_flat: Optional[Tensor] = None,
+        encoder_memory: Optional[Tensor] = None,
     ) -> Tensor:
         t = curr_attn.shape[1]
         b = key_padding_mask.shape[0]
@@ -80,8 +83,8 @@ class AttentionRefinementModule(nn.Module):
         attns = attns.cumsum(dim=2) - attns
         attns = rearrange(attns, "b n t (h w) -> (b t) n h w", h=h)
 
-        if self.num_relation_classes > 0 and relation_flat is not None:
-            r = rearrange(relation_flat, "b (h w) c -> b c h w", h=h)
+        if hasattr(self, 'enc_proj') and encoder_memory is not None:
+            r = self.enc_proj(encoder_memory)       # [B, n_enc_chs, H, W]
             r = repeat(r, "b c h w -> (b t) c h w", t=t)
             attns = torch.cat([attns, r], dim=1)
 

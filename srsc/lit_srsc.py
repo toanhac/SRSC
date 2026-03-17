@@ -238,7 +238,7 @@ class LitSRSC(pl.LightningModule):
             sync_dist=True,
         )
 
-        hyps = self.approximate_joint_search(batch.imgs, batch.mask, None)
+        hyps = self.approximate_joint_search(batch.imgs, batch.mask)
         self.exprate_recorder([h.seq for h in hyps], batch.indices)
         self.log(
             "val_ExpRate",
@@ -249,7 +249,7 @@ class LitSRSC(pl.LightningModule):
         )
 
     def test_step(self, batch: Batch, _):
-        hyps = self.approximate_joint_search(batch.imgs, batch.mask, None)
+        hyps = self.approximate_joint_search(batch.imgs, batch.mask)
         self.exprate_recorder([h.seq for h in hyps], batch.indices)
         return batch.img_bases, [vocab.indices2label(h.seq) for h in hyps]
 
@@ -268,11 +268,9 @@ class LitSRSC(pl.LightningModule):
         self, 
         img: FloatTensor, 
         mask: LongTensor,
-        relation_map: Optional[FloatTensor] = None,
     ) -> List[Hypothesis]:
         return self.srsc_model.beam_search(
             img, mask, 
-            relation_map=relation_map,
             **self.hparams
         )
 

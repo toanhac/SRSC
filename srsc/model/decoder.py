@@ -42,6 +42,7 @@ def _build_transformer_decoder(
             cross_coverage,
             self_coverage,
             num_relation_classes=num_relation_classes,
+            d_model=d_model,
         )
     else:
         arm = None
@@ -86,7 +87,6 @@ class Decoder(DecodeModel):
         )
 
         self.proj = nn.Linear(d_model, vocab_size)
-        self._cached_relation_map = None
 
     def _build_attention_mask(self, length):
         mask = torch.full(
@@ -95,23 +95,11 @@ class Decoder(DecodeModel):
         mask.triu_(1)
         return mask
 
-    def _prepare_relation(self, relation_map, h, w):
-        if relation_map is None:
-            return None
-
-        if relation_map.shape[2] != h or relation_map.shape[3] != w:
-            relation_map = F.interpolate(
-                relation_map, size=(h, w), mode='bilinear', align_corners=False
-            )
-
-        return rearrange(relation_map, "b c h w -> b (h w) c")
-
     def forward(
         self,
         src: FloatTensor,
         src_mask: LongTensor,
         tgt: LongTensor,
-        relation_map: Optional[FloatTensor] = None,
         return_coverage: bool = False,
     ) -> Tuple[FloatTensor, Optional[FloatTensor]]:
         _, l = tgt.size()
@@ -128,8 +116,6 @@ class Decoder(DecodeModel):
         src_mask = rearrange(src_mask, "b h w -> b (h w)")
         tgt = rearrange(tgt, "b l d -> l b d")
 
-        r_flat = self._prepare_relation(relation_map, h, w)
-
         out, coverage_T = self.model(
             tgt=tgt,
             memory=src,
@@ -137,7 +123,6 @@ class Decoder(DecodeModel):
             tgt_mask=tgt_mask,
             tgt_key_padding_mask=tgt_pad_mask,
             memory_key_padding_mask=src_mask,
-            relation_flat=r_flat,
             return_coverage=return_coverage,
         )
 
@@ -155,18 +140,7 @@ class Decoder(DecodeModel):
         input_ids: LongTensor,
     ) -> FloatTensor:
         assert len(src) == 1 and len(src_mask) == 1
-        relation_map = self._cached_relation_map
-
-        batch_size = input_ids.shape[0]
-
-        if relation_map is not None:
-            if relation_map.shape[0] != batch_size:
-                relation_map = relation_map.repeat(batch_size // relation_map.shape[0] + 1, 1, 1, 1)[:batch_size]
-
-        word_out, _ = self.forward(
-            src[0], src_mask[0], input_ids,
-            relation_map=relation_map,
-        )
+        word_out, _ = self.forward(src[0], src_mask[0], input_ids)
         return word_out
 
     def beam_search(
@@ -178,13 +152,7 @@ class Decoder(DecodeModel):
         alpha: float,
         early_stopping: bool,
         temperature: float,
-        relation_map: Optional[FloatTensor] = None,
     ) -> List[Hypothesis]:
-        self._cached_relation_map = relation_map
-        try:
-            result = super().beam_search(
-                src, src_mask, beam_size, max_len, alpha, early_stopping, temperature
-            )
-        finally:
-            self._cached_relation_map = None
-        return result
+        return super().beam_search(
+            src, src_mask, beam_size, max_len, alpha, early_stopping, temperature
+        )

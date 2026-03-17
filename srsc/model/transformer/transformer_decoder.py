@@ -39,10 +39,12 @@ class TransformerDecoder(nn.Module):
         memory_mask: Optional[Tensor] = None,
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
-        relation_flat: Optional[Tensor] = None,
         return_coverage: bool = False,
     ) -> Tuple[Tensor, Optional[Tensor]]:
         output = tgt
+
+        # Encoder spatial features for RACM: [B, d_model, H, W]
+        enc_memory = rearrange(memory, "(h w) b d -> b d h w", h=height)
 
         arm = None
         all_gate_values = []
@@ -57,7 +59,6 @@ class TransformerDecoder(nn.Module):
                 memory_mask=memory_mask,
                 tgt_key_padding_mask=tgt_key_padding_mask,
                 memory_key_padding_mask=memory_key_padding_mask,
-                relation_flat=relation_flat,
             )
             all_gate_values.append(gate_t)
             all_attns.append(attn)
@@ -68,7 +69,7 @@ class TransformerDecoder(nn.Module):
                     attn,
                     memory_key_padding_mask,
                     height,
-                    relation_flat=relation_flat,
+                    encoder_memory=enc_memory,
                 )
 
         if self.norm is not None:
@@ -89,16 +90,26 @@ class TransformerDecoder(nn.Module):
         memory_key_padding_mask,
         height,
     ):
-        last_attn = all_attns[-1]
-        last_gate = all_gate_values[-1]
+        # Multi-layer coverage: aggregate contributions from all layers
+        # that provide a valid relation gate.
+        nhead = self.layers[0].multihead_attn.num_heads
+        coverage_list = []
 
-        if last_gate is None:
+        for attn, gate_t in zip(all_attns, all_gate_values):
+            if gate_t is None:
+                continue
+
+            # attn: [(B * nhead), T, L_enc]
+            attn_mean = rearrange(attn, "(b n) t l -> b n t l", n=nhead).mean(dim=1)
+            # gate_t: [B, T, C_rel]
+            cov = torch.einsum("btn,btc->bnc", attn_mean, gate_t)
+            cov = cov.clamp(max=1.0)
+            coverage_list.append(cov)
+
+        if not coverage_list:
             return None
 
-        nhead = self.layers[0].multihead_attn.num_heads
-        attn_mean = rearrange(last_attn, "(b n) t l -> b n t l", n=nhead).mean(dim=1)
-
-        coverage_T = torch.einsum('btn,btc->bnc', attn_mean, last_gate)
+        coverage_T = torch.stack(coverage_list, dim=0).mean(dim=0)
         coverage_T = coverage_T.clamp(max=1.0)
         return coverage_T
 
@@ -146,19 +157,15 @@ class TransformerDecoderLayer(nn.Module):
         memory_mask: Optional[Tensor] = None,
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
-        relation_flat: Optional[Tensor] = None,
     ) -> Tuple[Tensor, Tensor, Optional[Tensor]]:
-        gate_t = None
-
         tgt2 = self.self_attn(
             tgt, tgt, tgt, attn_mask=tgt_mask, key_padding_mask=tgt_key_padding_mask
         )[0]
         tgt = tgt + self.dropout1(tgt2)
         tgt = self.norm1(tgt)
 
-        if relation_flat is not None:
-            tgt_for_gate = rearrange(tgt, "t b d -> b t d")
-            gate_t = torch.sigmoid(self.relation_gate(tgt_for_gate))
+        tgt_for_gate = rearrange(tgt, "t b d -> b t d")
+        gate_t = torch.sigmoid(self.relation_gate(tgt_for_gate))
 
         tgt2, attn = self.multihead_attn(
             tgt,

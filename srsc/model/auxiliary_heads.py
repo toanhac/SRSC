@@ -224,8 +224,8 @@ class RelationHead(nn.Module):
         # Apply Spatial Attention
         x = self.spatial_attention(x)
         
-        # Generate Logits
-        logits = self.output(x)
+        # for the 1×1 conv weight [7, 256, 1, 1])
+        logits = self.output(x.contiguous())
         
         # Apply Channel Interaction (Residual)
         logits = logits + self.channel_interaction(logits)

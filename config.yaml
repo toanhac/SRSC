@@ -10,10 +10,9 @@ trainer:
         save_top_k: 1
         monitor: val_ExpRate
         mode: max
-        filename: '{epoch}-{step}-{val_ExpRate:.4f}'
+        filename: '{epoch}--{val_ExpRate:.4f}'
   gpus: 1
-  # precision: 16
-  check_val_every_n_epoch: 5
+  check_val_every_n_epoch: 2
   max_epochs: 300
   deterministic: true
 
@@ -24,32 +23,28 @@ model:
 
   nhead: 8
   num_decoder_layers: 3
-  dim_feedforward: 1024
-  dropout: 0.3
+  dim_feedforward: 512
+  dropout: 0.25
 
-  # Coverage (RACM: ARM + relation guidance)
   dc: 32
   cross_coverage: true
   self_coverage: true
 
-  # Multi-task learning: relation head (auxiliary loss + RACM input)
   use_relation_aux: true
-  relation_hidden_channels: 64
+  relation_hidden_channels: 128
   relation_loss_weight: 0.05
   coverage_loss_weight: 0.05
   num_relation_classes: 7
 
-  # Beam search
   beam_size: 10
   max_len: 200
   alpha: 1.0
   early_stopping: false
   temperature: 1.0
 
-  # Training
   optimizer_type: sgd
   learning_rate: 0.08
-  patience: 15
+  patience: 100
 
 data:
   zipfile_path: data.zip
@@ -59,6 +54,5 @@ data:
   num_workers: 4
   scale_aug: true
 
-  # Multi-task ground truth
   use_relation_maps: true
   gt_cache_dir: data/cached_maps

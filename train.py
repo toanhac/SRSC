@@ -8,5 +8,5 @@ cli = LightningCLI(
     LitSRSC,
     CROHMEDatamodule,
     save_config_overwrite=True,
-    trainer_defaults={"plugins": DDPPlugin(find_unused_parameters=True)},
+    trainer_defaults={"plugins": DDPPlugin(find_unused_parameters=False)},
 )
