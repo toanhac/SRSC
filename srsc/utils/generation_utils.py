@@ -1,5 +1,5 @@
 from abc import abstractmethod
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 import pytorch_lightning as pl
 import torch
@@ -8,7 +8,7 @@ from srsc.datamodule import vocab, vocab_size
 from srsc.utils.utils import Hypothesis, ce_loss, to_tgt_output
 from einops import rearrange
 from einops.einops import repeat
-from torch import FloatTensor, LongTensor
+from torch import FloatTensor, LongTensor, Tensor
 
 from .beam_search import BeamSearchScorer
 
@@ -48,6 +48,7 @@ class DecodeModel(pl.LightningModule):
         alpha: float,
         early_stopping: bool,
         temperature: float,
+        relation_probs: Optional[Tensor] = None,
     ) -> List[Hypothesis]:
         """run beam search to decode
 
@@ -75,77 +76,79 @@ class DecodeModel(pl.LightningModule):
             src[i] = torch.cat((src[i], src[i]), dim=0)
             src_mask[i] = torch.cat((src_mask[i], src_mask[i]), dim=0)
 
-        l2r = torch.full(
-            (batch_size // 2, 1),
-            fill_value=vocab.SOS_IDX,
-            dtype=torch.long,
-            device=self.device,
-        )
-        r2l = torch.full(
-            (batch_size // 2, 1),
-            fill_value=vocab.EOS_IDX,
-            dtype=torch.long,
-            device=self.device,
-        )
-        input_ids = torch.cat((l2r, r2l), dim=0)
+        if relation_probs is not None:
+            relation_probs = torch.cat((relation_probs, relation_probs), dim=0)
 
-        beam_scorer = BeamSearchScorer(
-            batch_size, beam_size, alpha, early_stopping, self.device
-        )
+        self._relation_probs_beam = relation_probs
 
-        # first beam search
-        hyps, scores = self._beam_search(
-            src=src,
-            src_mask=src_mask,
-            input_ids=input_ids,
-            beam_scorer=beam_scorer,
-            beam_size=beam_size,
-            max_len=max_len,
-            temperature=temperature,
-        )
+        try:
+            l2r = torch.full(
+                (batch_size // 2, 1),
+                fill_value=vocab.SOS_IDX,
+                dtype=torch.long,
+                device=self.device,
+            )
+            r2l = torch.full(
+                (batch_size // 2, 1),
+                fill_value=vocab.EOS_IDX,
+                dtype=torch.long,
+                device=self.device,
+            )
+            input_ids = torch.cat((l2r, r2l), dim=0)
 
-        # reverse half last
-        for i in range(half_bb_size, batch_beam_size):
-            hyps[i] = torch.flip(hyps[i], dims=[0])
+            beam_scorer = BeamSearchScorer(
+                batch_size, beam_size, alpha, early_stopping, self.device
+            )
 
-        lens = [len(h) + 1 for h in hyps]  # plus to append start token
-        r2l_tgt, r2l_out = to_tgt_output(
-            hyps[:half_bb_size], "r2l", self.device, pad_to_len=max(lens)
-        )
-        l2r_tgt, l2r_out = to_tgt_output(
-            hyps[half_bb_size:], "l2r", self.device, pad_to_len=max(lens)
-        )
-        tgt = torch.cat((l2r_tgt, r2l_tgt), dim=0)
-        out = torch.cat((l2r_out, r2l_out), dim=0)
+            hyps, scores = self._beam_search(
+                src=src,
+                src_mask=src_mask,
+                input_ids=input_ids,
+                beam_scorer=beam_scorer,
+                beam_size=beam_size,
+                max_len=max_len,
+                temperature=temperature,
+            )
 
-        # calculate final score
-        rev_scores = self._rate(src, src_mask, tgt, out, alpha, temperature)
-        rev_scores = torch.cat(
-            (rev_scores[half_bb_size:], rev_scores[:half_bb_size]), dim=0
-        )
-        scores = scores + rev_scores
+            for i in range(half_bb_size, batch_beam_size):
+                hyps[i] = torch.flip(hyps[i], dims=[0])
 
-        # [2 * b, beam_size]
-        scores = rearrange(scores, "(b m) -> b m", b=batch_size)
-        l2r_scores, r2l_scores = torch.chunk(scores, 2, dim=0)
-        # [b, 2 * beam_size]
-        scores = torch.cat((l2r_scores, r2l_scores), dim=1)
-        # [batch_size, ]
-        best_scores, best_indices = torch.max(scores, dim=1)
-        best_split = torch.div(best_indices, beam_size, rounding_mode='trunc')
-        best_indices = best_indices % beam_size
-        batch_indices = torch.arange(
-            0, batch_size // 2, dtype=torch.long, device=self.device
-        )
-        best_indices = (
-            best_split * half_bb_size + batch_indices * beam_size + best_indices
-        )
+            lens = [len(h) + 1 for h in hyps]
+            r2l_tgt, r2l_out = to_tgt_output(
+                hyps[:half_bb_size], "r2l", self.device, pad_to_len=max(lens)
+            )
+            l2r_tgt, l2r_out = to_tgt_output(
+                hyps[half_bb_size:], "l2r", self.device, pad_to_len=max(lens)
+            )
+            tgt = torch.cat((l2r_tgt, r2l_tgt), dim=0)
+            out = torch.cat((l2r_out, r2l_out), dim=0)
 
-        ret: List[Hypothesis] = []
-        for idx, score in zip(best_indices, best_scores):
-            hpy = Hypothesis(hyps[idx], score, "l2r")
-            ret.append(hpy)
-        return ret
+            rev_scores = self._rate(src, src_mask, tgt, out, alpha, temperature)
+            rev_scores = torch.cat(
+                (rev_scores[half_bb_size:], rev_scores[:half_bb_size]), dim=0
+            )
+            scores = scores + rev_scores
+
+            scores = rearrange(scores, "(b m) -> b m", b=batch_size)
+            l2r_scores, r2l_scores = torch.chunk(scores, 2, dim=0)
+            scores = torch.cat((l2r_scores, r2l_scores), dim=1)
+            best_scores, best_indices = torch.max(scores, dim=1)
+            best_split = torch.div(best_indices, beam_size, rounding_mode='trunc')
+            best_indices = best_indices % beam_size
+            batch_indices = torch.arange(
+                0, batch_size // 2, dtype=torch.long, device=self.device
+            )
+            best_indices = (
+                best_split * half_bb_size + batch_indices * beam_size + best_indices
+            )
+
+            ret: List[Hypothesis] = []
+            for idx, score in zip(best_indices, best_scores):
+                hpy = Hypothesis(hyps[idx], score, "l2r")
+                ret.append(hpy)
+            return ret
+        finally:
+            self._relation_probs_beam = None
 
     def _beam_search(
         self,
@@ -211,6 +214,11 @@ class DecodeModel(pl.LightningModule):
                 for i in range(len(src)):
                     src[i] = repeat(src[i], "b ... -> (b m) ...", m=beam_size)
                     src_mask[i] = repeat(src_mask[i], "b ... -> (b m) ...", m=beam_size)
+                rp = getattr(self, "_relation_probs_beam", None)
+                if rp is not None:
+                    self._relation_probs_beam = repeat(
+                        rp, "b ... -> (b m) ...", m=beam_size
+                    )
 
             beam_scores, beam_next_tokens, beam_idx = beam_scorer.process(
                 input_ids=input_ids,

@@ -5,7 +5,6 @@ import pytorch_lightning as pl
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
-from einops import rearrange
 from torch import FloatTensor, LongTensor
 
 from srsc.datamodule import Batch, vocab
@@ -15,7 +14,7 @@ from srsc.utils.utils import (ExpRateRecorder, Hypothesis, ce_loss,
 
 
 class LitSRSC(pl.LightningModule):
-    
+
     def __init__(
         self,
         d_model: int,
@@ -36,8 +35,7 @@ class LitSRSC(pl.LightningModule):
         learning_rate: float,
         patience: int,
         use_relation_aux: bool = False,
-        relation_loss_weight: float = 0.3,
-        coverage_loss_weight: float = 0.1,
+        relation_loss_weight: float = 0.1,
         relation_hidden_channels: int = 128,
         num_relation_classes: int = 7,
         optimizer_type: str = 'sgd',
@@ -61,24 +59,21 @@ class LitSRSC(pl.LightningModule):
         )
 
         self.exprate_recorder = ExpRateRecorder()
-        
+
         self.use_relation_aux = use_relation_aux
         self.relation_loss_weight = relation_loss_weight
-        self.coverage_loss_weight = coverage_loss_weight
         self.num_relation_classes = num_relation_classes
 
     def forward(
-        self, 
-        img: FloatTensor, 
-        img_mask: LongTensor, 
+        self,
+        img: FloatTensor,
+        img_mask: LongTensor,
         tgt: LongTensor,
         return_relation: bool = False,
-        return_coverage: bool = False,
     ) -> FloatTensor:
         return self.srsc_model(
             img, img_mask, tgt,
             return_relation=return_relation,
-            return_coverage=return_coverage,
         )
 
     def compute_relation_loss(
@@ -88,7 +83,6 @@ class LitSRSC(pl.LightningModule):
         ignore_class_0: bool = True,
         focal_gamma: float = 2.0,
     ) -> FloatTensor:
-        """Focal BCE loss on raw logits for numerical stability."""
         if relation_logits.shape[2:] != relation_gt.shape[2:]:
             relation_gt = F.interpolate(
                 relation_gt,
@@ -96,139 +90,89 @@ class LitSRSC(pl.LightningModule):
                 mode='bilinear',
                 align_corners=False
             )
-        
+
         if ignore_class_0 and relation_logits.shape[1] > 1:
             relation_logits = relation_logits[:, 1:, :, :]
             relation_gt = relation_gt[:, 1:, :, :]
-        
+
         relation_gt = relation_gt.clamp(0, 1).float()
-        
-        # 1. Focal BCE Loss with Class Weights
-        # Weights for [None, Horizontal, Above, Below, Sup, Sub, Inside]
-        # Since ignore_class_0=True will slice off None, the weights map to the active 6 classes
+
         class_weights = torch.tensor([0.3, 1.5, 1.5, 1.2, 1.2, 1.5], device=relation_logits.device)
         class_weights = class_weights.view(1, -1, 1, 1)
 
         bce = F.binary_cross_entropy_with_logits(
             relation_logits, relation_gt, reduction='none'
         )
-        
-        # Focal weighting
+
         p = torch.sigmoid(relation_logits)
         with torch.no_grad():
             p_t = p * relation_gt + (1 - p) * (1 - relation_gt)
             focal_weight = (1 - p_t) ** focal_gamma
-            
+
         focal_bce = focal_weight * class_weights * bce
-        focal_loss = focal_bce.mean()
-        
-        # Dice loss removed to avoid relation loss dominating recognition (see docs/exprate_35_analysis.md)
-        return focal_loss
-
-    def compute_coverage_penalty(
-        self,
-        coverage_T: FloatTensor,
-        relation_gt: FloatTensor,
-    ) -> FloatTensor:
-        B = relation_gt.shape[0]
-        N = coverage_T.shape[1]
-
-        import math
-        H_cov = round(math.sqrt(N * relation_gt.shape[2] / relation_gt.shape[3]))
-        W_cov = N // max(H_cov, 1)
-        if H_cov * W_cov != N:
-            H_cov, W_cov = 1, N
-
-        relation_gt_resized = F.interpolate(
-            relation_gt, size=(H_cov, W_cov), mode='bilinear', align_corners=False
-        )
-
-        relation_flat = rearrange(relation_gt_resized, "b c h w -> b (h w) c")
-
-        C_r = coverage_T.shape[2]
-        if relation_flat.shape[2] != C_r:
-            relation_flat = relation_flat[:, :, :C_r]
-
-        if coverage_T.shape[0] != B:
-            coverage_T = coverage_T[:B]
-
-        penalty = F.relu(relation_flat - coverage_T)
-        return penalty.mean()
+        return focal_bce.mean()
 
     def _get_auxiliary_gt(self, batch: Batch):
         relation_gt = None
-        
         if hasattr(batch, 'relation_map') and batch.relation_map is not None:
             relation_gt = batch.relation_map.to(self.device)
-        
         return relation_gt
 
     def training_step(self, batch: Batch, _):
         tgt, out = to_bi_tgt_out(batch.indices, self.device)
         relation_gt = self._get_auxiliary_gt(batch)
-        
+
         need_relation = self.use_relation_aux and relation_gt is not None
-        need_coverage = need_relation and self.coverage_loss_weight > 0
-        
+
         outputs = self.srsc_model(
             batch.imgs, batch.mask, tgt,
             return_relation=need_relation,
-            return_coverage=need_coverage,
         )
-        
-        if need_relation and need_coverage:
-            out_hat, relation_pred, coverage_T = outputs
-        elif need_relation:
+
+        if need_relation:
             out_hat, relation_pred = outputs
-            coverage_T = None
         else:
             out_hat = outputs
             relation_pred = None
-            coverage_T = None
-        
+
         rec_loss = ce_loss(out_hat, out)
         total_loss = rec_loss
-        
+
         self.log("train_rec_loss", rec_loss, on_step=False, on_epoch=True, sync_dist=True)
-    
+
         if need_relation and relation_pred is not None:
             relation_loss = self.compute_relation_loss(relation_pred, relation_gt)
             total_loss = total_loss + self.relation_loss_weight * relation_loss
             self.log("train_relation_loss", relation_loss, on_step=False, on_epoch=True, sync_dist=True)
-        
-        if need_coverage and coverage_T is not None and relation_gt is not None:
-            cov_penalty = self.compute_coverage_penalty(coverage_T, relation_gt)
-            total_loss = total_loss + self.coverage_loss_weight * cov_penalty
-            self.log("train_coverage_loss", cov_penalty, on_step=False, on_epoch=True, sync_dist=True)
-        
+
         self.log("train_loss", total_loss, on_step=False, on_epoch=True, sync_dist=True)
         return total_loss
 
     def validation_step(self, batch: Batch, _):
         tgt, out = to_bi_tgt_out(batch.indices, self.device)
         relation_gt = self._get_auxiliary_gt(batch)
-        
+
         need_relation = self.use_relation_aux and relation_gt is not None
-        
+
         outputs = self.srsc_model(
             batch.imgs, batch.mask, tgt,
             return_relation=need_relation,
         )
-        
+
         if need_relation:
             out_hat, relation_pred = outputs
         else:
             out_hat = outputs
             relation_pred = None
-        
+
         rec_loss = ce_loss(out_hat, out)
         total_loss = rec_loss
-        
+
         if need_relation and relation_pred is not None:
             relation_loss = self.compute_relation_loss(relation_pred, relation_gt)
             total_loss = total_loss + self.relation_loss_weight * relation_loss
             self.log("val_relation_loss", relation_loss, on_step=False, on_epoch=True, sync_dist=True)
-        
+
         self.log(
             "val_loss",
             total_loss,
@@ -265,18 +209,18 @@ class LitSRSC(pl.LightningModule):
                         f.write(content)
 
     def approximate_joint_search(
-        self, 
-        img: FloatTensor, 
+        self,
+        img: FloatTensor,
         mask: LongTensor,
     ) -> List[Hypothesis]:
         return self.srsc_model.beam_search(
-            img, mask, 
+            img, mask,
             **self.hparams
         )
 
     def configure_optimizers(self):
         opt_type = self.hparams.get('optimizer_type', 'sgd').lower()
-        
+
         if opt_type == 'adamw':
             optimizer = optim.AdamW(
                 self.parameters(),
@@ -284,7 +228,7 @@ class LitSRSC(pl.LightningModule):
                 betas=(0.9, 0.999),
                 weight_decay=0.01,
             )
-        else:  # sgd (default)
+        else:
             optimizer = optim.SGD(
                 self.parameters(),
                 lr=self.hparams.learning_rate,

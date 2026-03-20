@@ -1,4 +1,4 @@
-from typing import List, Tuple, Optional, Union
+from typing import List, Optional, Tuple, Union
 
 import pytorch_lightning as pl
 import torch
@@ -47,7 +47,7 @@ class SRSC(pl.LightningModule):
             dc=dc,
             cross_coverage=cross_coverage,
             self_coverage=self_coverage,
-            num_relation_classes=num_relation_classes,
+            num_relation_classes=num_relation_classes if use_relation_aux else 0,
         )
 
         self.use_relation_aux = use_relation_aux
@@ -66,31 +66,30 @@ class SRSC(pl.LightningModule):
         img_mask: LongTensor,
         tgt: LongTensor,
         return_relation: bool = False,
-        return_coverage: bool = False,
-    ) -> Union[FloatTensor, Tuple[FloatTensor, ...]]:
+    ) -> Union[FloatTensor, Tuple[FloatTensor, FloatTensor]]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
 
         relation_pred = None
+        relation_probs = None
         if self.use_relation_aux and self.relation_head is not None:
             relation_pred = self.relation_head(feature_16x)
+            relation_probs = torch.sigmoid(relation_pred)
 
         feature_doubled = torch.cat((feature_16x, feature_16x), dim=0)
         mask_doubled = torch.cat((mask_16x, mask_16x), dim=0)
 
-        out, coverage_T = self.decoder(
+        relation_probs_doubled = None
+        if relation_probs is not None:
+            relation_probs_doubled = torch.cat((relation_probs, relation_probs), dim=0)
+
+        out = self.decoder(
             feature_doubled, mask_doubled, tgt,
-            return_coverage=return_coverage,
+            relation_probs=relation_probs_doubled,
         )
 
-        results = [out]
         if return_relation:
-            results.append(relation_pred)
-        if return_coverage:
-            results.append(coverage_T)
-
-        if len(results) == 1:
-            return results[0]
-        return tuple(results)
+            return out, relation_pred
+        return out
 
     def beam_search(
         self,
@@ -105,8 +104,19 @@ class SRSC(pl.LightningModule):
     ) -> List[Hypothesis]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
 
+        relation_probs = None
+        if self.use_relation_aux and self.relation_head is not None:
+            relation_probs = torch.sigmoid(self.relation_head(feature_16x))
+
         return self.decoder.beam_search(
-            [feature_16x], [mask_16x], beam_size, max_len, alpha, early_stopping, temperature
+            [feature_16x],
+            [mask_16x],
+            beam_size,
+            max_len,
+            alpha,
+            early_stopping,
+            temperature,
+            relation_probs=relation_probs,
         )
 
     def predict_relation(self, img: FloatTensor, img_mask: LongTensor) -> Optional[FloatTensor]:

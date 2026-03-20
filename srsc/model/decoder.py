@@ -1,8 +1,7 @@
-from typing import List, Optional, Tuple
+from typing import List, Optional
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from einops import rearrange
 from torch import FloatTensor, LongTensor
 
@@ -26,14 +25,13 @@ def _build_transformer_decoder(
     dc: int,
     cross_coverage: bool,
     self_coverage: bool,
-    num_relation_classes: int = 7,
+    num_relation_classes: int = 0,
 ) -> TransformerDecoder:
     decoder_layer = TransformerDecoderLayer(
         d_model=d_model,
         nhead=nhead,
         dim_feedforward=dim_feedforward,
         dropout=dropout,
-        num_relation_classes=num_relation_classes,
     )
     if cross_coverage or self_coverage:
         arm = AttentionRefinementModule(
@@ -42,7 +40,6 @@ def _build_transformer_decoder(
             cross_coverage,
             self_coverage,
             num_relation_classes=num_relation_classes,
-            d_model=d_model,
         )
     else:
         arm = None
@@ -62,7 +59,7 @@ class Decoder(DecodeModel):
         dc: int,
         cross_coverage: bool,
         self_coverage: bool,
-        num_relation_classes: int = 7,
+        num_relation_classes: int = 0,
     ):
         super().__init__()
 
@@ -72,7 +69,6 @@ class Decoder(DecodeModel):
 
         self.pos_enc = WordPosEnc(d_model=d_model)
         self.norm = nn.LayerNorm(d_model)
-        self.num_relation_classes = num_relation_classes
 
         self.model = _build_transformer_decoder(
             d_model=d_model,
@@ -100,8 +96,8 @@ class Decoder(DecodeModel):
         src: FloatTensor,
         src_mask: LongTensor,
         tgt: LongTensor,
-        return_coverage: bool = False,
-    ) -> Tuple[FloatTensor, Optional[FloatTensor]]:
+        relation_probs: Optional[FloatTensor] = None,
+    ) -> FloatTensor:
         _, l = tgt.size()
         tgt_mask = self._build_attention_mask(l)
         tgt_pad_mask = tgt == vocab.PAD_IDX
@@ -111,27 +107,24 @@ class Decoder(DecodeModel):
         tgt = self.norm(tgt)
 
         h = src.shape[1]
-        w = src.shape[2]
         src = rearrange(src, "b h w d -> (h w) b d")
         src_mask = rearrange(src_mask, "b h w -> b (h w)")
         tgt = rearrange(tgt, "b l d -> l b d")
 
-        out, coverage_T = self.model(
+        out = self.model(
             tgt=tgt,
             memory=src,
             height=h,
             tgt_mask=tgt_mask,
             tgt_key_padding_mask=tgt_pad_mask,
             memory_key_padding_mask=src_mask,
-            return_coverage=return_coverage,
+            relation_probs=relation_probs,
         )
 
         out = rearrange(out, "l b d -> b l d")
         out = self.proj(out)
 
-        if return_coverage:
-            return out, coverage_T
-        return out, None
+        return out
 
     def transform(
         self,
@@ -140,8 +133,8 @@ class Decoder(DecodeModel):
         input_ids: LongTensor,
     ) -> FloatTensor:
         assert len(src) == 1 and len(src_mask) == 1
-        word_out, _ = self.forward(src[0], src_mask[0], input_ids)
-        return word_out
+        rp = getattr(self, "_relation_probs_beam", None)
+        return self.forward(src[0], src_mask[0], input_ids, relation_probs=rp)
 
     def beam_search(
         self,
@@ -152,7 +145,15 @@ class Decoder(DecodeModel):
         alpha: float,
         early_stopping: bool,
         temperature: float,
+        relation_probs: Optional[FloatTensor] = None,
     ) -> List[Hypothesis]:
         return super().beam_search(
-            src, src_mask, beam_size, max_len, alpha, early_stopping, temperature
+            src,
+            src_mask,
+            beam_size,
+            max_len,
+            alpha,
+            early_stopping,
+            temperature,
+            relation_probs=relation_probs,
         )
