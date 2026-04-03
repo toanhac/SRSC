@@ -98,7 +98,7 @@ class SRSC(pl.LightningModule):
         if not return_relation and not return_attn:
             return out
 
-        result: Dict = {"logits": out}
+        result: Dict = {"logits": out, "h_feat": feature_16x.shape[1]}
         if return_relation:
             result["relation_pred"] = relation_pred
         if return_attn:

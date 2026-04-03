@@ -120,7 +120,7 @@ class LitSRSC(pl.LightningModule):
         self,
         cross_attn: FloatTensor,
         relation_gt: FloatTensor,
-        h: int,
+        h_feat: int,
         nhead: int,
     ) -> FloatTensor:
         """
@@ -134,33 +134,40 @@ class LitSRSC(pl.LightningModule):
         Args:
             cross_attn:   [B_doubled*nhead, T, HW]  final layer cross-attention
             relation_gt:  [B, n_rel, H_gt, W_gt]    ground-truth relation maps
-            h:            int                        feature-map height H
-            nhead:        int                        number of attention heads
+            h_feat:       int   actual encoder feature-map height (from encoder output,
+                                NOT estimated as img_H // 16 — DenseNet uses ceil_mode)
+            nhead:        int   number of attention heads
         Returns:
             scalar coverage penalty
         """
         B_doubled_n, T, HW = cross_attn.shape
         B = relation_gt.shape[0]
-        W = HW // h
+
+        # Derive w from the actual HW and h_feat rather than assuming H//16
+        w_feat = HW // h_feat
+        if h_feat * w_feat != HW:
+            # Spatial dimensions do not divide evenly — skip penalty for this batch
+            return cross_attn.new_zeros(())
 
         # Sum over sequence → cumulative coverage per spatial position
-        # cross_attn: [B_doubled*nhead, T, HW]
-        coverage = cross_attn.sum(dim=1)          # [B_doubled*nhead, HW]
-        coverage = coverage.view(-1, nhead, h, W)  # [B_doubled, nhead, H, W]
+        coverage = cross_attn.sum(dim=1)                              # [B_doubled*nhead, HW]
+        coverage = coverage.view(-1, nhead, h_feat, w_feat)           # [B_doubled, nhead, h, w]
 
         # Average over heads and the two bidirectional directions
-        coverage = coverage.view(2, B, nhead, h, W).mean(dim=[0, 2])  # [B, H, W]
+        coverage = coverage.view(2, B, nhead, h_feat, w_feat).mean(dim=[0, 2])  # [B, h, w]
 
         # Binary structural mask: positions where any non-background relation is active
-        # relation_gt channels: 0=background, 1..n_rel-1=structural
         if relation_gt.shape[1] > 1:
             structural = relation_gt[:, 1:, :, :].max(dim=1).values  # [B, H_gt, W_gt]
         else:
-            structural = relation_gt[:, 0, :, :]                     # [B, H_gt, W_gt]
+            structural = relation_gt[:, 0, :, :]
 
-        if structural.shape[1:] != (h, W):
+        if structural.shape[1:] != (h_feat, w_feat):
             structural = F.interpolate(
-                structural.unsqueeze(1), size=(h, W), mode='bilinear', align_corners=False
+                structural.unsqueeze(1),
+                size=(h_feat, w_feat),
+                mode='bilinear',
+                align_corners=False,
             ).squeeze(1)
 
         structural = structural.clamp(0.0, 1.0)
@@ -208,12 +215,13 @@ class LitSRSC(pl.LightningModule):
             self.log("train_relation_loss", relation_loss, on_step=False, on_epoch=True, sync_dist=True)
 
         if need_coverage and cross_attn is not None:
-            h = batch.imgs.shape[2] // 16
-            coverage_loss = self.compute_coverage_penalty(
-                cross_attn, relation_gt, h=h, nhead=self.hparams.nhead
-            )
-            total_loss = total_loss + self.coverage_loss_weight * coverage_loss
-            self.log("train_coverage_loss", coverage_loss, on_step=False, on_epoch=True, sync_dist=True)
+            h_feat = outputs.get("h_feat", None)
+            if h_feat is not None:
+                coverage_loss = self.compute_coverage_penalty(
+                    cross_attn, relation_gt, h_feat=h_feat, nhead=self.hparams.nhead
+                )
+                total_loss = total_loss + self.coverage_loss_weight * coverage_loss
+                self.log("train_coverage_loss", coverage_loss, on_step=False, on_epoch=True, sync_dist=True)
 
         self.log("train_loss", total_loss, on_step=False, on_epoch=True, sync_dist=True)
         return total_loss
@@ -249,12 +257,13 @@ class LitSRSC(pl.LightningModule):
             self.log("val_relation_loss", relation_loss, on_step=False, on_epoch=True, sync_dist=True)
 
         if need_coverage and cross_attn is not None:
-            h = batch.imgs.shape[2] // 16
-            coverage_loss = self.compute_coverage_penalty(
-                cross_attn, relation_gt, h=h, nhead=self.hparams.nhead
-            )
-            total_loss = total_loss + self.coverage_loss_weight * coverage_loss
-            self.log("val_coverage_loss", coverage_loss, on_step=False, on_epoch=True, sync_dist=True)
+            h_feat = outputs.get("h_feat", None)
+            if h_feat is not None:
+                coverage_loss = self.compute_coverage_penalty(
+                    cross_attn, relation_gt, h_feat=h_feat, nhead=self.hparams.nhead
+                )
+                total_loss = total_loss + self.coverage_loss_weight * coverage_loss
+                self.log("val_coverage_loss", coverage_loss, on_step=False, on_epoch=True, sync_dist=True)
 
         self.log(
             "val_loss",
