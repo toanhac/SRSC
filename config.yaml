@@ -24,7 +24,7 @@ model:
   nhead: 8
   num_decoder_layers: 3
   dim_feedforward: 1024
-  dropout: 0.3
+  dropout: 0.2
 
   dc: 32
   cross_coverage: true
@@ -33,6 +33,7 @@ model:
   use_relation_aux: true
   relation_hidden_channels: 128
   relation_loss_weight: 0.1
+  coverage_loss_weight: 0.05
   num_relation_classes: 7
 
   beam_size: 10

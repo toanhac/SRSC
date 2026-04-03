@@ -38,9 +38,11 @@ class TransformerDecoder(nn.Module):
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
         relation_probs: Optional[Tensor] = None,
-    ) -> Tensor:
+        return_attn: bool = False,
+    ) -> Tuple[Tensor, Optional[Tensor]]:
         output = tgt
         arm = None
+        attn = None
 
         for i, mod in enumerate(self.layers):
             output, attn = mod(
@@ -65,7 +67,7 @@ class TransformerDecoder(nn.Module):
         if self.norm is not None:
             output = self.norm(output)
 
-        return output
+        return output, (attn if return_attn else None)
 
 
 class TransformerDecoderLayer(nn.Module):

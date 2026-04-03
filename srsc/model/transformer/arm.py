@@ -24,7 +24,61 @@ class MaskBatchNorm2d(nn.Module):
         return x
 
 
+class RelationModulator(nn.Module):
+    """
+    Computes a per-channel spatial gate from predicted relation probability maps.
+
+    For each coverage channel (attention head), learns which combination of
+    relation types (horizontal, above, below, superscript, subscript, inside)
+    should boost coverage sensitivity at each spatial position.
+
+    Gate equation:
+        gate[h,w] = sigmoid(W_rel · relation_probs[h,w])  ∈ [0, 1]^coverage_chs
+        coverage_modulated = coverage * (1 + gate)
+
+    This differs from naive concatenation: relation information multiplicatively
+    scales coverage rather than being treated as independent input features.
+    """
+
+    def __init__(self, num_relation_classes: int, coverage_chs: int):
+        super().__init__()
+        self.proj = nn.Conv2d(num_relation_classes, coverage_chs, kernel_size=1, bias=True)
+        nn.init.zeros_(self.proj.weight)
+        nn.init.zeros_(self.proj.bias)
+
+    def forward(self, relation_probs: Tensor) -> Tensor:
+        """
+        Args:
+            relation_probs: [B*T, n_rel, H, W]  (already repeated over time)
+        Returns:
+            gate: [B*T, coverage_chs, H, W]  in (0, 1) range
+        """
+        return torch.sigmoid(self.proj(relation_probs))
+
+
 class AttentionRefinementModule(nn.Module):
+    """
+    Coverage-based attention bias module (ARM).
+
+    BTTR baseline (num_relation_classes=0):
+        Computes cumulative cross- and/or self-attention coverage maps,
+        then projects them to a per-head spatial bias added to cross-attention
+        logits before softmax.
+
+    Relation-Modulated Coverage / RMC (num_relation_classes>0):
+        Before the Conv5x5 projection, the coverage maps are multiplicatively
+        scaled by a learned gate derived from the RelationHead's predicted
+        relation probabilities:
+
+            gate = sigmoid(Conv1x1(relation_probs))
+            coverage_modulated = coverage * (1 + gate)
+
+        Structural regions (e.g., fractions, subscripts) boost their own
+        coverage sensitivity, while background regions remain unaffected.
+        Zero-initialisation of the gate projection ensures the module starts
+        as pure BTTR coverage and learns the relation modulation gradually.
+    """
+
     def __init__(
         self,
         nhead: int,
@@ -39,19 +93,16 @@ class AttentionRefinementModule(nn.Module):
         self.cross_coverage = cross_coverage
         self.self_coverage = self_coverage
 
-        coverage_chs = (2 if cross_coverage and self_coverage else 1) * nhead
-        self.n_enc_chs = num_relation_classes
-        in_chs = coverage_chs + self.n_enc_chs
-        self.coverage_chs = coverage_chs
+        self.coverage_chs = (2 if cross_coverage and self_coverage else 1) * nhead
 
-        self.conv = nn.Conv2d(in_chs, dc, kernel_size=5, padding=2)
+        self.relation_modulator: Optional[RelationModulator] = None
+        if num_relation_classes > 0:
+            self.relation_modulator = RelationModulator(num_relation_classes, self.coverage_chs)
+
+        self.conv = nn.Conv2d(self.coverage_chs, dc, kernel_size=5, padding=2)
         self.act = nn.ReLU(inplace=True)
         self.proj = nn.Conv2d(dc, nhead, kernel_size=1, bias=False)
         self.post_norm = MaskBatchNorm2d(nhead)
-
-        if self.n_enc_chs > 0:
-            with torch.no_grad():
-                self.conv.weight[:, coverage_chs:].zero_()
 
     def forward(
         self,
@@ -61,6 +112,16 @@ class AttentionRefinementModule(nn.Module):
         curr_attn: Tensor,
         relation_probs: Optional[Tensor] = None,
     ) -> Tensor:
+        """
+        Args:
+            prev_attn:          [B*nhead, T, HW]  cross-attention from previous layer
+            key_padding_mask:   [B, HW]            True = padding
+            h:                  int                spatial height of feature map
+            curr_attn:          [B*nhead, T, HW]  self-attention from current layer
+            relation_probs:     [B, n_rel, H, W]  sigmoid outputs of RelationHead, or None
+        Returns:
+            coverage bias:      [B*nhead, T, HW]  subtracted from attention logits
+        """
         t = curr_attn.shape[1]
         b = key_padding_mask.shape[0]
 
@@ -76,18 +137,17 @@ class AttentionRefinementModule(nn.Module):
             attns.append(curr_attn)
         attns = torch.cat(attns, dim=1)
 
+        # Cumulative coverage: how much each position has been attended to so far
         attns = attns.cumsum(dim=2) - attns
-        attns = rearrange(attns, "b n t (h w) -> (b t) n h w", h=h)
+        coverage = rearrange(attns, "b n t (h w) -> (b t) n h w", h=h)
 
-        if self.n_enc_chs > 0:
-            if relation_probs is not None:
-                r = repeat(relation_probs, "b c h w -> (b t) c h w", t=t)
-            else:
-                w = key_padding_mask.shape[1] // h
-                r = torch.zeros(b * t, self.n_enc_chs, h, w, device=attns.device, dtype=attns.dtype)
-            attns = torch.cat([attns, r], dim=1)
+        # Relation-Modulated Coverage: multiplicatively gate coverage by structural priors
+        if self.relation_modulator is not None and relation_probs is not None:
+            relation_probs_t = repeat(relation_probs, "b c h w -> (b t) c h w", t=t)
+            gate = self.relation_modulator(relation_probs_t)  # [B*T, coverage_chs, H, W]
+            coverage = coverage * (1.0 + gate)
 
-        cov = self.conv(attns)
+        cov = self.conv(coverage)
         cov = self.act(cov)
         cov = cov.masked_fill(mask, 0.0)
         cov = self.proj(cov)

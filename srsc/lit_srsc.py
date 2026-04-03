@@ -36,6 +36,7 @@ class LitSRSC(pl.LightningModule):
         patience: int,
         use_relation_aux: bool = False,
         relation_loss_weight: float = 0.1,
+        coverage_loss_weight: float = 0.0,
         relation_hidden_channels: int = 128,
         num_relation_classes: int = 7,
         optimizer_type: str = 'sgd',
@@ -62,6 +63,7 @@ class LitSRSC(pl.LightningModule):
 
         self.use_relation_aux = use_relation_aux
         self.relation_loss_weight = relation_loss_weight
+        self.coverage_loss_weight = coverage_loss_weight
         self.num_relation_classes = num_relation_classes
 
     def forward(
@@ -70,10 +72,12 @@ class LitSRSC(pl.LightningModule):
         img_mask: LongTensor,
         tgt: LongTensor,
         return_relation: bool = False,
+        return_attn: bool = False,
     ) -> FloatTensor:
         return self.srsc_model(
             img, img_mask, tgt,
             return_relation=return_relation,
+            return_attn=return_attn,
         )
 
     def compute_relation_loss(
@@ -112,6 +116,59 @@ class LitSRSC(pl.LightningModule):
         focal_bce = focal_weight * class_weights * bce
         return focal_bce.mean()
 
+    def compute_coverage_penalty(
+        self,
+        cross_attn: FloatTensor,
+        relation_gt: FloatTensor,
+        h: int,
+        nhead: int,
+    ) -> FloatTensor:
+        """
+        Encourages the model to cover all structurally relevant spatial positions.
+
+        Structural positions are defined by relation_gt: any location where at
+        least one non-background relation is active.  The cumulative coverage
+        (sum of cross-attention weights over the sequence) should be non-zero at
+        those positions.  A ReLU gap penalty penalises under-coverage.
+
+        Args:
+            cross_attn:   [B_doubled*nhead, T, HW]  final layer cross-attention
+            relation_gt:  [B, n_rel, H_gt, W_gt]    ground-truth relation maps
+            h:            int                        feature-map height H
+            nhead:        int                        number of attention heads
+        Returns:
+            scalar coverage penalty
+        """
+        B_doubled_n, T, HW = cross_attn.shape
+        B = relation_gt.shape[0]
+        W = HW // h
+
+        # Sum over sequence → cumulative coverage per spatial position
+        # cross_attn: [B_doubled*nhead, T, HW]
+        coverage = cross_attn.sum(dim=1)          # [B_doubled*nhead, HW]
+        coverage = coverage.view(-1, nhead, h, W)  # [B_doubled, nhead, H, W]
+
+        # Average over heads and the two bidirectional directions
+        coverage = coverage.view(2, B, nhead, h, W).mean(dim=[0, 2])  # [B, H, W]
+
+        # Binary structural mask: positions where any non-background relation is active
+        # relation_gt channels: 0=background, 1..n_rel-1=structural
+        if relation_gt.shape[1] > 1:
+            structural = relation_gt[:, 1:, :, :].max(dim=1).values  # [B, H_gt, W_gt]
+        else:
+            structural = relation_gt[:, 0, :, :]                     # [B, H_gt, W_gt]
+
+        if structural.shape[1:] != (h, W):
+            structural = F.interpolate(
+                structural.unsqueeze(1), size=(h, W), mode='bilinear', align_corners=False
+            ).squeeze(1)
+
+        structural = structural.clamp(0.0, 1.0)
+
+        # Penalise positions that are structurally active but under-attended
+        penalty = F.relu(structural - coverage).mean()
+        return penalty
+
     def _get_auxiliary_gt(self, batch: Batch):
         relation_gt = None
         if hasattr(batch, 'relation_map') and batch.relation_map is not None:
@@ -123,17 +180,22 @@ class LitSRSC(pl.LightningModule):
         relation_gt = self._get_auxiliary_gt(batch)
 
         need_relation = self.use_relation_aux and relation_gt is not None
+        need_coverage = self.coverage_loss_weight > 0.0 and relation_gt is not None
 
         outputs = self.srsc_model(
             batch.imgs, batch.mask, tgt,
             return_relation=need_relation,
+            return_attn=need_coverage,
         )
 
-        if need_relation:
-            out_hat, relation_pred = outputs
+        if isinstance(outputs, dict):
+            out_hat = outputs["logits"]
+            relation_pred = outputs.get("relation_pred", None)
+            cross_attn = outputs.get("cross_attn", None)
         else:
             out_hat = outputs
             relation_pred = None
+            cross_attn = None
 
         rec_loss = ce_loss(out_hat, out)
         total_loss = rec_loss
@@ -145,6 +207,14 @@ class LitSRSC(pl.LightningModule):
             total_loss = total_loss + self.relation_loss_weight * relation_loss
             self.log("train_relation_loss", relation_loss, on_step=False, on_epoch=True, sync_dist=True)
 
+        if need_coverage and cross_attn is not None:
+            h = batch.imgs.shape[2] // 16
+            coverage_loss = self.compute_coverage_penalty(
+                cross_attn, relation_gt, h=h, nhead=self.hparams.nhead
+            )
+            total_loss = total_loss + self.coverage_loss_weight * coverage_loss
+            self.log("train_coverage_loss", coverage_loss, on_step=False, on_epoch=True, sync_dist=True)
+
         self.log("train_loss", total_loss, on_step=False, on_epoch=True, sync_dist=True)
         return total_loss
 
@@ -153,17 +223,22 @@ class LitSRSC(pl.LightningModule):
         relation_gt = self._get_auxiliary_gt(batch)
 
         need_relation = self.use_relation_aux and relation_gt is not None
+        need_coverage = self.coverage_loss_weight > 0.0 and relation_gt is not None
 
         outputs = self.srsc_model(
             batch.imgs, batch.mask, tgt,
             return_relation=need_relation,
+            return_attn=need_coverage,
         )
 
-        if need_relation:
-            out_hat, relation_pred = outputs
+        if isinstance(outputs, dict):
+            out_hat = outputs["logits"]
+            relation_pred = outputs.get("relation_pred", None)
+            cross_attn = outputs.get("cross_attn", None)
         else:
             out_hat = outputs
             relation_pred = None
+            cross_attn = None
 
         rec_loss = ce_loss(out_hat, out)
         total_loss = rec_loss
@@ -172,6 +247,14 @@ class LitSRSC(pl.LightningModule):
             relation_loss = self.compute_relation_loss(relation_pred, relation_gt)
             total_loss = total_loss + self.relation_loss_weight * relation_loss
             self.log("val_relation_loss", relation_loss, on_step=False, on_epoch=True, sync_dist=True)
+
+        if need_coverage and cross_attn is not None:
+            h = batch.imgs.shape[2] // 16
+            coverage_loss = self.compute_coverage_penalty(
+                cross_attn, relation_gt, h=h, nhead=self.hparams.nhead
+            )
+            total_loss = total_loss + self.coverage_loss_weight * coverage_loss
+            self.log("val_coverage_loss", coverage_loss, on_step=False, on_epoch=True, sync_dist=True)
 
         self.log(
             "val_loss",

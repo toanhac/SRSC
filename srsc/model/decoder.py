@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List, Optional, Tuple, Union
 
 import torch
 import torch.nn as nn
@@ -97,7 +97,8 @@ class Decoder(DecodeModel):
         src_mask: LongTensor,
         tgt: LongTensor,
         relation_probs: Optional[FloatTensor] = None,
-    ) -> FloatTensor:
+        return_attn: bool = False,
+    ) -> Union[FloatTensor, Tuple[FloatTensor, Optional[FloatTensor]]]:
         _, l = tgt.size()
         tgt_mask = self._build_attention_mask(l)
         tgt_pad_mask = tgt == vocab.PAD_IDX
@@ -111,7 +112,7 @@ class Decoder(DecodeModel):
         src_mask = rearrange(src_mask, "b h w -> b (h w)")
         tgt = rearrange(tgt, "b l d -> l b d")
 
-        out = self.model(
+        out, cross_attn = self.model(
             tgt=tgt,
             memory=src,
             height=h,
@@ -119,11 +120,14 @@ class Decoder(DecodeModel):
             tgt_key_padding_mask=tgt_pad_mask,
             memory_key_padding_mask=src_mask,
             relation_probs=relation_probs,
+            return_attn=return_attn,
         )
 
         out = rearrange(out, "l b d -> b l d")
         out = self.proj(out)
 
+        if return_attn:
+            return out, cross_attn
         return out
 
     def transform(

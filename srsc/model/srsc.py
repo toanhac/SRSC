@@ -1,4 +1,4 @@
-from typing import List, Optional, Tuple, Union
+from typing import Dict, List, Optional, Tuple, Union
 
 import pytorch_lightning as pl
 import torch
@@ -66,7 +66,8 @@ class SRSC(pl.LightningModule):
         img_mask: LongTensor,
         tgt: LongTensor,
         return_relation: bool = False,
-    ) -> Union[FloatTensor, Tuple[FloatTensor, FloatTensor]]:
+        return_attn: bool = False,
+    ) -> Union[FloatTensor, Dict]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
 
         relation_pred = None
@@ -82,14 +83,27 @@ class SRSC(pl.LightningModule):
         if relation_probs is not None:
             relation_probs_doubled = torch.cat((relation_probs, relation_probs), dim=0)
 
-        out = self.decoder(
+        decoder_out = self.decoder(
             feature_doubled, mask_doubled, tgt,
             relation_probs=relation_probs_doubled,
+            return_attn=return_attn,
         )
 
+        if return_attn:
+            out, cross_attn = decoder_out
+        else:
+            out = decoder_out
+            cross_attn = None
+
+        if not return_relation and not return_attn:
+            return out
+
+        result: Dict = {"logits": out}
         if return_relation:
-            return out, relation_pred
-        return out
+            result["relation_pred"] = relation_pred
+        if return_attn:
+            result["cross_attn"] = cross_attn
+        return result
 
     def beam_search(
         self,
