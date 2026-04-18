@@ -1,8 +1,7 @@
-from typing import Dict, List, Optional, Tuple, Union
+from typing import Dict, List, Union
 
 import pytorch_lightning as pl
 import torch
-import torch.nn as nn
 from torch import FloatTensor, LongTensor
 
 from srsc.utils.utils import Hypothesis
@@ -29,6 +28,8 @@ class SRSC(pl.LightningModule):
         use_relation_aux: bool = False,
         relation_hidden_channels: int = 128,
         num_relation_classes: int = 7,
+        use_rqm: bool = False,
+        use_rmc: bool = True,
     ):
         super().__init__()
 
@@ -48,9 +49,12 @@ class SRSC(pl.LightningModule):
             cross_coverage=cross_coverage,
             self_coverage=self_coverage,
             num_relation_classes=num_relation_classes if use_relation_aux else 0,
+            use_rqm=use_rqm,
+            use_rmc=use_rmc,
         )
 
         self.use_relation_aux = use_relation_aux
+        self.use_rqm = use_rqm
         self.relation_head = None
 
         if use_relation_aux:
@@ -66,7 +70,6 @@ class SRSC(pl.LightningModule):
         img_mask: LongTensor,
         tgt: LongTensor,
         return_relation: bool = False,
-        return_attn: bool = False,
     ) -> Union[FloatTensor, Dict]:
         feature_16x, mask_16x = self.encoder(img, img_mask)
 
@@ -74,7 +77,8 @@ class SRSC(pl.LightningModule):
         relation_probs = None
         if self.use_relation_aux and self.relation_head is not None:
             relation_pred = self.relation_head(feature_16x)
-            relation_probs = torch.sigmoid(relation_pred)
+            # Detach so ARM/RQM gradients don't flow back into RelationHead
+            relation_probs = torch.sigmoid(relation_pred).detach()
 
         feature_doubled = torch.cat((feature_16x, feature_16x), dim=0)
         mask_doubled = torch.cat((mask_16x, mask_16x), dim=0)
@@ -83,26 +87,16 @@ class SRSC(pl.LightningModule):
         if relation_probs is not None:
             relation_probs_doubled = torch.cat((relation_probs, relation_probs), dim=0)
 
-        decoder_out = self.decoder(
+        out = self.decoder(
             feature_doubled, mask_doubled, tgt,
             relation_probs=relation_probs_doubled,
-            return_attn=return_attn,
         )
 
-        if return_attn:
-            out, cross_attn = decoder_out
-        else:
-            out = decoder_out
-            cross_attn = None
-
-        if not return_relation and not return_attn:
+        if not return_relation:
             return out
 
-        result: Dict = {"logits": out, "h_feat": feature_16x.shape[1]}
-        if return_relation:
-            result["relation_pred"] = relation_pred
-        if return_attn:
-            result["cross_attn"] = cross_attn
+        result: Dict = {"logits": out}
+        result["relation_pred"] = relation_pred
         return result
 
     def beam_search(
@@ -120,7 +114,7 @@ class SRSC(pl.LightningModule):
 
         relation_probs = None
         if self.use_relation_aux and self.relation_head is not None:
-            relation_probs = torch.sigmoid(self.relation_head(feature_16x))
+            relation_probs = torch.sigmoid(self.relation_head(feature_16x)).detach()
 
         return self.decoder.beam_search(
             [feature_16x],
@@ -133,8 +127,3 @@ class SRSC(pl.LightningModule):
             relation_probs=relation_probs,
         )
 
-    def predict_relation(self, img: FloatTensor, img_mask: LongTensor) -> Optional[FloatTensor]:
-        if not self.use_relation_aux or self.relation_head is None:
-            return None
-        feature_16x, _ = self.encoder(img, img_mask)
-        return torch.sigmoid(self.relation_head(feature_16x))

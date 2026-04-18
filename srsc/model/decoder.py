@@ -1,4 +1,4 @@
-from typing import List, Optional, Tuple, Union
+from typing import List, Optional
 
 import torch
 import torch.nn as nn
@@ -8,6 +8,7 @@ from torch import FloatTensor, LongTensor
 from srsc.datamodule import vocab, vocab_size
 from srsc.model.pos_enc import WordPosEnc
 from srsc.model.transformer.arm import AttentionRefinementModule
+from srsc.model.transformer.rqm import RelationQueryModule
 from srsc.model.transformer.transformer_decoder import (
     TransformerDecoder,
     TransformerDecoderLayer,
@@ -26,6 +27,8 @@ def _build_transformer_decoder(
     cross_coverage: bool,
     self_coverage: bool,
     num_relation_classes: int = 0,
+    use_rqm: bool = False,
+    use_rmc: bool = True,
 ) -> TransformerDecoder:
     decoder_layer = TransformerDecoderLayer(
         d_model=d_model,
@@ -40,11 +43,16 @@ def _build_transformer_decoder(
             cross_coverage,
             self_coverage,
             num_relation_classes=num_relation_classes,
+            use_rmc=use_rmc,
         )
     else:
         arm = None
 
-    decoder = TransformerDecoder(decoder_layer, num_decoder_layers, arm)
+    rqm = None
+    if use_rqm and num_relation_classes > 0:
+        rqm = RelationQueryModule(d_model=d_model, num_relations=num_relation_classes)
+
+    decoder = TransformerDecoder(decoder_layer, num_decoder_layers, arm, rqm=rqm)
     return decoder
 
 
@@ -60,6 +68,8 @@ class Decoder(DecodeModel):
         cross_coverage: bool,
         self_coverage: bool,
         num_relation_classes: int = 0,
+        use_rqm: bool = False,
+        use_rmc: bool = True,
     ):
         super().__init__()
 
@@ -80,6 +90,8 @@ class Decoder(DecodeModel):
             cross_coverage=cross_coverage,
             self_coverage=self_coverage,
             num_relation_classes=num_relation_classes,
+            use_rqm=use_rqm,
+            use_rmc=use_rmc,
         )
 
         self.proj = nn.Linear(d_model, vocab_size)
@@ -97,8 +109,7 @@ class Decoder(DecodeModel):
         src_mask: LongTensor,
         tgt: LongTensor,
         relation_probs: Optional[FloatTensor] = None,
-        return_attn: bool = False,
-    ) -> Union[FloatTensor, Tuple[FloatTensor, Optional[FloatTensor]]]:
+    ) -> FloatTensor:
         _, l = tgt.size()
         tgt_mask = self._build_attention_mask(l)
         tgt_pad_mask = tgt == vocab.PAD_IDX
@@ -112,7 +123,7 @@ class Decoder(DecodeModel):
         src_mask = rearrange(src_mask, "b h w -> b (h w)")
         tgt = rearrange(tgt, "b l d -> l b d")
 
-        out, cross_attn = self.model(
+        out = self.model(
             tgt=tgt,
             memory=src,
             height=h,
@@ -120,14 +131,11 @@ class Decoder(DecodeModel):
             tgt_key_padding_mask=tgt_pad_mask,
             memory_key_padding_mask=src_mask,
             relation_probs=relation_probs,
-            return_attn=return_attn,
         )
 
         out = rearrange(out, "l b d -> b l d")
         out = self.proj(out)
 
-        if return_attn:
-            return out, cross_attn
         return out
 
     def transform(

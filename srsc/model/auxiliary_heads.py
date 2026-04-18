@@ -200,7 +200,9 @@ class RelationHead(nn.Module):
         self._init_weights()
     
     def _init_weights(self):
-        for m in self.modules():
+        for name, m in self.named_modules():
+            if 'spatial_attention' in name:
+                continue
             if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
                 if m.bias is not None:
@@ -232,24 +234,3 @@ class RelationHead(nn.Module):
         return logits
 
 
-if __name__ == '__main__':
-    batch_size = 2
-    H, W, D = 4, 8, 256
-    
-    features = torch.randn(batch_size, H, W, D)
-    
-    print("Testing RelationHead")
-    print("=" * 50)
-    print(f"Input features: {features.shape}")
-    
-    head = RelationHead(d_model=D)
-    logits = head(features)
-    probs = torch.sigmoid(logits)
-    
-    print(f"\nLogits: {logits.shape}")
-    print(f"  Range: [{logits.min():.4f}, {logits.max():.4f}]")
-    print(f"Probabilities (after sigmoid): [{probs.min():.4f}, {probs.max():.4f}]")
-    
-    # Count parameters
-    total_params = sum(p.numel() for p in head.parameters())
-    print(f"\nTotal parameters: {total_params:,}")

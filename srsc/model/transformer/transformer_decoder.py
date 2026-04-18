@@ -20,6 +20,7 @@ class TransformerDecoder(nn.Module):
         decoder_layer,
         num_layers: int,
         arm: Optional[AttentionRefinementModule],
+        rqm=None,
         norm=None,
     ):
         super(TransformerDecoder, self).__init__()
@@ -27,6 +28,7 @@ class TransformerDecoder(nn.Module):
         self.num_layers = num_layers
         self.norm = norm
         self.arm = arm
+        self.rqm = rqm  # shared RelationQueryModule across all layers
 
     def forward(
         self,
@@ -38,8 +40,7 @@ class TransformerDecoder(nn.Module):
         tgt_key_padding_mask: Optional[Tensor] = None,
         memory_key_padding_mask: Optional[Tensor] = None,
         relation_probs: Optional[Tensor] = None,
-        return_attn: bool = False,
-    ) -> Tuple[Tensor, Optional[Tensor]]:
+    ) -> Tensor:
         output = tgt
         arm = None
         attn = None
@@ -49,6 +50,9 @@ class TransformerDecoder(nn.Module):
                 output,
                 memory,
                 arm,
+                rqm=self.rqm,
+                relation_probs=relation_probs,
+                memory_key_padding_mask_flat=memory_key_padding_mask,
                 tgt_mask=tgt_mask,
                 memory_mask=memory_mask,
                 tgt_key_padding_mask=tgt_key_padding_mask,
@@ -67,7 +71,7 @@ class TransformerDecoder(nn.Module):
         if self.norm is not None:
             output = self.norm(output)
 
-        return output, (attn if return_attn else None)
+        return output
 
 
 class TransformerDecoderLayer(nn.Module):
@@ -106,6 +110,9 @@ class TransformerDecoderLayer(nn.Module):
         tgt: Tensor,
         memory: Tensor,
         arm: Optional[AttentionRefinementModule],
+        rqm=None,
+        relation_probs: Optional[Tensor] = None,
+        memory_key_padding_mask_flat: Optional[Tensor] = None,
         tgt_mask: Optional[Tensor] = None,
         memory_mask: Optional[Tensor] = None,
         tgt_key_padding_mask: Optional[Tensor] = None,
@@ -117,11 +124,17 @@ class TransformerDecoderLayer(nn.Module):
         tgt = tgt + self.dropout1(tgt2)
         tgt = self.norm1(tgt)
 
+        # Compute structural prior from current decoder hidden state via RQM
+        rqm_prior = None
+        if rqm is not None and relation_probs is not None:
+            rqm_prior = rqm(tgt, relation_probs, memory_key_padding_mask_flat)
+
         tgt2, attn = self.multihead_attn(
             tgt,
             memory,
             memory,
             arm=arm,
+            rqm_prior=rqm_prior,
             attn_mask=memory_mask,
             key_padding_mask=memory_key_padding_mask,
         )

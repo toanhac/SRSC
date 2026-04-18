@@ -35,23 +35,6 @@ class _Bottleneck(nn.Module):
         return out
 
 
-class _SingleLayer(nn.Module):
-    def __init__(self, n_channels: int, growth_rate: int, use_dropout: bool):
-        super(_SingleLayer, self).__init__()
-        self.conv1 = nn.Conv2d(
-            n_channels, growth_rate, kernel_size=3, padding=1, bias=False
-        )
-        self.use_dropout = use_dropout
-        self.dropout = nn.Dropout(p=0.2)
-
-    def forward(self, x):
-        out = self.conv1(F.relu(x, inplace=True))
-        if self.use_dropout:
-            out = self.dropout(out)
-        out = torch.cat((x, out), 1)
-        return out
-
-
 class _Transition(nn.Module):
     def __init__(self, n_channels: int, n_out_channels: int, use_dropout: bool):
         super(_Transition, self).__init__()
@@ -74,7 +57,6 @@ class DenseNet(nn.Module):
         growth_rate: int,
         num_layers: int,
         reduction: float = 0.5,
-        bottleneck: bool = True,
         use_dropout: bool = True,
     ):
         super(DenseNet, self).__init__()
@@ -85,7 +67,7 @@ class DenseNet(nn.Module):
         )
         self.norm1 = nn.BatchNorm2d(n_channels)
         self.dense1 = self._make_dense(
-            n_channels, growth_rate, n_dense_blocks, bottleneck, use_dropout
+            n_channels, growth_rate, n_dense_blocks, use_dropout
         )
         n_channels += n_dense_blocks * growth_rate
         n_out_channels = int(math.floor(n_channels * reduction))
@@ -93,7 +75,7 @@ class DenseNet(nn.Module):
 
         n_channels = n_out_channels
         self.dense2 = self._make_dense(
-            n_channels, growth_rate, n_dense_blocks, bottleneck, use_dropout
+            n_channels, growth_rate, n_dense_blocks, use_dropout
         )
         n_channels += n_dense_blocks * growth_rate
         n_out_channels = int(math.floor(n_channels * reduction))
@@ -101,20 +83,17 @@ class DenseNet(nn.Module):
 
         n_channels = n_out_channels
         self.dense3 = self._make_dense(
-            n_channels, growth_rate, n_dense_blocks, bottleneck, use_dropout
+            n_channels, growth_rate, n_dense_blocks, use_dropout
         )
 
         self.out_channels = n_channels + n_dense_blocks * growth_rate
         self.post_norm = nn.BatchNorm2d(self.out_channels)
 
     @staticmethod
-    def _make_dense(n_channels, growth_rate, n_dense_blocks, bottleneck, use_dropout):
+    def _make_dense(n_channels, growth_rate, n_dense_blocks, use_dropout):
         layers = []
         for _ in range(int(n_dense_blocks)):
-            if bottleneck:
-                layers.append(_Bottleneck(n_channels, growth_rate, use_dropout))
-            else:
-                layers.append(_SingleLayer(n_channels, growth_rate, use_dropout))
+            layers.append(_Bottleneck(n_channels, growth_rate, use_dropout))
             n_channels += growth_rate
         return nn.Sequential(*layers)
 

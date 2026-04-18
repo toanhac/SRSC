@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from einops import rearrange, repeat
 from torch import Tensor
 from torch.nn.modules.batchnorm import BatchNorm1d
@@ -44,7 +43,7 @@ class RelationModulator(nn.Module):
         super().__init__()
         self.proj = nn.Conv2d(num_relation_classes, coverage_chs, kernel_size=1, bias=True)
         nn.init.zeros_(self.proj.weight)
-        nn.init.zeros_(self.proj.bias)
+        nn.init.constant_(self.proj.bias, -6.0)  # sigmoid(-6) ≈ 0 → gate ≈ 0 initially → pure BTTR
 
     def forward(self, relation_probs: Tensor) -> Tensor:
         """
@@ -86,6 +85,7 @@ class AttentionRefinementModule(nn.Module):
         cross_coverage: bool,
         self_coverage: bool,
         num_relation_classes: int = 0,
+        use_rmc: bool = True,
     ):
         super().__init__()
         assert cross_coverage or self_coverage
@@ -96,7 +96,7 @@ class AttentionRefinementModule(nn.Module):
         self.coverage_chs = (2 if cross_coverage and self_coverage else 1) * nhead
 
         self.relation_modulator: Optional[RelationModulator] = None
-        if num_relation_classes > 0:
+        if num_relation_classes > 0 and use_rmc:
             self.relation_modulator = RelationModulator(num_relation_classes, self.coverage_chs)
 
         self.conv = nn.Conv2d(self.coverage_chs, dc, kernel_size=5, padding=2)

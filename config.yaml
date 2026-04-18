@@ -12,9 +12,11 @@ trainer:
         mode: max
         filename: '{epoch}--{val_ExpRate:.4f}'
   gpus: 1
-  check_val_every_n_epoch: 5
+  check_val_every_n_epoch: 2
   max_epochs: 300
   deterministic: true
+  gradient_clip_val: 1.0
+  gradient_clip_algorithm: norm
 
 model:
   d_model: 256
@@ -24,7 +26,7 @@ model:
   nhead: 8
   num_decoder_layers: 3
   dim_feedforward: 1024
-  dropout: 0.2
+  dropout: 0.3
 
   dc: 32
   cross_coverage: true
@@ -32,9 +34,10 @@ model:
 
   use_relation_aux: true
   relation_hidden_channels: 128
-  relation_loss_weight: 0.1
-  coverage_loss_weight: 0.05
+  relation_loss_weight: 0.05
   num_relation_classes: 7
+  use_rqm: true
+  use_rmc: true
 
   beam_size: 10
   max_len: 200
@@ -43,7 +46,7 @@ model:
   temperature: 1.0
 
   optimizer_type: sgd
-  learning_rate: 0.08
+  learning_rate: 0.05
   patience: 100
 
 data:

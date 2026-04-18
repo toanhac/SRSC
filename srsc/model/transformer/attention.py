@@ -93,6 +93,7 @@ class MultiheadAttention(nn.Module):
         key: Tensor,
         value: Tensor,
         arm: Optional[AttentionRefinementModule] = None,
+        rqm_prior: Optional[Tensor] = None,
         key_padding_mask: Optional[Tensor] = None,
         need_weights: bool = True,
         attn_mask: Optional[Tensor] = None,
@@ -122,6 +123,7 @@ class MultiheadAttention(nn.Module):
                 q_proj_weight=self.q_proj_weight,
                 k_proj_weight=self.k_proj_weight,
                 v_proj_weight=self.v_proj_weight,
+                rqm_prior=rqm_prior,
             )
         else:
             return multi_head_attention_forward(
@@ -144,6 +146,7 @@ class MultiheadAttention(nn.Module):
                 key_padding_mask=key_padding_mask,
                 need_weights=need_weights,
                 attn_mask=attn_mask,
+                rqm_prior=rqm_prior,
             )
 
 
@@ -173,6 +176,7 @@ def multi_head_attention_forward(
     v_proj_weight: Optional[Tensor] = None,
     static_k: Optional[Tensor] = None,
     static_v: Optional[Tensor] = None,
+    rqm_prior: Optional[Tensor] = None,
 ) -> Tuple[Tensor, Optional[Tensor]]:
     tgt_len, bsz, embed_dim = query.size()
     assert embed_dim == embed_dim_to_check
@@ -368,6 +372,13 @@ def multi_head_attention_forward(
 
     attn_output_weights = torch.bmm(q, k.transpose(1, 2))
     assert list(attn_output_weights.size()) == [bsz * num_heads, tgt_len, src_len]
+
+    # Add structural prior from RQM (log-domain, shared across heads) before softmax
+    if rqm_prior is not None:
+        # rqm_prior: [B, T, HW] → broadcast over heads → [B*nhead, T, HW]
+        prior_expanded = rqm_prior.unsqueeze(1).expand(-1, num_heads, -1, -1)
+        prior_expanded = prior_expanded.reshape(bsz * num_heads, tgt_len, src_len)
+        attn_output_weights = attn_output_weights + prior_expanded
 
     def mask_softmax_dropout(dots):
         if attn_mask is not None:
