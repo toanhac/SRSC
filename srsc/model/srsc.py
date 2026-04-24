@@ -78,7 +78,7 @@ class SRSC(pl.LightningModule):
         if self.use_relation_aux and self.relation_head is not None:
             relation_pred = self.relation_head(feature_16x)
             # Detach so ARM/RQM gradients don't flow back into RelationHead
-            relation_probs = torch.sigmoid(relation_pred).detach()
+            relation_probs = torch.sigmoid(relation_pred)
 
         feature_doubled = torch.cat((feature_16x, feature_16x), dim=0)
         mask_doubled = torch.cat((mask_16x, mask_16x), dim=0)

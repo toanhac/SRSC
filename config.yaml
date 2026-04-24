@@ -12,8 +12,8 @@ trainer:
         mode: max
         filename: '{epoch}--{val_ExpRate:.4f}'
   gpus: 1
-  check_val_every_n_epoch: 20
-  max_epochs: 300
+  check_val_every_n_epoch: 10
+  max_epochs: 400
   deterministic: true
 
 
@@ -45,8 +45,8 @@ model:
   temperature: 1.0
 
   optimizer_type: sgd
-  learning_rate: 0.05
-  patience: 100
+  learning_rate: 0.08
+  patience: 10
 
 data:
   zipfile_path: data.zip

@@ -247,7 +247,7 @@ class LitSRSC(pl.LightningModule):
                 self.parameters(),
                 lr=self.hparams.learning_rate,
                 betas=(0.9, 0.999),
-                weight_decay=0.01,
+                weight_decay=1e-4,
             )
         else:
             optimizer = optim.SGD(
